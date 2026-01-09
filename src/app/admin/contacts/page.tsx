@@ -31,7 +31,7 @@ export default function ContactsPage() {
     };
 
     useEffect(() => {
-        const isAuth = localStorage.getItem("adminAuth");
+        const isAuth = sessionStorage.getItem("adminAuth");
         if (!isAuth) {
             router.push("/admin/login");
         } else {

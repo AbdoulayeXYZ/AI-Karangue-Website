@@ -14,7 +14,7 @@ export default function AnalyticsPage() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const isAuth = localStorage.getItem("adminAuth");
+        const isAuth = sessionStorage.getItem("adminAuth");
         if (!isAuth) {
             router.push("/admin/login");
         } else {

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { Check, Star, Zap, ShieldCheck, CheckCircle2, Crown, LucideIcon } from "lucide-react";
+import Link from "next/link";
 import { SiteContent } from "@/lib/content";
 
 export const Offres = ({ content }: { content: SiteContent["home"]["offres"] }) => {
@@ -87,16 +88,18 @@ export const Offres = ({ content }: { content: SiteContent["home"]["offres"] }) 
                                     </div>
                                 </div>
 
-                                <Button
-                                    className={cn(
-                                        "w-full h-14 rounded-xl font-black uppercase tracking-wider text-xs shadow-lg transition-all hover:scale-[1.02]",
-                                        pack.popular
-                                            ? "bg-teal hover:bg-teal-light text-white shadow-teal/20"
-                                            : "bg-navy-dark hover:bg-navy text-white shadow-navy/10"
-                                    )}
-                                >
-                                    {content.ctaButton}
-                                </Button>
+                                <Link href="/contact" className="w-full">
+                                    <Button
+                                        className={cn(
+                                            "w-full h-14 rounded-xl font-black uppercase tracking-wider text-xs shadow-lg transition-all hover:scale-[1.02]",
+                                            pack.popular
+                                                ? "bg-teal hover:bg-teal-light text-white shadow-teal/20"
+                                                : "bg-navy-dark hover:bg-navy text-white shadow-navy/10"
+                                        )}
+                                    >
+                                        {content.ctaButton}
+                                    </Button>
+                                </Link>
                             </motion.div>
                         )
                     })}
@@ -104,9 +107,9 @@ export const Offres = ({ content }: { content: SiteContent["home"]["offres"] }) 
 
                 <div className="mt-20 text-center">
                     <p className="text-navy/40 font-bold text-sm mb-4">{content.bottomText}</p>
-                    <a href="#contact" className="inline-flex items-center gap-2 text-navy-dark font-black text-lg hover:text-teal transition-colors border-b-2 border-teal/20 hover:border-teal pb-1">
+                    <Link href="/contact" className="inline-flex items-center gap-2 text-navy-dark font-black text-lg hover:text-teal transition-colors border-b-2 border-teal/20 hover:border-teal pb-1">
                         {content.bottomLink} <CheckCircle2 className="w-5 h-5 text-teal" />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

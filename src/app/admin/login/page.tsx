@@ -17,13 +17,15 @@ export default function AdminLoginPage() {
         e.preventDefault();
         setIsLoading(true);
 
-        // Simulate authentication
+        // Simulate network delay for UX
         setTimeout(() => {
-            if (email && password) {
-                localStorage.setItem("adminAuth", "true");
+            if (email === "admin@aikarangue.sn" && password === "#passer@1234") {
+                sessionStorage.setItem("adminAuth", "true");
                 router.push("/admin/dashboard");
+            } else {
+                alert("Identifiants incorrects. Veuillez réessayer.");
+                setIsLoading(false);
             }
-            setIsLoading(false);
         }, 1000);
     };
 

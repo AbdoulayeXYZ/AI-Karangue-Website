@@ -71,7 +71,7 @@ export const SoftwareShowcase = ({ content }: { content: SiteContent["home"]["so
                                         {feature.description}
                                     </p>
                                     <Link
-                                        href={`/solutions#${feature.id}`}
+                                        href={feature.linkText.toLowerCase().includes('démo') ? '/contact' : `/solutions#${feature.id}`}
                                         className="inline-flex items-center gap-3 text-teal font-black uppercase tracking-wider text-sm mt-2 group-hover:gap-4 transition-all"
                                     >
                                         <span>{feature.linkText}</span>

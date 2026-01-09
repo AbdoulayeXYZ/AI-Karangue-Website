@@ -134,17 +134,19 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                                         </ul>
                                     )}
 
-                                    <Button
-                                        variant={isDark ? "default" : "outline"}
-                                        className={cn(
-                                            "w-fit h-14 px-8 rounded-xl flex items-center gap-2 group/btn transition-all duration-300",
-                                            isDark
-                                                ? "bg-teal text-white hover:bg-teal-light border-none shadow-[0_0_20px_rgba(20,184,166,0.3)]"
-                                                : "text-navy-dark border-2 border-navy/10 hover:bg-navy-dark hover:text-white hover:border-navy-dark"
-                                        )}
-                                    >
-                                        {sector.ctaText} <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                                    </Button>
+                                    <Link href="/contact">
+                                        <Button
+                                            variant={isDark ? "primary" : "outline"}
+                                            className={cn(
+                                                "w-fit h-14 px-8 rounded-xl flex items-center gap-2 group/btn transition-all duration-300",
+                                                isDark
+                                                    ? "bg-teal text-white hover:bg-teal-light border-none shadow-[0_0_20px_rgba(20,184,166,0.3)]"
+                                                    : "text-navy-dark border-2 border-navy/10 hover:bg-navy-dark hover:text-white hover:border-navy-dark"
+                                            )}
+                                        >
+                                            {sector.ctaText} <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                                        </Button>
+                                    </Link>
                                 </div>
 
                                 {/* Image Column */}

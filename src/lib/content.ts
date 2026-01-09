@@ -411,7 +411,7 @@ export const defaultContent: SiteContent = {
                     role: "Preuve & Action Directe",
                     description: "En cas de litige, vous avez l'image. Désamorcez les conflits et protégez vos chauffeurs instantanément.",
                     imagePath: "/video.png",
-                    linkText: "Voir la Démo"
+                    linkText: "Demander une démo"
                 }
             ]
         },
@@ -532,7 +532,7 @@ export const defaultContent: SiteContent = {
             subtitle: "La solution IoT + IA qui transforme votre flotte en",
             subtitleHighlight: "actif stratégique sécurisé et rentable.",
             ctaPrimary: "Calculer mon ROI",
-            ctaSecondary: "Voir la démo",
+            ctaSecondary: "Demander une démo",
             videoPath: "/hero.mp4"
         },
         value: {
@@ -726,7 +726,7 @@ export const defaultContent: SiteContent = {
                 video: {
                     title: "Vidéo à la Demande",
                     description: "Accédez aux caméras en direct ou revivez les incidents passés. Preuves HD téléchargeables instantanément.",
-                    ctaText: "Voir la démo live",
+                    ctaText: "Demander une démo",
                     imagePath: "/video focus.png"
                 },
                 geofencing: {
@@ -785,13 +785,21 @@ export const defaultContent: SiteContent = {
                 id: "transport",
                 title: "Transport",
                 highlight: "Public",
-                description: "Sécurisez chaque kilomètre. Notre solution combine comptage passagers, vidéosurveillance IA et suivi temps réel pour transformer l'expérience usager.",
+                description: "Optimisez chaque trajet. Notre solution réduit vos coûts opérationnels et diminue drastiquement les risques d'accidents grâce à l'IA.",
                 stats: [
-                    { label: "Comptage Passagers IA", value: "99.8% Précision" },
-                    { label: "Réduction Fraude", value: "-40% Pertes" },
-                    { label: "Sécurité à bord", value: "Caméras 24/7" }
-                ],
-                features: [],
+                    {
+                        label: "Coûts Opérationnels",
+                        value: "-30%"
+                    },
+                    {
+                        label: "Taux d'Accidents",
+                        value: "-50%"
+                    },
+                    {
+                        label: "Sécurité Passagers",
+                        value: "Maximale"
+                    }
+                ], features: [],
                 ctaText: "Découvrir la solution Bus",
                 imagePath: "/industry-bus.png",
                 type: "stats"
@@ -825,25 +833,45 @@ export const defaultContent: SiteContent = {
                 ctaText: "Solutions Industrielles",
                 imagePath: "/industry-btp.png",
                 type: "list"
-            }
-        ],
-        otherSectors: [
-            {
-                title: "Location / Leasing",
-                description: "Protégez vos actifs contre le vol et les impayés. Immobilisation à distance sécurisée.",
-                iconId: "users"
             },
             {
-                title: "Distribution",
-                description: "Optimisez vos tournées de livraison et garantissez la chaine du froid.",
-                iconId: "zap"
+                id: "vip_transport",
+                title: "Transport",
+                highlight: "VIP",
+                description: "L'excellence n'attend pas. Garantissez un service irréprochable avec une confidentialité totale et une ponctualité suisse.",
+                features: [
+                    "Suivi de flotte discret",
+                    "Protection VIP active",
+                    "Conduite souple (Scoring)",
+                    "Ponctualité garantie"
+                ],
+                ctaText: "Offrir l'excellence",
+                imagePath: "/sector_vip_transport_1767971076378.png",
+                type: "list",
+                stats: []
             },
             {
-                title: "Services d'Urgence",
-                description: "Priorité et rapidité d'intervention grâce à la navigation connectée.",
-                iconId: "shield"
+                id: "car_rental",
+                title: "Location de",
+                highlight: "Voiture",
+                description: "Protégez vos actifs contre le vol et les impayés. Immobilisation à distance et suivi précis pour une gestion de flotte sans stress.",
+                stats: [
+                    {
+                        label: "Taux de Recouvrement",
+                        value: "100%"
+                    },
+                    {
+                        label: "Impayés",
+                        value: "0%"
+                    }
+                ],
+                features: [],
+                ctaText: "Sécuriser ma flotte",
+                imagePath: "/sector_car_rental_1767971102612.png",
+                type: "stats"
             }
         ],
+        otherSectors: [],
         finalCta: {
             title: "Votre industrie a ses défis.",
             titleHighlight: "Nous avons les réponses.",

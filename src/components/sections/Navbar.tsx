@@ -111,7 +111,7 @@ export const Navbar = () => {
                                 !isScrolled && "bg-teal text-white hover:shadow-[0_0_30px_rgba(0,128,128,0.4)]"
                             )}
                         >
-                            Réserver Démo
+                            Demander une démo
                         </Button>
                     </Link>
                 </div>
@@ -174,7 +174,7 @@ export const Navbar = () => {
                                 </Link>
                                 <Link href="/contact">
                                     <Button className="h-16 px-12 text-sm font-black tracking-[0.2em] rounded-2xl">
-                                        Réserver une démo
+                                        Demander une démo
                                     </Button>
                                 </Link>
                             </motion.div>

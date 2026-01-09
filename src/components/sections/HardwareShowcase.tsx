@@ -89,10 +89,10 @@ export const HardwareShowcase = ({ content }: { content: SiteContent["home"]["ha
 
                                     <div className="mt-auto pt-6 flex items-center justify-between border-t border-navy/5">
                                         <Link
-                                            href={`/solutions#${product.id}`}
+                                            href="/contact"
                                             className="flex items-center gap-3 text-[10px] font-black tracking-widest uppercase text-navy-dark/40 hover:text-navy-dark transition-colors"
                                         >
-                                            Explorer
+                                            Demander une démo
                                             <ArrowRight className="w-3.5 h-3.5" />
                                         </Link>
                                         <Icon className="w-5 h-5 text-navy/10 group-hover:text-teal transition-colors" />
@@ -106,9 +106,9 @@ export const HardwareShowcase = ({ content }: { content: SiteContent["home"]["ha
 
             {/* Compact Final CTA */}
             <div className="container mx-auto px-6 py-20 text-center">
-                <Link href="/solutions">
+                <Link href="/contact">
                     <button className="h-16 px-12 bg-navy-dark text-white rounded-2xl font-black tracking-widest uppercase text-[10px] hover:bg-teal transition-all duration-300 shadow-xl shadow-navy/10 group">
-                        {content.ctaButton}
+                        Demander une démo
                         <ArrowRight className="inline-block ml-4 w-4 h-4 transition-transform group-hover:translate-x-2" />
                     </button>
                 </Link>
