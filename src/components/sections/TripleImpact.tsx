@@ -50,39 +50,40 @@ export const TripleImpact = ({ content }: { content: SiteContent["home"]["triple
                             viewport={{ once: true }}
                             className="group"
                         >
-                            <div className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl shadow-navy/5 group-hover:shadow-[0_20px_80px_-20px_rgba(0,51,102,0.2)] transition-all duration-700">
+                            <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl shadow-navy/5 group-hover:shadow-[0_20px_80px_-20px_rgba(0,51,102,0.15)] border border-zinc-100 transition-all duration-500 h-full flex flex-col">
 
-                                {/* Background Image with Zoom Effect */}
-                                <div className="absolute inset-0">
+                                {/* Image Section */}
+                                <div className="relative h-[300px] overflow-hidden">
                                     <Image
                                         src={pillar.imagePath}
                                         alt={pillar.title}
                                         fill
                                         className="object-cover transition-transform duration-[1.5s] ease-[0.2,1,0.3,1] group-hover:scale-110"
                                     />
-                                    {/* Gradient Overlays for Readability */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/40 to-transparent opacity-90" />
+                                    {/* Subtle Overlay to ensure depth */}
+                                    <div className="absolute inset-0 bg-navy-dark/10 group-hover:bg-transparent transition-colors duration-500" />
                                 </div>
 
-                                {/* Content Overlay */}
-                                <div className="absolute inset-0 p-10 flex flex-col justify-end text-white relative z-10">
-                                    <div className="mb-auto pt-4">
-                                        <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[10px] font-black tracking-widest uppercase mb-4">
+                                {/* Content Section */}
+                                <div className="p-8 flex flex-col flex-1 bg-white relative z-10">
+                                    <div className="mb-6">
+                                        <span className="inline-block px-3 py-1 rounded-full bg-teal/10 text-teal text-[10px] font-black tracking-widest uppercase">
                                             {pillar.subtitle}
                                         </span>
                                     </div>
 
-                                    <h3 className="text-3xl font-black mb-4 leading-tight">{pillar.title}</h3>
-                                    <p className="text-white/70 font-medium leading-relaxed mb-8">
+                                    <h3 className="text-3xl font-black mb-4 leading-tight text-navy-dark">{pillar.title}</h3>
+
+                                    <p className="text-navy/60 font-medium leading-relaxed mb-8 flex-1">
                                         {pillar.description}
                                     </p>
 
                                     {/* Benefits List */}
-                                    <ul className="space-y-3 pt-6 border-t border-white/10">
+                                    <ul className="space-y-4 pt-6 border-t border-zinc-100 mt-auto">
                                         {pillar.benefits.map((benefit, j) => (
-                                            <li key={j} className="flex items-center gap-3 text-sm font-bold text-teal-light">
-                                                <div className="w-5 h-5 rounded-full bg-teal/20 flex items-center justify-center">
-                                                    <Check className="w-3 h-3 text-teal" strokeWidth={3} />
+                                            <li key={j} className="flex items-center gap-3 text-sm font-bold text-navy-dark">
+                                                <div className="w-6 h-6 rounded-full bg-teal text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-teal/20">
+                                                    <Check className="w-3.5 h-3.5" strokeWidth={3} />
                                                 </div>
                                                 {benefit}
                                             </li>

@@ -778,7 +778,14 @@
     "address": "Ouakam<br /> Dakar, Sénégal",
     "phone": "+221 77 314 70 59",
     "copyright": "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
-    "trademark": "AI-Karangué et Karangué221 sont des marques déposées.",
+    "trademark": "AI-Karangué ®",
+    "social": {
+      "linkedin": "https://www.linkedin.com/showcase/ai-karangue",
+      "youtube": "https://www.youtube.com/@AI-KarangueAI-Karangue",
+      "facebook": "https://www.facebook.com/people/ArtBeau-Rescence/100091356004097/",
+      "instagram": "https://www.instagram.com/artbeaurescence/",
+      "twitter": "https://x.com/artbeaurescence"
+    },
     "newsletter": {
       "placeholder": "votre.email@entreprise.com",
       "buttonText": "S'abonner"
@@ -787,18 +794,39 @@
       "technology": {
         "title": "Technologie",
         "links": [
-          "Karangué221",
-          "Intelligence IA",
-          "Analyse Vidéo",
-          "Cloud Dashboard"
+          {
+            "label": "Karangué221",
+            "href": "/#hardware"
+          },
+          {
+            "label": "Intelligence IA",
+            "href": "/#software"
+          },
+          {
+            "label": "Analyse Vidéo",
+            "href": "/#software"
+          },
+          {
+            "label": "Cloud Dashboard",
+            "href": "/#software"
+          }
         ]
       },
       "sectors": {
         "title": "Secteurs",
         "links": [
-          "Transport Public",
-          "Logistique Pro",
-          "Assurance Connectée"
+          {
+            "label": "Transport Public",
+            "href": "/industries#transport"
+          },
+          {
+            "label": "Logistique Pro",
+            "href": "/industries#logistics"
+          },
+          {
+            "label": "Assurance Connectée",
+            "href": "/industries#btp"
+          }
         ]
       },
       "company": {

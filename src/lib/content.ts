@@ -227,15 +227,22 @@ export interface SiteContent {
         navigation: {
             technology: {
                 title: string;
-                links: string[];
+                links: { label: string; href: string }[];
             };
             sectors: {
                 title: string;
-                links: string[];
+                links: { label: string; href: string }[];
             };
             company: {
                 title: string;
             };
+        };
+        social: {
+            linkedin: string;
+            youtube: string;
+            facebook: string;
+            instagram: string;
+            twitter: string;
         };
         legal: {
             links: string[];
@@ -752,6 +759,13 @@ export const defaultContent: SiteContent = {
         phone: "+221 77 314 70 59",
         copyright: "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
         trademark: "AI-Karangué et Karangué221 sont des marques déposées.",
+        social: {
+            linkedin: "https://www.linkedin.com/showcase/ai-karangue",
+            youtube: "https://www.youtube.com/@AI-KarangueAI-Karangue",
+            facebook: "https://www.facebook.com/people/ArtBeau-Rescence/100091356004097/",
+            instagram: "https://www.instagram.com/artbeaurescence/",
+            twitter: "https://x.com/artbeaurescence"
+        },
         newsletter: {
             placeholder: "votre.email@entreprise.com",
             buttonText: "S'abonner"
@@ -759,11 +773,20 @@ export const defaultContent: SiteContent = {
         navigation: {
             technology: {
                 title: "Technologie",
-                links: ["Karangué221", "Intelligence IA", "Analyse Vidéo", "Cloud Dashboard"]
+                links: [
+                    { label: "Karangué221", href: "/#hardware" },
+                    { label: "Intelligence IA", href: "/#software" },
+                    { label: "Analyse Vidéo", href: "/#software" },
+                    { label: "Cloud Dashboard", href: "/#software" }
+                ]
             },
             sectors: {
                 title: "Secteurs",
-                links: ["Transport Public", "Logistique Pro", "Assurance Connectée"]
+                links: [
+                    { label: "Transport Public", href: "/industries#transport" },
+                    { label: "Logistique Pro", href: "/industries#logistics" },
+                    { label: "Assurance Connectée", href: "/industries#btp" }
+                ]
             },
             company: {
                 title: "Art'Beau-Rescence"

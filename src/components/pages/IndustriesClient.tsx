@@ -69,6 +69,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                     return (
                         <motion.div
                             key={sector.id}
+                            id={sector.id}
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

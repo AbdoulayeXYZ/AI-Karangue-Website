@@ -2,19 +2,19 @@
   {
     "date": "2026-01-09",
     "visitors": 2,
-    "pageViews": 150,
+    "pageViews": 204,
     "pages": {
-      "/solutions": 25,
-      "/admin/analytics": 9,
-      "/": 24,
-      "/industries": 17,
-      "/admin/content": 15,
+      "/solutions": 28,
+      "/admin/analytics": 12,
+      "/": 38,
+      "/industries": 24,
+      "/admin/content": 17,
       "/admin/newsletters": 4,
       "/admin/contacts": 7,
-      "/admin/dashboard": 24,
-      "/offres": 9,
-      "/contact": 13,
-      "/admin/login": 3
+      "/admin/dashboard": 30,
+      "/offres": 12,
+      "/contact": 27,
+      "/admin/login": 5
     }
   }
 ]

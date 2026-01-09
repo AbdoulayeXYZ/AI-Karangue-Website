@@ -36,7 +36,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         router.push("/admin/login");
     };
 
-    const SidebarContent = () => (
+    const SidebarContent = ({ pathname, handleLogout }: { pathname: string; handleLogout: () => void }) => (
         <div className="flex flex-col h-full text-white">
             {/* Logo Area */}
             <div className="p-8 pb-10">
@@ -118,7 +118,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 {/* Background Decor */}
                 <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-teal/10 to-transparent pointer-events-none" />
                 <div className="relative z-10 h-full">
-                    <SidebarContent />
+                    <SidebarContent pathname={pathname} handleLogout={handleLogout} />
                 </div>
             </aside>
 
@@ -160,7 +160,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             className="fixed inset-y-0 left-0 w-72 bg-navy-dark z-50 lg:hidden border-r border-white/10 shadow-2xl"
                         >
-                            <SidebarContent />
+                            <SidebarContent pathname={pathname} handleLogout={handleLogout} />
                             <button
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"

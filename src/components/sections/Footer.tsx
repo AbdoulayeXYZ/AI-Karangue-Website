@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Mail, Phone, MapPin, Linkedin, Twitter, Youtube } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Linkedin, Twitter, Youtube, Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { SiteContent } from "@/lib/content";
@@ -50,18 +50,26 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
 
                         <h3 className="text-4xl font-black mb-8 leading-tight tracking-tighter" dangerouslySetInnerHTML={{ __html: content.mission }} />
 
-                        <p className="text-xl text-white/50 mb-12 max-w-md leading-relaxed font-medium">
-                            {content.description}
-                        </p>
+                        <p className="text-xl text-white/50 mb-12 max-w-md leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: content.description }} />
 
                         {/* Social Media + Newsletter on same line */}
                         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                             <div className="flex gap-4">
-                                {[Linkedin, Twitter, Youtube].map((Icon, i) => (
-                                    <Link key={i} href="#" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                        <Icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                                    </Link>
-                                ))}
+                                <Link href={content.social.linkedin} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                </Link>
+                                <Link href={content.social.twitter} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Twitter className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                </Link>
+                                <Link href={content.social.youtube} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Youtube className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                </Link>
+                                <Link href={content.social.facebook} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Facebook className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                </Link>
+                                <Link href={content.social.instagram} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                </Link>
                             </div>
 
                             {/* Newsletter - Inline */}
@@ -129,16 +137,16 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                         <div>
                             <h4 className="text-[10px] font-black tracking-[0.4em] uppercase text-teal mb-10">{content.navigation.technology.title}</h4>
                             <ul className="space-y-6">
-                                {content.navigation.technology.links.map((item) => (
-                                    <li key={item}><Link href="#" className="text-sm font-bold text-white/40 hover:text-white transition-colors">{item}</Link></li>
+                                {content.navigation.technology.links.map((item, i) => (
+                                    <li key={i}><Link href={item.href} className="text-sm font-bold text-white/40 hover:text-white transition-colors">{item.label}</Link></li>
                                 ))}
                             </ul>
                         </div>
                         <div>
                             <h4 className="text-[10px] font-black tracking-[0.4em] uppercase text-teal mb-10">{content.navigation.sectors.title}</h4>
                             <ul className="space-y-6">
-                                {content.navigation.sectors.links.map((item) => (
-                                    <li key={item}><Link href="#" className="text-sm font-bold text-white/40 hover:text-white transition-colors">{item}</Link></li>
+                                {content.navigation.sectors.links.map((item, i) => (
+                                    <li key={i}><Link href={item.href} className="text-sm font-bold text-white/40 hover:text-white transition-colors">{item.label}</Link></li>
                                 ))}
                             </ul>
                         </div>

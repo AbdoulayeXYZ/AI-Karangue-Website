@@ -355,11 +355,21 @@ export default function ContentPage() {
 
                             {/* FOOTER TAB */}
                             {activeTab === "footer" && (
-                                <CollapsibleSection title="Contenu Footer" isExpanded={true} onToggle={() => { }}>
-                                    <InputField label="Mission (Texte)" value={content.footer.mission} onChange={(val: string) => updateContent(["footer", "mission"], val)} multiline />
-                                    <InputField label="Description" value={content.footer.description} onChange={(val: string) => updateContent(["footer", "description"], val)} multiline />
-                                    <InputField label="Copyright" value={content.footer.copyright} onChange={(val: string) => updateContent(["footer", "copyright"], val)} />
-                                </CollapsibleSection>
+                                <>
+                                    <CollapsibleSection title="Contenu Footer" isExpanded={true} onToggle={() => { }}>
+                                        <InputField label="Mission (Texte)" value={content.footer.mission} onChange={(val: string) => updateContent(["footer", "mission"], val)} multiline />
+                                        <InputField label="Description" value={content.footer.description} onChange={(val: string) => updateContent(["footer", "description"], val)} multiline />
+                                        <InputField label="Copyright" value={content.footer.copyright} onChange={(val: string) => updateContent(["footer", "copyright"], val)} />
+                                    </CollapsibleSection>
+
+                                    <CollapsibleSection title="Réseaux Sociaux" isExpanded={true} onToggle={() => { }}>
+                                        <InputField label="LinkedIn" value={content.footer.social.linkedin} onChange={(val: string) => updateContent(["footer", "social", "linkedin"], val)} />
+                                        <InputField label="YouTube" value={content.footer.social.youtube} onChange={(val: string) => updateContent(["footer", "social", "youtube"], val)} />
+                                        <InputField label="Facebook" value={content.footer.social.facebook} onChange={(val: string) => updateContent(["footer", "social", "facebook"], val)} />
+                                        <InputField label="Instagram" value={content.footer.social.instagram} onChange={(val: string) => updateContent(["footer", "social", "instagram"], val)} />
+                                        <InputField label="X (Twitter)" value={content.footer.social.twitter} onChange={(val: string) => updateContent(["footer", "social", "twitter"], val)} />
+                                    </CollapsibleSection>
+                                </>
                             )}
 
                         </motion.div>
