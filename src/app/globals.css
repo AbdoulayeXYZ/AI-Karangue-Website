@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --teal: #008080;
+  --navy: #003366;
+  --navy-dark: #001f3d;
+  --glass: rgba(255, 255, 255, 0.1);
+
+  /* System Colors */
+  --background: #ffffff;
+  --foreground: #001f3d;
+  /* Navy Dark for text */
+}
+
+@theme inline {
+  --color-teal: var(--teal);
+  --color-navy: var(--navy);
+  --color-navy-dark: var(--navy-dark);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000c1a;
+    /* Very deep navy for dark mode */
+    --foreground: #f0faff;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Premium Utilities */
+.outline-text {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);
+  color: transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--teal), #b2fafa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::selection {
+  background: var(--teal);
+  color: white;
+}
+
+/* Smooth internal transitions */
+* {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scan {
+  0% {
+    top: -10%;
+  }
+
+  100% {
+    top: 110%;
+  }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}

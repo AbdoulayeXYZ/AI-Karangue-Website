@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-01-09",
+    "visitors": 2,
+    "pageViews": 28,
+    "pages": {
+      "/solutions": 1,
+      "/admin/analytics": 3,
+      "/": 9,
+      "/industries": 1,
+      "/admin/content": 10,
+      "/admin/newsletters": 1,
+      "/admin/contacts": 1,
+      "/admin/dashboard": 1,
+      "/offres": 1
+    }
+  }
+]
