@@ -116,70 +116,143 @@ export const Navbar = () => {
                     </Link>
                 </div>
 
-                {/* Mobile Trigger - Minimalist Circle */}
+                {/* Mobile Trigger - Modern Animated Button */}
                 <button
                     className={cn(
-                        "lg:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500",
-                        isScrolled ? "border-navy/10 text-navy" : "border-white/10 text-white/60 hover:text-white",
-                        isMobileMenuOpen && "z-[110]"
+                        "lg:hidden w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 relative overflow-hidden group",
+                        isScrolled
+                            ? "bg-navy/5 hover:bg-navy/10 text-navy"
+                            : "bg-white/5 hover:bg-white/10 text-white backdrop-blur-sm",
+                        isMobileMenuOpen && "z-[110] bg-teal text-white"
                     )}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
-                    {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    <div className="relative w-6 h-6 flex flex-col items-center justify-center">
+                        <motion.span
+                            animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
+                            className={cn(
+                                "absolute w-5 h-0.5 rounded-full transition-colors",
+                                isMobileMenuOpen ? "bg-white" : isScrolled ? "bg-navy" : "bg-white"
+                            )}
+                        />
+                        <motion.span
+                            animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                            className={cn(
+                                "absolute w-5 h-0.5 rounded-full transition-colors",
+                                isMobileMenuOpen ? "bg-white" : isScrolled ? "bg-navy" : "bg-white"
+                            )}
+                        />
+                        <motion.span
+                            animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
+                            className={cn(
+                                "absolute w-5 h-0.5 rounded-full transition-colors",
+                                isMobileMenuOpen ? "bg-white" : isScrolled ? "bg-navy" : "bg-white"
+                            )}
+                        />
+                    </div>
                 </button>
             </nav>
 
-            {/* Mobile Menu Overlay - Full Zen Experience */}
+            {/* Mobile Menu - Modern Slide-in Panel */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[105] bg-black/98 backdrop-blur-3xl flex flex-col items-center justify-center lg:hidden"
-                    >
-                        {/* Background Decoration */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal/10 blur-[150px] rounded-full" />
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 z-[105] bg-navy-dark/95 backdrop-blur-xl lg:hidden"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        />
 
-                        <div className="relative flex flex-col items-center gap-8 text-center px-6">
-                            {navLinks.map((link, i) => (
+                        {/* Slide-in Menu Panel */}
+                        <motion.div
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                            className="fixed top-0 right-0 bottom-0 z-[106] w-full max-w-md bg-gradient-to-br from-navy-dark via-navy-dark to-navy lg:hidden shadow-2xl"
+                        >
+                            {/* Decorative Elements */}
+                            <div className="absolute top-20 right-20 w-64 h-64 bg-teal/20 blur-[120px] rounded-full" />
+                            <div className="absolute bottom-20 left-10 w-48 h-48 bg-blue-600/20 blur-[100px] rounded-full" />
+
+                            {/* Content Container */}
+                            <div className="relative h-full flex flex-col p-8 pt-24">
+                                {/* Navigation Links */}
+                                <nav className="flex-1 flex flex-col justify-center gap-2">
+                                    {navLinks.map((link, i) => (
+                                        <motion.div
+                                            key={link.name}
+                                            initial={{ opacity: 0, x: 50 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.1 + i * 0.1, type: "spring", stiffness: 100 }}
+                                        >
+                                            <Link
+                                                href={link.href}
+                                                className="group block py-4 px-6 rounded-2xl hover:bg-white/5 transition-all duration-300"
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                            >
+                                                <div className="flex items-center justify-between">
+                                                    <span className="text-3xl font-black text-white/90 group-hover:text-white transition-colors tracking-tight">
+                                                        {link.name}
+                                                    </span>
+                                                    <motion.div
+                                                        initial={{ x: -10, opacity: 0 }}
+                                                        whileHover={{ x: 0, opacity: 1 }}
+                                                        className="w-8 h-8 rounded-full bg-teal/20 flex items-center justify-center"
+                                                    >
+                                                        <svg className="w-4 h-4 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </motion.div>
+                                                </div>
+                                                <div className="h-px bg-gradient-to-r from-teal/0 via-teal/50 to-teal/0 mt-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </nav>
+
+                                {/* Bottom Actions */}
                                 <motion.div
-                                    key={link.name}
-                                    initial={{ opacity: 0, y: 30 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2 + i * 0.1 }}
+                                    transition={{ delay: 0.5 }}
+                                    className="space-y-4 pt-8 border-t border-white/10"
                                 >
                                     <Link
-                                        href={link.href}
-                                        className="text-5xl md:text-7xl font-black text-white/20 hover:text-white transition-all duration-700 tracking-tighter"
+                                        href="https://karangue221.artbeaurescence.sn"
+                                        target="_blank"
+                                        className="block text-center py-3 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
-                                        {link.name}
+                                        <span className="text-xs font-black tracking-[0.3em] uppercase text-white/60 group-hover:text-teal transition-colors">
+                                            Accès Client
+                                        </span>
+                                    </Link>
+                                    <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                                        <Button className="w-full h-14 rounded-xl bg-teal hover:bg-teal-light text-white font-black tracking-wider shadow-lg shadow-teal/20 hover:shadow-xl hover:shadow-teal/30 transition-all">
+                                            Demander une démo
+                                        </Button>
                                     </Link>
                                 </motion.div>
-                            ))}
 
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.8 }}
-                                className="mt-12 flex flex-col items-center gap-8"
-                            >
-                                <div className="w-12 h-px bg-white/20" />
-                                <Link
-                                    href="https://karangue221.artbeaurescence.sn"
-                                    className="text-xs font-black tracking-[0.5em] uppercase text-white/40 hover:text-teal transition-colors"
+                                {/* Footer Info */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.6 }}
+                                    className="mt-6 text-center"
                                 >
-                                    Plateforme Connectée
-                                </Link>
-                                <Link href="/contact">
-                                    <Button className="h-16 px-12 text-sm font-black tracking-[0.2em] rounded-2xl">
-                                        Demander une démo
-                                    </Button>
-                                </Link>
-                            </motion.div>
-                        </div>
-                    </motion.div>
+                                    <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">
+                                        AI-Karangué © 2025
+                                    </p>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </header>
