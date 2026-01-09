@@ -17,7 +17,9 @@ export const metadata: Metadata = {
   title: "AI-Karangué | Tranquillité d'Esprit & Gestion de Flotte Intelligente",
   description: "Solution leader de télématique et gestion de flotte au Sénégal. Karangué221 offre la sérénité totale aux conducteurs, managers et voyageurs grâce au Triple Impact.",
   icons: {
-    icon: "/icon.svg",
+    icon: "/logoaikarangue.png",
+    shortcut: "/logoaikarangue.png",
+    apple: "/logoaikarangue.png",
   },
 };
 
