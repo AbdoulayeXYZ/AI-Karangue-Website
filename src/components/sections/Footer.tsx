@@ -96,15 +96,19 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                                                 body: JSON.stringify({ email, source: "footer" }),
                                             });
 
+                                            console.log("Newsletter response:", res.status, res.ok);
+
                                             if (res.ok) {
                                                 input.value = "";
                                                 btn.innerText = "Merci !";
                                                 setTimeout(() => btn.innerText = originalText, 3000);
                                             } else {
+                                                const errorData = await res.json().catch(() => ({}));
+                                                console.error("Newsletter error:", res.status, errorData);
                                                 btn.innerText = "Erreur";
                                             }
                                         } catch (err) {
-                                            console.error(err);
+                                            console.error("Newsletter exception:", err);
                                             btn.innerText = "Erreur";
                                         } finally {
                                             setTimeout(() => {
