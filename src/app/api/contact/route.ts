@@ -5,6 +5,7 @@ import path from "path";
 import { v4 as uuidv4 } from "uuid";
 
 const DATA_FILE_PATH = path.join(process.cwd(), "src/data/contacts.json");
+const IS_PRODUCTION = process.env.VERCEL || process.env.NETLIFY;
 
 interface Contact {
     id: string;
@@ -30,6 +31,12 @@ async function ensureDataFile() {
 
 // GET: Retrieve all contacts
 export async function GET() {
+    // In production, return empty array (no persistent storage)
+    if (IS_PRODUCTION) {
+        console.log("[Contacts] Production mode - returning empty contacts");
+        return NextResponse.json([]);
+    }
+
     await ensureDataFile();
     try {
         const data = await fs.readFile(DATA_FILE_PATH, "utf-8");
@@ -44,7 +51,6 @@ export async function GET() {
 
 // POST: Submit a new contact form
 export async function POST(request: Request) {
-    await ensureDataFile();
     try {
         const body = await request.json();
         const { firstName, lastName, email, company, fleetSize, message } = body;
@@ -52,9 +58,6 @@ export async function POST(request: Request) {
         if (!firstName || !lastName || !email || !company) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
-
-        const data = await fs.readFile(DATA_FILE_PATH, "utf-8");
-        const contacts: Contact[] = JSON.parse(data);
 
         const newContact: Contact = {
             id: uuidv4(),
@@ -68,6 +71,18 @@ export async function POST(request: Request) {
             status: "new"
         };
 
+        // In production, just return success without saving
+        // TODO: Send email notification or save to external service
+        if (IS_PRODUCTION) {
+            console.log("[Contacts] Production mode - contact received but not saved:", { email, company });
+            // TODO: Implement email notification here
+            return NextResponse.json(newContact, { status: 201 });
+        }
+
+        // Local development: save to file
+        await ensureDataFile();
+        const data = await fs.readFile(DATA_FILE_PATH, "utf-8");
+        const contacts: Contact[] = JSON.parse(data);
         contacts.unshift(newContact);
         await fs.writeFile(DATA_FILE_PATH, JSON.stringify(contacts, null, 2));
 

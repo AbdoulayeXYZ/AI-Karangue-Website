@@ -4,6 +4,7 @@ import fs from "fs/promises";
 import path from "path";
 
 const DATA_FILE_PATH = path.join(process.cwd(), "src/data/analytics.json");
+const IS_PRODUCTION = process.env.VERCEL || process.env.NETLIFY;
 
 interface DailyStats {
     date: string;
@@ -23,6 +24,13 @@ async function ensureDataFile() {
 }
 
 export async function POST(request: Request) {
+    // In production (Vercel/Netlify), file system is read-only
+    // Return success without actually writing to avoid errors
+    if (IS_PRODUCTION) {
+        console.log("[Analytics] Production mode - tracking disabled (no persistent storage)");
+        return NextResponse.json({ success: true, note: "Analytics disabled in production" });
+    }
+
     await ensureDataFile();
     try {
         const body = await request.json();
