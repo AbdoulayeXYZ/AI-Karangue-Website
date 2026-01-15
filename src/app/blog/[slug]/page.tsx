@@ -23,30 +23,24 @@ export default function BlogPostPage() {
     useEffect(() => {
         const load = async () => {
             try {
-                const [postRes, contentData] = await Promise.all([
-                    fetch(`/api/blog/${params.slug}`),
-                    getContent()
-                ]);
-                const postData = await postRes.json();
-
-                if (postData && postData.id) {
-                    setPost(postData);
-
-                    const commentsRes = await fetch(`/api/blog/comments?postId=${postData.id}`);
-                    const commentsData = await commentsRes.json();
-                    if (Array.isArray(commentsData)) {
-                        setComments(commentsData);
-                    } else {
-                        setComments([]);
-                    }
-                } else {
-                    setPost(null);
-                }
-
+                const contentData = await getContent();
                 setContent(contentData);
+
+                const postRes = await fetch(`/api/blog/${params.slug}`);
+                if (postRes.ok) {
+                    const postData = await postRes.json();
+                    if (postData && postData.id) {
+                        setPost(postData);
+
+                        const commentsRes = await fetch(`/api/blog/comments?postId=${postData.id}`);
+                        if (commentsRes.ok) {
+                            const commentsData = await commentsRes.json();
+                            setComments(Array.isArray(commentsData) ? commentsData : []);
+                        }
+                    }
+                }
             } catch (error) {
                 console.error("Failed to load post:", error);
-                setPost(null);
             } finally {
                 setLoading(false);
             }

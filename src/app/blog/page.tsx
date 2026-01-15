@@ -18,20 +18,22 @@ export default function BlogPage() {
     useEffect(() => {
         const load = async () => {
             try {
-                const [postsRes, contentData] = await Promise.all([
-                    fetch("/api/blog"),
-                    getContent()
-                ]);
-                const postsData = await postsRes.json();
+                // Load content first or in parallel, but handle separately
+                const contentData = await getContent();
+                setContent(contentData);
 
-                if (Array.isArray(postsData)) {
-                    setPosts(postsData);
+                const postsRes = await fetch("/api/blog");
+                if (postsRes.ok) {
+                    const postsData = await postsRes.json();
+                    if (Array.isArray(postsData)) {
+                        setPosts(postsData);
+                    } else {
+                        console.error("Blog API error:", postsData.error || postsData);
+                        setPosts([]);
+                    }
                 } else {
-                    console.error("Blog API error:", postsData.error || postsData);
                     setPosts([]);
                 }
-
-                setContent(contentData);
             } catch (error) {
                 console.error("Failed to load blog:", error);
                 setPosts([]);
