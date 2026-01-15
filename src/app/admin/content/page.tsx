@@ -366,8 +366,9 @@ export default function ContentPage() {
                                         <InputField label="LinkedIn" value={content.footer.social.linkedin} onChange={(val: string) => updateContent(["footer", "social", "linkedin"], val)} />
                                         <InputField label="YouTube" value={content.footer.social.youtube} onChange={(val: string) => updateContent(["footer", "social", "youtube"], val)} />
                                         <InputField label="Facebook" value={content.footer.social.facebook} onChange={(val: string) => updateContent(["footer", "social", "facebook"], val)} />
+                                        <InputField label="WhatsApp" value={content.footer.social.whatsapp} onChange={(val: string) => updateContent(["footer", "social", "whatsapp"], val)} />
                                         <InputField label="Instagram" value={content.footer.social.instagram} onChange={(val: string) => updateContent(["footer", "social", "instagram"], val)} />
-                                        <InputField label="X (Twitter)" value={content.footer.social.twitter} onChange={(val: string) => updateContent(["footer", "social", "twitter"], val)} />
+                                        <InputField label="TikTok" value={content.footer.social.tiktok} onChange={(val: string) => updateContent(["footer", "social", "tiktok"], val)} />
                                     </CollapsibleSection>
                                 </>
                             )}
