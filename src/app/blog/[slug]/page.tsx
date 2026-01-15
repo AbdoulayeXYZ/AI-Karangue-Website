@@ -60,108 +60,112 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <Navbar />
 
             {/* Immersive Header */}
-            <header className="relative pt-48 pb-32 overflow-hidden">
-                <div className="absolute inset-0 bg-navy-dark pointer-events-none" />
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal/20 to-transparent" />
+            <header className="relative pt-48 pb-32 overflow-hidden bg-navy-dark">
+                <div className="absolute inset-0 bg-navy-dark/80 backdrop-blur-2xl z-0" />
 
                 {/* Background image blur */}
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <img src={post.cover_image} alt="" className="w-full h-full object-cover blur-[120px] scale-150" />
+                <div className="absolute inset-0 opacity-10 pointer-events-none z-[-1]">
+                    <img src={post.cover_image} alt="" className="w-full h-full object-cover blur-[100px] scale-125" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
-                    <Link href="/blog" className="inline-flex items-center gap-3 text-teal font-black text-[10px] uppercase tracking-[0.4em] mb-16 hover:gap-6 transition-all duration-500">
+                    <Link href="/blog" className="inline-flex items-center gap-3 text-teal font-black text-[9px] uppercase tracking-[0.4em] mb-12 hover:gap-6 transition-all duration-500">
                         <ArrowLeft className="w-4 h-4" /> RETOUR AU BLOG
                     </Link>
 
-                    <div className="max-w-5xl">
-                        <div className="flex items-center gap-4 mb-10">
-                            <span className="px-4 py-1.5 rounded-full bg-teal/20 backdrop-blur-md border border-teal/20 text-teal text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="max-w-4xl">
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="px-3 py-1 rounded-full bg-teal/20 backdrop-blur-md border border-teal/20 text-teal text-[9px] font-black uppercase tracking-[0.2em]">
                                 {post.category}
                             </span>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 leading-[0.9] tracking-tighter">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-10 leading-[1.1] tracking-tighter">
                             {post.title}
                         </h1>
 
-                        <div className="flex flex-wrap items-center gap-10 pt-10 border-t border-white/5">
+                        <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-white/5">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
-                                    <User className="w-5 h-5 text-teal" />
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
+                                    <User className="w-4 h-4 text-teal" />
                                 </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">{post.author}</span>
+                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/50">{post.author}</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <Calendar className="w-5 h-5 text-teal/40" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{date}</span>
+                                <Calendar className="w-4 h-4 text-teal/40" />
+                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">{date}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            {/* Article Image Section */}
-            <section className="container mx-auto px-6 -mt-16 relative z-20">
-                <div className="aspect-[21/9] rounded-[40px] overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
-                    <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
-                </div>
-            </section>
+            {/* Article Content Section (White Background) */}
+            <div className="bg-white text-navy selection:bg-teal selection:text-white">
+                <section className="container mx-auto px-6 relative z-20 -mt-16">
+                    <div className="aspect-[21/9] rounded-3xl overflow-hidden border border-white/10 shadow-3xl shadow-black/20">
+                        <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
+                    </div>
+                </section>
 
-            {/* Content Body */}
-            <article className="py-32">
-                <div className="container mx-auto px-6">
-                    <div className="flex flex-col lg:flex-row gap-20">
-                        {/* Sidebar Share (Client Component) */}
-                        <ShareButtons title={post.title} />
+                <article className="py-24">
+                    <div className="container mx-auto px-6">
+                        <div className="flex flex-col lg:flex-row gap-20">
+                            {/* Sidebar Share (Client Component) */}
+                            <div className="lg:w-48 order-2 lg:order-1">
+                                <ShareButtons title={post.title} />
+                            </div>
 
-                        {/* Text Content */}
-                        <div className="flex-1 order-1 lg:order-2">
-                            <div className="max-w-3xl">
-                                <div
-                                    className="blog-content text-xl md:text-2xl text-white/70 leading-relaxed font-medium space-y-12"
-                                    dangerouslySetInnerHTML={{
-                                        __html: post.content
-                                            .replace(/^# (.*$)/gim, '<h1 class="text-6xl font-black mb-16 uppercase tracking-tighter text-white">$1</h1>')
-                                            .replace(/^## (.*$)/gim, '<h2 class="text-4xl font-black mt-24 mb-10 uppercase tracking-tight text-white">$1</h2>')
-                                            .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-black mt-16 mb-8 uppercase text-teal">$1</h3>')
-                                            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-black">$1</strong>')
-                                            .replace(/^\s*\n/gm, '<br/>')
-                                            .replace(/\n\d\. (.*)/g, '<li class="ml-6 list-decimal font-bold">$1</li>')
-                                            .replace(/\n- (.*)/g, '<li class="ml-6 list-disc font-bold">$1</li>')
-                                    }}
-                                />
+                            {/* Text Content */}
+                            <div className="flex-1 order-1 lg:order-2">
+                                <div className="max-w-3xl">
+                                    <div
+                                        className="blog-content text-lg text-navy/70 leading-relaxed font-medium space-y-10"
+                                        dangerouslySetInnerHTML={{
+                                            __html: post.content
+                                                .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-black mb-12 uppercase tracking-tighter text-navy">$1</h1>')
+                                                .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-black mt-20 mb-8 uppercase tracking-tight text-navy">$1</h2>')
+                                                .replace(/^### (.*$)/gim, '<h3 class="text-xl font-black mt-16 mb-6 uppercase text-teal">$1</h3>')
+                                                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-navy font-black">$1</strong>')
+                                                .replace(/^\s*\n/gm, '<br/>')
+                                                .replace(/\n\d\. (.*)/g, '<li class="ml-6 list-decimal font-bold">$1</li>')
+                                                .replace(/\n- (.*)/g, '<li class="ml-6 list-disc font-bold">$1</li>')
+                                        }}
+                                    />
 
-                                {/* Interactive Comments */}
-                                <CommentSection postId={post.id} initialComments={JSON.parse(JSON.stringify(comments))} />
+                                    {/* Related/Final CTA */}
+                                    <div className="mt-24 p-12 rounded-[40px] bg-navy text-white relative overflow-hidden group">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-teal/10 to-transparent pointer-events-none" />
+                                        <div className="relative z-10 text-center">
+                                            <h2 className="text-3xl md:text-5xl font-black mb-10 tracking-tighter leading-tight">
+                                                PRÊT À RÉVOLUTIONNER <br />
+                                                <span className="text-teal underline decoration-white/10 underline-offset-8">VOTRE FLOTTE ?</span>
+                                            </h2>
+                                            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                                                <Link href="/solutions">
+                                                    <Button className="h-14 px-10 bg-teal hover:bg-teal-light text-white rounded-xl font-black uppercase tracking-[0.2em] text-[9px] shadow-2xl shadow-teal/30 transition-all">
+                                                        DÉCOUVRIR NOS SOLUTIONS
+                                                    </Button>
+                                                </Link>
+                                                <Link href="/contact">
+                                                    <Button className="h-14 px-10 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-black uppercase tracking-[0.2em] text-[9px] transition-all">
+                                                        NOUS CONTACTER
+                                                    </Button>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Interactive Comments */}
+                                    <div className="text-navy">
+                                        <CommentSection postId={post.id} initialComments={JSON.parse(JSON.stringify(comments))} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </article>
-
-            {/* Related/Final CTA */}
-            <section className="py-40 bg-navy-dark relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal/5 to-transparent" />
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <h2 className="text-5xl md:text-7xl font-black mb-12 tracking-tighter leading-tight">
-                        PRÊT À RÉVOLUTIONNER <br />
-                        <span className="text-teal underline decoration-white/10 underline-offset-8">VOTRE FLOTTE ?</span>
-                    </h2>
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                        <Link href="/solutions">
-                            <Button className="h-16 px-12 bg-teal hover:bg-teal-light text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] shadow-2xl shadow-teal/30">
-                                DÉCOUVRIR NOS SOLUTIONS
-                            </Button>
-                        </Link>
-                        <Link href="/contact">
-                            <Button className="h-16 px-12 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px]">
-                                NOUS CONTACTER
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
+                </article>
+            </div>
 
             <Footer content={content.footer} />
         </main>

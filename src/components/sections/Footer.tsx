@@ -55,8 +55,8 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                         <p className="text-xl text-white/50 mb-12 max-w-md leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: content.description }} />
 
                         {/* Social Media & Newsletter */}
-                        <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-12 p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
-                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                        <div className="mt-16 flex flex-col lg:flex-row items-center justify-between gap-12 p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                                 <Link href={content.social?.linkedin || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
                                     <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </Link>
@@ -77,7 +77,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                                 </Link>
                             </div>
 
-                            <div className="w-full md:w-auto flex-1 max-w-md">
+                            <div className="w-full lg:w-auto flex-1 max-w-md">
                                 <form
                                     className="flex gap-3"
                                     onSubmit={async (e) => {
@@ -128,7 +128,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                                     </div>
                                     <Button
                                         type="submit"
-                                        className="h-12 px-8 bg-teal hover:bg-teal-light text-white rounded-xl font-black uppercase tracking-widest text-[10px] transition-all disabled:opacity-50 shadow-lg shadow-teal/20"
+                                        className="h-12 px-6 bg-teal hover:bg-teal-light text-white rounded-xl font-black uppercase tracking-widest text-[9px] transition-all disabled:opacity-50 shadow-lg shadow-teal/20"
                                     >
                                         {content.newsletter?.buttonText}
                                     </Button>

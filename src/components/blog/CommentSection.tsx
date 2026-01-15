@@ -46,19 +46,19 @@ export const CommentSection = ({ postId, initialComments }: CommentSectionProps)
             <div className="space-y-12 mb-24">
                 {comments.length > 0 ? (
                     comments.map((comment, i) => (
-                        <div key={i} className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                        <div key={i} className="p-8 rounded-3xl bg-navy/[0.02] border border-navy/5">
                             <div className="flex items-center justify-between mb-6">
-                                <h4 className="font-black text-teal uppercase tracking-widest text-sm">{comment.author_name}</h4>
-                                <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">
+                                <h4 className="font-black text-teal uppercase tracking-widest text-xs">{comment.author_name}</h4>
+                                <span className="text-[9px] font-bold text-navy/20 uppercase tracking-[0.2em]">
                                     {new Date(comment.created_at).toLocaleDateString("fr-FR")}
                                 </span>
                             </div>
-                            <p className="text-white/60 leading-relaxed font-medium">{comment.content}</p>
+                            <p className="text-navy/60 leading-relaxed font-medium text-sm">{comment.content}</p>
                         </div>
                     ))
                 ) : (
-                    <div className="p-12 text-center rounded-3xl border border-dashed border-white/5 bg-white/[0.01]">
-                        <p className="text-white/20 font-black text-xs uppercase tracking-[0.3em]">Soyez le premier à commenter cet article</p>
+                    <div className="p-12 text-center rounded-3xl border border-dashed border-navy/10 bg-navy/[0.01]">
+                        <p className="text-navy/20 font-black text-[10px] uppercase tracking-[0.3em]">Soyez le premier à commenter cet article</p>
                     </div>
                 )}
             </div>
