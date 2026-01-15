@@ -17,7 +17,7 @@ export default function BlogAdminPage() {
         const loadData = async () => {
             setLoading(true);
             try {
-                // In a real implementation, these would be fetch calls to the API routes we'll create
+                // In  real implementation, these would be fetch calls to the API routes we'll create
                 const postsRes = await fetch("/api/blog?admin=true");
                 const postsData = await postsRes.json();
                 setPosts(postsData);
