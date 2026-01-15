@@ -1,4 +1,5 @@
 import { sql } from '@vercel/postgres';
+export { sql };
 
 /**
  * Database utility functions for Vercel Postgres
@@ -12,7 +13,7 @@ export async function trackPageView(path: string, isNewVisitor: boolean) {
         // Try to update existing record
         const result = await sql`
       INSERT INTO analytics (date, visitors, page_views, pages)
-      VALUES (${today}, ${isNewVisitor ? 1 : 0}, 1, ${JSON.stringify({ [path]: 1 })})
+      VALUES (${today}, ${isNewVisitor ? 1 : 0}, 1, ${JSON.stringify({ [path]: 1 })}::jsonb)
       ON CONFLICT (date) 
       DO UPDATE SET
         visitors = analytics.visitors + ${isNewVisitor ? 1 : 0},
@@ -20,7 +21,7 @@ export async function trackPageView(path: string, isNewVisitor: boolean) {
         pages = jsonb_set(
           COALESCE(analytics.pages, '{}'::jsonb),
           ARRAY[${path}],
-          to_jsonb(COALESCE((analytics.pages->>$1)::int, 0) + 1)
+          to_jsonb(COALESCE((analytics.pages->>${path})::int, 0) + 1)
         ),
         updated_at = NOW()
       RETURNING *;
@@ -142,6 +143,162 @@ export async function getAllSubscribers() {
         return result.rows;
     } catch (error) {
         console.error('Error getting subscribers:', error);
+        throw error;
+    }
+}
+
+// Blog functions
+export async function createBlogPost(data: {
+    title: string;
+    slug: string;
+    excerpt: string;
+    content: string;
+    coverImage: string;
+    category: string;
+    author?: string;
+    status?: 'draft' | 'published';
+}) {
+    try {
+        const result = await sql`
+      INSERT INTO blog_posts (title, slug, excerpt, content, cover_image, category, author, status)
+      VALUES (${data.title}, ${data.slug}, ${data.excerpt}, ${data.content}, ${data.coverImage}, ${data.category}, ${data.author || 'Admin'}, ${data.status || 'draft'})
+      RETURNING *;
+    `;
+        return result.rows[0];
+    } catch (error) {
+        console.error('Error creating blog post:', error);
+        throw error;
+    }
+}
+
+export async function getAllBlogPosts(onlyPublished: boolean = true) {
+    try {
+        const result = onlyPublished
+            ? await sql`SELECT * FROM blog_posts WHERE status = 'published' ORDER BY created_at DESC;`
+            : await sql`SELECT * FROM blog_posts ORDER BY created_at DESC;`;
+        return result.rows;
+    } catch (error) {
+        console.error('Error getting blog posts:', error);
+        throw error;
+    }
+}
+
+export async function getBlogPostBySlug(slug: string) {
+    try {
+        const result = await sql`
+      SELECT * FROM blog_posts 
+      WHERE slug = ${slug} AND status = 'published';
+    `;
+        return result.rows[0];
+    } catch (error) {
+        console.error('Error getting blog post by slug:', error);
+        throw error;
+    }
+}
+
+export async function updateBlogPost(id: string, data: Partial<{
+    title: string;
+    slug: string;
+    excerpt: string;
+    content: string;
+    coverImage: string;
+    category: string;
+    status: 'draft' | 'published';
+}>) {
+    try {
+        // Simple manual building of update since @vercel/postgres doesn't have a query builder
+        const result = await sql`
+            UPDATE blog_posts 
+            SET 
+                title = COALESCE(${data.title}, title),
+                slug = COALESCE(${data.slug}, slug),
+                excerpt = COALESCE(${data.excerpt}, excerpt),
+                content = COALESCE(${data.content}, content),
+                cover_image = COALESCE(${data.coverImage}, cover_image),
+                category = COALESCE(${data.category}, category),
+                status = COALESCE(${data.status}, status),
+                updated_at = NOW()
+            WHERE id = ${id}
+            RETURNING *;
+        `;
+        return result.rows[0];
+    } catch (error) {
+        console.error('Error updating blog post:', error);
+        throw error;
+    }
+}
+
+export async function deleteBlogPost(id: string) {
+    try {
+        await sql`DELETE FROM blog_posts WHERE id = ${id};`;
+        return true;
+    } catch (error) {
+        console.error('Error deleting blog post:', error);
+        throw error;
+    }
+}
+
+// Comment functions
+export async function createComment(data: {
+    postId: string;
+    authorName: string;
+    authorEmail: string;
+    content: string;
+}) {
+    try {
+        const result = await sql`
+      INSERT INTO comments (post_id, author_name, author_email, content, status)
+      VALUES (${data.postId}, ${data.authorName}, ${data.authorEmail}, ${data.content}, 'pending')
+      RETURNING *;
+    `;
+        return result.rows[0];
+    } catch (error) {
+        console.error('Error creating comment:', error);
+        throw error;
+    }
+}
+
+export async function getCommentsByPostId(postId: string) {
+    try {
+        const result = await sql`
+      SELECT * FROM comments 
+      WHERE post_id = ${postId} AND status = 'approved'
+      ORDER BY created_at ASC;
+    `;
+        return result.rows;
+    } catch (error) {
+        console.error('Error getting comments:', error);
+        throw error;
+    }
+}
+
+export async function getPendingComments() {
+    try {
+        const result = await sql`
+            SELECT c.*, p.title as post_title 
+            FROM comments c
+            JOIN blog_posts p ON c.post_id = p.id
+            WHERE c.status = 'pending'
+            ORDER BY c.created_at DESC;
+        `;
+        return result.rows;
+    } catch (error) {
+        console.error('Error getting pending comments:', error);
+        throw error;
+    }
+}
+
+export async function updateCommentStatus(id: string, status: 'approved' | 'rejected') {
+    try {
+        const result = await sql`
+      UPDATE comments 
+      SET status = ${status}
+      WHERE id = ${id}
+      RETURNING *;
+    `;
+        return result.rows[0];
+    } catch (error) {
+        console.error('Error updating comment status:', error);
         throw error;
     }
 }

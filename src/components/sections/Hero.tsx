@@ -9,6 +9,11 @@ import { SiteContent } from "@/lib/content";
 export const Hero = ({ content }: { content: SiteContent["home"]["hero"] }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+    const [isMounted, setIsMounted] = useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const handleMouseMove = (e: React.MouseEvent) => {
         const { clientX, clientY } = e;
@@ -50,7 +55,7 @@ export const Hero = ({ content }: { content: SiteContent["home"]["hero"] }) => {
 
                 {/* 2. Floating Atmospheric Particles (SVG for performance) */}
                 <div className="absolute inset-0 z-[4] pointer-events-none opacity-20">
-                    {[...Array(20)].map((_, i) => (
+                    {isMounted && [...Array(20)].map((_, i) => (
                         <motion.div
                             key={i}
                             initial={{

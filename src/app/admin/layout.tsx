@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { LayoutDashboard, Mail, Users, BarChart3, LogOut, Menu, X, FileText, Settings, User } from "lucide-react";
+import { LayoutDashboard, Mail, Users, BarChart3, LogOut, Menu, X, FileText, Settings, User, Box } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
     { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "Contenu", href: "/admin/content", icon: FileText },
+    { name: "Blog", href: "/admin/blog", icon: Box },
     { name: "Newsletters", href: "/admin/newsletters", icon: Mail },
     { name: "Contacts", href: "/admin/contacts", icon: Users },
     { name: "Analytics", href: "/admin/analytics", icon: BarChart3 },
