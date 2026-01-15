@@ -239,10 +239,11 @@ export interface SiteContent {
         };
         social: {
             linkedin: string;
-            youtube: string;
-            facebook: string;
+            whatsapp: string;
             instagram: string;
-            twitter: string;
+            facebook: string;
+            youtube: string;
+            tiktok: string;
         };
         legal: {
             links: string[];
@@ -760,11 +761,12 @@ export const defaultContent: SiteContent = {
         copyright: "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
         trademark: "AI-Karangué et Karangué221 sont des marques déposées.",
         social: {
-            linkedin: "https://www.linkedin.com/showcase/ai-karangue",
+            linkedin: "https://www.linkedin.com/showcase/ai-karangue/",
+            whatsapp: "https://whatsapp.com/channel/0029Vb7LNBABfxo2NI33Uq0S",
+            instagram: "https://www.instagram.com/aikarangue/",
+            facebook: "https://www.facebook.com/profile.php?id=61586184256156",
             youtube: "https://www.youtube.com/@AI-KarangueAI-Karangue",
-            facebook: "https://www.facebook.com/people/ArtBeau-Rescence/100091356004097/",
-            instagram: "https://www.instagram.com/artbeaurescence/",
-            twitter: "https://x.com/artbeaurescence"
+            tiktok: "https://www.tiktok.com/@aikarangue"
         },
         newsletter: {
             placeholder: "votre.email@entreprise.com",
