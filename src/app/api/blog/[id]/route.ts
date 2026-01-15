@@ -13,16 +13,22 @@ export async function GET(
 ) {
     try {
         const { id } = await params;
-        // Decide if we search by ID (admin) or SLUG (public)
-        // For simplicity in this route, we try ID first then SLUG
-        let post = await getBlogPostById(id);
-        if (!post) {
+
+        // UUID validation regex
+        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+        const isUuid = uuidRegex.test(id);
+
+        let post = null;
+        if (isUuid) {
+            post = await getBlogPostById(id);
+        } else {
             post = await getBlogPostBySlug(id);
         }
 
         if (!post) return NextResponse.json({ error: "Post not found" }, { status: 404 });
         return NextResponse.json(post);
     } catch (error) {
+        console.error("API Error fetching blog post:", error);
         return NextResponse.json({ error: "Failed to fetch post" }, { status: 500 });
     }
 }

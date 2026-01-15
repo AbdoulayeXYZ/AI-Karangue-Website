@@ -1,273 +1,185 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
-import { ArrowLeft, Calendar, User, MessageCircle, Share2, Linkedin, Facebook, Send, CheckCircle2, Calculator, Mail } from "lucide-react";
+import { ArrowLeft, Calendar, User, MessageCircle, Share2, Linkedin, Facebook, Calculator, Mail } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { getBlogPostBySlug, getCommentsByPostId } from "@/lib/db";
 import { getContent } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
+import { CommentSection } from "@/components/blog/CommentSection";
 
-export default function BlogPostPage() {
-    const params = useParams();
-    const [post, setPost] = useState<any>(null);
-    const [comments, setComments] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [content, setContent] = useState<any>(null);
-    const [commentUser, setCommentUser] = useState({ name: "", email: "", content: "" });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const post = await getBlogPostBySlug(slug);
+    if (!post) return { title: "Article introuvable" };
 
-    useEffect(() => {
-        const load = async () => {
-            try {
-                const contentData = await getContent();
-                setContent(contentData);
-
-                const postRes = await fetch(`/api/blog/${params.slug}`);
-                if (postRes.ok) {
-                    const postData = await postRes.json();
-                    if (postData && postData.id) {
-                        setPost(postData);
-
-                        const commentsRes = await fetch(`/api/blog/comments?postId=${postData.id}`);
-                        if (commentsRes.ok) {
-                            const commentsData = await commentsRes.json();
-                            setComments(Array.isArray(commentsData) ? commentsData : []);
-                        }
-                    }
-                }
-            } catch (error) {
-                console.error("Failed to load post:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        load();
-    }, [params.slug]);
-
-    const handleCommentSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        try {
-            const res = await fetch("/api/blog/comments", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...commentUser, postId: post.id })
-            });
-            if (res.ok) {
-                setSubmitted(true);
-                setCommentUser({ name: "", email: "", content: "" });
-            }
-        } catch (error) {
-            alert("Erreur lors de l'envoi du commentaire");
-        } finally {
-            setIsSubmitting(false);
-        }
+    return {
+        title: `${post.title} | Blog AI-Karangué`,
+        description: post.excerpt,
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            images: [post.cover_image],
+        },
     };
+}
 
-    if (loading) return null;
-    if (!post) return (
-        <div className="min-h-screen bg-navy flex items-center justify-center font-black uppercase tracking-[0.3em] text-white/20">
-            Article introuvable
-        </div>
-    );
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+
+    // Server-side data fetching
+    const [post, content] = await Promise.all([
+        getBlogPostBySlug(slug),
+        getContent()
+    ]);
+
+    if (!post) {
+        return (
+            <div className="min-h-screen bg-navy flex flex-col items-center justify-center p-6 text-center">
+                <h1 className="text-4xl font-black mb-8 uppercase tracking-widest text-white/20">Article introuvable</h1>
+                <Link href="/blog">
+                    <Button className="bg-teal text-white font-black px-12 h-14 rounded-2xl">
+                        RETOUR AU BLOG
+                    </Button>
+                </Link>
+            </div>
+        );
+    }
+
+    const comments = await getCommentsByPostId(post.id);
+    const date = new Date(post.created_at).toLocaleDateString("fr-FR", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
 
     return (
         <main className="min-h-screen bg-navy text-white selection:bg-teal selection:text-white">
             <Navbar />
 
-            {/* Post Header */}
-            <header className="relative pt-40 pb-20 overflow-hidden">
+            {/* Immersive Header */}
+            <header className="relative pt-48 pb-32 overflow-hidden">
                 <div className="absolute inset-0 bg-navy-dark pointer-events-none" />
-                <div className="absolute inset-0 opacity-40">
-                    <img src={post.cover_image} alt="" className="w-full h-full object-cover blur-3xl scale-125" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal/20 to-transparent" />
+
+                {/* Background image blur */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                    <img src={post.cover_image} alt="" className="w-full h-full object-cover blur-[120px] scale-150" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy-dark/90 to-navy pointer-events-none" />
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <Link href="/blog" className="inline-flex items-center gap-2 text-teal font-black text-[10px] uppercase tracking-[0.3em] mb-12 hover:gap-4 transition-all">
-                            <ArrowLeft className="w-4 h-4" /> Retour au Blog
-                        </Link>
+                <div className="container mx-auto px-6 relative z-10">
+                    <Link href="/blog" className="inline-flex items-center gap-3 text-teal font-black text-[10px] uppercase tracking-[0.4em] mb-16 hover:gap-6 transition-all duration-500">
+                        <ArrowLeft className="w-4 h-4" /> RETOUR AU BLOG
+                    </Link>
 
-                        <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
-                            <span className="px-4 py-1.5 rounded-lg bg-teal text-white text-[10px] font-black uppercase tracking-widest border border-teal/20">
+                    <div className="max-w-5xl">
+                        <div className="flex items-center gap-4 mb-10">
+                            <span className="px-4 py-1.5 rounded-full bg-teal/20 backdrop-blur-md border border-teal/20 text-teal text-[10px] font-black uppercase tracking-[0.2em]">
                                 {post.category}
                             </span>
-                            <div className="flex items-center gap-2 text-white/40 text-[10px] font-black uppercase tracking-widest">
-                                <Calendar className="w-3 h-3 text-teal" /> {new Date(post.created_at).toLocaleDateString()}
-                            </div>
-                            <div className="flex items-center gap-2 text-white/40 text-[10px] font-black uppercase tracking-widest">
-                                <User className="w-3 h-3 text-teal" /> {post.author}
-                            </div>
                         </div>
 
-                        <h1 className="text-4xl md:text-7xl font-black mb-8 leading-[0.9] tracking-tighter max-w-5xl mx-auto">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 leading-[0.9] tracking-tighter">
                             {post.title}
                         </h1>
-                    </motion.div>
-                </div>
-            </header>
 
-            <section className="pb-32 relative">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto">
-                        {/* Cover Image */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative aspect-video rounded-[3rem] overflow-hidden -mt-20 border border-white/10 shadow-3xl shadow-navy-dark/50 mb-20"
-                        >
-                            <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
-                        </motion.div>
-
-                        {/* Article Content */}
-                        <article className="prose prose-invert prose-lg max-w-none prose-p:text-white/60 prose-p:font-medium prose-p:leading-relaxed prose-headings:font-black prose-headings:tracking-tighter prose-strong:text-white prose-strong:font-black prose-teal prose-blockquote:border-teal prose-blockquote:bg-teal/5 prose-blockquote:py-2 prose-blockquote:px-8 prose-blockquote:rounded-2xl prose-blockquote:not-italic prose-blockquote:font-bold prose-img:rounded-3xl">
-                            <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
-                        </article>
-
-                        {/* Sharing & Keywords */}
-                        <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
-                            <div className="flex items-center gap-4">
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">Partager</span>
-                                <div className="flex gap-2">
-                                    <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-teal hover:text-white transition-all flex items-center justify-center text-white/40">
-                                        <Linkedin className="w-4 h-4" />
-                                    </button>
-                                    <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-teal hover:text-white transition-all flex items-center justify-center text-white/40">
-                                        <Facebook className="w-4 h-4" />
-                                    </button>
-                                    <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-teal hover:text-white transition-all flex items-center justify-center text-white/40">
-                                        <Share2 className="w-4 h-4" />
-                                    </button>
+                        <div className="flex flex-wrap items-center gap-10 pt-10 border-t border-white/5">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
+                                    <User className="w-5 h-5 text-teal" />
                                 </div>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">{post.author}</span>
                             </div>
-                        </div>
-
-                        {/* Integrated CTA Section */}
-                        <div className="mt-32 p-10 md:p-16 rounded-[4rem] bg-gradient-to-br from-teal via-teal-dark to-navy relative overflow-hidden group border border-white/10">
-                            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 blur-3xl rounded-full -mr-40 -mt-40 animate-pulse" />
-                            <div className="relative z-10 text-center">
-                                <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter italic">Optimisez votre sécurité avec l'IA.</h3>
-                                <p className="text-white/80 font-bold max-w-xl mx-auto mb-10 uppercase tracking-widest text-[10px]">Prêt à transformer la gestion de votre flotte ?</p>
-                                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                                    <Link href="/offres#calculator">
-                                        <Button className="bg-white text-navy hover:scale-105 h-14 px-10 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl transition-all">
-                                            <Calculator className="w-4 h-4 mr-2 text-teal" /> Calculateur ROI
-                                        </Button>
-                                    </Link>
-                                    <Link href="/contact">
-                                        <Button className="bg-navy-dark text-white border border-white/10 hover:bg-navy h-14 px-10 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all">
-                                            <Mail className="w-4 h-4 mr-2 text-teal" /> Nous Contacter
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Comments Section */}
-                        <div className="mt-32">
-                            <div className="flex items-center gap-4 mb-12">
-                                <MessageCircle className="w-8 h-8 text-teal" />
-                                <h3 className="text-3xl font-black tracking-tighter">Réactions de la communauté</h3>
-                            </div>
-
-                            {/* Comment Form */}
-                            <div className="bg-white/5 border border-white/5 p-8 rounded-[2.5rem] mb-16">
-                                {submitted ? (
-                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center py-10 text-center">
-                                        <CheckCircle2 className="w-16 h-16 text-teal mb-4" />
-                                        <h4 className="text-2xl font-black mb-2">Merci pour votre réaction !</h4>
-                                        <p className="text-white/40 font-medium">Votre commentaire a été envoyé pour modération et apparaîtra bientôt.</p>
-                                        <button onClick={() => setSubmitted(false)} className="mt-6 text-teal font-black text-[10px] uppercase tracking-widest">En laisser un autre</button>
-                                    </motion.div>
-                                ) : (
-                                    <form onSubmit={handleCommentSubmit} className="space-y-6 text-white">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="space-y-1.5">
-                                                <label className="text-[10px] font-black text-white/20 uppercase tracking-widest ml-4">Votre Nom</label>
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    value={commentUser.name}
-                                                    onChange={(e) => setCommentUser({ ...commentUser, name: e.target.value })}
-                                                    className="w-full h-14 px-6 bg-white/5 border border-white/5 focus:border-teal/30 rounded-2xl outline-none text-sm font-bold placeholder:text-white/10 focus:bg-white/10 transition-all font-sans"
-                                                    placeholder="Jean Dupont"
-                                                />
-                                            </div>
-                                            <div className="space-y-1.5">
-                                                <label className="text-[10px] font-black text-white/20 uppercase tracking-widest ml-4">E-mail</label>
-                                                <input
-                                                    type="email"
-                                                    required
-                                                    value={commentUser.email}
-                                                    onChange={(e) => setCommentUser({ ...commentUser, email: e.target.value })}
-                                                    className="w-full h-14 px-6 bg-white/5 border border-white/5 focus:border-teal/30 rounded-2xl outline-none text-sm font-bold placeholder:text-white/10 focus:bg-white/10 transition-all font-sans"
-                                                    placeholder="jean@exemple.com"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black text-white/20 uppercase tracking-widest ml-4">Votre Commentaire</label>
-                                            <textarea
-                                                required
-                                                value={commentUser.content}
-                                                onChange={(e) => setCommentUser({ ...commentUser, content: e.target.value })}
-                                                rows={5}
-                                                className="w-full p-6 bg-white/5 border border-white/5 focus:border-teal/30 rounded-3xl outline-none text-sm font-bold placeholder:text-white/10 focus:bg-white/10 transition-all resize-none font-sans"
-                                                placeholder="Partagez vos réflexions avec nous..."
-                                            />
-                                        </div>
-                                        <Button
-                                            disabled={isSubmitting}
-                                            className="w-full h-14 bg-teal hover:bg-teal-light text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-teal/10 transition-all"
-                                        >
-                                            {isSubmitting ? "Envoi en cours..." : <><Send className="w-4 h-4 mr-2" /> Publier mon commentaire</>}
-                                        </Button>
-                                    </form>
-                                )}
-                            </div>
-
-                            {/* Comment List */}
-                            <div className="space-y-8">
-                                {comments.map((comment) => (
-                                    <div key={comment.id} className="flex gap-6 p-2 group">
-                                        <div className="w-12 h-12 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center text-teal font-black text-sm flex-shrink-0 group-hover:scale-110 transition-transform">
-                                            {comment.author_name.charAt(0)}
-                                        </div>
-                                        <div>
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <h4 className="font-black text-white leading-none">{comment.author_name}</h4>
-                                                <span className="text-white/20 text-[9px] font-bold uppercase tracking-widest">
-                                                    {new Date(comment.created_at).toLocaleDateString()}
-                                                </span>
-                                            </div>
-                                            <p className="text-white/60 text-sm font-medium leading-relaxed italic">
-                                                "{comment.content}"
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
-                                {comments.length === 0 && (
-                                    <div className="text-center py-10">
-                                        <p className="text-white/20 font-black text-[10px] uppercase tracking-widest">Soyez le premier à réagir !</p>
-                                    </div>
-                                )}
+                            <div className="flex items-center gap-3">
+                                <Calendar className="w-5 h-5 text-teal/40" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{date}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </header>
+
+            {/* Article Image Section */}
+            <section className="container mx-auto px-6 -mt-16 relative z-20">
+                <div className="aspect-[21/9] rounded-[40px] overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
+                    <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
+                </div>
             </section>
 
-            <Footer content={content?.footer} />
+            {/* Content Body */}
+            <article className="py-32">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col lg:flex-row gap-20">
+                        {/* Sidebar Share */}
+                        <aside className="lg:w-20 flex lg:flex-col gap-6 sticky top-40 h-fit order-2 lg:order-1">
+                            <div className="text-[8px] font-black uppercase tracking-[0.4em] text-white/20 vertical-text hidden lg:block mb-4">SHARE</div>
+                            <button className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center hover:bg-teal hover:border-teal transition-all duration-500 group">
+                                <Linkedin className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                            </button>
+                            <button className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center hover:bg-teal hover:border-teal transition-all duration-500 group">
+                                <Facebook className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                            </button>
+                            <button
+                                onClick={() => {
+                                    if (typeof window !== "undefined") {
+                                        window.open(`https://wa.me/?text=${encodeURIComponent(post.title + " " + window.location.href)}`, "_blank");
+                                    }
+                                }}
+                                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center hover:bg-teal hover:border-teal transition-all duration-500 group"
+                            >
+                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white/40 group-hover:text-white transition-colors"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 8.39c-2.003 0-3.96-.539-5.673-1.56L3 22.1l1.281-4.685c-1.113-1.613-1.699-3.52-1.699-5.464 0-5.513 4.486-10 10-10 2.67 0 5.181 1.04 7.07 2.93 1.89 1.89 2.93 4.401 2.93 7.07 0 5.513-4.486 10-10 10M12.355 0C5.54 0 0 5.54 0 12.355c0 2.181.571 4.31 1.655 6.193L0 24l5.594-1.467c1.802 1.026 3.844 1.567 5.923 1.567 6.815 0 12.355-5.54 12.355-12.355 0-3.284-1.278-6.37-3.6-8.692C17.95 1.278 14.864 0 12.355 0"></path></svg>
+                            </button>
+                        </aside>
+
+                        {/* Text Content */}
+                        <div className="flex-1 order-1 lg:order-2">
+                            <div className="max-w-3xl">
+                                <div
+                                    className="blog-content text-xl md:text-2xl text-white/70 leading-relaxed font-medium space-y-12"
+                                    dangerouslySetInnerHTML={{
+                                        __html: post.content
+                                            .replace(/^# (.*$)/gim, '<h1 class="text-6xl font-black mb-16 uppercase tracking-tighter text-white">$1</h1>')
+                                            .replace(/^## (.*$)/gim, '<h2 class="text-4xl font-black mt-24 mb-10 uppercase tracking-tight text-white">$1</h2>')
+                                            .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-black mt-16 mb-8 uppercase text-teal">$1</h3>')
+                                            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-black">$1</strong>')
+                                            .replace(/^\s*\n/gm, '<br/>')
+                                            .replace(/\n\d\. (.*)/g, '<li class="ml-6 list-decimal font-bold">$1</li>')
+                                            .replace(/\n- (.*)/g, '<li class="ml-6 list-disc font-bold">$1</li>')
+                                    }}
+                                />
+
+                                {/* Interactive Comments */}
+                                <CommentSection postId={post.id} initialComments={JSON.parse(JSON.stringify(comments))} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            {/* Related/Final CTA */}
+            <section className="py-40 bg-navy-dark relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal/5 to-transparent" />
+                <div className="container mx-auto px-6 relative z-10 text-center">
+                    <h2 className="text-5xl md:text-7xl font-black mb-12 tracking-tighter leading-tight">
+                        PRÊT À RÉVOLUTIONNER <br />
+                        <span className="text-teal underline decoration-white/10 underline-offset-8">VOTRE FLOTTE ?</span>
+                    </h2>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+                        <Link href="/solutions">
+                            <Button className="h-16 px-12 bg-teal hover:bg-teal-light text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] shadow-2xl shadow-teal/30">
+                                DÉCOUVRIR NOS SOLUTIONS
+                            </Button>
+                        </Link>
+                        <Link href="/contact">
+                            <Button className="h-16 px-12 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px]">
+                                NOUS CONTACTER
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            <Footer content={content.footer} />
         </main>
     );
 }

@@ -54,33 +54,32 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
 
                         <p className="text-xl text-white/50 mb-12 max-w-md leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: content.description }} />
 
-                        {/* Social Media + Newsletter on same line */}
-                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-                            <div className="flex flex-wrap gap-4">
-                                <Link href={content.social?.linkedin || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                    <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                        {/* Social Media & Newsletter */}
+                        <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-12 p-8 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                                <Link href={content.social?.linkedin || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </Link>
-                                <Link href={content.social?.whatsapp || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-6 h-6 group-hover:scale-110 transition-transform"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 8.39c-2.003 0-3.96-.539-5.673-1.56L3 22.1l1.281-4.685c-1.113-1.613-1.699-3.52-1.699-5.464 0-5.513 4.486-10 10-10 2.67 0 5.181 1.04 7.07 2.93 1.89 1.89 2.93 4.401 2.93 7.07 0 5.513-4.486 10-10 10M12.355 0C5.54 0 0 5.54 0 12.355c0 2.181.571 4.31 1.655 6.193L0 24l5.594-1.467c1.802 1.026 3.844 1.567 5.923 1.567 6.815 0 12.355-5.54 12.355-12.355 0-3.284-1.278-6.37-3.6-8.692C17.95 1.278 14.864 0 12.355 0"></path></svg>
+                                <Link href={content.social?.whatsapp || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-5 h-5 group-hover:scale-110 transition-transform"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 8.39c-2.003 0-3.96-.539-5.673-1.56L3 22.1l1.281-4.685c-1.113-1.613-1.699-3.52-1.699-5.464 0-5.513 4.486-10 10-10 2.67 0 5.181 1.04 7.07 2.93 1.89 1.89 2.93 4.401 2.93 7.07 0 5.513-4.486 10-10 10M12.355 0C5.54 0 0 5.54 0 12.355c0 2.181.571 4.31 1.655 6.193L0 24l5.594-1.467c1.802 1.026 3.844 1.567 5.923 1.567 6.815 0 12.355-5.54 12.355-12.355 0-3.284-1.278-6.37-3.6-8.692C17.95 1.278 14.864 0 12.355 0"></path></svg>
                                 </Link>
-                                <Link href={content.social?.instagram || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                    <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                <Link href={content.social?.instagram || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </Link>
-                                <Link href={content.social?.facebook || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                    <Facebook className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                <Link href={content.social?.facebook || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </Link>
-                                <Link href={content.social?.youtube || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                    <Youtube className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                <Link href={content.social?.youtube || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <Youtube className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </Link>
-                                <Link href={content.social?.tiktok || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-6 h-6 group-hover:scale-110 transition-transform"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.01.52.07 1.04.26 1.53.45 1.18 1.64 2.01 2.89 2.05.61.03 1.23-.1 1.77-.32 1.18-.5 1.91-1.66 2.01-2.93.01-3.51-.01-7.02.01-10.53-.01-1.03.01-2.06.01-3.09z"></path></svg>
+                                <Link href={content.social?.tiktok || "#"} target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className="w-5 h-5 group-hover:scale-110 transition-transform"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.01.52.07 1.04.26 1.53.45 1.18 1.64 2.01 2.89 2.05.61.03 1.23-.1 1.77-.32 1.18-.5 1.91-1.66 2.01-2.93.01-3.51-.01-7.02.01-10.53-.01-1.03.01-2.06.01-3.09z"></path></svg>
                                 </Link>
                             </div>
 
-                            {/* Newsletter - Inline */}
-                            <div className="flex-1 max-w-md">
+                            <div className="w-full md:w-auto flex-1 max-w-md">
                                 <form
-                                    className="flex gap-2"
+                                    className="flex gap-3"
                                     onSubmit={async (e) => {
                                         e.preventDefault();
                                         const form = e.target as HTMLFormElement;
@@ -101,39 +100,37 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                                                 body: JSON.stringify({ email, source: "footer" }),
                                             });
 
-                                            console.log("Newsletter response:", res.status, res.ok);
-
                                             if (res.ok) {
                                                 input.value = "";
-                                                btn.innerText = "Merci !";
+                                                btn.innerText = "MERCI !";
                                                 setTimeout(() => btn.innerText = originalText, 3000);
                                             } else {
-                                                const errorData = await res.json().catch(() => ({}));
-                                                console.error("Newsletter error:", res.status, errorData);
-                                                btn.innerText = "Erreur";
+                                                btn.innerText = "ERREUR";
                                             }
                                         } catch (err) {
-                                            console.error("Newsletter exception:", err);
-                                            btn.innerText = "Erreur";
+                                            btn.innerText = "ERREUR";
                                         } finally {
                                             setTimeout(() => {
                                                 btn.disabled = false;
-                                                if (btn.innerText === "Erreur") btn.innerText = originalText;
+                                                if (btn.innerText === "ERREUR") btn.innerText = originalText;
                                             }, 3000);
                                         }
                                     }}
                                 >
-                                    <input
-                                        type="email"
-                                        placeholder={content.newsletter.placeholder}
-                                        className="flex-1 h-11 px-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-teal/50 focus:border-teal/50 transition-all font-medium text-sm"
-                                        required
-                                    />
+                                    <div className="relative flex-1">
+                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                                        <input
+                                            type="email"
+                                            placeholder={content.newsletter?.placeholder}
+                                            className="w-full h-12 pl-12 pr-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-teal/50 transition-all font-medium text-sm"
+                                            required
+                                        />
+                                    </div>
                                     <Button
                                         type="submit"
-                                        className="h-11 px-5 bg-teal hover:bg-teal-light text-white rounded-xl font-bold uppercase tracking-wider text-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="h-12 px-8 bg-teal hover:bg-teal-light text-white rounded-xl font-black uppercase tracking-widest text-[10px] transition-all disabled:opacity-50 shadow-lg shadow-teal/20"
                                     >
-                                        {content.newsletter.buttonText}
+                                        {content.newsletter?.buttonText}
                                     </Button>
                                 </form>
                             </div>
