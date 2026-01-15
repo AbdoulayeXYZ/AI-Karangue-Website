@@ -203,7 +203,7 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            <Footer content={content} />
+            <Footer content={content?.footer} />
         </main>
     );
 }

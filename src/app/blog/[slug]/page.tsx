@@ -267,7 +267,7 @@ export default function BlogPostPage() {
                 </div>
             </section>
 
-            <Footer content={content} />
+            <Footer content={content?.footer} />
         </main>
     );
 }
