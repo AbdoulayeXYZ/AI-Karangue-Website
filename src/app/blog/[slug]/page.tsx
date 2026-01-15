@@ -28,16 +28,25 @@ export default function BlogPostPage() {
                     getContent()
                 ]);
                 const postData = await postRes.json();
-                setPost(postData);
-                setContent(contentData);
 
-                if (postData.id) {
+                if (postData && postData.id) {
+                    setPost(postData);
+
                     const commentsRes = await fetch(`/api/blog/comments?postId=${postData.id}`);
                     const commentsData = await commentsRes.json();
-                    setComments(commentsData);
+                    if (Array.isArray(commentsData)) {
+                        setComments(commentsData);
+                    } else {
+                        setComments([]);
+                    }
+                } else {
+                    setPost(null);
                 }
+
+                setContent(contentData);
             } catch (error) {
                 console.error("Failed to load post:", error);
+                setPost(null);
             } finally {
                 setLoading(false);
             }

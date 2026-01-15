@@ -23,10 +23,18 @@ export default function BlogPage() {
                     getContent()
                 ]);
                 const postsData = await postsRes.json();
-                setPosts(postsData);
+
+                if (Array.isArray(postsData)) {
+                    setPosts(postsData);
+                } else {
+                    console.error("Blog API error:", postsData.error || postsData);
+                    setPosts([]);
+                }
+
                 setContent(contentData);
             } catch (error) {
                 console.error("Failed to load blog:", error);
+                setPosts([]);
             } finally {
                 setLoading(false);
             }
@@ -122,8 +130,8 @@ export default function BlogPage() {
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap border ${activeCategory === cat
-                                        ? "bg-teal text-white border-teal shadow-lg shadow-teal/20"
-                                        : "bg-white/5 text-white/40 border-transparent hover:bg-white/10"
+                                    ? "bg-teal text-white border-teal shadow-lg shadow-teal/20"
+                                    : "bg-white/5 text-white/40 border-transparent hover:bg-white/10"
                                     }`}
                             >
                                 {cat}
