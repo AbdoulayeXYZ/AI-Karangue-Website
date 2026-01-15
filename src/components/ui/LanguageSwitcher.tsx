@@ -19,15 +19,18 @@ export const LanguageSwitcher = () => {
     }, []);
 
     const toggleLanguage = (newLang: "fr" | "en") => {
-        if (newLang === lang) return;
+        if (newLang === lang) {
+            setIsOpen(false);
+            return;
+        }
 
-        // Set cookie
-        document.cookie = `app-lang=${newLang}; path=/; max-age=${60 * 60 * 24 * 365}`;
+        // Set cookie with proper attributes
+        document.cookie = `app-lang=${newLang}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
         setLang(newLang);
         setIsOpen(false);
 
-        // Refresh page to trigger getServerContent with the new cookie
-        router.refresh();
+        // Force full page reload to trigger server-side content loading
+        window.location.reload();
     };
 
     return (
