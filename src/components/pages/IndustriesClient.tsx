@@ -22,7 +22,7 @@ const iconMap: Record<string, any> = {
 export const IndustriesClient = ({ content }: { content: SiteContent }) => {
     return (
         <main className="min-h-screen bg-zinc-50 selection:bg-teal selection:text-white overflow-hidden">
-            <Navbar />
+            <Navbar content={content.navbar} />
 
             {/* Hero Header - Immersive Dark */}
             <section className="pt-48 pb-32 bg-navy-dark relative overflow-hidden">

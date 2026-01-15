@@ -15,7 +15,7 @@ interface ContactClientProps {
 export default function ContactClient({ content }: ContactClientProps) {
     return (
         <main className="min-h-screen bg-navy-dark selection:bg-teal selection:text-white">
-            <Navbar />
+            <Navbar content={content.navbar} />
 
             <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 px-6">
                 <div className="container mx-auto max-w-7xl">
@@ -29,21 +29,16 @@ export default function ContactClient({ content }: ContactClientProps) {
                             <div className="absolute bottom-[-20%] right-[-20%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px]" />
 
                             <div className="relative z-10">
-                                <span className="text-teal font-black tracking-[0.2em] uppercase text-xs mb-8 block">Démonstration Personnalisée</span>
+                                <span className="text-teal font-black tracking-[0.2em] uppercase text-xs mb-8 block">{content.contact.hero.label}</span>
                                 <h1 className="text-4xl md:text-5xl font-black mb-8 leading-tight tracking-tight">
-                                    Passez au niveau supérieur.
+                                    {content.contact.hero.title}
                                 </h1>
                                 <p className="text-white/60 text-lg leading-relaxed mb-12">
-                                    Découvrez comment AI-Karangué transforme vos données brutes en leviers de rentabilité.
-                                    Réservez une démo de 30 minutes avec un expert sectoriel.
+                                    {content.contact.hero.description}
                                 </p>
 
                                 <ul className="space-y-6 mb-12">
-                                    {[
-                                        "Audit gratuit de votre flotte actuelle",
-                                        "Simulation de ROI en direct",
-                                        "Plan de déploiement sur-mesure"
-                                    ].map((item, i) => (
+                                    {content.contact.hero.features.map((item, i) => (
                                         <li key={i} className="flex items-center gap-4">
                                             <div className="w-8 h-8 rounded-full bg-teal/20 flex items-center justify-center text-teal">
                                                 <CheckCircle2 className="w-5 h-5" />
@@ -60,8 +55,8 @@ export default function ContactClient({ content }: ContactClientProps) {
                                         <Phone className="w-5 h-5 text-teal" />
                                     </div>
                                     <div>
-                                        <p className="text-xs uppercase font-bold text-white/40 mb-1">Téléphone</p>
-                                        <p className="font-bold">+221 77 314 70 59</p>
+                                        <p className="text-xs uppercase font-bold text-white/40 mb-1">{content.contact.info.phone.label}</p>
+                                        <p className="font-bold">{content.contact.info.phone.value}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -69,8 +64,8 @@ export default function ContactClient({ content }: ContactClientProps) {
                                         <Mail className="w-5 h-5 text-teal" />
                                     </div>
                                     <div>
-                                        <p className="text-xs uppercase font-bold text-white/40 mb-1">Email</p>
-                                        <p className="font-bold">contact@aikarangue.com</p>
+                                        <p className="text-xs uppercase font-bold text-white/40 mb-1">{content.contact.info.email.label}</p>
+                                        <p className="font-bold">{content.contact.info.email.value}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -78,8 +73,8 @@ export default function ContactClient({ content }: ContactClientProps) {
                                         <MapPin className="w-5 h-5 text-teal" />
                                     </div>
                                     <div>
-                                        <p className="text-xs uppercase font-bold text-white/40 mb-1">Siège</p>
-                                        <p className="font-bold">Dakar, Sénégal</p>
+                                        <p className="text-xs uppercase font-bold text-white/40 mb-1">{content.contact.info.address.label}</p>
+                                        <p className="font-bold">{content.contact.info.address.value}</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,8 +82,8 @@ export default function ContactClient({ content }: ContactClientProps) {
 
                         {/* Right Side: Form */}
                         <div className="w-full lg:w-7/12 p-12 lg:p-20 bg-white">
-                            <h2 className="text-3xl font-black text-navy-dark mb-2">Parlons de votre projet</h2>
-                            <p className="text-navy/50 mb-10">Remplissez ce formulaire, nous vous recontactons sous 24h ouvrées.</p>
+                            <h2 className="text-3xl font-black text-navy-dark mb-2">{content.contact.form.title}</h2>
+                            <p className="text-navy/50 mb-10">{content.contact.form.description}</p>
 
                             <form
                                 className="space-y-8"
@@ -112,7 +107,7 @@ export default function ContactClient({ content }: ContactClientProps) {
                                     }
 
                                     btn.disabled = true;
-                                    btn.innerText = "Envoi en cours...";
+                                    btn.innerText = content.contact.form.labels.sending;
 
                                     try {
                                         const res = await fetch("/api/contact", {
@@ -130,15 +125,15 @@ export default function ContactClient({ content }: ContactClientProps) {
 
                                         if (res.ok) {
                                             form.reset();
-                                            btn.innerText = "Message envoyé !";
+                                            btn.innerText = content.contact.form.labels.success;
                                             setTimeout(() => btn.innerHTML = originalText, 5000);
                                         } else {
-                                            btn.innerText = "Erreur lors de l'envoi";
+                                            btn.innerText = content.contact.form.labels.error;
                                             setTimeout(() => btn.innerHTML = originalText, 3000);
                                         }
                                     } catch (err) {
                                         console.error(err);
-                                        btn.innerText = "Erreur technique";
+                                        btn.innerText = content.contact.form.labels.error;
                                         setTimeout(() => btn.innerHTML = originalText, 3000);
                                     } finally {
                                         setTimeout(() => {
@@ -149,48 +144,47 @@ export default function ContactClient({ content }: ContactClientProps) {
                             >
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">Prénom *</label>
-                                        <input type="text" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder="John" required />
+                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">{content.contact.form.labels.firstName}</label>
+                                        <input type="text" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder={content.contact.form.placeholders.firstName} required />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">Nom *</label>
-                                        <input type="text" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder="Doe" required />
+                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">{content.contact.form.labels.lastName}</label>
+                                        <input type="text" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder={content.contact.form.placeholders.lastName} required />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">Email *</label>
-                                    <input type="email" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder="john@entreprise.com" required />
+                                    <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">{content.contact.form.labels.email}</label>
+                                    <input type="email" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder={content.contact.form.placeholders.email} required />
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">Entreprise *</label>
-                                        <input type="text" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder="Votre Société" required />
+                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">{content.contact.form.labels.company}</label>
+                                        <input type="text" className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20" placeholder={content.contact.form.placeholders.company} required />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">Taille de la flotte</label>
+                                        <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">{content.contact.form.labels.fleetSize}</label>
                                         <select className="w-full h-14 px-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium appearance-none">
-                                            <option>1 - 10 véhicules</option>
-                                            <option>11 - 50 véhicules</option>
-                                            <option>51 - 200 véhicules</option>
-                                            <option>200+ véhicules</option>
+                                            {content.contact.form.labels.fleetOptions.map((opt, i) => (
+                                                <option key={i}>{opt}</option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">Message (Facultatif)</label>
-                                    <textarea className="w-full h-40 p-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20 resize-none" placeholder="Dites-nous en plus sur vos besoins..." />
+                                    <label className="text-sm font-bold text-navy-dark uppercase tracking-wider">{content.contact.form.labels.message}</label>
+                                    <textarea className="w-full h-40 p-6 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all text-navy-dark font-medium placeholder:text-navy/20 resize-none" placeholder={content.contact.form.placeholders.message} />
                                 </div>
 
                                 <Button size="lg" type="submit" className="w-full h-16 text-lg bg-navy-dark text-white hover:bg-navy shadow-xl shadow-navy-dark/10 group flex items-center justify-center gap-2">
-                                    Demander une démo
+                                    {content.contact.form.labels.submit}
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Button>
 
                                 <p className="text-center text-xs text-navy/40 font-medium">
-                                    En cliquant, vous acceptez notre politique de confidentialité. Vos données sont sécurisées.
+                                    {content.contact.form.labels.privacy}
                                 </p>
                             </form>
                         </div>

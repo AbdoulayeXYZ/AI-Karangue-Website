@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <main className="relative min-h-screen selection:bg-teal selection:text-white bg-white overflow-hidden">
-      <Navbar />
+      <Navbar content={content.navbar} />
       <Hero content={content.home.hero} />
 
       {/* 1. Condensed Direct Manifesto */}

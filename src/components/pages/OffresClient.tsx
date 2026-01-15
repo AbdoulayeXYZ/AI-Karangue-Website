@@ -51,7 +51,7 @@ export const OffresClient = ({ content }: { content: SiteContent }) => {
 
     return (
         <main className="min-h-screen bg-zinc-50 selection:bg-teal selection:text-white">
-            <Navbar />
+            <Navbar content={content.navbar} />
 
             {/* Hero Header */}
             <section className="pt-48 pb-32 relative overflow-hidden bg-navy-dark">
@@ -147,7 +147,7 @@ export const OffresClient = ({ content }: { content: SiteContent }) => {
                                                     : "bg-navy-dark hover:bg-navy text-white shadow-navy/10"
                                             )}
                                         >
-                                            Demander une démo
+                                            {pack.ctaText}
                                         </Button>
                                     </Link>
                                 </motion.div>

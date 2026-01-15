@@ -22,7 +22,7 @@ interface SolutionsClientProps {
 export default function SolutionsClient({ content }: SolutionsClientProps) {
     return (
         <main className="min-h-screen bg-white selection:bg-teal selection:text-white overflow-hidden">
-            <Navbar />
+            <Navbar content={content.navbar} />
 
             {/* Hero - The Promise */}
             <section className="relative min-h-screen flex items-center justify-center bg-navy-dark pt-20 overflow-hidden">
@@ -41,19 +41,19 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                         className="max-w-6xl mx-auto"
                     >
                         <h1 className="text-6xl md:text-[10rem] font-black text-white tracking-tighter mb-12 leading-[0.85]">
-                            La Plateforme<br /><span className="text-teal">Karangué221</span>
+                            {content.solutions.hero.title}<br /><span className="text-teal">{content.solutions.hero.titleHighlight}</span>
                         </h1>
 
 
                         <p className="text-2xl md:text-3xl text-white/70 max-w-4xl mx-auto font-medium mb-12 leading-relaxed">
-                            La solution IoT + IA qui transforme votre flotte en <span className="text-white font-black">actif stratégique sécurisé et rentable.</span>
+                            {content.solutions.hero.subtitle} <span className="text-white font-black">{content.solutions.hero.subtitleHighlight}</span>
                         </p>
 
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                             <Link href="/#roi-calculator">
                                 <Button size="lg" className="h-16 px-12 text-lg bg-teal hover:bg-teal-light shadow-2xl shadow-teal/20 flex items-center gap-3">
-                                    <span>Calculer mon ROI</span>
+                                    <span>{content.solutions.hero.ctaPrimary}</span>
                                     <ArrowRight className="w-5 h-5" />
                                 </Button>
                             </Link>
@@ -75,12 +75,12 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
             <section className="py-32 bg-white">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-4xl mx-auto mb-20">
-                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-6 block">Votre Réalité Actuelle</span>
+                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-6 block">{content.solutions.value.sectionLabel}</span>
                         <h2 className="text-5xl md:text-7xl font-black text-navy-dark mb-8 tracking-tight leading-tight">
-                            Chaque jour sans <span className="text-teal">Karangué221</span> vous coûte.
+                            {content.solutions.value.sectionTitle} <span className="text-teal">{content.solutions.value.sectionTitleHighlight}</span>
                         </h2>
                         <p className="text-xl text-navy/60 font-medium">
-                            Les gestionnaires de flotte perdent en moyenne <span className="text-navy-dark font-black">30% de leur budget</span> en inefficacités évitables.
+                            {content.solutions.value.sectionDescription} <span className="text-navy-dark font-black">{content.solutions.value.sectionDescriptionHighlight}</span>
                         </p>
                     </div>
 
@@ -106,19 +106,14 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                             </div>
 
                             <div className="p-10">
-                                <h3 className="text-3xl font-black text-navy-dark mb-4">Sauver des Vies</h3>
+                                <h3 className="text-3xl font-black text-navy-dark mb-4">{content.solutions.value.cards[0].title}</h3>
                                 <p className="text-navy/60 font-medium mb-8 leading-relaxed">
-                                    <span className="text-navy-dark font-bold">Sans AI-Karangué</span> : Accidents évitables, fatigue non détectée, comportements à risque invisibles.
+                                    <span className="text-navy-dark font-bold">{content.solutions.value.cards[0].problem}</span> {content.solutions.value.cards[0].problemHighlight}
                                 </p>
                                 <div className="bg-white rounded-2xl p-6 mb-8 border border-navy/5 shadow-inner">
-                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">AVEC KARANGUÉ221</p>
+                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">{content.solutions.value.cards[0].solutionLabel}</p>
                                     <ul className="space-y-3">
-                                        {[
-                                            "Détection somnolence IA",
-                                            "Alertes collision imminente",
-                                            "Scoring comportemental",
-                                            "Preuves vidéo 360°"
-                                        ].map((item, i) => (
+                                        {content.solutions.value.cards[0].benefits.map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-sm font-bold text-navy-dark/80">
                                                 <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
                                                 {item}
@@ -128,8 +123,8 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                                 </div>
                                 <div className="flex items-center justify-between border-t border-navy/5 pt-6">
                                     <div className="text-left">
-                                        <p className="text-4xl font-black text-navy-dark">-40%</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">D'accidents</p>
+                                        <p className="text-4xl font-black text-navy-dark">{content.solutions.value.cards[0].statValue}</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">{content.solutions.value.cards[0].statLabel}</p>
                                     </div>
                                 </div>
                             </div>
@@ -157,19 +152,14 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                             </div>
 
                             <div className="p-10">
-                                <h3 className="text-3xl font-black text-navy-dark mb-4">Gagner du Temps</h3>
+                                <h3 className="text-3xl font-black text-navy-dark mb-4">{content.solutions.value.cards[1].title}</h3>
                                 <p className="text-navy/60 font-medium mb-8 leading-relaxed">
-                                    <span className="text-navy-dark font-bold">Sans AI-Karangué</span> : Gestion manuelle, rapports Excel, recherche d'informations, temps perdu.
+                                    <span className="text-navy-dark font-bold">{content.solutions.value.cards[1].problem}</span> {content.solutions.value.cards[1].problemHighlight}
                                 </p>
                                 <div className="bg-white rounded-2xl p-6 mb-8 border border-navy/5 shadow-inner">
-                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">AVEC KARANGUÉ221</p>
+                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">{content.solutions.value.cards[1].solutionLabel}</p>
                                     <ul className="space-y-3">
-                                        {[
-                                            "Visibilité flotte en 1 clic",
-                                            "Rapports automatisés",
-                                            "Alertes instantanées",
-                                            "Maintenance prédictive"
-                                        ].map((item, i) => (
+                                        {content.solutions.value.cards[1].benefits.map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-sm font-bold text-navy-dark/80">
                                                 <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
                                                 {item}
@@ -179,8 +169,8 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                                 </div>
                                 <div className="flex items-center justify-between border-t border-navy/5 pt-6">
                                     <div className="text-left">
-                                        <p className="text-4xl font-black text-navy-dark">10h</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">Économisées / sem</p>
+                                        <p className="text-4xl font-black text-navy-dark">{content.solutions.value.cards[1].statValue}</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">{content.solutions.value.cards[1].statLabel}</p>
                                     </div>
                                 </div>
                             </div>
@@ -208,19 +198,14 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                             </div>
 
                             <div className="p-10">
-                                <h3 className="text-3xl font-black text-navy-dark mb-4">Réduire les Coûts</h3>
+                                <h3 className="text-3xl font-black text-navy-dark mb-4">{content.solutions.value.cards[2].title}</h3>
                                 <p className="text-navy/60 font-medium mb-8 leading-relaxed">
-                                    <span className="text-navy-dark font-bold">Sans AI-Karangué</span> : Vols de carburant, surconsommation, pannes coûteuses.
+                                    <span className="text-navy-dark font-bold">{content.solutions.value.cards[2].problem}</span> {content.solutions.value.cards[2].problemHighlight}
                                 </p>
                                 <div className="bg-white rounded-2xl p-6 mb-8 border border-navy/5 shadow-inner">
-                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">AVEC KARANGUÉ221</p>
+                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">{content.solutions.value.cards[2].solutionLabel}</p>
                                     <ul className="space-y-3">
-                                        {[
-                                            "Stop vol carburant (FLS)",
-                                            "Optimisation consommation",
-                                            "Réduction maintenance",
-                                            "Baisse primes assurance"
-                                        ].map((item, i) => (
+                                        {content.solutions.value.cards[2].benefits.map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-sm font-bold text-navy-dark/80">
                                                 <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
                                                 {item}
@@ -230,8 +215,8 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                                 </div>
                                 <div className="flex items-center justify-between border-t border-navy/5 pt-6">
                                     <div className="text-left">
-                                        <p className="text-4xl font-black text-navy-dark">3.5x</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">Retour sur Invest.</p>
+                                        <p className="text-4xl font-black text-navy-dark">{content.solutions.value.cards[2].statValue}</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">{content.solutions.value.cards[2].statLabel}</p>
                                     </div>
                                 </div>
                             </div>
@@ -244,143 +229,64 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
             <section className="py-32 bg-zinc-50">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-4xl mx-auto mb-20">
-                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-6 block">Plateforme SaaS Complète</span>
+                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-6 block">{content.solutions.capabilities.sectionLabel}</span>
                         <h2 className="text-5xl md:text-7xl font-black text-navy-dark mb-8 tracking-tight leading-tight">
-                            Tout ce dont vous avez besoin. <span className="text-teal">En un seul endroit.</span>
+                            {content.solutions.capabilities.sectionTitle} <span className="text-teal">{content.solutions.capabilities.sectionTitleHighlight}</span>
                         </h2>
                         <p className="text-xl text-navy/60 font-medium">
-                            Karangué221 centralise l'ensemble de vos opérations de flotte dans une interface intuitive et puissante.
+                            {content.solutions.capabilities.sectionDescription}
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                        {[
-                            {
-                                icon: MapPin,
-                                title: "Localisation & Tracking",
-                                features: [
-                                    "GPS temps réel haute précision",
-                                    "Historique trajets illimité",
-                                    "Rapports de parcours détaillés",
-                                    "Notifications entrée/sortie zones"
-                                ],
-                                impact: "Optimisation routes, sécurité flotte"
-                            },
-                            {
-                                icon: Fuel,
-                                title: "Gestion Carburant",
-                                features: [
-                                    "Contrôle niveau FLS (99% précision)",
-                                    "Monitoring consommation par trajet",
-                                    "Détection & prévention vols",
-                                    "Analytics économies carburant"
-                                ],
-                                impact: "Réduction coûts carburant -15%"
-                            },
-                            {
-                                icon: Wrench,
-                                title: "Maintenance Prédictive",
-                                features: [
-                                    "Intervalles service automatiques",
-                                    "Rapports usure & kilométrage",
-                                    "Alertes maintenance préventive",
-                                    "Historique interventions"
-                                ],
-                                impact: "Contrôle coûts, moins de pannes"
-                            },
-                            {
-                                icon: Users,
-                                title: "Comportement Conducteur",
-                                features: [
-                                    "Eco-driving scoring personnalisé",
-                                    "Analytics comportements à risque",
-                                    "Identification conducteur (iButton/RFID)",
-                                    "Rapports performance individuels"
-                                ],
-                                impact: "Conduite sûre, -12% consommation"
-                            },
-                            {
-                                icon: Video,
-                                title: "Vidéo Intelligence",
-                                features: [
-                                    "Streaming live multi-caméras",
-                                    "Enregistrements basés événements",
-                                    "Archive Cloud sécurisée",
-                                    "Preuves légales horodatées"
-                                ],
-                                impact: "Protection juridique, résolution litiges"
-                            },
-                            {
-                                icon: Package,
-                                title: "Sécurité Cargaison",
-                                features: [
-                                    "Tracking marchandises en transit",
-                                    "Capteurs portes & ouvertures",
-                                    "Alertes accès non autorisé",
-                                    "Rapports livraisons"
-                                ],
-                                impact: "Prévention pertes financières"
-                            },
-                            {
-                                icon: Thermometer,
-                                title: "Monitoring Température",
-                                features: [
-                                    "Capteurs température en continu",
-                                    "Rapports conformité chaîne froid",
-                                    "Alertes dépassement seuils",
-                                    "Traçabilité produits sensibles"
-                                ],
-                                impact: "Qualité préservée, conformité"
-                            },
-                            {
-                                icon: Scale,
-                                title: "Contrôle Charge Essieux",
-                                features: [
-                                    "Capteurs poids en temps réel",
-                                    "Rapports charge par essieu",
-                                    "Alertes surcharge",
-                                    "Prévention amendes"
-                                ],
-                                impact: "Éviter pertes liées amendes"
-                            },
-                            {
-                                icon: BarChart3,
-                                title: "Business Intelligence",
-                                features: [
-                                    "Dashboards personnalisables",
-                                    "Intégration ERP/API",
-                                    "Rapports automatisés sur-mesure",
-                                    "Export données (Excel/PDF)"
-                                ],
-                                impact: "Décisions data-driven, efficacité"
-                            }
-                        ].map((module, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.05 }}
-                                className="bg-white rounded-3xl p-8 border border-navy/5 hover:border-teal/30 hover:shadow-xl transition-all duration-300 group"
-                            >
-                                <div className="w-14 h-14 bg-navy-dark rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal transition-colors shadow-lg">
-                                    <module.icon className="w-7 h-7 text-white" />
-                                </div>
-                                <h3 className="text-xl font-black text-navy-dark mb-4">{module.title}</h3>
-                                <ul className="space-y-2 mb-6">
-                                    {module.features.map((feature, j) => (
-                                        <li key={j} className="flex items-start gap-2 text-sm text-navy/70 font-medium">
-                                            <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="pt-4 border-t border-navy/5">
-                                    <p className="text-xs font-black text-teal uppercase tracking-wider">Impact Business</p>
-                                    <p className="text-sm font-bold text-navy-dark mt-1">{module.impact}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                        {content.solutions.capabilities.modules.map((module, i) => {
+                            // Map icon names to components
+                            const iconMap: Record<string, any> = {
+                                'MapPin': MapPin,
+                                'Fuel': Fuel,
+                                'Wrench': Wrench,
+                                'Users': Users,
+                                'Video': Video,
+                                'Package': Package,
+                                'Thermometer': Thermometer,
+                                'Scale': Scale,
+                                'BarChart3': BarChart3
+                            };
+
+                            // Try to match icon from title or default to BarChart3
+                            const iconKey = Object.keys(iconMap).find(key =>
+                                module.title.toLowerCase().includes(key.toLowerCase())
+                            ) || 'BarChart3';
+                            const Icon = iconMap[iconKey];
+
+                            return (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.05 }}
+                                    className="bg-white rounded-3xl p-8 border border-navy/5 hover:border-teal/30 hover:shadow-xl transition-all duration-300 group"
+                                >
+                                    <div className="w-14 h-14 bg-navy-dark rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal transition-colors shadow-lg">
+                                        <Icon className="w-7 h-7 text-white" />
+                                    </div>
+                                    <h3 className="text-xl font-black text-navy-dark mb-4">{module.title}</h3>
+                                    <ul className="space-y-2 mb-6">
+                                        {module.features.map((feature, j) => (
+                                            <li key={j} className="flex items-start gap-2 text-sm text-navy/70 font-medium">
+                                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="pt-4 border-t border-navy/5">
+                                        <p className="text-xs font-black text-teal uppercase tracking-wider">Impact Business</p>
+                                        <p className="text-sm font-bold text-navy-dark mt-1">{module.impact}</p>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -389,12 +295,12 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
             <section className="py-32 bg-navy-dark text-white">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-4xl mx-auto mb-24">
-                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-8 block">Immersion Technologique</span>
+                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-8 block">{content.solutions.hardware.sectionLabel}</span>
                         <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight leading-none">
-                            La sécurité <span className="text-teal">vue de l'intérieur.</span>
+                            {content.solutions.hardware.sectionTitle} <span className="text-teal">{content.solutions.hardware.sectionTitleHighlight}</span>
                         </h2>
                         <p className="text-xl text-white/60 font-medium max-w-3xl mx-auto leading-relaxed">
-                            Découvrez nos trois piliers technologiques Teltonika intégrés nativement à Karangué221 pour une sécurité absolue.
+                            {content.solutions.hardware.sectionDescription}
                         </p>
                     </div>
 
@@ -769,21 +675,21 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                         className="max-w-4xl mx-auto"
                     >
                         <h2 className="text-6xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-16">
-                            Prêt à transformer <br /> <span className="text-teal">votre flotte ?</span>
+                            {content.solutions.finalCta.title} <br /> <span className="text-teal">{content.solutions.finalCta.titleHighlight}</span>
                         </h2>
                         <p className="text-xl md:text-2xl text-white/40 font-medium mb-16 max-w-xl mx-auto">
-                            Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec Karangué221.
+                            {content.solutions.finalCta.description}
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
                             <Link href="/contact">
                                 <Button size="lg" className="h-20 px-12 text-xl bg-teal text-white hover:scale-105 transition-transform shadow-2xl shadow-teal/20">
-                                    Calculer mon ROI
+                                    {content.solutions.finalCta.ctaPrimary}
                                     <ArrowRight className="inline-block ml-3" />
                                 </Button>
                             </Link>
                             <Link href="/contact">
                                 <Button variant="outline" size="lg" className="h-20 px-12 text-xl border-white/10 text-white hover:bg-white hover:text-navy-dark transition-all">
-                                    Demander une démo
+                                    {content.solutions.finalCta.ctaSecondary}
                                 </Button>
                             </Link>
                         </div>

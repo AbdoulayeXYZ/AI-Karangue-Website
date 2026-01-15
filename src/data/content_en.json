@@ -1,0 +1,845 @@
+{
+  "home": {
+    "hero": {
+      "mainTitle1": "Tranquillité",
+      "mainTitle2": "d'esprit.",
+      "videoButtonText": "Le Film Vision",
+      "heroVideoPath": "/hero.mp4",
+      "presentationVideoPath": "https://youtu.be/SnTCsAuo9Kw?si=roT3YLRJi34iIUKO"
+    },
+    "manifesto": {
+      "title": "Nous transformons votre flotte en <span class=\"text-teal\">actif sécurisé et rentable</span>.",
+      "description": "Au-delà du simple suivi GPS, AI-Karangué combine IoT et intelligence artificielle pour protéger vos conducteurs, réduire vos coûts et sécuriser vos passagers — en temps réel."
+    },
+    "hardware": {
+      "sectionLabel": "Hardware Gateway",
+      "sectionTitle": "Des outils de",
+      "sectionTitleHighlight": "prévision.",
+      "ctaButton": "Consulter la fiche complète du manager",
+      "products": [
+        {
+          "id": "dsm",
+          "name": "L'Œil de l'Expert",
+          "role": "Vigilance & Protection Biométrique",
+          "target": "Pour le gestionnaire soucieux de sa responsabilité civile et de la santé de ses équipes.",
+          "description": "Reprenez le contrôle sur l'imprévisible. Ce module de détection visuelle avancée agit comme un second regard infatigable, identifiant les risques humains avant qu'ils ne deviennent des statistiques coûteuses.",
+          "features": [
+            "Alerte immédiate en cas de somnolence critique",
+            "Détection des distractions (Téléphone, Inattention)",
+            "Monitoring du respect des consignes (Ceinture, Tabac)",
+            "Identification précise du conducteur affecté",
+            "Réduction drastique des sinistres évitables"
+          ],
+          "imagePath": "/dsm.png",
+          "stats": [
+            "IA 99.2%",
+            "0.05s Détection"
+          ]
+        },
+        {
+          "id": "adas",
+          "name": "La Sentinelle Active",
+          "role": "Assistance au Pilotage & Anticipation",
+          "target": "Idéal pour sécuriser vos actifs les plus précieux et réduire vos primes d'assurance.",
+          "description": "Transformez vos véhicules en forteresses intelligentes. La Sentinelle anticipe les collisions et les sorties de voie, offrant à votre exploitation une marge de manœuvre inédite face aux aléas de la route.",
+          "features": [
+            "Avertisseur de collision frontale (FCW)",
+            "Alerte de sortie de voie sans clignotant (LDW)",
+            "Protection proactive des piétons (PCW)",
+            "Surveillance des distances de sécurité (FPW)",
+            "Lecture automatique des limitations de vitesse"
+          ],
+          "imagePath": "/adas.png",
+          "stats": [
+            "4K Optics",
+            "360° Vision"
+          ]
+        },
+        {
+          "id": "dualcam",
+          "name": "Le Témoin Capital",
+          "role": "Preuve Visuelle & Transparence Totale",
+          "target": "L'outil ultime de protection juridique pour les gestionnaires en cas de litige.",
+          "description": "Ne laissez plus de place au doute. Documentez chaque seconde critique avec une précision chirurgicale. Une visibilité totale, de l'intérieur comme de l'extérieur, synchronisée directement avec votre cockpit de gestion.",
+          "features": [
+            "Double flux HD simultané (Route & Cabine)",
+            "Enregistrement automatique sur choc ou freinage",
+            "Streaming Cloud sécurisé pour levée de doute",
+            "Archive inviolable pré/post évènement",
+            "Vision nocturne infrarouge haute fidélité"
+          ],
+          "imagePath": "/dualcam.png",
+          "stats": [
+            "2K HDR",
+            "LTE Sync"
+          ]
+        }
+      ]
+    },
+    "software": {
+      "sectionLabel": "The Silent Guardian",
+      "sectionTitle": "Dormez tranquille.",
+      "sectionTitleHighlight": "L'IA veille sur eux.",
+      "bottomHook": "Le système gère 100% des alertes. Vous ne gérez que les exceptions.",
+      "bottomLink": "Explorer le système complet",
+      "features": [
+        {
+          "id": "tracking",
+          "title": "Contrôle Absolu",
+          "role": "Visibilité en Temps Réel",
+          "description": "Une vue d'aigle sur chaque mouvement. Plus aucune zone d'ombre dans vos opérations, de Dakar à Tambacounda.",
+          "imagePath": "/tracking.png",
+          "linkText": "Explorer le Module"
+        },
+        {
+          "id": "video",
+          "title": "Preuve Irréfutable",
+          "role": "Preuve & Action Directe",
+          "description": "En cas de litige, vous avez l'image. Désamorcez les conflits et protégez vos chauffeurs instantanément.",
+          "imagePath": "/video.png",
+          "linkText": "Demander une démo"
+        }
+      ]
+    },
+    "tripleImpact": {
+      "sectionLabel": "NOTRE PHILOSOPHIE",
+      "sectionTitle": "Le Triple Impact :",
+      "sectionTitleHighlight": "Une révolution tripartite",
+      "sectionDescription": "Parce qu'une flotte performante repose sur l'équilibre absolu entre sécurité, rentabilité et satisfaction client.",
+      "pillars": [
+        {
+          "title": "Pour vos Conducteurs",
+          "subtitle": "Sécurité & Accompagnement",
+          "description": "Ce ne sont pas des machines. Notre IA les protège comme un copilote bienveillant, réduisant le stress et les risques d'accident.",
+          "benefits": [
+            "Anti-Somnolence",
+            "Assistance Conduite",
+            "Protection Juridique"
+          ],
+          "imagePath": "/driver-peace.png"
+        },
+        {
+          "title": "Pour vos Gestionnaires",
+          "subtitle": "Sérénité & Contrôle",
+          "description": "Pilotez votre activité sans angle mort. Transformez chaque kilomètre en donnée exploitable pour maximiser la rentabilité.",
+          "benefits": [
+            "Économie Carburant",
+            "Maintenance Préventive",
+            "Traçabilité Totale"
+          ],
+          "imagePath": "/manager-serenity.png"
+        },
+        {
+          "title": "Pour vos Voyageurs",
+          "subtitle": "Confiance & Confort",
+          "description": "La garantie d'un voyage sûr. Une flotte sécurisée est votre meilleur atout pour fidéliser une clientèle exigeante.",
+          "benefits": [
+            "Trajets Sécurisés",
+            "Ponctualité Améliorée",
+            "Service Premium"
+          ],
+          "imagePath": "/traveler-trust.png"
+        }
+      ]
+    },
+    "roiCalculator": {
+      "sectionLabel": "Votre Potentiel de Croissance",
+      "sectionTitle": "Simulateur de",
+      "sectionTitleHighlight": "Rentabilité",
+      "sectionDescription": "Mesurez l'impact financier direct de la digitalisation de votre flotte. Des résultats basés sur des performances réelles.",
+      "labels": {
+        "sector": "Secteur d'activité",
+        "fleetSize": "Taille de la Flotte",
+        "fuelCost": "Budget Carburant Mensuel (FCFA)",
+        "accidents": "Sinistres par An",
+        "maintenanceCost": "Budget Maintenance Mensuel (FCFA)",
+        "calculateButton": "Calculer mon ROI",
+        "roiEstimated": "ROI Estimé",
+        "netProfit": "Profit Net Annuel",
+        "annualSavings": "Économies annuelles",
+        "solutionCost": "Coût annuel solution",
+        "payback": "Amortissement (Payback)",
+        "emailPrompt": "Recevoir mon rapport officiel",
+        "emailButton": "Envoyer",
+        "emailDisclaimer": "En cliquant sur envoyer, vous acceptez de recevoir une étude personnalisée basée sur ces chiffres."
+      },
+      "sectors": [
+        "Transport Public",
+        "Logistique & Fret",
+        "BTP & Construction",
+        "Location de Véhicules",
+        "Services d'Urgence"
+      ]
+    },
+    "offres": {
+      "sectionLabel": "Tarification Transparente",
+      "sectionTitle": "Investir dans la",
+      "sectionTitleHighlight": "certitude.",
+      "sectionDescription": "Des options claires, sans coûts cachés. Choisissez le niveau de contrôle qui correspond à vos ambitions.",
+      "ctaButton": "Demander une démo",
+      "bottomText": "Une flotte de plus de 50 véhicules ?",
+      "bottomLink": "Discuter d'une solution sur-mesure",
+      "packs": [
+        {
+          "name": "Pack Basic",
+          "tagline": "L'essentiel pour démarrer",
+          "features": [
+            "Géolocalisation",
+            "Gestion de Carburant",
+            "Rapport"
+          ],
+          "popular": false
+        },
+        {
+          "name": "Pack Tranquillité",
+          "tagline": "L'excellence opérationnelle",
+          "features": [
+            "Géolocalisation temps réel",
+            "Gestion de Carburant (FLS)",
+            "Gestion de la maintenance",
+            "Analyse comportementale avancée",
+            "Coaching éco-conduite en temps réel",
+            "Rapport"
+          ],
+          "popular": true
+        },
+        {
+          "name": "Pack Standard",
+          "tagline": "Le choix équilibré",
+          "features": [
+            "Géolocalisation",
+            "Gestion de Carburant",
+            "Gestion de la maintenance",
+            "Rapport"
+          ],
+          "popular": false
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Transformez votre flotte <br /> <span class=\"text-teal\">dès aujourd'hui.</span>",
+      "titleHighlight": "dès aujourd'hui.",
+      "description": "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec AI-Karangué.",
+      "ctaPrimary": "Commencer maintenant",
+      "ctaSecondary": "Demander un devis"
+    }
+  },
+  "industries": {
+    "hero": {
+      "label": "Solutions Sectorielles",
+      "title": "Des solutions",
+      "titleHighlight": "sur mesure",
+      "description": "Chaque industrie a ses règles, ses risques et ses opportunités. Nous avons conçu des solutions natives pour chacune d'elles."
+    },
+    "sectors": [
+      {
+        "id": "public_transport",
+        "title": "Transport",
+        "highlight": "Public",
+        "description": "Optimisez chaque trajet. Notre solution réduit vos coûts opérationnels et diminue drastiquement les risques d'accidents grâce à l'IA.",
+        "stats": [
+          {
+            "label": "Coûts Opérationnels",
+            "value": "-30%"
+          },
+          {
+            "label": "Taux d'Accidents",
+            "value": "-50%"
+          },
+          {
+            "label": "Sécurité Passagers",
+            "value": "Maximale"
+          }
+        ],
+        "ctaText": "Découvrir la solution Bus",
+        "imagePath": "/industry-bus.png",
+        "type": "stats"
+      },
+      {
+        "id": "logistics",
+        "title": "Logistique",
+        "highlight": "& Fret",
+        "description": "Le carburant est votre premier poste de dépense. Nos sondes connectées de haute précision vous rendent le contrôle total sur chaque goutte.",
+        "stats": [
+          {
+            "label": "Consommation",
+            "value": "-15%"
+          },
+          {
+            "label": "Vol Détecté",
+            "value": "0%"
+          }
+        ],
+        "ctaText": "Optimiser ma flotte",
+        "imagePath": "/industry-truck.png",
+        "type": "stats"
+      },
+      {
+        "id": "btp",
+        "title": "BTP &",
+        "highlight": "Mines",
+        "description": "Des environnements extrêmes demandent des solutions robustes. Geofencing de chantier, suivi d'activité moteur et maintenance préventive.",
+        "features": [
+          "Traçabilité des heures moteur",
+          "Sécurité périmétrique (Geofence)",
+          "Détection de chocs",
+          "Maintenance prédictive"
+        ],
+        "ctaText": "Solutions Industrielles",
+        "imagePath": "/industry-btp.png",
+        "type": "list"
+      },
+      {
+        "id": "vip_transport",
+        "title": "Transport",
+        "highlight": "VIP",
+        "description": "L'excellence n'attend pas. Garantissez un service irréprochable avec une confidentialité totale et une ponctualité suisse.",
+        "features": [
+          "Suivi de flotte discret",
+          "Protection VIP active",
+          "Conduite souple (Scoring)",
+          "Ponctualité garantie"
+        ],
+        "ctaText": "Offrir l'excellence",
+        "imagePath": "/sector_vip_transport_1767971076378.png",
+        "type": "list"
+      },
+      {
+        "id": "car_rental",
+        "title": "Location de",
+        "highlight": "Voiture",
+        "description": "Protégez vos actifs contre le vol et les impayés. Immobilisation à distance et suivi précis pour une gestion de flotte sans stress.",
+        "stats": [
+          {
+            "label": "Taux de Recouvrement",
+            "value": "100%"
+          },
+          {
+            "label": "Impayés",
+            "value": "0%"
+          }
+        ],
+        "ctaText": "Sécuriser ma flotte",
+        "imagePath": "/sector_car_rental_1767971102612.png",
+        "type": "stats"
+      }
+    ],
+    "otherSectors": [],
+    "finalCta": {
+      "title": "Votre industrie a ses défis.",
+      "titleHighlight": "Nous avons les réponses.",
+      "description": "Ne laissez plus l'inconnu gérer vos opérations. Prenez le contrôle avec AI-Karangué.",
+      "ctaPrimary": "Demander une démo",
+      "ctaSecondary": "Voir les offres"
+    }
+  },
+  "offres": {
+    "hero": {
+      "label": "Tarification Transparente",
+      "title": "Investir dans la",
+      "highlight": "certitude.",
+      "description": "Des options claires, sans coûts cachés. Choisissez le niveau de contrôle qui correspond à vos ambitions."
+    },
+    "packs": [
+      {
+        "name": "Pack Basic",
+        "price": "Standard",
+        "tagline": "L'essentiel pour démarrer",
+        "features": [
+          "Géolocalisation",
+          "Gestion de Carburant",
+          "Rapport"
+        ],
+        "popular": false
+      },
+      {
+        "name": "Pack Tranquillité",
+        "price": "Premium",
+        "tagline": "L'excellence opérationnelle",
+        "features": [
+          "Géolocalisation temps réel",
+          "Gestion de Carburant (FLS)",
+          "Gestion de la maintenance",
+          "Analyse comportementale avancée",
+          "Coaching éco-conduite en temps réel",
+          "Rapport"
+        ],
+        "popular": true
+      },
+      {
+        "name": "Pack Standard",
+        "price": "Avancé",
+        "tagline": "Le choix équilibré",
+        "features": [
+          "Géolocalisation",
+          "Gestion de Carburant",
+          "Gestion de la maintenance",
+          "Rapport"
+        ],
+        "popular": false
+      }
+    ],
+    "comparison": {
+      "title": "Comparaison",
+      "highlight": "Détaillée",
+      "description": "Une vue d'ensemble pour faire le bon choix.",
+      "headers": [
+        "Caractéristique",
+        "Basic",
+        "Standard",
+        "Tranquillité"
+      ],
+      "rows": [
+        [
+          "Suivi GPS Temps Réel",
+          true,
+          true,
+          true
+        ],
+        [
+          "Historique des Trajets",
+          "3 Mois",
+          "12 Mois",
+          "Illimité"
+        ],
+        [
+          "Gestion Carburant (Sondes)",
+          true,
+          true,
+          true
+        ],
+        [
+          "Alertes Maintenance",
+          false,
+          true,
+          true
+        ],
+        [
+          "Immobilisation à Distance",
+          false,
+          true,
+          true
+        ],
+        [
+          "Score Éco-Conduite",
+          false,
+          true,
+          true
+        ],
+        [
+          "Caméras Embarquées (Dashcam)",
+          false,
+          false,
+          "Option"
+        ],
+        [
+          "DSM (Fatigue Detect)",
+          false,
+          false,
+          true
+        ],
+        [
+          "ADAS (Assistance Route)",
+          false,
+          false,
+          true
+        ],
+        [
+          "Support Prioritaire",
+          false,
+          false,
+          true
+        ]
+      ]
+    },
+    "services": {
+      "support": {
+        "title": "Support Platinum Dédié 24/7.",
+        "description": "Pas de chatbots frustrants. Une équipe d'ingénieurs basée à Dakar, prête à intervenir sur site ou à distance en moins de 2h.",
+        "label": "Équipe Locale"
+      },
+      "installation": {
+        "title": "Installation Express",
+        "description": "Déploiement de 50+ véhicules en moins d'une semaine. Nos techniciens viennent à vous, partout au Sénégal."
+      },
+      "updates": {
+        "title": "Mises à jour OTA",
+        "description": "Votre système s'améliore avec le temps. Mises à jour logicielles à distance incluses dans tous les packs."
+      },
+      "training": {
+        "title": "Formation Continue Incluse",
+        "description": "Nous formons vos gestionnaires et vos conducteurs à l'utilisation optimale de Karangué221 pour garantir un ROI immédiat."
+      }
+    },
+    "finalCta": {
+      "title": "Un doute ?",
+      "highlight": "Testez-nous.",
+      "description": "Demandez une analyse gratuite de votre flotte et découvrez combien vous pouvez économiser dès le premier mois.",
+      "ctaPrimary": "Contacter un expert"
+    }
+  },
+  "solutions": {
+    "hero": {
+      "title": "La Plateforme",
+      "titleHighlight": "Karangué221",
+      "subtitle": "La solution IoT + IA qui transforme votre flotte en",
+      "subtitleHighlight": "actif stratégique sécurisé et rentable.",
+      "ctaPrimary": "Calculer mon ROI",
+      "ctaSecondary": "Demander une démo",
+      "videoPath": "/hero.mp4"
+    },
+    "value": {
+      "sectionLabel": "Votre Réalité Actuelle",
+      "sectionTitle": "Chaque jour sans",
+      "sectionTitleHighlight": "Karangué221",
+      "sectionDescription": "Les gestionnaires de flotte perdent en moyenne",
+      "sectionDescriptionHighlight": "30% de leur budget",
+      "cards": [
+        {
+          "title": "Sauver des Vies",
+          "image": "/save-lives.png",
+          "icon": "Heart",
+          "problem": "Sans AI-Karangué",
+          "problemHighlight": "Accidents évitables, fatigue non détectée, comportements à risque invisibles.",
+          "solutionLabel": "AVEC KARANGUÉ221",
+          "benefits": [
+            "Détection somnolence IA",
+            "Alertes collision imminente",
+            "Scoring comportemental",
+            "Preuves vidéo 360°"
+          ],
+          "statValue": "-40%",
+          "statLabel": "D'accidents"
+        },
+        {
+          "title": "Gagner du Temps",
+          "image": "/save-time.png",
+          "icon": "Clock",
+          "problem": "Sans AI-Karangué",
+          "problemHighlight": "Gestion manuelle, rapports Excel, recherche d'informations, temps perdu.",
+          "solutionLabel": "AVEC KARANGUÉ221",
+          "benefits": [
+            "Visibilité flotte en 1 clic",
+            "Rapports automatisés",
+            "Alertes instantanées",
+            "Maintenance prédictive"
+          ],
+          "statValue": "10h",
+          "statLabel": "Économisées / sem"
+        },
+        {
+          "title": "Réduire les Coûts",
+          "image": "/save-money.png",
+          "icon": "DollarSign",
+          "problem": "Sans AI-Karangué",
+          "problemHighlight": "Vols de carburant, surconsommation, pannes coûteuses.",
+          "solutionLabel": "AVEC KARANGUÉ221",
+          "benefits": [
+            "Stop vol carburant (FLS)",
+            "Optimisation consommation",
+            "Réduction maintenance",
+            "Baisse primes assurance"
+          ],
+          "statValue": "3.5x",
+          "statLabel": "Retour sur Invest."
+        }
+      ]
+    },
+    "capabilities": {
+      "sectionLabel": "Plateforme SaaS Complète",
+      "sectionTitle": "Tout ce dont vous avez besoin.",
+      "sectionTitleHighlight": "En un seul endroit.",
+      "sectionDescription": "Karangué221 centralise l'ensemble de vos opérations de flotte dans une interface intuitive et puissante.",
+      "modules": [
+        {
+          "title": "Localisation & Tracking",
+          "impact": "Optimisation routes, sécurité flotte",
+          "features": [
+            "GPS temps réel haute précision",
+            "Historique trajets illimité",
+            "Rapports de parcours détaillés",
+            "Notifications entrée/sortie zones"
+          ]
+        },
+        {
+          "title": "Gestion Carburant",
+          "impact": "Réduction coûts carburant -15%",
+          "features": [
+            "Contrôle niveau FLS (99% précision)",
+            "Monitoring consommation par trajet",
+            "Détection & prévention vols",
+            "Analytics économies carburant"
+          ]
+        },
+        {
+          "title": "Maintenance Prédictive",
+          "impact": "Contrôle coûts, moins de pannes",
+          "features": [
+            "Intervalles service automatiques",
+            "Rapports usure & kilométrage",
+            "Alertes maintenance préventive",
+            "Historique interventions"
+          ]
+        },
+        {
+          "title": "Comportement Conducteur",
+          "impact": "Conduite sûre, -12% consommation",
+          "features": [
+            "Eco-driving scoring personnalisé",
+            "Analytics comportements à risque",
+            "Identification conducteur (iButton/RFID)",
+            "Rapports performance individuels"
+          ]
+        },
+        {
+          "title": "Vidéo Intelligence",
+          "impact": "Protection juridique, résolution litiges",
+          "features": [
+            "Streaming live multi-caméras",
+            "Enregistrements basés événements",
+            "Archive Cloud sécurisée",
+            "Preuves légales horodatées"
+          ]
+        },
+        {
+          "title": "Sécurité Cargaison",
+          "impact": "Prévention pertes financières",
+          "features": [
+            "Tracking marchandises en transit",
+            "Capteurs portes & ouvertures",
+            "Alertes accès non autorisé",
+            "Rapports livraisons"
+          ]
+        },
+        {
+          "title": "Monitoring Température",
+          "impact": "Qualité préservée, conformité",
+          "features": [
+            "Capteurs température en continu",
+            "Rapports conformité chaîne froid",
+            "Alertes dépassement seuils",
+            "Traçabilité produits sensibles"
+          ]
+        },
+        {
+          "title": "Contrôle Charge Essieux",
+          "impact": "Éviter pertes liées amendes",
+          "features": [
+            "Capteurs poids en temps réel",
+            "Rapports charge par essieu",
+            "Alertes surcharge",
+            "Prévention amendes"
+          ]
+        },
+        {
+          "title": "Business Intelligence",
+          "impact": "Décisions data-driven, efficacité",
+          "features": [
+            "Dashboards personnalisables",
+            "Intégration ERP/API",
+            "Rapports automatisés sur-mesure",
+            "Export données (Excel/PDF)"
+          ]
+        }
+      ]
+    },
+    "hardware": {
+      "sectionLabel": "Immersion Technologique",
+      "sectionTitle": "La sécurité",
+      "sectionTitleHighlight": "vue de l'intérieur.",
+      "sectionDescription": "Découvrez nos trois piliers technologiques Teltonika intégrés nativement à Karangué221 pour une sécurité absolue.",
+      "items": [
+        {
+          "id": "dsm",
+          "label": "Surveillance Conducteur",
+          "title": "DSM",
+          "description": "Un système d'intelligence artificielle qui scanne le visage du conducteur en temps réel pour détecter les signes de fatigue et les distractions.",
+          "highlight1": "signes de fatigue",
+          "highlight2": "distractions",
+          "benefitsLabel": "Bénéfices Karangué221",
+          "benefits": [
+            "Détection fatigue & somnolence",
+            "Alerte distraction (téléphone)",
+            "Vérification port de ceinture",
+            "Preuve vidéo comportementale"
+          ],
+          "ctaText": "Voir le DSM en action",
+          "imagePath": "/VUEDSM.png",
+          "deviceImagePath": "/device-dsm.png"
+        },
+        {
+          "id": "adas",
+          "label": "Assistance Route",
+          "title": "ADAS",
+          "description": "Une caméra savante qui lit la route devant le véhicule. Elle anticipe les dangers et alerte le conducteur via le Coach Conduite avant l'impact.",
+          "highlight1": "Coach Conduite",
+          "highlight2": "",
+          "benefitsLabel": "Bénéfices Karangué221",
+          "benefits": [
+            "Alerte collision frontale (FCW)",
+            "Alerte de sortie de voie (LDW)",
+            "Détection piétons & obstacles",
+            "Lecture panneaux vitesse"
+          ],
+          "ctaText": "Découvrir l'ADAS",
+          "imagePath": "/VUEADAS.png",
+          "deviceImagePath": "/device-adas.png"
+        },
+        {
+          "id": "dualcam",
+          "label": "Preuve Vidéo",
+          "title": "DualCam",
+          "description": "Un système double objectif connectés qui filme simultanément la route et l'habitacle. Les séquences d'incidents sont automatiquement envoyées sur le cloud Karangué221.",
+          "highlight1": "cloud Karangué221",
+          "highlight2": "",
+          "benefitsLabel": "Bénéfices Karangué221",
+          "benefits": [
+            "Preuve irréfutable (fraude/accident)",
+            "Exonération conducteur (non-responsable)",
+            "Formation par l'image",
+            "Protection contre vol marchandise"
+          ],
+          "ctaText": "Voir les preuves DualCam",
+          "imagePath": "/VUEDUALCAM.png",
+          "deviceImagePath": "/device-dualcam.png"
+        }
+      ]
+    },
+    "ecosystem": {
+      "title": "Un Écosystème Connecté",
+      "items": [
+        {
+          "title": "Sécurité Active",
+          "description": "Détection des risques avant l'accident (DSM + ADAS)"
+        },
+        {
+          "title": "Preuve Différée",
+          "description": "Documentation vidéo cloud des incidents (DualCam)"
+        },
+        {
+          "title": "Résultat Mesurable",
+          "description": "-50% d'accidents en année 1"
+        }
+      ]
+    },
+    "platformDetail": {
+      "sectionLabel": "Le Cerveau des Opérations",
+      "sectionTitle": "Pilotez tout depuis",
+      "sectionTitleHighlight": "une interface unique.",
+      "sectionDescription": "Finies les multiples plateformes. Retrouvez téléavertissement, vidéo et analyse de performance au même endroit.",
+      "features": {
+        "tracking": {
+          "title": "Visibilité Totale",
+          "description": "Suivez vos véhicules en temps réel sur une carte interactive fluide. Historique de trajet, arrêts, et statuts moteur en un coup d'œil.",
+          "statusLabel": "Statut Flotte",
+          "statusValue": "54 Véhicules Actifs",
+          "tags": [
+            "Position GPS Exacte",
+            "Replay Trajet",
+            "Alertes Sortie de Zone",
+            "Identification Chauffeur"
+          ],
+          "imagePath": "/tracking.png"
+        },
+        "dashboard": {
+          "title": "Décisions Data-Driven",
+          "description": "Transformez vos données brutes en actions concrètes. Rapports de consommation, scores d'éco-conduite, et maintenance prédictive.",
+          "scoreLabel": "Score Éco-Conduite",
+          "scoreValue": "94/100",
+          "savingsLabel": "Économie Carburant",
+          "savingsValue": "-15%",
+          "imagePath": "/dashboard.png"
+        },
+        "video": {
+          "title": "Vidéo à la Demande",
+          "description": "Accédez aux caméras en direct ou revivez les incidents passés. Preuves HD téléchargeables instantanément.",
+          "ctaText": "Demander une démo",
+          "imagePath": "/video focus.png"
+        },
+        "geofencing": {
+          "title": "Geofencing Intelligent",
+          "description": "Définissez des zones autorisées (dépôts, clients) ou interdites. Soyez alerté instantanément par email/SMS.",
+          "alertLabel": "Alerte: Sortie de Zone",
+          "imagePath": "/geofencing.png"
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Prêt à transformer",
+      "titleHighlight": "votre flotte ?",
+      "description": "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec Karangué221.",
+      "ctaPrimary": "Calculer mon ROI",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "footer": {
+    "mission": "Bâtir le futur de la <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">sécurité routière.</span>",
+    "description": "AI-Karangué est une solution haut de gamme éditée par <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, fusionnant vision par ordinateur et télématique de pointe.",
+    "address": "Ouakam<br /> Dakar, Sénégal",
+    "phone": "+221 77 314 70 59",
+    "copyright": "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
+    "trademark": "AI-Karangué ®",
+    "social": {
+      "linkedin": "https://www.linkedin.com/showcase/ai-karangue/",
+      "whatsapp": "https://whatsapp.com/channel/0029Vb7LNBABfxo2NI33Uq0S",
+      "instagram": "https://www.instagram.com/aikarangue/",
+      "facebook": "https://www.facebook.com/profile.php?id=61586184256156",
+      "youtube": "https://www.youtube.com/@AI-KarangueAI-Karangue",
+      "tiktok": "https://www.tiktok.com/@aikarangue"
+    },
+    "newsletter": {
+      "placeholder": "votre.email@entreprise.com",
+      "buttonText": "S'abonner"
+    },
+    "navigation": {
+      "technology": {
+        "title": "Technologie",
+        "links": [
+          {
+            "label": "Karangué221",
+            "href": "/#hardware"
+          },
+          {
+            "label": "Intelligence IA",
+            "href": "/#software"
+          },
+          {
+            "label": "Analyse Vidéo",
+            "href": "/#software"
+          },
+          {
+            "label": "Cloud Dashboard",
+            "href": "/#software"
+          }
+        ]
+      },
+      "sectors": {
+        "title": "Secteurs",
+        "links": [
+          {
+            "label": "Transport Public",
+            "href": "/industries#transport"
+          },
+          {
+            "label": "Logistique Pro",
+            "href": "/industries#logistics"
+          },
+          {
+            "label": "Assurance Connectée",
+            "href": "/industries#btp"
+          }
+        ]
+      },
+      "company": {
+        "title": "Art'Beau-Rescence"
+      }
+    },
+    "legal": {
+      "links": [
+        "Confidentialité",
+        "Cookies",
+        "Légal"
+      ]
+    }
+  }
+}

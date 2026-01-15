@@ -249,6 +249,55 @@ export interface SiteContent {
             links: string[];
         };
     };
+    meta: {
+        title: string;
+        description: string;
+    };
+    contact: {
+        hero: {
+            label: string;
+            title: string;
+            description: string;
+            features: string[];
+        };
+        info: {
+            phone: { label: string; value: string };
+            email: { label: string; value: string };
+            address: { label: string; value: string };
+        };
+        form: {
+            title: string;
+            description: string;
+            labels: {
+                firstName: string;
+                lastName: string;
+                email: string;
+                company: string;
+                fleetSize: string;
+                message: string;
+                fleetOptions: string[];
+                submit: string;
+                sending: string;
+                success: string;
+                error: string;
+                privacy: string;
+            };
+            placeholders: {
+                firstName: string;
+                lastName: string;
+                email: string;
+                company: string;
+                message: string;
+            };
+        };
+    };
+    navbar: {
+        links: Array<{
+            name: string;
+            href: string;
+        }>;
+        cta: string;
+    };
     industries: {
         hero: {
             label: string;
@@ -292,6 +341,7 @@ export interface SiteContent {
             price: string;
             tagline: string;
             features: string[];
+            ctaText: string;
             popular: boolean;
         }>;
         comparison: {
@@ -325,6 +375,22 @@ export interface SiteContent {
             highlight: string;
             description: string;
             ctaPrimary: string;
+        };
+    };
+    blog: {
+        hero: {
+            label: string;
+            title: string;
+            highlight: string;
+            description: string;
+        };
+        post: {
+            backToBlog: string;
+            notFound: string;
+            share: string;
+            ctaTitle: string;
+            ctaSolutions: string;
+            ctaContact: string;
         };
     };
 }
@@ -798,6 +864,61 @@ export const defaultContent: SiteContent = {
             links: ["Confidentialité", "Cookies", "Légal"]
         }
     },
+    meta: {
+        title: "AI-Karangué | Tranquillité d'Esprit & Gestion de Flotte Intelligente",
+        description: "Solution leader de télématique et gestion de flotte au Sénégal. Karangué221 offre la sérénité totale aux conducteurs, managers et voyageurs grâce au Triple Impact."
+    },
+    contact: {
+        hero: {
+            label: "Démonstration Personnalisée",
+            title: "Passez au niveau supérieur.",
+            description: "Découvrez comment AI-Karangué transforme vos données brutes en leviers de rentabilité. Réservez une démo de 30 minutes avec un expert sectoriel.",
+            features: [
+                "Audit gratuit de votre flotte actuelle",
+                "Simulation de ROI en direct",
+                "Plan de déploiement sur-mesure"
+            ]
+        },
+        info: {
+            phone: { label: "Téléphone", value: "+221 77 314 70 59" },
+            email: { label: "Email", value: "contact@aikarangue.com" },
+            address: { label: "Siège", value: "Dakar, Sénégal" }
+        },
+        form: {
+            title: "Parlons de votre projet",
+            description: "Remplissez ce formulaire, nous vous recontactons sous 24h ouvrées.",
+            labels: {
+                firstName: "Prénom *",
+                lastName: "Nom *",
+                email: "Email *",
+                company: "Entreprise *",
+                fleetSize: "Taille de la flotte",
+                message: "Message (Facultatif)",
+                fleetOptions: ["1 - 10 véhicules", "11 - 50 véhicules", "51 - 200 véhicules", "200+ véhicules"],
+                submit: "Demander une démo",
+                sending: "Envoi en cours...",
+                success: "Message envoyé !",
+                error: "Erreur lors de l'envoi",
+                privacy: "En cliquant, vous acceptez notre politique de confidentialité. Vos données sont sécurisées."
+            },
+            placeholders: {
+                firstName: "John",
+                lastName: "Doe",
+                email: "john@entreprise.com",
+                company: "Votre Société",
+                message: "Dites-nous en plus sur vos besoins..."
+            }
+        }
+    },
+    navbar: {
+        links: [
+            { name: "Solutions", href: "/solutions" },
+            { name: "Industries", href: "/industries" },
+            { name: "Nos Offres", href: "/offres" },
+            { name: "Blog", href: "/blog" }
+        ],
+        cta: "Demander une démo"
+    },
     industries: {
         hero: {
             label: "Solutions Sectorielles",
@@ -915,23 +1036,26 @@ export const defaultContent: SiteContent = {
         packs: [
             {
                 name: "Pack Basic",
-                price: "Standard",
-                tagline: "L'essentiel pour démarrer",
-                features: ["Géolocalisation", "Gestion de Carburant", "Rapport"],
+                price: "Sur devis",
+                tagline: "L'essentiel pour débuter",
+                features: ["Géolocalisation TR", "Coupe-moteur", "Géo-clôtures", "App mobile"],
+                ctaText: "Demander une démo",
                 popular: false
             },
             {
                 name: "Pack Tranquillité",
-                price: "Premium",
-                tagline: "L'excellence opérationnelle",
-                features: ["Géolocalisation temps réel", "Gestion de Carburant (FLS)", "Gestion de la maintenance", "Analyse comportementale avancée", "Coaching éco-conduite en temps réel", "Rapport"],
+                price: "Sur devis",
+                tagline: "Le Triple Impact complet",
+                features: ["Pack Basic +", "Boîtier déconnectable", "Logiciel IA Expert", "Support Prioritaire"],
+                ctaText: "Demander une démo",
                 popular: true
             },
             {
                 name: "Pack Standard",
-                price: "Avancé",
-                tagline: "Le choix équilibré",
-                features: ["Géolocalisation", "Gestion de Carburant", "Gestion de la maintenance", "Rapport"],
+                price: "Sur devis",
+                tagline: "Performance & Analyse",
+                features: ["Sonde de carburant", "Rapports ECO-conduite", "Maintenance préventive"],
+                ctaText: "Demander une démo",
                 popular: false
             }
         ],
@@ -977,6 +1101,22 @@ export const defaultContent: SiteContent = {
             highlight: "Testez-nous.",
             description: "Demandez une analyse gratuite de votre flotte et découvrez combien vous pouvez économiser dès le premier mois.",
             ctaPrimary: "Contacter un expert"
+        }
+    },
+    blog: {
+        hero: {
+            label: "Insights & Vision",
+            title: "NOTRE",
+            highlight: "PERSPECTIVE.",
+            description: "Analyses, innovations et visions sur la transformation de la mobilité en Afrique par l'intelligence artificielle."
+        },
+        post: {
+            backToBlog: "RETOUR AU BLOG",
+            notFound: "Article introuvable",
+            share: "PARTAGER L'ARTICLE",
+            ctaTitle: "PRÊT À RÉVOLUTIONNER <br /> <span class=\"text-teal underline decoration-white/10 underline-offset-8\">VOTRE FLOTTE ?</span>",
+            ctaSolutions: "DÉCOUVRIR NOS SOLUTIONS",
+            ctaContact: "NOUS CONTACTER"
         }
     }
 };

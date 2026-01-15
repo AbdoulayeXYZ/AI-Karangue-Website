@@ -7,10 +7,14 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { SiteContent, defaultContent } from "@/lib/content";
 
-export const Navbar = () => {
+export const Navbar = ({ content }: { content?: SiteContent["navbar"] }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const navbarContent = content || defaultContent.navbar;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,12 +24,7 @@ export const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const navLinks = [
-        { name: "Solutions", href: "/solutions" },
-        { name: "Industries", href: "/industries" },
-        { name: "Nos Offres", href: "/offres" },
-        { name: "Blog", href: "/blog" },
-    ];
+    const navLinks = navbarContent.links;
 
     return (
         <header
@@ -93,6 +92,7 @@ export const Navbar = () => {
 
                 {/* Actions - Precision Buttons */}
                 <div className="hidden lg:flex items-center gap-8">
+                    <LanguageSwitcher />
                     <Link
                         href="https://karangue221.artbeaurescence.sn"
                         target="_blank"
@@ -112,7 +112,7 @@ export const Navbar = () => {
                                 !isScrolled && "bg-teal text-white hover:shadow-[0_0_30px_rgba(0,128,128,0.4)]"
                             )}
                         >
-                            Demander une démo
+                            {navbarContent.cta}
                         </Button>
                     </Link>
                 </div>
@@ -223,6 +223,9 @@ export const Navbar = () => {
                                     transition={{ delay: 0.5 }}
                                     className="space-y-4 pt-8 border-t border-white/10"
                                 >
+                                    <div className="flex justify-center mb-4">
+                                        <LanguageSwitcher />
+                                    </div>
                                     <Link
                                         href="https://karangue221.artbeaurescence.sn"
                                         target="_blank"
@@ -235,7 +238,7 @@ export const Navbar = () => {
                                     </Link>
                                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                                         <Button className="w-full h-14 rounded-xl bg-teal hover:bg-teal-light text-white font-black tracking-wider shadow-lg shadow-teal/20 hover:shadow-xl hover:shadow-teal/30 transition-all">
-                                            Demander une démo
+                                            {navbarContent.cta}
                                         </Button>
                                     </Link>
                                 </motion.div>
