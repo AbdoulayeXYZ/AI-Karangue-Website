@@ -772,6 +772,62 @@
       "ctaSecondary": "Request a demo"
     }
   },
+  "contact": {
+    "hero": {
+      "label": "GET IN TOUCH",
+      "title": "Let's transform your fleet together.",
+      "description": "Our experts are ready to analyze your needs and design a tailor-made solution for your business.",
+      "features": [
+        "Free fleet analysis",
+        "Personalized demonstration",
+        "Response within 24 hours"
+      ]
+    },
+    "info": {
+      "phone": {
+        "label": "Phone",
+        "value": "+221 77 314 70 59"
+      },
+      "email": {
+        "label": "Email",
+        "value": "contact@artbeaurescence.sn"
+      },
+      "address": {
+        "label": "Address",
+        "value": "Ouakam, Dakar, Senegal"
+      }
+    },
+    "form": {
+      "title": "Request a demo",
+      "description": "Fill out this form and our team will contact you within 24 hours.",
+      "labels": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Professional Email",
+        "company": "Company",
+        "fleetSize": "Fleet Size",
+        "fleetOptions": [
+          "1-5 vehicles",
+          "6-20 vehicles",
+          "21-50 vehicles",
+          "50+ vehicles"
+        ],
+        "message": "Message (Optional)",
+        "submit": "Send Request",
+        "sending": "Sending...",
+        "success": "✓ Message sent!",
+        "error": "Error. Please try again.",
+        "privacy": "Your data is protected and will only be used to respond to your request."
+      },
+      "placeholders": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "j.doe@company.com",
+        "company": "Your Company",
+        "message": "Tell us about your needs..."
+      }
+    }
+  },
   "footer": {
     "mission": "Building the future of <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">road safety.</span>",
     "description": "AI-Karangué is a premium solution published by <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, merging computer vision and cutting-edge telematics.",

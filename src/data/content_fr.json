@@ -772,6 +772,62 @@
       "ctaSecondary": "Demander une démo"
     }
   },
+  "contact": {
+    "hero": {
+      "label": "CONTACTEZ-NOUS",
+      "title": "Transformons votre flotte ensemble.",
+      "description": "Nos experts sont prêts à analyser vos besoins et concevoir une solution sur-mesure pour votre entreprise.",
+      "features": [
+        "Analyse gratuite de votre flotte",
+        "Démonstration personnalisée",
+        "Réponse sous 24h"
+      ]
+    },
+    "info": {
+      "phone": {
+        "label": "Téléphone",
+        "value": "+221 77 314 70 59"
+      },
+      "email": {
+        "label": "Email",
+        "value": "contact@artbeaurescence.sn"
+      },
+      "address": {
+        "label": "Adresse",
+        "value": "Ouakam, Dakar, Sénégal"
+      }
+    },
+    "form": {
+      "title": "Demander une démo",
+      "description": "Remplissez ce formulaire et notre équipe vous contactera sous 24h.",
+      "labels": {
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "Email Professionnel",
+        "company": "Entreprise",
+        "fleetSize": "Taille de la Flotte",
+        "fleetOptions": [
+          "1-5 véhicules",
+          "6-20 véhicules",
+          "21-50 véhicules",
+          "50+ véhicules"
+        ],
+        "message": "Message (Optionnel)",
+        "submit": "Envoyer la Demande",
+        "sending": "Envoi en cours...",
+        "success": "✓ Message envoyé !",
+        "error": "Erreur. Veuillez réessayer.",
+        "privacy": "Vos données sont protégées et ne seront utilisées que pour répondre à votre demande."
+      },
+      "placeholders": {
+        "firstName": "Jean",
+        "lastName": "Dupont",
+        "email": "j.dupont@entreprise.com",
+        "company": "Votre Entreprise",
+        "message": "Parlez-nous de vos besoins..."
+      }
+    }
+  },
   "footer": {
     "mission": "Bâtir le futur de la <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">sécurité routière.</span>",
     "description": "AI-Karangué est une solution haut de gamme éditée par <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, fusionnant vision par ordinateur et télématique de pointe.",
