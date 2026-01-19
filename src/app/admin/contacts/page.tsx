@@ -65,10 +65,10 @@ export default function ContactsPage() {
 
     const filteredContacts = contacts.filter(contact => {
         const matchesSearch =
-            contact.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            contact.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            contact.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            contact.company.toLowerCase().includes(searchTerm.toLowerCase());
+            (contact.firstName?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+            (contact.lastName?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+            (contact.email?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+            (contact.company?.toLowerCase() || "").includes(searchTerm.toLowerCase());
 
         const matchesStatus = statusFilter === "all" || contact.status === statusFilter;
 
