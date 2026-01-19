@@ -164,7 +164,7 @@ export default function AnalyticsPage() {
 
                 {/* Sources Chart */}
                 <div className="bg-white rounded-2xl border border-zinc-200 p-8">
-                    <h2 className="text-2xl font-black text-navy-dark mb-6">Sources de Trafic (Estimé)</h2>
+                    <h2 className="text-2xl font-black text-navy-dark mb-6">Sources de Trafic</h2>
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>

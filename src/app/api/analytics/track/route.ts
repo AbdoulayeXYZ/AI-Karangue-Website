@@ -10,7 +10,10 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Path is required" }, { status: 400 });
         }
 
-        await trackPageView(pagePath, isNewVisitor || false);
+        // Extract referrer from request headers
+        const referrer = request.headers.get('referer') || request.headers.get('referrer') || '';
+
+        await trackPageView(pagePath, isNewVisitor || false, referrer);
 
         return NextResponse.json({ success: true });
     } catch (error) {

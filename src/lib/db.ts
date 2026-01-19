@@ -18,14 +18,38 @@ function toCamelCase(obj: any): any {
 }
 
 // Analytics functions
-export async function trackPageView(path: string, isNewVisitor: boolean) {
+
+// Helper function to categorize referrer
+function categorizeReferrer(referrer: string): string {
+    if (!referrer || referrer === '') return 'direct';
+
+    const lowerRef = referrer.toLowerCase();
+
+    if (lowerRef.includes('google.')) return 'google';
+    if (lowerRef.includes('linkedin.')) return 'linkedin';
+    if (lowerRef.includes('facebook.') || lowerRef.includes('fb.')) return 'facebook';
+    if (lowerRef.includes('twitter.') || lowerRef.includes('x.com')) return 'twitter';
+    if (lowerRef.includes('instagram.')) return 'instagram';
+    if (lowerRef.includes('youtube.')) return 'youtube';
+
+    return 'other';
+}
+
+export async function trackPageView(path: string, isNewVisitor: boolean, referrer?: string) {
     const today = new Date().toISOString().split('T')[0];
+    const referrerCategory = categorizeReferrer(referrer || '');
 
     try {
         // Try to update existing record
         const result = await sql`
-      INSERT INTO analytics (date, visitors, page_views, pages)
-      VALUES (${today}, ${isNewVisitor ? 1 : 0}, 1, ${JSON.stringify({ [path]: 1 })}::jsonb)
+      INSERT INTO analytics (date, visitors, page_views, pages, referrers)
+      VALUES (
+        ${today}, 
+        ${isNewVisitor ? 1 : 0}, 
+        1, 
+        ${JSON.stringify({ [path]: 1 })}::jsonb,
+        ${JSON.stringify({ [referrerCategory]: 1 })}::jsonb
+      )
       ON CONFLICT (date) 
       DO UPDATE SET
         visitors = analytics.visitors + ${isNewVisitor ? 1 : 0},
@@ -34,6 +58,11 @@ export async function trackPageView(path: string, isNewVisitor: boolean) {
           COALESCE(analytics.pages, '{}'::jsonb),
           ARRAY[${path}],
           to_jsonb(COALESCE((analytics.pages->>${path})::int, 0) + 1)
+        ),
+        referrers = jsonb_set(
+          COALESCE(analytics.referrers, '{}'::jsonb),
+          ARRAY[${referrerCategory}],
+          to_jsonb(COALESCE((analytics.referrers->>${referrerCategory})::int, 0) + 1)
         ),
         updated_at = NOW()
       RETURNING *;

@@ -57,6 +57,40 @@ export async function GET() {
             };
         });
 
+        // Calculate real traffic sources from referrers
+        const referrersMap: Record<string, number> = {};
+        analytics.forEach((day: any) => {
+            const referrers = day.referrers || {};
+            Object.entries(referrers).forEach(([source, count]) => {
+                referrersMap[source] = (referrersMap[source] || 0) + (count as number);
+            });
+        });
+
+        // Calculate total and percentages
+        const totalReferrers = Object.values(referrersMap).reduce((sum, count) => sum + count, 0);
+
+        // Define colors for each source
+        const sourceColors: Record<string, string> = {
+            'direct': '#008080',      // Teal
+            'google': '#4285F4',      // Google Blue
+            'linkedin': '#0077B5',    // LinkedIn Blue
+            'facebook': '#1877F2',    // Facebook Blue
+            'twitter': '#1DA1F2',     // Twitter Blue
+            'instagram': '#E4405F',   // Instagram Pink
+            'youtube': '#FF0000',     // YouTube Red
+            'other': '#94A3B8'        // Gray
+        };
+
+        // Format source data with real percentages
+        const sourceData = Object.entries(referrersMap)
+            .map(([source, count]) => ({
+                name: source.charAt(0).toUpperCase() + source.slice(1),
+                value: totalReferrers > 0 ? Math.round((count / totalReferrers) * 100) : 0,
+                color: sourceColors[source] || '#94A3B8'
+            }))
+            .filter(item => item.value > 0) // Only show sources with visits
+            .sort((a, b) => b.value - a.value); // Sort by value descending
+
         return NextResponse.json({
             kpis: {
                 totalVisitors,
@@ -66,11 +100,8 @@ export async function GET() {
             },
             trafficData,
             pageData,
-            sourceData: [
-                { name: "Direct", value: 65, color: "#008080" },
-                { name: "Google", value: 15, color: "#003366" },
-                { name: "LinkedIn", value: 10, color: "#0077B5" },
-                { name: "Autres", value: 10, color: "#94A3B8" },
+            sourceData: sourceData.length > 0 ? sourceData : [
+                { name: "Direct", value: 100, color: "#008080" }
             ]
         });
 
