@@ -27,7 +27,8 @@ interface DashboardStats {
 
 interface ContactRequest {
     id: string;
-    fullName: string;
+    firstName: string;
+    lastName: string;
     email: string;
     company: string;
     submittedAt: string;
@@ -350,10 +351,10 @@ export default function AdminDashboard() {
                                         <td className="px-6 py-4 bg-zinc-50/50 group-hover:bg-white rounded-l-2xl group-hover:shadow-lg border-y border-l border-transparent group-hover:border-zinc-100 transition-all">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-navy-dark to-navy-light text-white flex items-center justify-center text-xs font-bold">
-                                                    {contact.fullName?.charAt(0) || <User className="w-4 h-4" />}
+                                                    {contact.firstName?.charAt(0) || <User className="w-4 h-4" />}
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold text-navy-dark text-sm">{contact.fullName || "Utilisateur inconnu"}</div>
+                                                    <div className="font-bold text-navy-dark text-sm">{`${contact.firstName || ''} ${contact.lastName || ''}`.trim() || "Utilisateur inconnu"}</div>
                                                     <div className="text-xs text-navy/40 font-medium">{contact.email}</div>
                                                 </div>
                                             </div>
