@@ -5,6 +5,18 @@ export { sql };
  * Database utility functions for Vercel Postgres
  */
 
+// Helper function to convert snake_case to camelCase
+function toCamelCase(obj: any): any {
+    if (!obj || typeof obj !== 'object') return obj;
+
+    const converted: any = {};
+    for (const key in obj) {
+        const camelKey = key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+        converted[camelKey] = obj[key];
+    }
+    return converted;
+}
+
 // Analytics functions
 export async function trackPageView(path: string, isNewVisitor: boolean) {
     const today = new Date().toISOString().split('T')[0];
@@ -92,7 +104,7 @@ export async function getAllContacts() {
       SELECT * FROM contacts 
       ORDER BY submitted_at DESC;
     `;
-        return result.rows;
+        return result.rows.map(toCamelCase);
     } catch (error) {
         console.error('Error getting contacts:', error);
         throw error;
@@ -140,7 +152,7 @@ export async function getAllSubscribers() {
       WHERE status = 'active'
       ORDER BY subscribed_at DESC;
     `;
-        return result.rows;
+        return result.rows.map(toCamelCase);
     } catch (error) {
         console.error('Error getting subscribers:', error);
         throw error;
