@@ -2,8 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Button } from "@/components/ui/Button";
 import { SiteContent } from "@/lib/content";
 import {
@@ -22,7 +20,6 @@ interface SolutionsClientProps {
 export default function SolutionsClient({ content }: SolutionsClientProps) {
     return (
         <main className="min-h-screen bg-white selection:bg-teal selection:text-white overflow-hidden">
-            <Navbar content={content.navbar} />
 
             {/* Hero - The Promise */}
             <section className="relative min-h-screen flex items-center justify-center bg-navy-dark pt-20 overflow-hidden">
@@ -697,7 +694,7 @@ export default function SolutionsClient({ content }: SolutionsClientProps) {
                 </div>
             </section>
 
-            <Footer content={content.footer} />
+
         </main>
     );
 }

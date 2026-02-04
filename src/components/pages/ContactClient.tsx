@@ -2,8 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, CheckCircle2, Mail, MapPin, Phone } from "lucide-react";
 import { SiteContent } from "@/lib/content";
@@ -15,7 +13,6 @@ interface ContactClientProps {
 export default function ContactClient({ content }: ContactClientProps) {
     return (
         <main className="min-h-screen bg-navy-dark selection:bg-teal selection:text-white">
-            <Navbar content={content.navbar} />
 
             <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 px-6">
                 <div className="container mx-auto max-w-7xl">
@@ -192,7 +189,7 @@ export default function ContactClient({ content }: ContactClientProps) {
                 </div>
             </section>
 
-            <Footer content={content.footer} />
+
         </main>
     );
 }

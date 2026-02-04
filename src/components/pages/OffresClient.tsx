@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Check, Star, Zap, ShieldCheck, CheckCircle2, Crown, ArrowRight, Heart, Globe, Headphones } from "lucide-react";
@@ -51,7 +49,6 @@ export const OffresClient = ({ content }: { content: SiteContent }) => {
 
     return (
         <main className="min-h-screen bg-zinc-50 selection:bg-teal selection:text-white">
-            <Navbar content={content.navbar} />
 
             {/* Hero Header */}
             <section className="pt-48 pb-32 relative overflow-hidden bg-navy-dark">
@@ -310,7 +307,7 @@ export const OffresClient = ({ content }: { content: SiteContent }) => {
                 </div>
             </section>
 
-            <Footer content={content.footer} />
+
         </main>
     );
 };

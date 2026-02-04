@@ -1,11 +1,9 @@
-import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { HardwareShowcase } from "@/components/sections/HardwareShowcase";
 import { SoftwareShowcase } from "@/components/sections/SoftwareShowcase";
 import { TripleImpact } from "@/components/sections/TripleImpact";
 import { ROICalculator } from "@/components/sections/ROICalculator";
 import { Offres } from "@/components/sections/Offres";
-import { Footer } from "@/components/sections/Footer";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -16,7 +14,6 @@ export default async function Home() {
 
   return (
     <main className="relative min-h-screen selection:bg-teal selection:text-white bg-white overflow-hidden">
-      <Navbar content={content.navbar} />
       <Hero content={content.home.hero} />
 
       {/* 1. Condensed Direct Manifesto */}
@@ -82,8 +79,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
-      <Footer content={content.footer} />
     </main>
   );
 }

@@ -2,8 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Bus, Truck, ShieldCheck, ChevronRight, BarChart3, Users, Zap, HardHat, Fuel, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -22,8 +20,6 @@ const iconMap: Record<string, any> = {
 export const IndustriesClient = ({ content }: { content: SiteContent }) => {
     return (
         <main className="min-h-screen bg-zinc-50 selection:bg-teal selection:text-white overflow-hidden">
-            <Navbar content={content.navbar} />
-
             {/* Hero Header - Immersive Dark */}
             <section className="pt-48 pb-32 bg-navy-dark relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/industry-truck.png')] bg-cover bg-center opacity-20 mix-blend-overlay scale-110 blur-sm" />
@@ -226,8 +222,6 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                     </motion.div>
                 </div>
             </section>
-
-            <Footer content={content.footer} />
         </main>
     );
 };

@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { Navbar } from "@/components/sections/Navbar";
+import { Footer } from "@/components/sections/Footer";
+import { getServerContent } from "@/lib/content-server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,19 +27,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const content = await getServerContent();
+
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AnalyticsTracker />
         <Analytics />
+        <Navbar content={content.navbar} />
         {children}
+        <Footer content={content.footer} />
       </body>
     </html>
   );
