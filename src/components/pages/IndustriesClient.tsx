@@ -83,7 +83,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                                     isDark ? "text-white order-2 lg:order-2" : "order-2 lg:order-1"
                                 )}>
                                     {/* Backgrounds */}
-                                    {!isDark && <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />}
+                                    {/* Noise effect removed as asset is missing */}
                                     {isDark && <div className="absolute right-0 top-0 w-64 h-64 bg-teal/10 rounded-full blur-[80px]" />}
 
                                     <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-turtler leading-[0.9] text-inherit">

@@ -786,7 +786,7 @@
     "info": {
       "phone": {
         "label": "Phone",
-        "value": "+221 77 314 70 59"
+        "value": "+221 78 786 48 48"
       },
       "email": {
         "label": "Email",
@@ -832,7 +832,7 @@
     "mission": "Building the future of <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">road safety.</span>",
     "description": "AI-Karangué is a premium solution published by <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, merging computer vision and cutting-edge telematics.",
     "address": "Ouakam<br /> Dakar, Senegal",
-    "phone": "+221 77 314 70 59",
+    "phone": "+221 78 786 48 48",
     "copyright": "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
     "trademark": "AI-Karangué ®",
     "social": {
@@ -858,6 +858,10 @@
           {
             "label": "AI Intelligence",
             "href": "/#software"
+          },
+          {
+            "label": "Personnel Tracking",
+            "href": "/tracking"
           },
           {
             "label": "Video Analysis",
@@ -897,5 +901,217 @@
         "Legal"
       ]
     }
+  },
+  "navbar": {
+    "links": [
+      {
+        "name": "Solutions",
+        "href": "/solutions"
+      },
+      {
+        "name": "Industries",
+        "href": "/industries"
+      },
+      {
+        "name": "Offers",
+        "href": "/offres"
+      },
+      {
+        "name": "Personnel Tracking",
+        "href": "/tracking"
+      },
+      {
+        "name": "Blog",
+        "href": "/blog"
+      }
+    ],
+    "cta": "Request a demo"
+  },
+  "tracking": {
+    "hero": {
+      "label": "MOBILE LOGISTICS",
+      "title": "Fleet Tracking &<br/>Delivery Performance",
+      "description": "The alliance of mobile technology and Cloud control for cutting-edge, secure, and transparent logistics.",
+      "imagePath": "/hero-sama.png"
+    },
+    "sama": {
+      "title": "Sama Karangué: Mobile Intelligence for Your Drivers",
+      "description": "Installed on your drivers' smartphones, it provides your staff with interactive and secure tools for smooth and transparent delivery execution.",
+      "features": {
+        "title": "Key Features",
+        "items": [
+          {
+            "title": "Precision GPS Location",
+            "description": "Each smartphone becomes an advanced GPS tracker, transmitting position, speed, and route in real-time.",
+            "icon": "MapPin"
+          },
+          {
+            "title": "Secure Chat",
+            "description": "Seamless coordination between drivers and dispatchers with exchange of messages, photos, and QR codes.",
+            "icon": "MessageSquare"
+          },
+          {
+            "title": "Emergency SOS Button",
+            "description": "Quick sending of alarm messages and automatic calling of help in critical situations.",
+            "icon": "AlertTriangle"
+          },
+          {
+            "title": "Proof of Delivery",
+            "description": "Scan QR codes and send timestamped, geolocated photos for irrefutable traceability.",
+            "icon": "Camera"
+          },
+          {
+            "title": "Real-time Status",
+            "description": "Immediate update of availability (Available, In Delivery, On Break).",
+            "icon": "UserCheck"
+          },
+          {
+            "title": "Black Box",
+            "description": "Local data storage for up to 30 days in case of internet connection loss.",
+            "icon": "Database"
+          }
+        ]
+      },
+      "images": [
+        "/sama-1.png",
+        "/sama-2.png",
+        "/sama-3.png"
+      ]
+    },
+    "karangue221": {
+      "title": "Karangué221: The Intelligent Supervision Platform",
+      "description": "Your command center for effortless delivery fleet management. A full suite of tools for supervision, analysis, and optimization.",
+      "features": [
+        {
+          "title": "Real-time Tracking",
+          "description": "Visualize the exact position of each driver on a detailed interactive map.",
+          "icon": "Eye"
+        },
+        {
+          "title": "Advanced Geofencing",
+          "description": "Create custom zones and receive instant alerts upon entry and exit.",
+          "icon": "Map"
+        },
+        {
+          "title": "Intelligent Notifications",
+          "description": "Automatic alerts for speeding, low battery, or SOS messages.",
+          "icon": "Bell"
+        },
+        {
+          "title": "Detailed Analytics",
+          "description": "Comprehensive reports on routes, eco-driving, and personnel performance.",
+          "icon": "BarChart3"
+        },
+        {
+          "title": "Remote Configuration",
+          "description": "Adjust Sama Karangué app settings on smartphones remotely.",
+          "icon": "Settings"
+        },
+        {
+          "title": "Cost Optimization",
+          "description": "Analyze data to identify fuel savings opportunities.",
+          "icon": "TrendingDown"
+        }
+      ],
+      "imagePath": "/cloud-supervision.png"
+    },
+    "benefits": {
+      "title": "Key Benefits",
+      "items": [
+        {
+          "title": "Operational Efficiency",
+          "description": "Optimize routes and reduce downtime.",
+          "icon": "Zap"
+        },
+        {
+          "title": "Enhanced Safety",
+          "description": "Ensure driver safety with SOS alerts and real-time tracking.",
+          "icon": "Shield"
+        },
+        {
+          "title": "Quality of Service",
+          "description": "Provide reliable proof of delivery and meet your deadlines.",
+          "icon": "Star"
+        },
+        {
+          "title": "Data-Driven Decisions",
+          "description": "Access detailed analytics to identify trends and improve your processes.",
+          "icon": "PieChart"
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Ready to modernize your",
+      "highlight": "logistics operations?",
+      "description": "Join the companies that trust AI-Karangué for their mobile personnel management.",
+      "ctaPrimary": "Request a demo",
+      "imagePath": "/1.png"
+    },
+    "detailedFeatures": [
+      {
+        "id": "sos",
+        "title": "Safety & Emergency",
+        "description": "Drivers alert you instantly in case of emergency via an SOS button.",
+        "posterText": "La sécurité avant tout, vos livreurs vous alertent en cas d'urgence.",
+        "icon": "AlertTriangle",
+        "image": "/1.png"
+      },
+      {
+        "id": "status",
+        "title": "Assignment Optimization",
+        "description": "Identify available drivers in real-time for better responsiveness.",
+        "posterText": "Identifiez immédiatement les livreurs disponibles pour optimiser vos assignations.",
+        "icon": "UserCheck",
+        "image": "/2.png"
+      },
+      {
+        "id": "chat",
+        "title": "Transparent Communication",
+        "description": "Send your instructions without disruptive calls and keep a full history.",
+        "posterText": "Transmettez vos instructions sans appels perturbants et conservez un historique.",
+        "icon": "MessageSquare",
+        "image": "/3.png"
+      },
+      {
+        "id": "scan",
+        "title": "Irrefutable Proof of Delivery",
+        "description": "Each delivery is certified by a timestamped and geolocated scan.",
+        "posterText": "Certifiez chaque livraison par un scan horodaté et géolocalisé pour une preuve de réception irréfutable.",
+        "icon": "Camera",
+        "image": "/4.png"
+      },
+      {
+        "id": "photo",
+        "title": "Visual Quality Control",
+        "description": "Receive visual proof of the state of packages to guarantee excellence.",
+        "posterText": "Recevez des preuves visuelles de l'état des colis pour garantir l'excellence de votre service client.",
+        "icon": "Camera",
+        "image": "/5.png"
+      },
+      {
+        "id": "nfc",
+        "title": "Rigorous Traceability",
+        "description": "Automate check-ins at key stages for flawless traceability.",
+        "posterText": "Automatisez le pointage aux étapes clés pour une traçabilité rigoureuse de chaque chargement.",
+        "icon": "Zap",
+        "image": "/6.png"
+      },
+      {
+        "id": "gps",
+        "title": "On-Demand Geolocation",
+        "description": "Get exact GPS position at any time to reassure your customers.",
+        "posterText": "Obtenez la position GPS exacte à la demande pour rassurer vos clients sur l'arrivée imminente.",
+        "icon": "MapPin",
+        "image": "/7.png"
+      },
+      {
+        "id": "visibility",
+        "title": "Continuous Fleet Visibility",
+        "description": "Unfalsifiable visibility on the activity of your entire delivery fleet.",
+        "posterText": "Assurez-vous d'une visibilité continue et infalsifiable sur l'activité de toute votre flotte.",
+        "icon": "Eye",
+        "image": "/8.png"
+      }
+    ]
   }
 }

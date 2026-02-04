@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS analytics (
   visitors INTEGER DEFAULT 0,
   page_views INTEGER DEFAULT 0,
   pages JSONB DEFAULT '{}',
+  referrers JSONB DEFAULT '{}',
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );

@@ -393,6 +393,60 @@ export interface SiteContent {
             ctaContact: string;
         };
     };
+    tracking: {
+        hero: {
+            label: string;
+            title: string;
+            description: string;
+            imagePath: string;
+        };
+        sama: {
+            title: string;
+            description: string;
+            features: {
+                title: string;
+                items: Array<{
+                    title: string;
+                    description: string;
+                    icon: string;
+                }>;
+            };
+            images: string[];
+        };
+        karangue221: {
+            title: string;
+            description: string;
+            features: Array<{
+                title: string;
+                description: string;
+                icon: string;
+            }>;
+            imagePath: string;
+        };
+        benefits: {
+            title: string;
+            items: Array<{
+                title: string;
+                description: string;
+                icon: string;
+            }>;
+        };
+        finalCta: {
+            title: string;
+            highlight: string;
+            description: string;
+            ctaPrimary: string;
+            imagePath?: string;
+        };
+        detailedFeatures: Array<{
+            id: string;
+            title: string;
+            description: string;
+            posterText: string;
+            icon: string;
+            image: string;
+        }>;
+    };
 }
 
 export const defaultContent: SiteContent = {
@@ -823,7 +877,7 @@ export const defaultContent: SiteContent = {
         mission: "Bâtir le futur de la <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">sécurité routière.</span>",
         description: "AI-Karangué est une solution haut de gamme éditée par <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, fusionnant vision par ordinateur et télématique de pointe.",
         address: "Ouakam<br /> Dakar, Sénégal",
-        phone: "+221 77 314 70 59",
+        phone: "+221 78 786 48 48",
         copyright: "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
         trademark: "AI-Karangué et Karangué221 sont des marques déposées.",
         social: {
@@ -844,6 +898,7 @@ export const defaultContent: SiteContent = {
                 links: [
                     { label: "Karangué221", href: "/#hardware" },
                     { label: "Intelligence IA", href: "/#software" },
+                    { label: "Suivi Personnel", href: "/tracking" },
                     { label: "Analyse Vidéo", href: "/#software" },
                     { label: "Cloud Dashboard", href: "/#software" }
                 ]
@@ -880,7 +935,7 @@ export const defaultContent: SiteContent = {
             ]
         },
         info: {
-            phone: { label: "Téléphone", value: "+221 77 314 70 59" },
+            phone: { label: "Téléphone", value: "+221 78 786 48 48" },
             email: { label: "Email", value: "contact@aikarangue.com" },
             address: { label: "Siège", value: "Dakar, Sénégal" }
         },
@@ -915,6 +970,7 @@ export const defaultContent: SiteContent = {
             { name: "Solutions", href: "/solutions" },
             { name: "Industries", href: "/industries" },
             { name: "Nos Offres", href: "/offres" },
+            { name: "Suivi Personnel", href: "/tracking" },
             { name: "Blog", href: "/blog" }
         ],
         cta: "Demander une démo"
@@ -1118,6 +1174,60 @@ export const defaultContent: SiteContent = {
             ctaSolutions: "DÉCOUVRIR NOS SOLUTIONS",
             ctaContact: "NOUS CONTACTER"
         }
+    },
+    tracking: {
+        hero: {
+            label: "LOGISTIQUE MOBILE",
+            title: "Suivi du Personnel pour les Flottes de Livraison",
+            description: "Optimisez vos opérations avec Sama Karangué et Karangué221. Une visibilité totale et un contrôle sans précédent sur vos opérations de terrain.",
+            imagePath: "/tracking-hero-v2.png"
+        },
+        sama: {
+            title: "Sama Karangué : L’Intelligence Mobile au Service de vos Livreurs",
+            description: "Installée sur les smartphones de vos livreurs, elle dote votre personnel d’outils interactifs et sécurisés pour une exécution fluide et transparente des livraisons.",
+            features: {
+                title: "Fonctionnalités Clés",
+                items: [
+                    { title: "Localisation GPS de Précision", description: "Chaque smartphone devient un traceur GPS avancé, transmettant en temps réel position, vitesse et parcours.", icon: "MapPin" },
+                    { title: "Chat Sécurisé", description: "Coordination fluide entre livreurs et dispatchers avec échange de messages, photos et codes QR.", icon: "MessageSquare" },
+                    { title: "Bouton SOS d’Urgence", description: "Envoi rapide de messages d'alarme et appel automatique des secours en cas de situation critique.", icon: "AlertTriangle" },
+                    { title: "Preuves de Livraison", description: "Scan de codes QR et envoi de photos horodatées et géolocalisées pour une traçabilité irréfutable.", icon: "Camera" },
+                    { title: "Statuts en Temps Réel", description: "Mise à jour immédiate de la disponibilité (Disponible, En Livraison, En Pause).", icon: "UserCheck" },
+                    { title: "Boîte Noire", description: "Stockage local des données jusqu'à 30 jours en cas de perte de connexion internet.", icon: "Database" }
+                ]
+            },
+            images: ["/sama-1.png", "/sama-2.png", "/sama-3.png"]
+        },
+        karangue221: {
+            title: "Karangué221 : La Plateforme de Supervision Intelligente",
+            description: "Votre centre de commande pour une gestion de flotte de livraison sans effort. Une suite complète d'outils pour la supervision, l'analyse et l'optimisation.",
+            features: [
+                { title: "Suivi en Temps Réel", description: "Visualisez la position exacte de chaque livreur sur une carte interactive détaillée.", icon: "Eye" },
+                { title: "Geofencing Avancé", description: "Créez des zones personnalisées et recevez des alertes instantanées aux entrées et sorties.", icon: "Map" },
+                { title: "Notifications Intelligentes", description: "Alertes automatiques pour excès de vitesse, batterie faible, ou messages SOS.", icon: "Bell" },
+                { title: "Analytiques Détaillés", description: "Rapports complets sur les trajets, l'éco-conduite et les performances du personnel.", icon: "BarChart3" },
+                { title: "Configuration à Distance", description: "Ajustez les paramètres de l'application Sama Karangué sur les smartphones à distance.", icon: "Settings" },
+                { title: "Optimisation des Coûts", description: "Analysez les données pour identifier les opportunités d'économies de carburant.", icon: "TrendingDown" }
+            ],
+            imagePath: "/tracking-cloud-v2.png"
+        },
+        benefits: {
+            title: "Avantages Clés",
+            items: [
+                { title: "Efficacité Opérationnelle", description: "Optimisez les itinéraires et réduisez les temps d'inactivité.", icon: "Zap" },
+                { title: "Sécurité Renforcée", description: "Assurez la sécurité de vos livreurs grâce aux alertes SOS et au suivi temps réel.", icon: "Shield" },
+                { title: "Qualité de Service", description: "Fournissez des preuves de livraison fiables et respectez vos délais.", icon: "Star" },
+                { title: "Décision Data-Driven", description: "Accédez à des analyses détaillées pour identifier les tendances et améliorer vos processus.", icon: "PieChart" }
+            ]
+        },
+        finalCta: {
+            title: "Prêt à moderniser vos",
+            highlight: "opérations logistiques ?",
+            description: "Rejoignez les entreprises qui font confiance à AI-Karangué pour la gestion de leur personnel mobile.",
+            ctaPrimary: "Demander une démo",
+            imagePath: "/posters/1.png"
+        },
+        detailedFeatures: []
     }
 };
 
