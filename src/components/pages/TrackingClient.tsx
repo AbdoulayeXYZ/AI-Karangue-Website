@@ -126,12 +126,21 @@ export default function TrackingClient({ content }: TrackingClientProps) {
                                 </p>
 
                                 <div className="space-y-4">
-                                    {tracking.sama.features.items.slice(0, 4).map((f, i) => (
+                                    {tracking.sama.features.items.slice(0, 4).map((f: any, i: number) => (
                                         <div key={i} className="flex items-center gap-4 text-navy-dark/70 font-bold">
                                             <CheckCircle2 className="w-5 h-5 text-teal" />
                                             <span>{f.title}</span>
                                         </div>
                                     ))}
+                                </div>
+
+                                <div className="mt-12">
+                                    <Link href="/qrcode" target="_blank">
+                                        <Button className="h-16 px-8 bg-teal hover:bg-teal-dark text-white rounded-xl font-bold uppercase tracking-wider shadow-lg transition-all hover:scale-105 active:scale-95 group flex items-center gap-3">
+                                            <Zap className="w-5 h-5" />
+                                            <span>Ouvrir le QR Code</span>
+                                        </Button>
+                                    </Link>
                                 </div>
                             </motion.div>
                         </div>

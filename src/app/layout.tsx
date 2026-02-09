@@ -41,9 +41,7 @@ export default async function RootLayout({
       >
         <AnalyticsTracker />
         <Analytics />
-        <Navbar content={content.navbar} />
         {children}
-        <Footer content={content.footer} />
       </body>
     </html>
   );
