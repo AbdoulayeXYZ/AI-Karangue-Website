@@ -6,17 +6,20 @@ import { BlogCard } from "./BlogCard";
 
 interface BlogGridProps {
     initialPosts: any[];
+    lang?: string;
 }
 
-export const BlogGrid = ({ initialPosts }: BlogGridProps) => {
+export const BlogGrid = ({ initialPosts, lang = "fr" }: BlogGridProps) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("Tous");
 
     const categories = ["Tous", ...Array.from(new Set(initialPosts.map(p => p.category)))];
 
     const filteredPosts = initialPosts.filter(post => {
-        const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+        const title = lang === 'en' ? (post.title_en || post.title) : post.title;
+        const excerpt = lang === 'en' ? (post.excerpt_en || post.excerpt) : post.excerpt;
+        const matchesSearch = title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            excerpt.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory = selectedCategory === "Tous" || post.category === selectedCategory;
         return matchesSearch && matchesCategory;
     });
@@ -32,8 +35,8 @@ export const BlogGrid = ({ initialPosts }: BlogGridProps) => {
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`px-6 h-11 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${selectedCategory === cat
-                                        ? "bg-teal border-teal text-white shadow-lg shadow-teal/20"
-                                        : "bg-white/5 border-white/5 text-white/40 hover:bg-white/10 hover:text-white"
+                                    ? "bg-teal border-teal text-white shadow-lg shadow-teal/20"
+                                    : "bg-white/5 border-white/5 text-white/40 hover:bg-white/10 hover:text-white"
                                     }`}
                             >
                                 {cat}
@@ -65,7 +68,7 @@ export const BlogGrid = ({ initialPosts }: BlogGridProps) => {
                 {filteredPosts.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {filteredPosts.map((post, i) => (
-                            <BlogCard key={post.id} post={post} index={i} />
+                            <BlogCard key={post.id} post={post} index={i} lang={lang} />
                         ))}
                     </div>
                 ) : (

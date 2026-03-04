@@ -1,6 +1,7 @@
 import { getAllBlogPosts } from "@/lib/db";
 import { getServerContent } from "@/lib/content-server";
 import { BlogGrid } from "@/components/blog/BlogGrid";
+import { cookies } from "next/headers";
 
 export const metadata = {
     title: "Blog | AI-Karangué - Intelligence Artificielle et Sécurité Routière",
@@ -9,6 +10,9 @@ export const metadata = {
 
 export default async function BlogPage() {
     // Fetch data directly on the server for maximum speed
+    const cookieStore = await cookies();
+    const lang = cookieStore.get("app-lang")?.value || "fr";
+
     const [posts, content] = await Promise.all([
         getAllBlogPosts(true),
         getServerContent()
@@ -43,7 +47,7 @@ export default async function BlogPage() {
             </header>
 
             {/* Main Content Component (Client-side for interactivity) */}
-            <BlogGrid initialPosts={JSON.parse(JSON.stringify(posts))} />
+            <BlogGrid initialPosts={JSON.parse(JSON.stringify(posts))} lang={lang} />
         </main>
     );
 }

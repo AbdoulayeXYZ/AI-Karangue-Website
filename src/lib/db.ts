@@ -194,6 +194,9 @@ export async function createBlogPost(data: {
     slug: string;
     excerpt: string;
     content: string;
+    title_en?: string;
+    excerpt_en?: string;
+    content_en?: string;
     coverImage: string;
     category: string;
     author?: string;
@@ -201,8 +204,8 @@ export async function createBlogPost(data: {
 }) {
     try {
         const result = await sql`
-      INSERT INTO blog_posts (title, slug, excerpt, content, cover_image, category, author, status)
-      VALUES (${data.title}, ${data.slug}, ${data.excerpt}, ${data.content}, ${data.coverImage}, ${data.category}, ${data.author || 'Admin'}, ${data.status || 'draft'})
+      INSERT INTO blog_posts (title, slug, excerpt, content, title_en, excerpt_en, content_en, cover_image, category, author, status)
+      VALUES (${data.title}, ${data.slug}, ${data.excerpt}, ${data.content}, ${data.title_en || null}, ${data.excerpt_en || null}, ${data.content_en || null}, ${data.coverImage}, ${data.category}, ${data.author || 'Admin'}, ${data.status || 'draft'})
       RETURNING *;
     `;
         return result.rows[0];
@@ -242,6 +245,9 @@ export async function updateBlogPost(id: string, data: Partial<{
     slug: string;
     excerpt: string;
     content: string;
+    title_en: string;
+    excerpt_en: string;
+    content_en: string;
     coverImage: string;
     category: string;
     status: 'draft' | 'published';
@@ -255,6 +261,9 @@ export async function updateBlogPost(id: string, data: Partial<{
                 slug = COALESCE(${data.slug}, slug),
                 excerpt = COALESCE(${data.excerpt}, excerpt),
                 content = COALESCE(${data.content}, content),
+                title_en = COALESCE(${data.title_en}, title_en),
+                excerpt_en = COALESCE(${data.excerpt_en}, excerpt_en),
+                content_en = COALESCE(${data.content_en}, content_en),
                 cover_image = COALESCE(${data.coverImage}, cover_image),
                 category = COALESCE(${data.category}, category),
                 status = COALESCE(${data.status}, status),

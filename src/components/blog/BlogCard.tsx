@@ -9,17 +9,20 @@ interface BlogCardProps {
     post: {
         id: string;
         title: string;
+        title_en?: string;
         slug: string;
         excerpt: string;
+        excerpt_en?: string;
         cover_image: string;
         category: string;
         author: string;
         created_at: string;
     };
     index: number;
+    lang?: string;
 }
 
-export const BlogCard = ({ post, index }: BlogCardProps) => {
+export const BlogCard = ({ post, index, lang = "fr" }: BlogCardProps) => {
     const date = new Date(post.created_at).toLocaleDateString("fr-FR", {
         day: "numeric",
         month: "long",
@@ -54,11 +57,11 @@ export const BlogCard = ({ post, index }: BlogCardProps) => {
                         </div>
 
                         <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-teal transition-colors duration-300">
-                            {post.title}
+                            {lang === 'en' ? (post.title_en || post.title) : post.title}
                         </h3>
 
                         <p className="text-white/50 text-sm font-medium mb-8 line-clamp-2 leading-relaxed">
-                            {post.excerpt}
+                            {lang === 'en' ? (post.excerpt_en || post.excerpt) : post.excerpt}
                         </p>
 
                         <div className="flex items-center justify-between pt-6 border-t border-white/5">

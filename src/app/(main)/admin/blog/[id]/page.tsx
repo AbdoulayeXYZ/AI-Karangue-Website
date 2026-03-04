@@ -16,13 +16,17 @@ export default function BlogPostEditor() {
     const [saving, setSaving] = useState(false);
     const [post, setPost] = useState({
         title: "",
+        title_en: "",
         slug: "",
         excerpt: "",
+        excerpt_en: "",
         content: "",
+        content_en: "",
         coverImage: "",
         category: "Technologie",
         status: "draft"
     });
+    const [editorLang, setEditorLang] = useState<"fr" | "en">("fr");
 
     useEffect(() => {
         if (!isNew) {
@@ -128,12 +132,26 @@ export default function BlogPostEditor() {
                 {/* Main Content */}
                 <div className="lg:col-span-8 space-y-6">
                     <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-100 space-y-6">
+                        <div className="flex items-center gap-2 mb-4 bg-zinc-50 p-1 rounded-lg w-fit">
+                            <button
+                                onClick={() => setEditorLang("fr")}
+                                className={`px-4 py-1.5 rounded-md text-xs font-black uppercase tracking-wider transition-all ${editorLang === "fr" ? "bg-white text-teal shadow-sm" : "text-navy/40 hover:text-navy/60"}`}
+                            >
+                                Français
+                            </button>
+                            <button
+                                onClick={() => setEditorLang("en")}
+                                className={`px-4 py-1.5 rounded-md text-xs font-black uppercase tracking-wider transition-all ${editorLang === "en" ? "bg-white text-teal shadow-sm" : "text-navy/40 hover:text-navy/60"}`}
+                            >
+                                English
+                            </button>
+                        </div>
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black text-navy/40 uppercase tracking-widest ml-1">Titre de l'article</label>
+                            <label className="text-[10px] font-black text-navy/40 uppercase tracking-widest ml-1">Titre de l'article ({editorLang.toUpperCase()})</label>
                             <input
                                 type="text"
-                                value={post.title}
-                                onChange={(e) => updatePost("title", e.target.value)}
+                                value={editorLang === 'fr' ? post.title : (post.title_en || '')}
+                                onChange={(e) => updatePost(editorLang === 'fr' ? 'title' : 'title_en', e.target.value)}
                                 placeholder="Entrez un titre percutant..."
                                 className="w-full text-3xl font-black text-navy-dark placeholder:text-navy/10 border-none bg-transparent focus:ring-0 p-0"
                             />
@@ -141,11 +159,11 @@ export default function BlogPostEditor() {
 
                         <div className="space-y-2">
                             <label className="text-[10px] font-black text-navy/40 uppercase tracking-widest ml-1 flex items-center gap-2">
-                                <FileText className="w-3 h-3" /> Contenu de l'article
+                                <FileText className="w-3 h-3" /> Contenu de l'article ({editorLang.toUpperCase()})
                             </label>
                             <textarea
-                                value={post.content}
-                                onChange={(e) => updatePost("content", e.target.value)}
+                                value={editorLang === 'fr' ? post.content : (post.content_en || '')}
+                                onChange={(e) => updatePost(editorLang === 'fr' ? "content" : "content_en", e.target.value)}
                                 rows={20}
                                 placeholder="Rédigez votre contenu ici (supporte le Markdown)..."
                                 className="w-full p-4 bg-zinc-50 border border-transparent focus:border-teal/20 rounded-2xl text-navy/80 font-medium leading-relaxed focus:bg-white focus:ring-4 focus:ring-teal/5 transition-all outline-none"
@@ -213,11 +231,11 @@ export default function BlogPostEditor() {
                         {/* Excerpt */}
                         <div className="space-y-3">
                             <label className="text-[10px] font-black text-navy/40 uppercase tracking-widest flex items-center gap-2">
-                                <Layout className="w-3 h-3" /> Extrait (Résumé)
+                                <Layout className="w-3 h-3" /> Extrait ({editorLang.toUpperCase()})
                             </label>
                             <textarea
-                                value={post.excerpt}
-                                onChange={(e) => updatePost("excerpt", e.target.value)}
+                                value={editorLang === 'fr' ? post.excerpt : (post.excerpt_en || '')}
+                                onChange={(e) => updatePost(editorLang === 'fr' ? "excerpt" : "excerpt_en", e.target.value)}
                                 rows={4}
                                 placeholder="Un court résumé pour les cartes d'aperçu..."
                                 className="w-full p-4 bg-zinc-50 rounded-xl border-none text-xs font-bold text-navy-dark placeholder:text-navy/20 focus:ring-4 focus:ring-teal/5 outline-none resize-none"

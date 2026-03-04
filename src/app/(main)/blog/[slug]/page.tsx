@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowLeft, Calendar, User, MessageCircle, Share2, Linkedin, Facebook, Calculator, Mail } from "lucide-react";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { getBlogPostBySlug, getCommentsByPostId } from "@/lib/db";
 import { getServerContent } from "@/lib/content-server";
 import { Button } from "@/components/ui/Button";
@@ -28,10 +29,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     const { slug } = await params;
 
     // Server-side data fetching
+    const cookieStore = await cookies();
+    const lang = cookieStore.get("app-lang")?.value || "fr";
+
     const [post, content] = await Promise.all([
         getBlogPostBySlug(slug),
         getServerContent()
     ]);
+
+    const displayTitle = lang === 'en' ? (post?.title_en || post?.title) : post?.title;
+    const displayContent = lang === 'en' ? (post?.content_en || post?.content) : post?.content;
 
     if (!post) {
         return (
@@ -78,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-10 leading-[1.1] tracking-tighter">
-                            {post.title}
+                            {displayTitle}
                         </h1>
 
                         <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-white/5">
@@ -110,7 +117,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <div className="flex flex-col lg:flex-row gap-20">
                             {/* Sidebar Share (Client Component) */}
                             <div className="lg:w-48 order-2 lg:order-1">
-                                <ShareButtons title={post.title} />
+                                <ShareButtons title={displayTitle} />
                             </div>
 
                             {/* Text Content */}
@@ -119,7 +126,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     <div
                                         className="blog-content text-lg text-navy/70 leading-relaxed font-medium space-y-10"
                                         dangerouslySetInnerHTML={{
-                                            __html: post.content
+                                            __html: displayContent
                                                 .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-black mb-12 uppercase tracking-tighter text-navy">$1</h1>')
                                                 .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-black mt-20 mb-8 uppercase tracking-tight text-navy">$1</h2>')
                                                 .replace(/^### (.*$)/gim, '<h3 class="text-xl font-black mt-16 mb-6 uppercase text-teal">$1</h3>')
