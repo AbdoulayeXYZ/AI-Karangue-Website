@@ -1,10 +1,8 @@
 import React from "react";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { ArrowLeft, Calendar, User, MessageCircle, Share2, Linkedin, Facebook, Calculator, Mail } from "lucide-react";
 import Link from "next/link";
 import { getBlogPostBySlug, getCommentsByPostId } from "@/lib/db";
-import { getContent } from "@/lib/content";
+import { getServerContent } from "@/lib/content-server";
 import { Button } from "@/components/ui/Button";
 import { CommentSection } from "@/components/blog/CommentSection";
 
@@ -32,16 +30,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     // Server-side data fetching
     const [post, content] = await Promise.all([
         getBlogPostBySlug(slug),
-        getContent()
+        getServerContent()
     ]);
 
     if (!post) {
         return (
             <div className="min-h-screen bg-navy flex flex-col items-center justify-center p-6 text-center">
-                <h1 className="text-4xl font-black mb-8 uppercase tracking-widest text-white/20">Article introuvable</h1>
+                <h1 className="text-4xl font-black mb-8 uppercase tracking-widest text-white/20">{content.blog.post.notFound}</h1>
                 <Link href="/blog">
                     <Button className="bg-teal text-white font-black px-12 h-14 rounded-2xl">
-                        RETOUR AU BLOG
+                        {content.blog.post.backToBlog}
                     </Button>
                 </Link>
             </div>
@@ -57,7 +55,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
     return (
         <main className="min-h-screen bg-navy text-white selection:bg-teal selection:text-white">
-            <Navbar />
 
             {/* Immersive Header */}
             <header className="relative pt-48 pb-32 overflow-hidden bg-navy-dark">
@@ -70,7 +67,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                 <div className="container mx-auto px-6 relative z-10">
                     <Link href="/blog" className="inline-flex items-center gap-3 text-teal font-black text-[9px] uppercase tracking-[0.4em] mb-12 hover:gap-6 transition-all duration-500">
-                        <ArrowLeft className="w-4 h-4" /> RETOUR AU BLOG
+                        <ArrowLeft className="w-4 h-4" /> {content.blog.post.backToBlog}
                     </Link>
 
                     <div className="max-w-4xl">
@@ -137,19 +134,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     <div className="mt-24 p-12 rounded-[40px] bg-navy text-white relative overflow-hidden group">
                                         <div className="absolute inset-0 bg-gradient-to-br from-teal/10 to-transparent pointer-events-none" />
                                         <div className="relative z-10 text-center">
-                                            <h2 className="text-3xl md:text-5xl font-black mb-10 tracking-tighter leading-tight">
-                                                PRÊT À RÉVOLUTIONNER <br />
-                                                <span className="text-teal underline decoration-white/10 underline-offset-8">VOTRE FLOTTE ?</span>
-                                            </h2>
+                                            <h2 className="text-3xl md:text-5xl font-black mb-10 tracking-tighter leading-tight" dangerouslySetInnerHTML={{ __html: content.blog.post.ctaTitle }} />
                                             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                                                 <Link href="/solutions">
                                                     <Button className="h-14 px-10 bg-teal hover:bg-teal-light text-white rounded-xl font-black uppercase tracking-[0.2em] text-[9px] shadow-2xl shadow-teal/30 transition-all">
-                                                        DÉCOUVRIR NOS SOLUTIONS
+                                                        {content.blog.post.ctaSolutions}
                                                     </Button>
                                                 </Link>
                                                 <Link href="/contact">
                                                     <Button className="h-14 px-10 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-black uppercase tracking-[0.2em] text-[9px] transition-all">
-                                                        NOUS CONTACTER
+                                                        {content.blog.post.ctaContact}
                                                     </Button>
                                                 </Link>
                                             </div>
@@ -166,8 +160,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
                 </article>
             </div>
-
-            <Footer content={content.footer} />
         </main>
     );
 }
