@@ -927,6 +927,22 @@
     ],
     "cta": "Request a demo"
   },
+  "blog": {
+    "hero": {
+      "label": "Insights & Vision",
+      "title": "OUR",
+      "highlight": "PERSPECTIVE.",
+      "description": "Analysis, innovations and visions on the transformation of mobility in Africa through artificial intelligence."
+    },
+    "post": {
+      "backToBlog": "BACK TO BLOG",
+      "notFound": "Article not found",
+      "share": "SHARE ARTICLE",
+      "ctaTitle": "READY TO REVOLUTIONIZE <br /> <span class=\"text-teal underline decoration-white/10 underline-offset-8\">YOUR FLEET?</span>",
+      "ctaSolutions": "DISCOVER OUR SOLUTIONS",
+      "ctaContact": "CONTACT US"
+    }
+  },
   "tracking": {
     "hero": {
       "label": "MOBILE LOGISTICS",

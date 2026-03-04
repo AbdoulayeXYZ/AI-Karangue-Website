@@ -927,6 +927,22 @@
     ],
     "cta": "Demander une démo"
   },
+  "blog": {
+    "hero": {
+      "label": "Insights & Vision",
+      "title": "NOTRE",
+      "highlight": "PERSPECTIVE.",
+      "description": "Analyses, innovations et visions sur la transformation de la mobilité en Afrique par l'intelligence artificielle."
+    },
+    "post": {
+      "backToBlog": "RETOUR AU BLOG",
+      "notFound": "Article introuvable",
+      "share": "PARTAGER L'ARTICLE",
+      "ctaTitle": "PRÊT À RÉVOLUTIONNER <br /> <span class=\"text-teal underline decoration-white/10 underline-offset-8\">VOTRE FLOTTE ?</span>",
+      "ctaSolutions": "DÉCOUVRIR NOS SOLUTIONS",
+      "ctaContact": "NOUS CONTACTER"
+    }
+  },
   "tracking": {
     "hero": {
       "label": "LOGISTIQUE MOBILE",
