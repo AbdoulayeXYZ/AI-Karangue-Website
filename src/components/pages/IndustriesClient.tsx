@@ -116,7 +116,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                                                     !isEven ? "bg-white/5 border-white/10 hover:bg-white/10" : "bg-zinc-50 border-zinc-100 hover:border-teal/20"
                                                 )}>
                                                     <div className="text-sm font-bold opacity-60 uppercase tracking-wider mb-1 text-teal">{benefit.label}</div>
-                                                    <div className={cn("text-3xl font-black mb-2", !isEven ? "text-white" : "text-navy-dark")}>{benefit.value}</div>
+                                                    <div className={cn("text-xl font-black mb-2", !isEven ? "text-white" : "text-navy-dark")}>{benefit.value}</div>
                                                     <div className={cn("text-xs font-medium leading-relaxed", !isEven ? "text-white/50" : "text-navy/60")}>{benefit.description}</div>
                                                 </div>
                                             ))}
