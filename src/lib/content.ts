@@ -882,7 +882,7 @@ export const defaultContent: SiteContent = {
         trademark: "AI-Karangué et Karangué221 sont des marques déposées.",
         social: {
             linkedin: "https://www.linkedin.com/showcase/ai-karangue/",
-            whatsapp: "https://whatsapp.com/channel/0029Vb7LNBABfxo2NI33Uq0S",
+            whatsapp: "https://whatsapp.com/channel/0029VbCXzgC7tkjF456PtX0n",
             instagram: "https://www.instagram.com/aikarangue/",
             facebook: "https://www.facebook.com/profile.php?id=61586184256156",
             youtube: "https://www.youtube.com/@AI-KarangueAI-Karangue",

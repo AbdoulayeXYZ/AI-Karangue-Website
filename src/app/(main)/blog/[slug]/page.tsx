@@ -124,7 +124,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             <div className="flex-1 order-1 lg:order-2">
                                 <div className="max-w-3xl">
                                     <div
-                                        className="blog-content text-lg text-navy/70 leading-relaxed font-medium space-y-10"
+                                        className="blog-content text-justify text-lg text-navy/70 leading-relaxed font-medium space-y-10"
                                         dangerouslySetInnerHTML={{
                                             __html: displayContent
                                                 .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-black mb-12 uppercase tracking-tighter text-navy">$1</h1>')
