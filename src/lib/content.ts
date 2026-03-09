@@ -309,12 +309,16 @@ export interface SiteContent {
             id: string; // transport, logistics, btp
             title: string;
             highlight: string;
+            hook: string;
+            problem: string;
             description: string;
-            stats: Array<{ label: string; value: string }>;
-            features: string[]; // For BTP listing
-            ctaText: string;
+            type: "stats" | "list" | "detailed";
             imagePath: string;
-            type: "stats" | "list";
+            ctaText: string;
+            benefits: Array<{ label: string; value: string; description: string }>;
+            features: string[];
+            reassurance?: string;
+            categoryId?: string;
         }>;
         otherSectors: Array<{
             title: string;
@@ -984,93 +988,220 @@ export const defaultContent: SiteContent = {
         },
         sectors: [
             {
-                id: "transport",
-                title: "Transport",
-                highlight: "Public",
-                description: "Optimisez chaque trajet. Notre solution réduit vos coûts opérationnels et diminue drastiquement les risques d'accidents grâce à l'IA.",
-                stats: [
-                    {
-                        label: "Coûts Opérationnels",
-                        value: "-30%"
-                    },
-                    {
-                        label: "Taux d'Accidents",
-                        value: "-50%"
-                    },
-                    {
-                        label: "Sécurité Passagers",
-                        value: "Maximale"
-                    }
-                ], features: [],
-                ctaText: "Découvrir la solution Bus",
-                imagePath: "/industry-bus.png",
-                type: "stats"
+                id: "logistics",
+                categoryId: "Productivité",
+                title: "Logistique & Livraison",
+                highlight: "Last-Mile",
+                hook: "Vos livreurs sont sur la route. Mais sont-ils sur votre route ?",
+                problem: "Détours non déclarés sur Dakar-Pikine-Guédiawaye, livraisons non effectuées facturées, vol de colis, consommation carburant incontrôlée.",
+                benefits: [
+                    { label: "Trajets", value: "-20%", description: "de kilométrage à vide grâce à l'optimisation des tournées" },
+                    { label: "Litiges", value: "0", description: "litige client non résolu avec preuve de livraison horodatée" },
+                    { label: "Reporting", value: "0h", description: "réduction du temps de reporting par chauffeur de 3h à quasi néant" }
+                ],
+                features: ["Optimisation de tournées", "Suivi des points de livraison", "Alertes arrêts non planifiés", "Rapport chauffeur automatique", "Application mobile dispatcher"],
+                ctaText: "Voir la solution",
+                imagePath: "/industry_Logistique-Livraison-Last-Mile.png",
+                type: "detailed",
+                description: ""
             },
             {
-                id: "logistics",
-                title: "Logistique",
-                highlight: "& Fret",
-                description: "Le carburant est votre premier poste de dépense. Nos sondes connectées de haute précision vous rendent le contrôle total sur chaque goutte.",
-                stats: [
-                    { label: "Consommation", value: "-15%" },
-                    { label: "Vol Détecté", value: "0%" }
+                id: "public_transport",
+                categoryId: "Sécurité",
+                title: "Transport Public &",
+                highlight: "Minibus",
+                hook: "Vos passagers font confiance à votre chauffeur. Et vous ?",
+                problem: "Excès de vitesse sur la VDN, chauffeurs qui dévient des lignes pour courses personnelles, accidents, pas de visibilité sur les horaires réels.",
+                benefits: [
+                    { label: "Sécurité", value: "100%", description: "suivi temps réel de chaque car rapide/bus sur sa ligne officielle" },
+                    { label: "Accidents", value: "Baisse", description: "alerte excès de vitesse configurée à 60 km/h (limite urbaine Dakar)" },
+                    { label: "Ponctualité", value: "Fiable", description: "rapports de ponctualité automatiques pour restaurer la confiance" }
                 ],
-                features: [],
-                ctaText: "Optimiser ma flotte",
-                imagePath: "/industry-truck.png",
-                type: "stats"
+                features: ["Suivi de lignes et arrêts", "Alertes vitesse", "Géofences de dépôt", "Historique des trajets", "Scoring conducteur", "Panneau passagers (option)"],
+                ctaText: "Protéger ma flotte",
+                imagePath: "/industry_Transport-Public-Minibus.png",
+                type: "detailed",
+                description: ""
             },
             {
                 id: "btp",
-                title: "BTP &",
-                highlight: "Mines",
-                description: "Des environnements extrêmes demandent des solutions robustes. Geofencing de chantier, suivi d'activité moteur et maintenance préventive.",
-                stats: [],
-                features: [
-                    "Traçabilité des heures moteur",
-                    "Sécurité périmétrique (Geofence)",
-                    "Détection de chocs",
-                    "Maintenance prédictive"
+                categoryId: "Productivité",
+                title: "BTP, Mines &",
+                highlight: "Carrières",
+                hook: "Sur un chantier, une heure d'engin immobilisé coûte plus qu'une journée de bureau.",
+                problem: "Heures moteur non facturées, engins qui quittent le chantier la nuit, vol de carburant sur groupes électrogènes et engins, maintenance imprévisible.",
+                benefits: [
+                    { label: "Temps Machine", value: "Précis", description: "suivi des heures moteur à la minute pour une facturation chantier exacte" },
+                    { label: "Sécurité", value: "24h/24", description: "alerte immédiate si engin sort du périmètre de chantier après 18h" },
+                    { label: "Pannes", value: "-30%", description: "de pannes imprévues grâce à la maintenance préventive planifiée" }
                 ],
-                ctaText: "Solutions Industrielles",
-                imagePath: "/industry-btp.png",
-                type: "list"
+                features: ["Heures moteur", "Géofence périmétrique", "Suivi carburant groupes électrogènes", "Alertes chocs/basculement", "Maintenance planifiée", "Suivi multi-sites"],
+                ctaText: "Calculer mes pertes",
+                imagePath: "/industry_BTP-Mines-Carrieres.png",
+                type: "detailed",
+                description: ""
             },
             {
-                id: "vip_transport",
-                title: "Transport",
-                highlight: "VIP",
-                description: "L'excellence n'attend pas. Garantissez un service irréprochable avec une confidentialité totale et une ponctualité suisse.",
-                features: [
-                    "Suivi de flotte discret",
-                    "Protection VIP active",
-                    "Conduite souple (Scoring)",
-                    "Ponctualité garantie"
+                id: "hydrocarbons",
+                categoryId: "Carburant",
+                title: "Hydrocarbures &",
+                highlight: "Distribution",
+                hook: "Le carburant que vous distribuez arrive-t-il vraiment à destination ?",
+                problem: "Détournement de carburant sur les camions-citernes, livraisons partielles non déclarées, routes non respectées entre dépôts et stations.",
+                benefits: [
+                    { label: "Précision", value: "99,5%", description: "Sonde carburant sur citerne : volume livré vs volume facturé" },
+                    { label: "Traçabilité", value: "Totale", description: "de chaque livraison (heure, lieu, volume, temps d'arrêt)" },
+                    { label: "Sécurité", value: "Alerte", description: "Alerte immédiate en cas de drainage anormal en route" }
                 ],
-                ctaText: "Offrir l'excellence",
-                imagePath: "/sector_vip_transport_1767971076378.png",
-                type: "list",
-                stats: []
+                features: ["Capteurs précision sur citernes", "Traçage de tournées de livraison", "Rapports de distribution", "Alertes déchargement non autorisé", "Géofences stations"],
+                ctaText: "Sécuriser ma distribution",
+                imagePath: "/industry_Hydrocabures-Distribution.png",
+                type: "detailed",
+                description: ""
             },
             {
-                id: "car_rental",
-                title: "Location de",
-                highlight: "Voiture",
-                description: "Protégez vos actifs contre le vol et les impayés. Immobilisation à distance et suivi précis pour une gestion de flotte sans stress.",
-                stats: [
-                    {
-                        label: "Taux de Recouvrement",
-                        value: "100%"
-                    },
-                    {
-                        label: "Impayés",
-                        value: "0%"
-                    }
+                id: "security",
+                categoryId: "Sécurité",
+                title: "Sécurité &",
+                highlight: "Gardiennage",
+                hook: "Vos agents protègent vos clients. Qui protège vos agents — et votre réputation ?",
+                problem: "Agents qui ne font pas leurs rondes, véhicules d'intervention qui n'arrivent pas à temps, aucune preuve de passage terrain, faux rapports.",
+                benefits: [
+                    { label: "Contrats", value: "Prouvés", description: "Preuve horodatée de chaque point de ronde pour un contrat inattaquable" },
+                    { label: "Réactivité", value: "Mesurée", description: "Temps d'intervention moyen mesurable et optimisable" },
+                    { label: "Contrôle", value: "100%", description: "Traçabilité complète des véhicules d'intervention 24h/24" }
                 ],
-                features: [],
-                ctaText: "Sécuriser ma flotte",
-                imagePath: "/sector_car_rental_1767971102612.png",
-                type: "stats"
+                features: ["Suivi rondes et checkpoints", "Alertes intervention", "Historique trajets agents", "Rapport d'activité client", "Bouton panique agent"],
+                ctaText: "Voir la solution",
+                imagePath: "/industry_Securite-Gardiennage.png",
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "rental",
+                categoryId: "Sécurité",
+                title: "Location de Véhicules &",
+                highlight: "Leasing",
+                hook: "Votre véhicule est parti. Mais votre argent, lui, revient-il ?",
+                problem: "Impayés, véhicules introuvables, utilisation en dehors des conditions du contrat (kilométrage dépassé, zones interdites), dommages non déclarés.",
+                benefits: [
+                    { label: "Risque", value: "Neutralisé", description: "Immobilisation à distance en 1 clic pour recouvrement sans intervention physique" },
+                    { label: "Contrôle", value: "Régional", description: "Alerte de sortie de zone si le véhicule quitte la région non autorisée" },
+                    { label: "Facturation", value: "Juste", description: "Rapport kilométrique automatique pour une facturation exacte" }
+                ],
+                features: ["Coupure moteur à distance", "Géofence forfaitaire", "Rapport KM journalier", "Historique trajets 90 jours", "Alerte vitesse", "Identifiant conducteur (iButton)"],
+                ctaText: "Protéger mes actifs",
+                imagePath: "/industry_Location-de-Véhicules.png", // Correct new image
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "agriculture",
+                categoryId: "Sécurité",
+                title: "Agriculture, Élevage &",
+                highlight: "Asset Management",
+                hook: "Votre bétail, vos machines, vos récoltes — tout ce qui a de la valeur mérite d'être protégé.",
+                problem: "Vol de bétail fréquent (contexte Sénégal rural), engins agricoles qui quittent l'exploitation, impossibilité de gérer à distance un domaine agricole.",
+                benefits: [
+                    { label: "Localisation", value: "Temps réel", description: "Tracker discret intégré dans un collier pour suivre le bétail même depuis Dakar" },
+                    { label: "Limites", value: "Sécurisées", description: "Alerte immédiate si un animal sort de la géofence du domaine" },
+                    { label: "Machines", value: "Suivies", description: "Suivi des tracteurs pour décompte exact des heures par champ" }
+                ],
+                features: ["Asset tracking long-terme", "Géofences multiples", "Alertes sortie de zone", "Rapport d'activité agricole", "Batterie longue durée (années)"],
+                ctaText: "Suivre mes actifs",
+                imagePath: "/industry_Agriculture-elevage-Asset-Management.png",
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "cold_chain",
+                categoryId: "Conformité",
+                title: "Transport Frigorifique &",
+                highlight: "Chaîne du Froid",
+                hook: "Vos produits frais voyagent sous le chaud soleil sénégalais. Savez-vous à quelle température ils arrivent ?",
+                problem: "Rupture de chaîne du froid non détectée, portes arrière ouvertes trop longtemps, compresseurs défaillants, marchandises perdues ou avariées.",
+                benefits: [
+                    { label: "Pertes", value: "0", description: "Capteur température avec alerte immédiate si la courroie frigorifique lâche" },
+                    { label: "Sécurité", value: "Cargo", description: "Alerte à chaque ouverture des portes arrière pour éviter les vols" },
+                    { label: "Hygiène", value: "Garantie", description: "Rapport de température de bout en bout pour conformité sanitaire" }
+                ],
+                features: ["Capteurs Température/Humidité", "Alertes seuils critiques", "Suivi d'ouverture de portes", "Rapport Chaîne du Froid", "Historique des variations"],
+                ctaText: "Protéger mes cargos",
+                imagePath: "/industry_Transport-Frigorifique-Chaine-du-Froid.png",
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "health",
+                categoryId: "Productivité",
+                title: "Santé, Ambulances &",
+                highlight: "Urgence",
+                hook: "Chaque minute compte. Savez-vous où est votre ambulance en ce moment ?",
+                problem: "Temps de réponse trop longs, véhicules médicaux utilisés à des fins privées, aucune traçabilité pour les rapports du ministère.",
+                benefits: [
+                    { label: "Dispatch", value: "Immédiat", description: "Affectez toujours l'ambulance la plus proche de l'intervention" },
+                    { label: "Conformité", value: "100%", description: "Rapport d'intervention automatique (départ, arrivée, temps sur site)" },
+                    { label: "Contrôle", value: "Strict", description: "Alerte d'utilisation de l'ambulance en dehors des plages de service" }
+                ],
+                features: ["Suivi flotte urgences", "Dispatch en temps réel", "Rapports officiels", "Alertes utilisation non autorisée", "Sirène / Statut gyro"],
+                ctaText: "Optimiser le dispatch",
+                imagePath: "/industry_Sante-Ambulances-Urgence.png",
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "school",
+                categoryId: "Sécurité",
+                title: "Écoles & Transport",
+                highlight: "d'Enfants",
+                hook: "Les parents vous confient ce qu'ils ont de plus précieux. Méritez cette confiance.",
+                problem: "Parents inquiets, accidents non signalés, chauffeurs imprudents, retards sans explication.",
+                benefits: [
+                    { label: "Tranquillité", value: "Totale", description: "Notification (optionnelle) à l'arrivée sécurisée à l'établissement" },
+                    { label: "Sécurité", value: "Priorité", description: "Scoring conducteur agressif configuré spécifiquement pour la sécurité infantile" },
+                    { label: "Déviations", value: "Bloquées", description: "Alerte au manager si le bus dévie du parcours scolaire prévu" }
+                ],
+                features: ["Géofences école/domicile", "Notification parentale", "Scoring sécurité enfants", "Limitation stricte vitesse", "Suivi itinéraire en temps réel"],
+                ctaText: "Voir la démo",
+                imagePath: "/industry_Transport-Scolaire-Enfants.png",
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "government",
+                categoryId: "Conformité",
+                title: "Administration & Flottes",
+                highlight: "Gouvernementales",
+                hook: "Les véhicules de l'État appartiennent au peuple. Gérez-les avec transparence.",
+                problem: "Véhicules administratifs utilisés le weekend, parc immense hors contrôle, audits impossibles à chiffrer précisément.",
+                benefits: [
+                    { label: "Audit", value: "1 clic", description: "Rapport d'utilisation mensuel global par direction administrative" },
+                    { label: "Contrôle", value: "Week-end", description: "Notifications pour toute mise en route le weekend non autorisée" },
+                    { label: "Identité", value: "Vérifiée", description: "Clé iButton ou badge RFID obligatoire pour démarrer le véhicule" }
+                ],
+                features: ["Planification d'usage weekend", "Rapports ministériels", "Contrôle d'accès chauffeur", "Suivi des dépenses indirectes", "Coupure à distance"],
+                ctaText: "Auditer ma flotte",
+                imagePath: "/industry_Administration-Publique-Flottes-Gouvernementales.png",
+                type: "detailed",
+                description: ""
+            },
+            {
+                id: "tourism",
+                categoryId: "Productivité",
+                title: "Tourisme, Agences &",
+                highlight: "Safaris",
+                hook: "Vos touristes découvrent le Sénégal. Gérez votre flotte l'esprit tranquille, même en brousse.",
+                problem: "Accidents de chauffeurs en zones rurales (Casamance, Saloum), véhicules injoignables sans réseau, pas de rapport d'incident.",
+                benefits: [
+                    { label: "Couverture", value: "Maximale", description: "Suivi satellite / 4G étendu avec mémoire interne tampon (Blackbox)" },
+                    { label: "Preuves", value: "Assurance", description: "Historique précis du comportement du conducteur en cas d'accident" },
+                    { label: "Clientèle", value: "Rassurée", description: "Possibilité de partager des liens de tracking éphémères aux clients/familles" }
+                ],
+                features: ["Module mémoire hors-réseau", "Liens de tracking temporaires", "Analytique de parcours touristique", "Alertes comportement", "Suivi multi-régions"],
+                ctaText: "Protéger mes safaris",
+                imagePath: "/industry_Tourisme-Safari-Agences-de-Voyage.png",
+                type: "detailed",
+                description: ""
             }
         ],
         otherSectors: [],
