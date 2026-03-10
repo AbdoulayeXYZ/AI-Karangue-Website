@@ -12,7 +12,7 @@ export const FAQ_ITEMS = [
   {
     question: "Comment fonctionne le suivi GPS en temps réel avec Karangué221 ?",
     answer:
-      "Le boîtier Teltonika FMC650 installé dans chaque véhicule transmet sa position GPS toutes les 10 secondes via réseau 4G/LTE. La plateforme Karangué221 affiche en temps réel la carte de tous vos véhicules, leur vitesse, leur direction et leur statut (moteur allumé/éteint). Vous recevez des alertes instantanées par SMS et email pour les excès de vitesse, sorties de zone (géofencing), arrêts non planifiés et incidents. L'historique complet des trajets est conservé 12 mois.",
+      "La balise installé dans chaque véhicule transmet sa position GPS toutes les 10 secondes via réseau 4G/LTE. La plateforme Karangué221 affiche en temps réel la carte de tous vos véhicules, leur vitesse, leur direction et leur statut (moteur allumé/éteint). Vous recevez des alertes instantanées par SMS et email pour les excès de vitesse, sorties de zone (géofencing), arrêts non planifiés et incidents. L'historique complet des trajets est conservé 12 mois.",
   },
   {
     question: "Quelle est la différence entre ADAS et DSM ?",
@@ -234,8 +234,8 @@ export default function FAQPage() {
                     className="h-14 px-10 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-black uppercase tracking-[0.15em] text-sm transition-all inline-flex items-center gap-2"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.836L.057 23.737a.5.5 0 00.606.606l5.88-1.447A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.96 0-3.807-.524-5.4-1.44l-.388-.232-4.025.99.997-3.94-.253-.4A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.836L.057 23.737a.5.5 0 00.606.606l5.88-1.447A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.96 0-3.807-.524-5.4-1.44l-.388-.232-4.025.99.997-3.94-.253-.4A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
                     </svg>
                     WhatsApp
                   </a>

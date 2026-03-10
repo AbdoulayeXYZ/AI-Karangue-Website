@@ -24,7 +24,7 @@ export const TripleImpact = ({ content }: { content: SiteContent["home"]["triple
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-black text-navy-dark mb-8 leading-[1.1] tracking-tight"
+                        className="text-3xl sm:text-5xl md:text-7xl font-black text-navy-dark mb-6 sm:mb-8 leading-[1.1] tracking-tight"
                     >
                         {content.sectionTitle} <br className="hidden md:block" />
                         <span className="text-teal">{content.sectionTitleHighlight}</span>

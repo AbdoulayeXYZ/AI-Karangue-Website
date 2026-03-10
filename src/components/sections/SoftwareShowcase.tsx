@@ -35,7 +35,7 @@ export const SoftwareShowcase = ({ content }: { content: SiteContent["home"]["so
                         <motion.h2
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="text-5xl md:text-8xl font-black text-navy-dark tracking-tighter leading-[0.9]"
+                            className="text-3xl sm:text-5xl md:text-8xl font-black text-navy-dark tracking-tighter leading-[0.9]"
                         >
                             {content.sectionTitle} <br /> <span className="text-teal">{content.sectionTitleHighlight}</span>
                         </motion.h2>

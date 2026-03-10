@@ -80,17 +80,21 @@ export default async function Home() {
   const content = await getServerContent();
 
   return (
-    <main className="relative min-h-screen selection:bg-teal selection:text-white bg-white overflow-hidden">
+    <main className="relative min-h-screen selection:bg-teal selection:text-white bg-white overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
+      />
       <Hero content={content.home.hero} />
 
       {/* 1. Condensed Direct Manifesto */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
           <div
             className="max-w-5xl mx-auto text-center"
           >
             <h2
-              className="text-4xl md:text-7xl font-black text-navy-dark leading-[0.95] tracking-tighter mb-12"
+              className="text-2xl sm:text-4xl md:text-7xl font-black text-navy-dark leading-[0.95] tracking-tighter mb-8 sm:mb-12"
               dangerouslySetInnerHTML={{ __html: content.home.manifesto.title }}
             />
             <p className="text-xl md:text-2xl text-navy/50 max-w-3xl mx-auto font-medium leading-relaxed">
@@ -113,7 +117,7 @@ export default async function Home() {
       <Offres content={content.home.offres} />
 
       {/* 6. High-Fashion Final Brand Closing */}
-      <section className="py-64 bg-navy-dark text-white text-center rounded-[5rem] mx-4 my-20 overflow-hidden relative">
+      <section className="py-24 sm:py-40 lg:py-64 bg-navy-dark text-white text-center rounded-[3rem] sm:rounded-[5rem] mx-2 sm:mx-4 my-10 sm:my-20 overflow-hidden relative">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-teal/30 blur-[150px] rounded-full" />
           <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy/40 blur-[150px] rounded-full" />
@@ -124,10 +128,10 @@ export default async function Home() {
             className="max-w-4xl mx-auto"
           >
             <h2
-              className="text-6xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-16"
+              className="text-3xl sm:text-5xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-8 sm:mb-16"
               dangerouslySetInnerHTML={{ __html: content.home.finalCta.title }}
             />
-            <p className="text-xl md:text-2xl text-white/40 font-medium mb-16 max-w-xl mx-auto">
+            <p className="text-base sm:text-xl md:text-2xl text-white/40 font-medium mb-10 sm:mb-16 max-w-xl mx-auto px-4">
               {content.home.finalCta.description}
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">

@@ -21,7 +21,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
     return (
         <main className="min-h-screen bg-zinc-50 selection:bg-teal selection:text-white overflow-hidden">
             {/* Hero Header */}
-            <section className="pt-48 pb-32 bg-navy-dark relative overflow-hidden">
+            <section className="pt-32 sm:pt-48 pb-16 sm:pb-32 bg-navy-dark relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/industry-truck.png')] bg-cover bg-center opacity-20 mix-blend-overlay scale-110 blur-sm" />
                 <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy-dark/90 to-zinc-50" />
 
@@ -35,7 +35,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                         transition={{ duration: 0.8 }}
                     >
                         <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-8 block drop-shadow-lg">{content.industries.hero.label}</span>
-                        <h1 className="text-5xl md:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-2xl" dangerouslySetInnerHTML={{
+                        <h1 className="text-4xl sm:text-6xl md:text-9xl font-black text-white tracking-tighter mb-6 sm:mb-8 leading-[0.9] drop-shadow-2xl" dangerouslySetInnerHTML={{
                             __html: `${content.industries.hero.title} <br /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal to-teal-light">${content.industries.hero.titleHighlight}</span>`
                         }} />
                         <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto font-medium tracking-tight leading-relaxed">
@@ -170,7 +170,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
             </div>
 
             {/* Final CTA */}
-            <section className="py-64 bg-navy-dark text-white text-center rounded-[5rem] mx-4 my-20 overflow-hidden relative" id="contact">
+            <section className="py-24 sm:py-40 lg:py-64 bg-navy-dark text-white text-center rounded-[3rem] sm:rounded-[5rem] mx-2 sm:mx-4 my-10 sm:my-20 overflow-hidden relative" id="contact">
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                     <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-teal/30 blur-[150px] rounded-full" />
                     <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy/40 blur-[150px] rounded-full" />
@@ -182,7 +182,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         className="max-w-4xl mx-auto"
                     >
-                        <h2 className="text-6xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-16" dangerouslySetInnerHTML={{
+                        <h2 className="text-3xl sm:text-5xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-8 sm:mb-16" dangerouslySetInnerHTML={{
                             __html: `${content.industries.finalCta.title} <br /> <span class="text-teal">${content.industries.finalCta.titleHighlight}</span>`
                         }} />
                         <p className="text-xl md:text-2xl text-white/40 font-medium mb-16 max-w-xl mx-auto">

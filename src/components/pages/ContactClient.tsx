@@ -19,7 +19,7 @@ export default function ContactClient({ content }: ContactClientProps) {
                     <div className="bg-white rounded-[3rem] shadow-2xl shadow-navy-dark/5 overflow-hidden border border-zinc-100 flex flex-col lg:flex-row">
 
                         {/* Left Side: Value Prop */}
-                        <div className="w-full lg:w-5/12 bg-navy-dark p-12 lg:p-20 text-white relative overflow-hidden flex flex-col justify-between">
+                        <div className="w-full lg:w-5/12 bg-navy-dark p-8 sm:p-12 lg:p-20 text-white relative overflow-hidden flex flex-col justify-between">
                             {/* Decorative Background */}
                             <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/grid.svg')] bg-center bg-repeat opacity-[0.03]" />
                             <div className="absolute top-[-20%] left-[-20%] w-[500px] h-[500px] bg-teal/20 rounded-full blur-[100px]" />
@@ -60,9 +60,9 @@ export default function ContactClient({ content }: ContactClientProps) {
                                     <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
                                         <Mail className="w-5 h-5 text-teal" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-xs uppercase font-bold text-white/40 mb-1">{content.contact.info.email.label}</p>
-                                        <p className="font-bold">{content.contact.info.email.value}</p>
+                                        <p className="font-bold text-sm break-all">{content.contact.info.email.value}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -78,7 +78,7 @@ export default function ContactClient({ content }: ContactClientProps) {
                         </div>
 
                         {/* Right Side: Form */}
-                        <div className="w-full lg:w-7/12 p-12 lg:p-20 bg-white">
+                        <div className="w-full lg:w-7/12 p-8 sm:p-12 lg:p-20 bg-white">
                             <h2 className="text-3xl font-black text-navy-dark mb-2">{content.contact.form.title}</h2>
                             <p className="text-navy/50 mb-10">{content.contact.form.description}</p>
 

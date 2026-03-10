@@ -7,6 +7,7 @@ import {
   SITE_URL,
   SITE_NAME,
   SITE_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
   organizationSchema,
   localBusinessSchema,
   websiteSchema,
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US"],
     images: [
       {
-        url: `${SITE_URL}/og-default.png`,
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "AI-Karangué — Plateforme de gestion de flotte intelligente au Sénégal",
@@ -88,7 +89,7 @@ export const metadata: Metadata = {
     creator: "@aikarangue",
     title: `${SITE_NAME} | N°1 Gestion de Flotte au Sénégal`,
     description: SITE_DESCRIPTION,
-    images: [`${SITE_URL}/og-default.png`],
+    images: [DEFAULT_OG_IMAGE],
   },
 
   robots: {

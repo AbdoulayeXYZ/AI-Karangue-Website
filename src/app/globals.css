@@ -3,8 +3,11 @@
 :root {
   /* Brand Colors */
   --teal: #008080;
+  --teal-light: #40e0d0;
+  --teal-dark: #005f5f;
   --navy: #003366;
   --navy-dark: #001f3d;
+  --navy-light: #0a3060;
   --glass: rgba(255, 255, 255, 0.1);
 
   /* System Colors */
@@ -15,8 +18,11 @@
 
 @theme inline {
   --color-teal: var(--teal);
+  --color-teal-light: var(--teal-light);
+  --color-teal-dark: var(--teal-dark);
   --color-navy: var(--navy);
   --color-navy-dark: var(--navy-dark);
+  --color-navy-light: var(--navy-light);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);

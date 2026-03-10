@@ -12,7 +12,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
     if (!content) return null;
 
     return (
-        <footer className="relative bg-navy-dark text-white pt-32 pb-16 overflow-hidden">
+        <footer className="relative bg-navy-dark text-white pt-16 lg:pt-32 pb-10 lg:pb-16 overflow-hidden">
             {/* Background Video (Subtle) */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
                 <video
@@ -27,7 +27,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-16 lg:mb-32">
                     {/* Brand & Mission */}
                     <div className="lg:col-span-5">
                         <div className="flex items-center gap-8 mb-12">
@@ -50,7 +50,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                             </div>
                         </div>
 
-                        <h3 className="text-4xl font-black mb-8 leading-tight tracking-tighter" dangerouslySetInnerHTML={{ __html: content.mission }} />
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-6 lg:mb-8 leading-tight tracking-tighter" dangerouslySetInnerHTML={{ __html: content.mission }} />
 
                         <p className="text-xl text-white/50 mb-12 max-w-md leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: content.description }} />
 
@@ -58,7 +58,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
 
                     {/* Site Summary Links */}
                     <div className="lg:col-span-1" /> {/* Spacer */}
-                    <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-12">
+                    <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 lg:gap-12">
                         <div>
                             <h4 className="text-[10px] font-black tracking-[0.4em] uppercase text-teal mb-10">{content.navigation.technology.title}</h4>
                             <ul className="space-y-6">
@@ -83,8 +83,8 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                                     <span className="text-xs font-bold text-white/60 leading-relaxed uppercase tracking-wider" dangerouslySetInnerHTML={{ __html: content.address }} />
                                 </li>
                                 <li className="flex items-center gap-4">
-                                    <Phone className="w-5 h-5 text-teal" />
-                                    <span className="text-xs font-bold text-white/60">{content.phone}</span>
+                                    <Phone className="w-5 h-5 text-teal flex-shrink-0" />
+                                    <span className="text-xs font-bold text-white/60 whitespace-nowrap">{content.phone}</span>
                                 </li>
                             </ul>
                         </div>
@@ -92,7 +92,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                 </div>
 
                 {/* Social Media & Newsletter (Full Width) */}
-                <div className="mb-32">
+                <div className="mb-16 lg:mb-32">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-12 p-8 rounded-[40px] bg-white/[0.02] border border-white/5 backdrop-blur-md">
                         <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
                             <Link href={content.social?.linkedin || "#"} target="_blank" className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-teal transition-all duration-500 group border border-white/5">
@@ -176,7 +176,7 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="pt-8 lg:pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
                     <div className="flex flex-col gap-2">
                         <p className="text-[10px] font-black tracking-[0.3em] text-white/30 uppercase">
                             {content.copyright}

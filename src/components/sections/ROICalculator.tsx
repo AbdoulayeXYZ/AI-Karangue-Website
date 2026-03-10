@@ -157,7 +157,7 @@ export const ROICalculator = ({ content }: { content: SiteContent["home"]["roiCa
 
                         {/* RIGHT: RESULTS */}
                         <div className="lg:col-span-7">
-                            <div className="h-full bg-gradient-to-br from-navy-dark to-[#0a0f1c] border border-white/10 rounded-[2.5rem] p-10 lg:p-12 relative overflow-hidden flex flex-col justify-between shadow-2xl">
+                            <div className="h-full bg-gradient-to-br from-navy-dark to-[#0a0f1c] border border-white/10 rounded-[2.5rem] p-6 sm:p-10 lg:p-12 relative overflow-hidden flex flex-col justify-between shadow-2xl">
                                 {/* Decorative Glow & Mesh */}
                                 <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-teal/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                                 <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -171,17 +171,17 @@ export const ROICalculator = ({ content }: { content: SiteContent["home"]["roiCa
                                     <div className="space-y-10">
 
                                         {/* Main Metrics */}
-                                        <div className="grid grid-cols-2 gap-8">
-                                            <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
-                                                <p className="text-white/40 text-[10px] font-black uppercase tracking-wider mb-2">{content.labels.roiEstimated}</p>
-                                                <p className="text-5xl font-black text-white tracking-tighter">
+                                        <div className="grid grid-cols-2 gap-3 sm:gap-8">
+                                            <div className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/5">
+                                                <p className="text-white/40 text-[9px] sm:text-[10px] font-black uppercase tracking-wider mb-2">{content.labels.roiEstimated}</p>
+                                                <p className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tighter">
                                                     {results ? results.roi : "0.0:1"}
                                                 </p>
                                             </div>
-                                            <div className="bg-teal/10 rounded-2xl p-6 border border-teal/20">
-                                                <p className="text-teal text-[10px] font-black uppercase tracking-wider mb-2">{content.labels.netProfit}</p>
-                                                <p className="text-3xl lg:text-4xl font-black text-teal tracking-tighter">
-                                                    {results ? results.netProfit.toLocaleString() : "0"} <span className="text-sm opacity-60">FCFA</span>
+                                            <div className="bg-teal/10 rounded-2xl p-4 sm:p-6 border border-teal/20">
+                                                <p className="text-teal text-[9px] sm:text-[10px] font-black uppercase tracking-wider mb-2">{content.labels.netProfit}</p>
+                                                <p className="text-lg sm:text-2xl lg:text-4xl font-black text-teal tracking-tighter">
+                                                    {results ? results.netProfit.toLocaleString() : "0"} <span className="text-xs sm:text-sm opacity-60">FCFA</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -218,7 +218,7 @@ export const ROICalculator = ({ content }: { content: SiteContent["home"]["roiCa
                                         <span className="text-[10px] bg-teal/20 text-teal px-2 py-1 rounded font-bold uppercase tracking-wider">Gratuit</span>
                                     </div>
 
-                                    <div className="flex gap-4">
+                                    <div className="flex flex-col sm:flex-row gap-4">
                                         <input
                                             type="email"
                                             placeholder="votreemail@entreprise.com"

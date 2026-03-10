@@ -53,7 +53,7 @@ export default async function BlogPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
             />
             {/* Hero Section - Professional & Minimalist */}
-            <header className="relative pt-48 pb-24 overflow-hidden">
+            <header className="relative pt-32 sm:pt-48 pb-16 sm:pb-24 overflow-hidden">
                 <div className="absolute inset-0 bg-navy-dark pointer-events-none" />
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal/20 to-transparent" />
 
@@ -63,7 +63,7 @@ export default async function BlogPage() {
                             <span className="w-12 h-px bg-teal" />
                             <span className="text-teal font-black text-[10px] uppercase tracking-[0.4em]">{content.blog.hero.label}</span>
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-black mb-10 leading-[0.9] tracking-tighter">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-6 sm:mb-10 leading-[0.9] tracking-tighter">
                             {content.blog.hero.title} <br />
                             <span className="text-teal">{content.blog.hero.highlight}</span>
                         </h1>
