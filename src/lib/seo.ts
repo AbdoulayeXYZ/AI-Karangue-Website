@@ -34,7 +34,7 @@ export const BUSINESS = {
   areaServed: ["Sénégal", "Côte d'Ivoire", "Mali", "Afrique de l'Ouest"],
 };
 
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`;
 
 /** Build a canonical URL from a path */
 export function canonicalUrl(path: string = "/"): string {

@@ -82,7 +82,7 @@ export const FAQ_ITEMS = [
 ];
 
 export const metadata: Metadata = {
-  title: "FAQ Gestion de Flotte & Télématique au Sénégal | AI-Karangué",
+  title: "FAQ Gestion de Flotte & Télématique au Sénégal",
   description:
     "Toutes les réponses sur la gestion de flotte connectée au Sénégal : coûts, fonctionnement GPS, ADAS vs DSM, installation, ROI, compatibilité Teltonika. 15 questions d'experts.",
   keywords: [
