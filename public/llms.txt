@@ -1,0 +1,33 @@
+# AI-Karangué — N°1 de la Gestion de Flotte & Télématique au Sénégal
+
+AI-Karangué est une plateforme technologique avancée (Karangué221) dédiée à la sécurité routière et à l'optimisation des flottes de transport au Sénégal et en Afrique de l'Ouest.
+
+## Missions & Valeurs
+- **Sécurité** : Réduction drastique des accidents via l'IA (ADAS/DSM).
+- **Rentabilité** : Optimisation de la consommation de carburant et réduction des coûts de maintenance.
+- **Transparence** : Preuve visuelle par DualCam et suivi GPS en temps réel.
+
+## Solutions Technologiques
+- **ADAS (Advanced Driver Assistance System)** : Prévention active des collisions et sorties de voie.
+- **DSM (Driver State Monitoring)** : Détection de la fatigue, somnolence et distractions du chauffeur.
+- **GPS Tracking** : Suivi précis, géofencing et rapports d'activité.
+- **Gestion Carburant** : Sondes de précision pour éradiquer les vols et gaspillages.
+
+## Industries Cibles
+- Logistique & Livraison (Last-Mile)
+- Transport Public & Interurbain
+- BTP, Mines & Carrières
+- Hydrocarbures & Distribution
+- Sécurité & Gardiennage
+- Location de Véhicules & Leasing
+- Transport Scolaire & Santé
+
+## Contact
+- **Site Web** : https://aikarangue.artbeaurescence.sn
+- **Téléphone** : +221 78 786 48 48
+- **Email** : contact@artbeaurescence.sn
+- **Adresse** : Ouakam, Dakar, Sénégal
+
+## Fichiers de Référence
+- [Sitemap](https://aikarangue.artbeaurescence.sn/sitemap.xml)
+- [Blog](https://aikarangue.artbeaurescence.sn/blog)

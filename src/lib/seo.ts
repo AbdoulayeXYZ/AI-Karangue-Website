@@ -30,6 +30,7 @@ export const BUSINESS = {
     "https://www.instagram.com/aikarangue",
     "https://www.youtube.com/@aikarangue",
   ],
+  googleBusinessProfile: "https://maps.app.goo.gl/E96XB2s17LYQKYHu8",
   foundingYear: 2022,
   areaServed: ["Sénégal", "Côte d'Ivoire", "Mali", "Afrique de l'Ouest"],
 };
@@ -178,8 +179,8 @@ export function localBusinessSchema() {
       opens: spec.split(" ")[1].split("-")[0],
       closes: spec.split(" ")[1].split("-")[1],
     })),
-    sameAs: BUSINESS.socialProfiles,
-    hasMap: `https://maps.google.com/?q=${BUSINESS.geo.latitude},${BUSINESS.geo.longitude}`,
+    sameAs: [...BUSINESS.socialProfiles, BUSINESS.googleBusinessProfile],
+    hasMap: BUSINESS.googleBusinessProfile,
     currenciesAccepted: "XOF",
     paymentAccepted: "Virement bancaire, Mobile Money, Chèque",
     areaServed: BUSINESS.areaServed,

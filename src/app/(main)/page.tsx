@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { HardwareShowcase } from "@/components/sections/HardwareShowcase";
 import { SoftwareShowcase } from "@/components/sections/SoftwareShowcase";
@@ -8,6 +9,72 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getServerContent } from "@/lib/content-server";
+import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, buildOpenGraph, buildTwitter } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "AI-Karangué | Gestion de Flotte, GPS & Sécurité Routière au Sénégal",
+  description:
+    "Protégez vos véhicules et conducteurs avec Karangué221. La seule plateforme au Sénégal intégrant suivi GPS, prévention d'accidents ADAS et surveillance DSM par IA.",
+  keywords: [
+    "gestion de flotte Sénégal",
+    "suivi GPS véhicule Dakar",
+    "télématique Sénégal",
+    "sécurité routière transport Afrique",
+    "prévention accidents ADAS",
+    "surveillance conducteur DSM",
+    "caméra embarquée DualCam",
+    "Karangué221",
+    "AI-Karangué",
+    "optimisation carburant Sénégal",
+  ],
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: buildOpenGraph({
+    title: "AI-Karangué | N°1 de la Gestion de Flotte & Télématique au Sénégal",
+    description:
+      "Plateforme Karangué221 : GPS, ADAS, DSM. Transformez votre flotte en actif sûr et rentable avec l'IA.",
+    url: SITE_URL,
+    image: DEFAULT_OG_IMAGE,
+  }),
+  twitter: buildTwitter({
+    title: "AI-Karangué | Sécurité & Gestion de Flotte au Sénégal",
+    description:
+      "Suivi GPS temps réel, ADAS, DSM et DualCam. La technologie au service de la sécurité routière au Sénégal.",
+    image: DEFAULT_OG_IMAGE,
+  }),
+};
+
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${SITE_URL}/#software`,
+  name: "Karangué221",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, Android, iOS",
+  description:
+    "Plateforme SaaS de gestion de flotte connectée : suivi GPS temps réel, surveillance conducteur (DSM), assistance conduite (ADAS), caméra embarquée (DualCam), reporting et alertes.",
+  url: SITE_URL,
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "XOF",
+    availability: "https://schema.org/InStock",
+    seller: { "@id": `${SITE_URL}/#organization` },
+  },
+  featureList: [
+    "Suivi GPS temps réel",
+    "Surveillance conducteur DSM",
+    "Prévention accidents ADAS",
+    "Caméra embarquée DualCam",
+    "Géofencing et alertes",
+    "Rapport consommation carburant",
+    "Maintenance prédictive",
+    "Dashboard analytique",
+  ],
+  provider: { "@id": `${SITE_URL}/#organization` },
+  areaServed: ["SN", "CI", "ML"],
+  inLanguage: ["fr", "en"],
+};
 
 export default async function Home() {
   const content = await getServerContent();
