@@ -228,7 +228,7 @@ export default function FAQPage() {
                     Demander une démo gratuite
                   </Link>
                   <a
-                    href="https://wa.me/221330000000"
+                    href="https://wa.me/221787864848"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-14 px-10 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-black uppercase tracking-[0.15em] text-sm transition-all inline-flex items-center gap-2"
