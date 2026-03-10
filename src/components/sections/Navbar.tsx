@@ -50,151 +50,151 @@ export const Navbar = ({ content }: { content?: SiteContent["navbar"] }) => {
 
     return (
         <>
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-[100] transition-all duration-700 flex justify-center",
-                isScrolled
-                    ? "bg-white/90 backdrop-blur-2xl border-b border-navy/5 shadow-lg shadow-navy-dark/5"
-                    : "bg-transparent border-b border-white/5"
-            )}
-        >
-            {/* Luxury corner accents */}
-            <div className={cn(
-                "absolute top-8 left-8 w-10 h-10 border-l border-t pointer-events-none transition-all duration-700",
-                isScrolled ? "border-navy/10 opacity-0" : "border-white/10 opacity-100"
-            )} />
-            <div className={cn(
-                "absolute top-8 right-8 w-10 h-10 border-r border-t pointer-events-none transition-all duration-700",
-                isScrolled ? "border-navy/10 opacity-0" : "border-white/10 opacity-100"
-            )} />
-
-            <nav
+            <header
                 className={cn(
-                    "w-full container mx-auto flex items-center justify-between transition-all duration-700",
-                    isScrolled ? "h-16 px-4 sm:px-6" : "h-24 sm:h-32 px-4 sm:px-6"
+                    "fixed top-0 left-0 right-0 z-[100] transition-all duration-700 flex justify-center",
+                    isScrolled
+                        ? "bg-white/90 backdrop-blur-2xl border-b border-navy/5 shadow-lg shadow-navy-dark/5"
+                        : "bg-transparent border-b border-white/5"
                 )}
             >
-                {/* Logo */}
-                <Link href="/" className="relative flex items-center group z-10" onClick={closeMenu}>
-                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 transition-all duration-700">
-                        <Image
-                            src="/logoaikarangue.png"
-                            alt="AI-Karangué"
-                            fill
-                            className={cn(
-                                "object-contain group-hover:scale-110 transition-all duration-500",
-                                !isScrolled && "brightness-0 invert"
-                            )}
-                        />
-                    </div>
-                </Link>
+                {/* Luxury corner accents */}
+                <div className={cn(
+                    "absolute top-8 left-8 w-10 h-10 border-l border-t pointer-events-none transition-all duration-700",
+                    isScrolled ? "border-navy/10 opacity-0" : "border-white/10 opacity-100"
+                )} />
+                <div className={cn(
+                    "absolute top-8 right-8 w-10 h-10 border-r border-t pointer-events-none transition-all duration-700",
+                    isScrolled ? "border-navy/10 opacity-0" : "border-white/10 opacity-100"
+                )} />
 
-                {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center gap-10 xl:gap-12">
-                    {navLinks.map((link, i) => {
-                        const isActive = pathname === link.href;
-                        return (
-                            <motion.div
-                                key={link.name}
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.08 }}
-                            >
-                                <Link
-                                    href={link.href}
-                                    className={cn(
-                                        "relative group text-[10px] font-black tracking-[0.3em] uppercase transition-colors duration-500",
-                                        isScrolled
-                                            ? isActive ? "text-navy" : "text-navy/50 hover:text-navy"
-                                            : isActive ? "text-white" : "text-white/50 hover:text-white"
-                                    )}
-                                >
-                                    {link.name}
-                                    <span className={cn(
-                                        "absolute -bottom-1 left-0 h-px transition-all duration-500",
-                                        isActive ? "w-full" : "w-0 group-hover:w-full",
-                                        isScrolled ? "bg-navy" : "bg-teal"
-                                    )} />
-                                </Link>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-
-                {/* Desktop Actions */}
-                <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-                    <LanguageSwitcher />
-                    <Link
-                        href="https://karangue221.artbeaurescence.sn"
-                        target="_blank"
-                        className={cn(
-                            "text-[10px] font-black tracking-[0.3em] uppercase transition-colors",
-                            isScrolled ? "text-navy/40 hover:text-navy" : "text-white/40 hover:text-teal"
-                        )}
-                    >
-                        Accès Client
+                <nav
+                    className={cn(
+                        "w-full container mx-auto flex items-center justify-between transition-all duration-700",
+                        isScrolled ? "h-16 px-4 sm:px-6" : "h-24 sm:h-32 px-4 sm:px-6"
+                    )}
+                >
+                    {/* Logo */}
+                    <Link href="/" className="relative flex items-center group z-10" onClick={closeMenu}>
+                        <div className="relative w-12 h-12 sm:w-16 sm:h-16 transition-all duration-700">
+                            <Image
+                                src="/logoaikarangue.png"
+                                alt="AI-Karangué"
+                                fill
+                                className={cn(
+                                    "object-contain group-hover:scale-110 transition-all duration-500",
+                                    !isScrolled && "brightness-0 invert"
+                                )}
+                            />
+                        </div>
                     </Link>
-                    <Link href="/contact">
-                        <Button
-                            variant={isScrolled ? "secondary" : "primary"}
-                            size="sm"
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden lg:flex items-center gap-10 xl:gap-12">
+                        {navLinks.map((link, i) => {
+                            const isActive = pathname === link.href;
+                            return (
+                                <motion.div
+                                    key={link.name}
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.08 }}
+                                >
+                                    <Link
+                                        href={link.href}
+                                        className={cn(
+                                            "relative group text-[10px] font-black tracking-[0.3em] uppercase transition-colors duration-500",
+                                            isScrolled
+                                                ? isActive ? "text-navy" : "text-navy/50 hover:text-navy"
+                                                : isActive ? "text-white" : "text-white/50 hover:text-white"
+                                        )}
+                                    >
+                                        {link.name}
+                                        <span className={cn(
+                                            "absolute -bottom-1 left-0 h-px transition-all duration-500",
+                                            isActive ? "w-full" : "w-0 group-hover:w-full",
+                                            isScrolled ? "bg-navy" : "bg-teal"
+                                        )} />
+                                    </Link>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Desktop Actions */}
+                    <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+                        <LanguageSwitcher />
+                        <Link
+                            href="https://karangue221.artbeaurescence.sn"
+                            target="_blank"
                             className={cn(
-                                "h-11 px-7 rounded-full text-[10px] font-black tracking-[0.2em] uppercase transition-all duration-700",
-                                !isScrolled && "bg-teal text-white hover:shadow-[0_0_30px_rgba(0,128,128,0.4)]"
+                                "text-[10px] font-black tracking-[0.3em] uppercase transition-colors",
+                                isScrolled ? "text-navy/40 hover:text-navy" : "text-white/40 hover:text-teal"
                             )}
                         >
-                            {navbarContent.cta}
-                        </Button>
-                    </Link>
-                </div>
-
-                {/* Mobile Hamburger — Morphing icon */}
-                <button
-                    className={cn(
-                        "lg:hidden relative z-[110] w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal",
-                        isMobileMenuOpen
-                            ? "bg-teal"
-                            : isScrolled
-                                ? "bg-navy/8 hover:bg-navy/12"
-                                : "bg-white/10 hover:bg-white/15 backdrop-blur-sm"
-                    )}
-                    onClick={() => setIsMobileMenuOpen(v => !v)}
-                    aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                    aria-expanded={isMobileMenuOpen}
-                >
-                    <div className="relative w-[18px] h-3.5">
-                        {/* Bar top */}
-                        <span className={cn(
-                            "absolute left-0 h-0.5 rounded-full transition-all duration-300 ease-[0.16,1,0.3,1]",
-                            isMobileMenuOpen
-                                ? "top-1/2 w-full -translate-y-1/2 rotate-45 bg-white"
-                                : "top-0 w-full bg-current",
-                            !isMobileMenuOpen && (isScrolled ? "text-navy" : "text-white"),
-                            isMobileMenuOpen ? "" : isScrolled ? "bg-navy" : "bg-white"
-                        )} />
-                        {/* Bar mid */}
-                        <span className={cn(
-                            "absolute left-0 top-1/2 -translate-y-1/2 h-0.5 rounded-full transition-all duration-200",
-                            isMobileMenuOpen
-                                ? "w-0 opacity-0 bg-white"
-                                : "w-3/4 opacity-100",
-                            !isMobileMenuOpen && (isScrolled ? "bg-navy" : "bg-white")
-                        )} />
-                        {/* Bar bottom */}
-                        <span className={cn(
-                            "absolute left-0 h-0.5 rounded-full transition-all duration-300 ease-[0.16,1,0.3,1]",
-                            isMobileMenuOpen
-                                ? "bottom-1/2 w-full translate-y-1/2 -rotate-45 bg-white"
-                                : "bottom-0 w-5/6",
-                            !isMobileMenuOpen && (isScrolled ? "bg-navy" : "bg-white")
-                        )} />
+                            Accès Client
+                        </Link>
+                        <Link href="/contact">
+                            <Button
+                                variant={isScrolled ? "secondary" : "primary"}
+                                size="sm"
+                                className={cn(
+                                    "h-11 px-7 rounded-full text-[10px] font-black tracking-[0.2em] uppercase transition-all duration-700",
+                                    !isScrolled && "bg-teal text-white hover:shadow-[0_0_30px_rgba(0,128,128,0.4)]"
+                                )}
+                            >
+                                {navbarContent.cta}
+                            </Button>
+                        </Link>
                     </div>
-                </button>
-            </nav>
-        </header>
 
-        {/* ── Mobile Menu: Bottom Sheet — sibling to header to escape its stacking context ── */}
-        <AnimatePresence>
+                    {/* Mobile Hamburger — Morphing icon */}
+                    <button
+                        className={cn(
+                            "lg:hidden relative z-[110] w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal",
+                            isMobileMenuOpen
+                                ? "bg-teal"
+                                : isScrolled
+                                    ? "bg-navy/8 hover:bg-navy/12"
+                                    : "bg-white/10 hover:bg-white/15 backdrop-blur-sm"
+                        )}
+                        onClick={() => setIsMobileMenuOpen(v => !v)}
+                        aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                        aria-expanded={isMobileMenuOpen}
+                    >
+                        <div className="relative w-[18px] h-3.5">
+                            {/* Bar top */}
+                            <span className={cn(
+                                "absolute left-0 h-0.5 rounded-full transition-all duration-300 ease-[0.16,1,0.3,1]",
+                                isMobileMenuOpen
+                                    ? "top-1/2 w-full -translate-y-1/2 rotate-45 bg-white"
+                                    : "top-0 w-full bg-current",
+                                !isMobileMenuOpen && (isScrolled ? "text-navy" : "text-white"),
+                                isMobileMenuOpen ? "" : isScrolled ? "bg-navy" : "bg-white"
+                            )} />
+                            {/* Bar mid */}
+                            <span className={cn(
+                                "absolute left-0 top-1/2 -translate-y-1/2 h-0.5 rounded-full transition-all duration-200",
+                                isMobileMenuOpen
+                                    ? "w-0 opacity-0 bg-white"
+                                    : "w-3/4 opacity-100",
+                                !isMobileMenuOpen && (isScrolled ? "bg-navy" : "bg-white")
+                            )} />
+                            {/* Bar bottom */}
+                            <span className={cn(
+                                "absolute left-0 h-0.5 rounded-full transition-all duration-300 ease-[0.16,1,0.3,1]",
+                                isMobileMenuOpen
+                                    ? "bottom-1/2 w-full translate-y-1/2 -rotate-45 bg-white"
+                                    : "bottom-0 w-5/6",
+                                !isMobileMenuOpen && (isScrolled ? "bg-navy" : "bg-white")
+                            )} />
+                        </div>
+                    </button>
+                </nav>
+            </header>
+
+            {/* ── Mobile Menu: Bottom Sheet — sibling to header to escape its stacking context ── */}
+            <AnimatePresence>
                 {isMobileMenuOpen && (
                     <>
                         {/* Backdrop */}
@@ -213,28 +213,29 @@ export const Navbar = ({ content }: { content?: SiteContent["navbar"] }) => {
                             animate={{ y: 0 }}
                             exit={{ y: "100%" }}
                             transition={{ type: "spring", damping: 32, stiffness: 320, mass: 0.8 }}
-                            className="fixed bottom-0 left-0 right-0 z-[106] lg:hidden bg-navy-dark rounded-t-[2rem] shadow-2xl shadow-black/50 overflow-hidden"
+                            className="fixed bottom-0 left-0 right-0 z-[106] lg:hidden bg-navy-dark rounded-t-[2rem] shadow-2xl shadow-black/50"
                             style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
                         >
-                            {/* Decorative ambient glows */}
-                            <div className="pointer-events-none absolute top-0 right-0 w-56 h-56 bg-teal/15 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4" />
-                            <div className="pointer-events-none absolute bottom-0 left-0 w-40 h-40 bg-navy/40 rounded-full blur-[60px]" />
+                            {/* Decorative ambient glows — clipped to sheet corners via own wrapper */}
+                            <div className="pointer-events-none absolute inset-0 rounded-t-[2rem] overflow-hidden">
+                                <div className="absolute top-0 right-0 w-56 h-56 bg-teal/15 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4" />
+                                <div className="absolute bottom-0 left-0 w-40 h-40 bg-navy/40 rounded-full blur-[60px]" />
+                            </div>
 
                             {/* Drag handle */}
                             <div className="flex justify-center pt-3.5 pb-2">
                                 <div className="w-9 h-1 rounded-full bg-white/15" />
                             </div>
 
-                            {/* Scrollable content */}
-                            <div className="relative overflow-y-auto overscroll-contain px-5 pt-3 pb-8 max-h-[82vh]">
-
-                                {/* Primary CTA — always at top */}
+                            {/* Scrollable content — nav links only */}
+                            <div className="px-5 pt-3 pb-2">
+                                {/* Primary CTA — always at top, fixed */}
                                 <Link href="/contact" onClick={closeMenu}>
                                     <motion.div
                                         initial={{ opacity: 0, y: 8 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.05 }}
-                                        className="flex items-center justify-between bg-teal hover:bg-teal-light transition-colors rounded-2xl px-5 py-4 mb-5 group"
+                                        className="flex items-center justify-between bg-teal hover:bg-teal-light transition-colors rounded-2xl px-5 py-4 mb-4 group"
                                     >
                                         <span className="text-white font-black text-sm uppercase tracking-[0.15em]">
                                             {navbarContent.cta}
@@ -243,56 +244,61 @@ export const Navbar = ({ content }: { content?: SiteContent["navbar"] }) => {
                                     </motion.div>
                                 </Link>
 
-                                {/* Navigation links */}
-                                <nav className="space-y-0.5 mb-5">
-                                    {navLinks.map((link, i) => {
-                                        const isActive = pathname === link.href;
-                                        return (
-                                            <motion.div
-                                                key={link.name}
-                                                initial={{ opacity: 0, x: -8 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: 0.08 + i * 0.04, type: "tween", ease: [0.16, 1, 0.3, 1] }}
-                                            >
-                                                <Link
-                                                    href={link.href}
-                                                    onClick={closeMenu}
-                                                    className={cn(
-                                                        "flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-200",
-                                                        isActive
-                                                            ? "bg-teal/12 text-white"
-                                                            : "text-white/60 hover:text-white hover:bg-white/5 active:bg-white/8"
-                                                    )}
+                                <div className="overflow-y-auto overscroll-contain pb-2 max-h-[45vh]">
+                                    {/* Navigation links */}
+                                    <nav className="space-y-0.5">
+                                        {navLinks.map((link, i) => {
+                                            const isActive = pathname === link.href;
+                                            return (
+                                                <motion.div
+                                                    key={link.name}
+                                                    initial={{ opacity: 0, x: -8 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.08 + i * 0.04, type: "tween", ease: [0.16, 1, 0.3, 1] }}
                                                 >
-                                                    <span className={cn(
-                                                        "font-bold text-[15px] tracking-tight",
-                                                        isActive && "font-black text-white"
-                                                    )}>
-                                                        {link.name}
-                                                    </span>
-                                                    {isActive && (
-                                                        <span className="flex items-center gap-2">
-                                                            <span className="text-[9px] font-black uppercase tracking-[0.15em] text-teal">En cours</span>
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-teal" />
+                                                    <Link
+                                                        href={link.href}
+                                                        onClick={closeMenu}
+                                                        className={cn(
+                                                            "flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-200",
+                                                            isActive
+                                                                ? "bg-teal/12 text-white"
+                                                                : "text-white/60 hover:text-white hover:bg-white/5 active:bg-white/8"
+                                                        )}
+                                                    >
+                                                        <span className={cn(
+                                                            "font-bold text-[15px] tracking-tight",
+                                                            isActive && "font-black text-white"
+                                                        )}>
+                                                            {link.name}
                                                         </span>
-                                                    )}
-                                                </Link>
-                                            </motion.div>
-                                        );
-                                    })}
-                                </nav>
+                                                        {isActive && (
+                                                            <span className="flex items-center gap-2">
+                                                                <span className="text-[9px] font-black uppercase tracking-[0.15em] text-teal">En cours</span>
+                                                                <div className="w-1.5 h-1.5 rounded-full bg-teal" />
+                                                            </span>
+                                                        )}
+                                                    </Link>
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </nav>
+                                </div>
+                            </div>
 
+                            {/* Non-scrolling footer — outside overflow-y-auto so the language dropdown can overflow freely */}
+                            <div className="px-5 pb-6">
                                 {/* Divider */}
-                                <div className="h-px bg-white/5 mb-5" />
+                                <div className="h-px bg-white/5 mb-4" />
 
                                 {/* Secondary row */}
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.35 }}
-                                    className="flex items-center justify-between px-1"
+                                    className="relative flex items-center justify-between px-1"
                                 >
-                                    <LanguageSwitcher />
+                                    <LanguageSwitcher dropUp />
                                     <Link
                                         href="https://karangue221.artbeaurescence.sn"
                                         target="_blank"
@@ -311,7 +317,7 @@ export const Navbar = ({ content }: { content?: SiteContent["navbar"] }) => {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.4 }}
-                                    className="mt-6 text-center text-[9px] font-bold tracking-[0.25em] uppercase text-white/20"
+                                    className="mt-4 text-center text-[9px] font-bold tracking-[0.25em] uppercase text-white/20"
                                 >
                                     AI-Karangué © 2025 · Art&apos;Beau-Rescence S.A.S.
                                 </motion.p>
