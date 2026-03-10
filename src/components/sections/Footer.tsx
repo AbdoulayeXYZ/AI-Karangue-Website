@@ -77,14 +77,21 @@ export const Footer = ({ content }: { content: SiteContent["footer"] }) => {
                         </div>
                         <div>
                             <h4 className="text-[10px] font-black tracking-[0.4em] uppercase text-teal mb-10">{content.navigation.company.title}</h4>
-                            <ul className="space-y-8">
-                                <li className="flex items-start gap-4">
-                                    <MapPin className="w-5 h-5 text-teal flex-shrink-0" />
-                                    <span className="text-xs font-bold text-white/60 leading-relaxed uppercase tracking-wider" dangerouslySetInnerHTML={{ __html: content.address }} />
+                            <ul className="space-y-6">
+                                {content.navigation.company.links?.map((item, i) => (
+                                    <li key={i}>
+                                        <Link href={item.href} className="text-sm font-bold text-white/40 hover:text-white transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                                <li className="flex items-start gap-3 pt-4 border-t border-white/5">
+                                    <MapPin className="w-4 h-4 text-teal flex-shrink-0 mt-0.5" />
+                                    <span className="text-xs font-bold text-white/40 leading-relaxed" dangerouslySetInnerHTML={{ __html: content.address }} />
                                 </li>
-                                <li className="flex items-center gap-4">
-                                    <Phone className="w-5 h-5 text-teal flex-shrink-0" />
-                                    <span className="text-xs font-bold text-white/60 whitespace-nowrap">{content.phone}</span>
+                                <li className="flex items-center gap-3">
+                                    <Phone className="w-4 h-4 text-teal flex-shrink-0" />
+                                    <span className="text-xs font-bold text-white/40 whitespace-nowrap">{content.phone}</span>
                                 </li>
                             </ul>
                         </div>

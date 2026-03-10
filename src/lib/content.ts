@@ -235,6 +235,7 @@ export interface SiteContent {
             };
             company: {
                 title: string;
+                links?: { label: string; href: string }[];
             };
         };
         social: {
@@ -904,8 +905,7 @@ export const defaultContent: SiteContent = {
                     { label: "Intelligence IA", href: "/#software" },
                     { label: "Suivi Personnel", href: "/tracking" },
                     { label: "Analyse Vidéo", href: "/#software" },
-                    { label: "Cloud Dashboard", href: "/#software" },
-                    { label: "FAQ", href: "/faq" }
+                    { label: "Cloud Dashboard", href: "/#software" }
                 ]
             },
             sectors: {
@@ -917,7 +917,13 @@ export const defaultContent: SiteContent = {
                 ]
             },
             company: {
-                title: "Art'Beau-Rescence"
+                title: "Compagnie",
+                links: [
+                    { label: "FAQ", href: "/faq" },
+                    { label: "Blog", href: "/blog" },
+                    { label: "Nos Offres", href: "/offres" },
+                    { label: "Nous Contacter", href: "/contact" }
+                ]
             }
         },
         legal: {
