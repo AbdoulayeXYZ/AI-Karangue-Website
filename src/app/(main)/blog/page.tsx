@@ -1,11 +1,34 @@
+import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/db";
 import { getServerContent } from "@/lib/content-server";
 import { BlogGrid } from "@/components/blog/BlogGrid";
 import { cookies } from "next/headers";
+import { SITE_URL, buildOpenGraph, buildTwitter, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata = {
-    title: "Blog | AI-Karangué - Intelligence Artificielle et Sécurité Routière",
-    description: "Découvrez nos derniers articles sur l'IA, l'IoT et le futur de la mobilité intelligente en Afrique."
+export const metadata: Metadata = {
+    title: "Blog | Gestion de Flotte, Sécurité Routière & Télématique en Afrique",
+    description:
+        "Conseils et analyses sur la gestion de flotte au Sénégal, la prévention d'accidents, la télématique et le transport africain. Expertise AI-Karangué pour DG, DAF et responsables transport.",
+    keywords: [
+        "blog gestion flotte Sénégal",
+        "conseils sécurité routière Afrique",
+        "télématique transport Dakar",
+        "réglementation transport Sénégal",
+        "réduire accidents flotte",
+        "somnolence chauffeur prévention",
+        "ROI gestion flotte connectée",
+    ],
+    alternates: { canonical: `${SITE_URL}/blog` },
+    openGraph: buildOpenGraph({
+        title: "Blog AI-Karangué | Expertise Gestion de Flotte & Sécurité Routière",
+        description:
+            "Articles d'experts sur la gestion de flotte, la télématique et la sécurité routière en Afrique de l'Ouest.",
+        url: `${SITE_URL}/blog`,
+    }),
+    twitter: buildTwitter({
+        title: "Blog AI-Karangué | Télématique & Sécurité Routière",
+        description: "Expertise gestion de flotte et transport au Sénégal.",
+    }),
 };
 
 export default async function BlogPage() {
@@ -18,8 +41,17 @@ export default async function BlogPage() {
         getServerContent()
     ]);
 
+    const breadcrumb = breadcrumbSchema([
+        { name: "Accueil", url: SITE_URL },
+        { name: "Blog", url: `${SITE_URL}/blog` },
+    ]);
+
     return (
         <main className="min-h-screen bg-navy text-white selection:bg-teal selection:text-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+            />
             {/* Hero Section - Professional & Minimalist */}
             <header className="relative pt-48 pb-24 overflow-hidden">
                 <div className="absolute inset-0 bg-navy-dark pointer-events-none" />

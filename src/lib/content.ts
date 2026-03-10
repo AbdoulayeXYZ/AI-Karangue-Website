@@ -904,7 +904,8 @@ export const defaultContent: SiteContent = {
                     { label: "Intelligence IA", href: "/#software" },
                     { label: "Suivi Personnel", href: "/tracking" },
                     { label: "Analyse Vidéo", href: "/#software" },
-                    { label: "Cloud Dashboard", href: "/#software" }
+                    { label: "Cloud Dashboard", href: "/#software" },
+                    { label: "FAQ", href: "/faq" }
                 ]
             },
             sectors: {
@@ -975,7 +976,8 @@ export const defaultContent: SiteContent = {
             { name: "Industries", href: "/industries" },
             { name: "Nos Offres", href: "/offres" },
             { name: "Suivi Personnel", href: "/tracking" },
-            { name: "Blog", href: "/blog" }
+            { name: "Blog", href: "/blog" },
+            { name: "FAQ", href: "/faq" }
         ],
         cta: "Demander une démo"
     },

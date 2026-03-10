@@ -6,22 +6,41 @@ import { getBlogPostBySlug, getCommentsByPostId } from "@/lib/db";
 import { getServerContent } from "@/lib/content-server";
 import { Button } from "@/components/ui/Button";
 import { CommentSection } from "@/components/blog/CommentSection";
-
 import { ShareButtons } from "@/components/blog/ShareButtons";
+import {
+    SITE_URL,
+    buildOpenGraph,
+    buildTwitter,
+    articleSchema,
+    breadcrumbSchema,
+} from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getBlogPostBySlug(slug);
     if (!post) return { title: "Article introuvable" };
 
+    const url = `${SITE_URL}/blog/${post.slug}`;
+
     return {
         title: `${post.title} | Blog AI-Karangué`,
         description: post.excerpt,
-        openGraph: {
+        keywords: post.category
+            ? [`${post.category}`, "gestion flotte Sénégal", "télématique Dakar", "AI-Karangué"]
+            : ["gestion flotte Sénégal", "télématique Dakar"],
+        alternates: { canonical: url },
+        openGraph: buildOpenGraph({
             title: post.title,
             description: post.excerpt,
-            images: [post.cover_image],
-        },
+            url,
+            image: post.cover_image,
+            type: "article",
+        }),
+        twitter: buildTwitter({
+            title: post.title,
+            description: post.excerpt,
+            image: post.cover_image,
+        }),
     };
 }
 
@@ -60,8 +79,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         year: "numeric"
     });
 
+    const postUrl = `${SITE_URL}/blog/${post.slug}`;
+
+    const jsonLd = [
+        articleSchema({
+            title: post.title,
+            description: post.excerpt,
+            url: postUrl,
+            image: post.cover_image,
+            author: post.author,
+            datePublished: new Date(post.created_at).toISOString(),
+        }),
+        breadcrumbSchema([
+            { name: "Accueil", url: SITE_URL },
+            { name: "Blog", url: `${SITE_URL}/blog` },
+            { name: post.title, url: postUrl },
+        ]),
+    ];
+
     return (
         <main className="min-h-screen bg-navy text-white selection:bg-teal selection:text-white">
+            {jsonLd.map((schema, i) => (
+                <script
+                    key={i}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                />
+            ))}
 
             {/* Immersive Header */}
             <header className="relative pt-48 pb-32 overflow-hidden bg-navy-dark">
