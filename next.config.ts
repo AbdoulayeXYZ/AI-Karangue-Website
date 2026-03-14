@@ -60,6 +60,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Fichiers IA : toujours servis frais (pas de cache CDN)
+      {
+        source: "/(llms\\.txt|robots\\.txt|sitemap\\.xml)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
+          },
+        ],
+      },
       // Aggressive cache for static assets
       {
         source: "/(.*)\\.(png|jpg|jpeg|svg|gif|ico|webp|avif|woff|woff2|ttf|otf)",
