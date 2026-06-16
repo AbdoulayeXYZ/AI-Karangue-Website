@@ -157,19 +157,19 @@ const DSCSection = () => (
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ADAS SECTION — 3 cartes en alternance
+// ADAS SECTION — même grille que DSC, fond blanc
 // ─────────────────────────────────────────────────────────────────────────────
 const ADASSection = () => (
     <section id="adas" className="py-32 lg:py-40 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
-            {/* Header */}
-            <div className="max-w-3xl mx-auto text-center mb-20 lg:mb-28">
+            {/* Header — même alignement gauche que DSC */}
+            <div className="max-w-3xl mb-20 lg:mb-24">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <div className="inline-flex items-center gap-3 mb-8">
+                    <div className="flex items-center gap-4 mb-8">
                         <div className="w-10 h-10 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center">
                             <AlertTriangle className="w-4 h-4 text-teal" />
                         </div>
@@ -179,48 +179,44 @@ const ADASSection = () => (
                         La route,<br />
                         <span className="text-teal">anticipee.</span>
                     </h2>
-                    <p className="text-navy/50 text-lg font-medium leading-relaxed max-w-xl mx-auto">
+                    <p className="text-navy/40 text-lg font-medium leading-relaxed max-w-xl">
                         La camera ADAS lit la route en temps reel et alerte le conducteur avant chaque situation critique. Trois scenarios, une seule regle : prevenir plutot que subir.
                     </p>
                 </motion.div>
             </div>
 
-            {/* Feature cards — alternating */}
-            <div className="space-y-8 max-w-5xl mx-auto">
+            {/* Grille — 3 colonnes desktop, 1 tablette/mobile */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {ADAS_FEATURES.map((feat, i) => (
                     <motion.div
                         key={feat.id}
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1, duration: 0.7 }}
+                        transition={{ delay: i * 0.09, duration: 0.7 }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-navy/[0.06] shadow-xl shadow-navy/5"
+                        className="rounded-3xl overflow-hidden border border-navy/[0.07] bg-zinc-50 flex flex-col group hover:border-teal/30 transition-colors duration-300"
                     >
                         {/* Image */}
-                        <div className={`relative min-h-[320px] lg:min-h-[380px] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                        <div className="relative aspect-[4/3] overflow-hidden">
                             <Image
                                 src={feat.image}
                                 alt={feat.title}
                                 fill
-                                className="object-cover"
+                                className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                             />
-                            <div className="absolute inset-0 bg-navy-dark/20" />
-                            {/* Stat overlay */}
-                            <div className="absolute top-6 left-6 bg-navy-dark/80 backdrop-blur border border-white/15 rounded-2xl px-4 py-3">
-                                <div className="text-2xl font-black text-teal leading-none">{feat.stat}</div>
-                                <div className="text-[9px] font-bold text-white/50 tracking-widest uppercase mt-0.5">{feat.statLabel}</div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 via-transparent to-transparent" />
+                            {/* Badge stat */}
+                            <div className="absolute top-4 left-4 bg-navy-dark/75 backdrop-blur border border-white/10 px-3 py-1.5 rounded-xl">
+                                <div className="text-base font-black text-teal leading-none">{feat.stat}</div>
+                                <div className="text-[8px] font-bold text-white/50 tracking-widest uppercase mt-0.5">{feat.statLabel}</div>
                             </div>
                         </div>
 
-                        {/* Text */}
-                        <div className={`bg-zinc-50 p-8 lg:p-12 flex flex-col justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                            <div className="text-[9px] font-black text-teal/70 tracking-[0.4em] uppercase mb-3">{feat.label}</div>
-                            <h3 className="text-2xl md:text-3xl font-black text-navy-dark tracking-tight mb-4">{feat.title}</h3>
-                            <p className="text-navy/50 text-sm leading-relaxed font-medium mb-8">{feat.description}</p>
-                            <div className="flex items-center gap-3">
-                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0" />
-                                <span className="text-xs font-black text-navy-dark/70 tracking-wide">Alerte sonore + notification plateforme</span>
-                            </div>
+                        {/* Texte */}
+                        <div className="p-6 flex flex-col flex-1">
+                            <div className="text-[9px] font-black text-teal/70 tracking-[0.35em] uppercase mb-2">{feat.label}</div>
+                            <h3 className="text-navy-dark font-black text-lg tracking-tight mb-3">{feat.title}</h3>
+                            <p className="text-navy/45 text-sm leading-relaxed font-medium">{feat.description}</p>
                         </div>
                     </motion.div>
                 ))}
