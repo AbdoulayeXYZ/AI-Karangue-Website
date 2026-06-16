@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Eye, AlertTriangle, Shield, Smartphone, Play } from "lucide-react";
 import { SiteContent } from "@/lib/content";
 
@@ -82,134 +82,78 @@ const ADAS_FEATURES = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// DSC SECTION — galerie interactive
+// DSC SECTION — grille de cartes image + texte
 // ─────────────────────────────────────────────────────────────────────────────
-const DSCSection = () => {
-    const [active, setActive] = useState(0);
-
-    return (
-        <section id="dsc" className="py-32 lg:py-40 bg-navy-dark overflow-hidden">
-            <div className="container mx-auto px-6">
-                {/* Header */}
-                <div className="max-w-3xl mb-20 lg:mb-28">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-10 h-10 rounded-2xl bg-teal/15 border border-teal/25 flex items-center justify-center">
-                                <Eye className="w-4 h-4 text-teal" />
-                            </div>
-                            <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase">Module 01 — DSC</span>
+const DSCSection = () => (
+    <section id="dsc" className="py-32 lg:py-40 bg-navy-dark overflow-hidden">
+        <div className="container mx-auto px-6">
+            {/* Header */}
+            <div className="max-w-3xl mb-20 lg:mb-24">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="w-10 h-10 rounded-2xl bg-teal/15 border border-teal/25 flex items-center justify-center">
+                            <Eye className="w-4 h-4 text-teal" />
                         </div>
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-6">
-                            Ce que l'oeil<br />
-                            <span className="text-teal">ne voit plus.</span>
-                        </h2>
-                        <p className="text-white/40 text-lg font-medium leading-relaxed max-w-xl">
-                            La camera DSC embarquee analyse le visage du conducteur 25 fois par seconde. Elle detecte les signes de danger que le conducteur ne percoit plus lui-meme.
-                        </p>
-                    </motion.div>
-                </div>
-
-                {/* Interactive feature viewer */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start">
-
-                    {/* Left — tab list */}
-                    <div className="space-y-3">
-                        {DSC_FEATURES.map((feat, i) => (
-                            <motion.button
-                                key={feat.id}
-                                onClick={() => setActive(i)}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.08 }}
-                                viewport={{ once: true }}
-                                className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
-                                    active === i
-                                        ? "bg-white/[0.06] border-teal/30"
-                                        : "bg-white/[0.02] border-white/[0.06] hover:border-white/15"
-                                }`}
-                            >
-                                <div className="flex items-start justify-between gap-4">
-                                    <div className="flex-1">
-                                        <div className={`text-[9px] font-black tracking-[0.35em] uppercase mb-1.5 transition-colors ${active === i ? "text-teal" : "text-white/30"}`}>
-                                            {feat.label}
-                                        </div>
-                                        <div className={`font-black text-lg tracking-tight mb-3 transition-colors ${active === i ? "text-white" : "text-white/50"}`}>
-                                            {feat.title}
-                                        </div>
-                                        <p className={`text-sm leading-relaxed font-medium transition-colors ${active === i ? "text-white/50" : "text-white/25"}`}>
-                                            {feat.description}
-                                        </p>
-                                    </div>
-                                    <div className={`w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-colors ${active === i ? "bg-teal" : "bg-white/15"}`} />
-                                </div>
-                            </motion.button>
-                        ))}
+                        <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase">Module 01 — DSC</span>
                     </div>
-
-                    {/* Right — feature image */}
-                    <div className="lg:sticky lg:top-32">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/[0.07]"
-                        >
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={active}
-                                    initial={{ opacity: 0, scale: 1.04 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.97 }}
-                                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                                    className="absolute inset-0"
-                                >
-                                    <Image
-                                        src={DSC_FEATURES[active].image}
-                                        alt={DSC_FEATURES[active].title}
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/70 via-transparent to-transparent" />
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Label badge */}
-                            <div className="absolute bottom-6 left-6 right-6 z-10">
-                                <div className="bg-navy-dark/70 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-3 inline-flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-teal animate-pulse" />
-                                    <span className="text-white font-black text-sm tracking-tight">
-                                        {DSC_FEATURES[active].title}
-                                    </span>
-                                    <span className="text-teal text-[10px] font-bold tracking-widest uppercase ml-auto">
-                                        IA Active
-                                    </span>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Dot indicators */}
-                        <div className="flex items-center justify-center gap-2 mt-5">
-                            {DSC_FEATURES.map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setActive(i)}
-                                    className={`transition-all duration-300 rounded-full ${
-                                        active === i ? "w-6 h-1.5 bg-teal" : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
-                                    }`}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-6">
+                        Ce que l'oeil<br />
+                        <span className="text-teal">ne voit plus.</span>
+                    </h2>
+                    <p className="text-white/40 text-lg font-medium leading-relaxed max-w-xl">
+                        La camera DSC embarquee analyse le visage du conducteur 25 fois par seconde. Elle detecte les signes de danger que le conducteur ne percoit plus lui-meme.
+                    </p>
+                </motion.div>
             </div>
-        </section>
-    );
-};
+
+            {/* Grille — 3 colonnes desktop, 2 tablette, 1 mobile */}
+            {/* Ligne 1 : 3 cartes — Ligne 2 : 2 cartes centrées */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {DSC_FEATURES.map((feat, i) => (
+                    <motion.div
+                        key={feat.id}
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.09, duration: 0.7 }}
+                        viewport={{ once: true }}
+                        className={`rounded-3xl overflow-hidden border border-white/[0.07] bg-white/[0.03] flex flex-col group hover:border-teal/25 transition-colors duration-300 ${
+                            /* 2 dernières cartes centrées sur lg */
+                            i === 3 ? "lg:col-start-1 lg:col-span-1 lg:translate-x-[50%]" :
+                            i === 4 ? "lg:col-start-2 lg:col-span-1 lg:translate-x-[50%]" : ""
+                        }`}
+                    >
+                        {/* Image */}
+                        <div className="relative aspect-[4/3] overflow-hidden">
+                            <Image
+                                src={feat.image}
+                                alt={feat.title}
+                                fill
+                                className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 via-transparent to-transparent" />
+                            {/* Badge IA */}
+                            <div className="absolute top-4 left-4 flex items-center gap-2 bg-navy-dark/70 backdrop-blur border border-white/10 px-3 py-1.5 rounded-full">
+                                <div className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+                                <span className="text-[9px] font-black text-teal tracking-widest uppercase">IA Active</span>
+                            </div>
+                        </div>
+
+                        {/* Texte */}
+                        <div className="p-6 flex flex-col flex-1">
+                            <div className="text-[9px] font-black text-teal/60 tracking-[0.35em] uppercase mb-2">{feat.label}</div>
+                            <h3 className="text-white font-black text-lg tracking-tight mb-3">{feat.title}</h3>
+                            <p className="text-white/35 text-sm leading-relaxed font-medium">{feat.description}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+    </section>
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ADAS SECTION — 3 cartes en alternance
