@@ -490,52 +490,39 @@ export default function SolutionsClient({ content: _content }: SolutionsClientPr
         <main className="min-h-screen bg-navy-dark selection:bg-teal selection:text-white overflow-hidden">
 
             {/* ── HERO ── */}
-            <section className="grid grid-cols-1 lg:grid-cols-2 min-h-screen pt-20 lg:pt-0">
+            <section className="relative min-h-screen flex items-end overflow-hidden">
+                {/* Image plein écran */}
+                <Image
+                    src="/persona.jpeg"
+                    alt="Conducteur protege par AI-Karangue"
+                    fill
+                    className="object-cover object-[center_20%]"
+                    priority
+                />
+                {/* Gradient discret uniquement en bas */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/75 via-transparent to-transparent" />
 
-                {/* Texte — fond dark, zero image derriere */}
-                <div className="flex flex-col justify-center px-8 py-20 lg:px-16 lg:py-0 bg-navy-dark">
+                {/* Texte minimaliste en bas */}
+                <div className="container mx-auto px-6 relative z-10 pb-12 lg:pb-16">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9 }}
+                        className="flex flex-col sm:flex-row sm:items-end justify-between gap-6"
                     >
-                        <span className="text-[10px] font-black text-teal/70 tracking-[0.4em] uppercase block mb-8">AI-Karangue — Technologies</span>
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.88] mb-7">
-                            L'intelligence<br />
-                            qui protege<br />
-                            <span className="text-teal">chaque trajet.</span>
-                        </h1>
-                        <p className="text-white/40 text-base md:text-lg font-medium leading-relaxed mb-10 max-w-md">
-                            DSC, ADAS, plateforme cloud et application mobile. Un ecosysteme complet pour que tu ne roules plus jamais sans protection.
-                        </p>
-
-                        {/* Nav rapide */}
-                        <div className="flex flex-wrap gap-2.5">
-                            {[
-                                { label: "DSC", href: "#dsc" },
-                                { label: "ADAS", href: "#adas" },
-                                { label: "Plateforme", href: "#plateforme" },
-                                { label: "Application", href: "#app" },
-                            ].map(({ label, href }) => (
-                                <Link key={label} href={href}>
-                                    <span className="bg-white/[0.06] border border-white/10 text-white/60 text-xs font-black px-5 py-2.5 rounded-full hover:border-teal/30 hover:text-white transition-all cursor-pointer tracking-wide">
-                                        {label}
-                                    </span>
-                                </Link>
-                            ))}
+                        <div>
+                            <span className="text-[9px] font-black text-white/40 tracking-[0.4em] uppercase block mb-2">AI-Karangue — Technologies</span>
+                            <h1 className="text-3xl md:text-4xl font-black text-white tracking-tighter leading-tight">
+                                L'intelligence qui protege <span className="text-teal">chaque trajet.</span>
+                            </h1>
                         </div>
+                        <Link href="#dsc" className="shrink-0">
+                            <button className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white text-xs font-black px-5 py-3 rounded-full hover:bg-white/15 transition-all">
+                                Decouvrir
+                                <ArrowRight className="w-3.5 h-3.5" />
+                            </button>
+                        </Link>
                     </motion.div>
-                </div>
-
-                {/* Image — cote droit, pleine hauteur, zero texte dessus */}
-                <div className="relative min-h-[50vh] lg:min-h-0">
-                    <Image
-                        src="/persona.jpeg"
-                        alt="Conducteur protege par AI-Karangue"
-                        fill
-                        className="object-cover object-[center_20%]"
-                        priority
-                    />
                 </div>
             </section>
 
