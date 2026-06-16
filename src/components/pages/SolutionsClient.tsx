@@ -126,33 +126,23 @@ const DSCSection = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: i * 0.08 }}
                                 viewport={{ once: true }}
-                                className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 group ${
+                                className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
                                     active === i
                                         ? "bg-white/[0.06] border-teal/30"
                                         : "bg-white/[0.02] border-white/[0.06] hover:border-white/15"
                                 }`}
                             >
                                 <div className="flex items-start justify-between gap-4">
-                                    <div>
+                                    <div className="flex-1">
                                         <div className={`text-[9px] font-black tracking-[0.35em] uppercase mb-1.5 transition-colors ${active === i ? "text-teal" : "text-white/30"}`}>
                                             {feat.label}
                                         </div>
-                                        <div className={`font-black text-lg tracking-tight transition-colors ${active === i ? "text-white" : "text-white/50"}`}>
+                                        <div className={`font-black text-lg tracking-tight mb-3 transition-colors ${active === i ? "text-white" : "text-white/50"}`}>
                                             {feat.title}
                                         </div>
-                                        <AnimatePresence>
-                                            {active === i && (
-                                                <motion.p
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: "auto" }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    transition={{ duration: 0.3 }}
-                                                    className="text-white/40 text-sm leading-relaxed mt-3 font-medium"
-                                                >
-                                                    {feat.description}
-                                                </motion.p>
-                                            )}
-                                        </AnimatePresence>
+                                        <p className={`text-sm leading-relaxed font-medium transition-colors ${active === i ? "text-white/50" : "text-white/25"}`}>
+                                            {feat.description}
+                                        </p>
                                     </div>
                                     <div className={`w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-colors ${active === i ? "bg-teal" : "bg-white/15"}`} />
                                 </div>
