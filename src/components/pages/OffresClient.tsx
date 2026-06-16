@@ -7,6 +7,7 @@ import { Check, Star, Zap, ShieldCheck, CheckCircle2, Crown, ArrowRight, Heart, 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { SiteContent } from "@/lib/content";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 const packIconMap: Record<string, any> = {
     "Zap": Zap,
@@ -276,36 +277,7 @@ export const OffresClient = ({ content }: { content: SiteContent }) => {
                 </div>
             </section>
 
-            {/* Final CTA */}
-            <section className="py-64 bg-navy-dark text-white text-center rounded-[5rem] mx-4 my-20 overflow-hidden relative">
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-teal/30 blur-[150px] rounded-full" />
-                    <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy/40 blur-[150px] rounded-full" />
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-6xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-16" dangerouslySetInnerHTML={{
-                            __html: `${content.offres.finalCta.title} <br /> <span class="text-teal">${content.offres.finalCta.highlight}</span>`
-                        }} />
-                        <p className="text-xl md:text-2xl text-white/40 font-medium mb-16 max-w-xl mx-auto">
-                            {content.offres.finalCta.description}
-                        </p>
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                            <Link href="/contact">
-                                <Button size="lg" className="h-20 px-12 text-xl bg-teal text-white hover:scale-105 transition-transform shadow-2xl shadow-teal/20">
-                                    {content.offres.finalCta.ctaPrimary}
-                                    <ArrowRight className="inline-block ml-3" />
-                                </Button>
-                            </Link>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+            <FinalCTA />
 
 
         </main>

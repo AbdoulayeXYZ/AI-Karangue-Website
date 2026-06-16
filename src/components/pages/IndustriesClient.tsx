@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { SiteContent } from "@/lib/content";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 const categories = ["Tous", "Sécurité", "Carburant", "Productivité", "Conformité"];
 
@@ -169,41 +170,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                 </AnimatePresence>
             </div>
 
-            {/* Final CTA */}
-            <section className="py-24 sm:py-40 lg:py-64 bg-navy-dark text-white text-center rounded-[3rem] sm:rounded-[5rem] mx-2 sm:mx-4 my-10 sm:my-20 overflow-hidden relative" id="contact">
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-teal/30 blur-[150px] rounded-full" />
-                    <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy/40 blur-[150px] rounded-full" />
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-3xl sm:text-5xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-8 sm:mb-16" dangerouslySetInnerHTML={{
-                            __html: `${content.industries.finalCta.title} <br /> <span class="text-teal">${content.industries.finalCta.titleHighlight}</span>`
-                        }} />
-                        <p className="text-xl md:text-2xl text-white/40 font-medium mb-16 max-w-xl mx-auto">
-                            {content.industries.finalCta.description}
-                        </p>
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                            <Link href="/contact">
-                                <Button size="lg" className="h-20 px-12 text-xl bg-teal text-white hover:scale-105 transition-transform shadow-2xl shadow-teal/20">
-                                    {content.industries.finalCta.ctaPrimary}
-                                    <ArrowRight className="inline-block ml-3" />
-                                </Button>
-                            </Link>
-                            <Link href="/offres">
-                                <Button variant="outline" size="lg" className="h-20 px-12 text-xl border-white/10 text-white hover:bg-white hover:text-navy-dark transition-all">
-                                    {content.industries.finalCta.ctaSecondary}
-                                </Button>
-                            </Link>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+            <FinalCTA />
         </main>
     );
 };

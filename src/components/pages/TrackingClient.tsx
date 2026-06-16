@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 interface TrackingClientProps {
     content: SiteContent;
@@ -256,39 +257,7 @@ export default function TrackingClient({ content }: TrackingClientProps) {
             </section>
 
             {/* 5. FINAL CTA - PRECISION CONTACT */}
-            <section className="py-64 bg-white text-center relative overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-5xl md:text-9xl font-black text-navy-dark mb-12 leading-[0.8] tracking-tighter">
-                            Prenez le Contrôle<br />
-                            <span className="text-teal underline decoration-navy-dark/5 underline-offset-[20px]">Dès Aujourd'hui.</span>
-                        </h2>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-20">
-                            <Link href="/contact" className="w-full sm:w-auto">
-                                <Button size="lg" className="h-24 px-16 text-xl bg-navy-dark hover:bg-navy-light text-white rounded-2xl font-black uppercase tracking-widest shadow-2xl transition-all hover:scale-105 active:scale-95 group flex items-center justify-center">
-                                    <span>{tracking.finalCta.ctaPrimary}</span>
-                                    <ArrowRight className="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform shrink-0" />
-                                </Button>
-                            </Link>
-                            <Link href="tel:+221787864848" className="w-full sm:w-auto">
-                                <Button variant="outline" size="lg" className="h-24 px-16 text-xl border-navy-dark/10 text-navy-dark rounded-2xl font-black uppercase tracking-widest hover:bg-navy-dark hover:text-white transition-all">
-                                    Appeler un expert
-                                </Button>
-                            </Link>
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Decorative Canvas */}
-                <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal via-transparent to-transparent" />
-                </div>
-            </section>
+            <FinalCTA />
 
         </main>
     );

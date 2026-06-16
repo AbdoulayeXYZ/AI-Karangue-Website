@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Eye, AlertTriangle, Shield, Smartphone, Play } from "lucide-react";
 import { SiteContent } from "@/lib/content";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DSC FEATURES
@@ -440,43 +441,6 @@ const InsuranceSection = () => (
     </section>
 );
 
-// ─────────────────────────────────────────────────────────────────────────────
-// FINAL CTA
-// ─────────────────────────────────────────────────────────────────────────────
-const FinalCTA = () => (
-    <section className="py-40 bg-navy-dark text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="max-w-3xl mx-auto"
-            >
-                <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-6">
-                    La route ne previent pas.<br />
-                    <span className="text-teal">Toi, si.</span>
-                </h2>
-                <p className="text-white/35 text-lg font-medium mb-12 max-w-md mx-auto leading-relaxed">
-                    A partir de 9.900 F/mois. Installation en 15 minutes. Protection immediate.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Link href="/contact">
-                        <button className="inline-flex items-center gap-3 bg-teal text-white font-black text-sm px-8 py-4 rounded-xl hover:bg-teal/90 transition-colors shadow-lg shadow-teal/20">
-                            Souscrire maintenant
-                            <ArrowRight className="w-4 h-4" />
-                        </button>
-                    </Link>
-                    <Link href="/offres">
-                        <button className="inline-flex items-center gap-3 border border-white/15 text-white/70 font-black text-sm px-8 py-4 rounded-xl hover:border-white/30 hover:text-white transition-all">
-                            Voir les offres
-                        </button>
-                    </Link>
-                </div>
-            </motion.div>
-        </div>
-    </section>
-);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PAGE PRINCIPALE
@@ -523,60 +487,6 @@ export default function SolutionsClient({ content: _content }: SolutionsClientPr
                             </button>
                         </Link>
                     </motion.div>
-                </div>
-            </section>
-
-            {/* ── OVERVIEW — 2 modules ── */}
-            <section className="py-24 bg-navy-dark border-t border-white/[0.05]">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        {[
-                            {
-                                icon: Eye,
-                                module: "Module 01",
-                                name: "DSC",
-                                tagline: "Driver Safety Camera",
-                                desc: "Surveille le conducteur. Detecte somnolence, distraction, telephone au volant.",
-                                stat: "5",
-                                statLabel: "alertes en temps reel",
-                                href: "#dsc",
-                            },
-                            {
-                                icon: AlertTriangle,
-                                module: "Module 02",
-                                name: "ADAS",
-                                tagline: "Advanced Driver Assist",
-                                desc: "Surveille la route. Detecte collision frontale, sortie de voie, distance dangereuse.",
-                                stat: "3",
-                                statLabel: "scenarios critiques",
-                                href: "#adas",
-                            },
-                        ].map(({ icon: Icon, module, name, tagline, desc, stat, statLabel, href }) => (
-                            <Link key={name} href={href}>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    className="group bg-white/[0.03] border border-white/[0.07] hover:border-teal/25 rounded-3xl p-8 transition-all duration-300 cursor-pointer"
-                                >
-                                    <div className="flex items-start justify-between mb-6">
-                                        <div className="w-10 h-10 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center">
-                                            <Icon className="w-4 h-4 text-teal" />
-                                        </div>
-                                        <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-teal group-hover:translate-x-1 transition-all duration-300" />
-                                    </div>
-                                    <div className="text-[9px] font-black text-teal/50 tracking-[0.35em] uppercase mb-1">{module}</div>
-                                    <div className="text-2xl font-black text-white tracking-tight mb-1">{name}</div>
-                                    <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-4">{tagline}</div>
-                                    <p className="text-white/35 text-sm leading-relaxed font-medium mb-6">{desc}</p>
-                                    <div className="pt-5 border-t border-white/[0.06]">
-                                        <span className="text-3xl font-black text-teal">{stat}</span>
-                                        <span className="text-white/30 text-xs font-bold ml-2 tracking-wide">{statLabel}</span>
-                                    </div>
-                                </motion.div>
-                            </Link>
-                        ))}
-                    </div>
                 </div>
             </section>
 
