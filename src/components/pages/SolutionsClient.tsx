@@ -1,699 +1,686 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { SiteContent } from "@/lib/content";
-import {
-    Shield, Heart, TrendingDown, Clock, DollarSign, AlertTriangle,
-    MapPin, Fuel, Wrench, Users, Video, Thermometer,
-    Scale, BarChart3, Zap, CheckCircle2, ArrowRight,
-    Eye, Brain, Camera, Star, Package, ShieldCheck
-} from "lucide-react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, CheckCircle2, Eye, AlertTriangle, Shield, Smartphone, Play } from "lucide-react";
+import { SiteContent } from "@/lib/content";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// DSC FEATURES
+// ─────────────────────────────────────────────────────────────────────────────
+const DSC_FEATURES = [
+    {
+        id: "somnolence",
+        label: "Somnolence",
+        title: "Somnolence detectee",
+        description: "L'IA mesure la fermeture des paupieres et la frequence de clignement. Alerte sonore immediate avant que le conducteur ne perde le controle.",
+        image: "/dscSomnolence.jpeg",
+    },
+    {
+        id: "yawning",
+        label: "Baillement",
+        title: "Baillement detecte",
+        description: "Un baillement repete est le premier signe de fatigue profonde. Le systeme declenche une alerte bien avant que les reflexes ne s'alterent.",
+        image: "/dscYawning.jpeg",
+    },
+    {
+        id: "drowsiness",
+        label: "Fatigue",
+        title: "Fatigue extreme",
+        description: "Tete penchee, yeux mi-clos, micro-sommeils. L'IA detecte les signaux que le conducteur lui-meme ne percoit plus.",
+        image: "/dscDownsiness.jpeg",
+    },
+    {
+        id: "distraction",
+        label: "Distraction",
+        title: "Regard detourne",
+        description: "Les yeux quittent la route plus de 2 secondes : l'alerteretentit. 90% des accidents impliquent une inattention d'une seconde ou moins.",
+        image: "/dscDistraction.jpeg",
+    },
+    {
+        id: "phone",
+        label: "Telephone",
+        title: "Telephone au volant",
+        description: "La camera frontale identifie l'utilisation d'un telephone en temps reel. Preuve video horodatee, transmise instantanement sur la plateforme.",
+        image: "/dscPhoneUse.jpeg",
+    },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ADAS FEATURES
+// ─────────────────────────────────────────────────────────────────────────────
+const ADAS_FEATURES = [
+    {
+        id: "fcw",
+        label: "FCW",
+        title: "Collision frontale",
+        description: "Forward Collision Warning. La camera ADAS calcule la distance et la vitesse de rapprochement avec le vehicule devant. Alerte 2,5 secondes avant l'impact potentiel.",
+        stat: "2.5s",
+        statLabel: "avant l'impact",
+        image: "/adasFCW.jpeg",
+    },
+    {
+        id: "ldw",
+        label: "LDW",
+        title: "Sortie de voie",
+        description: "Lane Departure Warning. Franchissement de ligne sans clignotant detecte instantanement. Indispensable sur les routes a voies non balisees du Senegal.",
+        stat: "100%",
+        statLabel: "des franchissements",
+        image: "/adasLDW.png",
+    },
+    {
+        id: "distance",
+        label: "Distance",
+        title: "Distance de securite",
+        description: "L'IA surveille en permanence la distance inter-vehiculaire et alerte le conducteur quand il se rapproche trop du vehicule qui precede.",
+        stat: "<3s",
+        statLabel: "temps de reaction",
+        image: "/adasDistanceDeSecutité.png",
+    },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DSC SECTION — galerie interactive
+// ─────────────────────────────────────────────────────────────────────────────
+const DSCSection = () => {
+    const [active, setActive] = useState(0);
+
+    return (
+        <section id="dsc" className="py-32 lg:py-40 bg-navy-dark overflow-hidden">
+            <div className="container mx-auto px-6">
+                {/* Header */}
+                <div className="max-w-3xl mb-20 lg:mb-28">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="w-10 h-10 rounded-2xl bg-teal/15 border border-teal/25 flex items-center justify-center">
+                                <Eye className="w-4 h-4 text-teal" />
+                            </div>
+                            <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase">Module 01 — DSC</span>
+                        </div>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-6">
+                            Ce que l'oeil<br />
+                            <span className="text-teal">ne voit plus.</span>
+                        </h2>
+                        <p className="text-white/40 text-lg font-medium leading-relaxed max-w-xl">
+                            La camera DSC embarquee analyse le visage du conducteur 25 fois par seconde. Elle detecte les signes de danger que le conducteur ne percoit plus lui-meme.
+                        </p>
+                    </motion.div>
+                </div>
+
+                {/* Interactive feature viewer */}
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start">
+
+                    {/* Left — tab list */}
+                    <div className="space-y-3">
+                        {DSC_FEATURES.map((feat, i) => (
+                            <motion.button
+                                key={feat.id}
+                                onClick={() => setActive(i)}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.08 }}
+                                viewport={{ once: true }}
+                                className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 group ${
+                                    active === i
+                                        ? "bg-white/[0.06] border-teal/30"
+                                        : "bg-white/[0.02] border-white/[0.06] hover:border-white/15"
+                                }`}
+                            >
+                                <div className="flex items-start justify-between gap-4">
+                                    <div>
+                                        <div className={`text-[9px] font-black tracking-[0.35em] uppercase mb-1.5 transition-colors ${active === i ? "text-teal" : "text-white/30"}`}>
+                                            {feat.label}
+                                        </div>
+                                        <div className={`font-black text-lg tracking-tight transition-colors ${active === i ? "text-white" : "text-white/50"}`}>
+                                            {feat.title}
+                                        </div>
+                                        <AnimatePresence>
+                                            {active === i && (
+                                                <motion.p
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: "auto" }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="text-white/40 text-sm leading-relaxed mt-3 font-medium"
+                                                >
+                                                    {feat.description}
+                                                </motion.p>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                    <div className={`w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-colors ${active === i ? "bg-teal" : "bg-white/15"}`} />
+                                </div>
+                            </motion.button>
+                        ))}
+                    </div>
+
+                    {/* Right — feature image */}
+                    <div className="lg:sticky lg:top-32">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/[0.07]"
+                        >
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={active}
+                                    initial={{ opacity: 0, scale: 1.04 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.97 }}
+                                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                    className="absolute inset-0"
+                                >
+                                    <Image
+                                        src={DSC_FEATURES[active].image}
+                                        alt={DSC_FEATURES[active].title}
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/70 via-transparent to-transparent" />
+                                </motion.div>
+                            </AnimatePresence>
+
+                            {/* Label badge */}
+                            <div className="absolute bottom-6 left-6 right-6 z-10">
+                                <div className="bg-navy-dark/70 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-3 inline-flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-teal animate-pulse" />
+                                    <span className="text-white font-black text-sm tracking-tight">
+                                        {DSC_FEATURES[active].title}
+                                    </span>
+                                    <span className="text-teal text-[10px] font-bold tracking-widest uppercase ml-auto">
+                                        IA Active
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Dot indicators */}
+                        <div className="flex items-center justify-center gap-2 mt-5">
+                            {DSC_FEATURES.map((_, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setActive(i)}
+                                    className={`transition-all duration-300 rounded-full ${
+                                        active === i ? "w-6 h-1.5 bg-teal" : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ADAS SECTION — 3 cartes en alternance
+// ─────────────────────────────────────────────────────────────────────────────
+const ADASSection = () => (
+    <section id="adas" className="py-32 lg:py-40 bg-white overflow-hidden">
+        <div className="container mx-auto px-6">
+            {/* Header */}
+            <div className="max-w-3xl mx-auto text-center mb-20 lg:mb-28">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="inline-flex items-center gap-3 mb-8">
+                        <div className="w-10 h-10 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center">
+                            <AlertTriangle className="w-4 h-4 text-teal" />
+                        </div>
+                        <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase">Module 02 — ADAS</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-navy-dark tracking-tighter leading-[0.9] mb-6">
+                        La route,<br />
+                        <span className="text-teal">anticipee.</span>
+                    </h2>
+                    <p className="text-navy/50 text-lg font-medium leading-relaxed max-w-xl mx-auto">
+                        La camera ADAS lit la route en temps reel et alerte le conducteur avant chaque situation critique. Trois scenarios, une seule regle : prevenir plutot que subir.
+                    </p>
+                </motion.div>
+            </div>
+
+            {/* Feature cards — alternating */}
+            <div className="space-y-8 max-w-5xl mx-auto">
+                {ADAS_FEATURES.map((feat, i) => (
+                    <motion.div
+                        key={feat.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1, duration: 0.7 }}
+                        viewport={{ once: true }}
+                        className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-navy/[0.06] shadow-xl shadow-navy/5"
+                    >
+                        {/* Image */}
+                        <div className={`relative min-h-[320px] lg:min-h-[380px] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                            <Image
+                                src={feat.image}
+                                alt={feat.title}
+                                fill
+                                className="object-cover"
+                            />
+                            <div className="absolute inset-0 bg-navy-dark/20" />
+                            {/* Stat overlay */}
+                            <div className="absolute top-6 left-6 bg-navy-dark/80 backdrop-blur border border-white/15 rounded-2xl px-4 py-3">
+                                <div className="text-2xl font-black text-teal leading-none">{feat.stat}</div>
+                                <div className="text-[9px] font-bold text-white/50 tracking-widest uppercase mt-0.5">{feat.statLabel}</div>
+                            </div>
+                        </div>
+
+                        {/* Text */}
+                        <div className={`bg-zinc-50 p-8 lg:p-12 flex flex-col justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                            <div className="text-[9px] font-black text-teal/70 tracking-[0.4em] uppercase mb-3">{feat.label}</div>
+                            <h3 className="text-2xl md:text-3xl font-black text-navy-dark tracking-tight mb-4">{feat.title}</h3>
+                            <p className="text-navy/50 text-sm leading-relaxed font-medium mb-8">{feat.description}</p>
+                            <div className="flex items-center gap-3">
+                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0" />
+                                <span className="text-xs font-black text-navy-dark/70 tracking-wide">Alerte sonore + notification plateforme</span>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+    </section>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PLATFORM SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+const PlatformSection = () => (
+    <section id="plateforme" className="py-32 lg:py-40 bg-navy-dark overflow-hidden">
+        <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-20">
+                {/* Text */}
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="w-10 h-10 rounded-2xl bg-teal/15 border border-teal/25 flex items-center justify-center">
+                            <Shield className="w-4 h-4 text-teal" />
+                        </div>
+                        <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase">Plateforme — Karangue221</span>
+                    </div>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[0.9] mb-6">
+                        Tout voir.<br />
+                        <span className="text-teal">En temps reel.</span>
+                    </h2>
+                    <p className="text-white/40 text-base leading-relaxed font-medium mb-10 max-w-md">
+                        Video en direct, carte GPS, alertes comportementales, historique d'incidents. Karangue221 centralise chaque signal de ta flotte dans une interface unique.
+                    </p>
+
+                    <div className="space-y-4 mb-10">
+                        {[
+                            "Video live + replay des incidents",
+                            "Carte GPS en temps reel",
+                            "Alertes DSC et ADAS instantanees",
+                            "Rapports de conduite par conducteur",
+                            "Historique 90 jours accessible",
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: -10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.1 + i * 0.07 }}
+                                viewport={{ once: true }}
+                                className="flex items-center gap-3"
+                            >
+                                <CheckCircle2 className="w-3.5 h-3.5 text-teal shrink-0" />
+                                <span className="text-white/60 text-sm font-medium">{item}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <Link href="/contact">
+                        <button className="inline-flex items-center gap-3 bg-teal text-white font-black text-sm px-6 py-3.5 rounded-xl hover:bg-teal/90 transition-colors">
+                            Demander une demo
+                            <ArrowRight className="w-4 h-4" />
+                        </button>
+                    </Link>
+                </motion.div>
+
+                {/* Platform screenshot */}
+                <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                >
+                    <div className="relative rounded-2xl overflow-hidden border border-white/[0.07] shadow-2xl shadow-black/50">
+                        <Image
+                            src="/AIKaranguePlateforme.png"
+                            alt="Plateforme Karangue221 — video + carte en direct"
+                            width={800}
+                            height={560}
+                            className="w-full h-auto"
+                        />
+                    </div>
+                    {/* Glow */}
+                    <div className="absolute -inset-8 bg-teal/10 blur-[80px] rounded-full -z-10" />
+                </motion.div>
+            </div>
+        </div>
+    </section>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// APP SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+const AppSection = () => (
+    <section id="app" className="py-32 lg:py-40 bg-zinc-50 overflow-hidden">
+        <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                {/* App screenshot */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="relative flex justify-center"
+                >
+                    <div className="relative w-[260px] md:w-[300px]">
+                        <div className="absolute -inset-6 bg-teal/8 blur-[60px] rounded-full" />
+                        <Image
+                            src="/AIKaranguéAPP.png"
+                            alt="Application mobile Karangue221"
+                            width={300}
+                            height={620}
+                            className="relative w-full h-auto drop-shadow-2xl"
+                        />
+                    </div>
+                </motion.div>
+
+                {/* Text */}
+                <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="w-10 h-10 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center">
+                            <Smartphone className="w-4 h-4 text-teal" />
+                        </div>
+                        <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase">Application mobile</span>
+                    </div>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy-dark tracking-tighter leading-[0.9] mb-6">
+                        Ta flotte<br />
+                        <span className="text-teal">dans ta poche.</span>
+                    </h2>
+                    <p className="text-navy/50 text-base leading-relaxed font-medium mb-10 max-w-md">
+                        L'application Karangue221 te notifie en temps reel des alertes de tes conducteurs. Recois les incidents, consulte les videos, et suis ta flotte depuis n'importe ou.
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-4 mb-10">
+                        {[
+                            { label: "Notifications push", desc: "Alertes instantanees" },
+                            { label: "Video on-demand", desc: "Replay incidents" },
+                            { label: "Suivi GPS live", desc: "Position en direct" },
+                            { label: "Score conduite", desc: "Par chauffeur" },
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                                className="bg-white border border-navy/[0.07] rounded-2xl p-4"
+                            >
+                                <div className="text-xs font-black text-navy-dark mb-0.5">{item.label}</div>
+                                <div className="text-[10px] font-medium text-navy/40">{item.desc}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <Link href="/contact">
+                        <button className="inline-flex items-center gap-3 bg-navy-dark text-white font-black text-sm px-6 py-3.5 rounded-xl hover:bg-navy transition-colors">
+                            Tester l'application
+                            <ArrowRight className="w-4 h-4" />
+                        </button>
+                    </Link>
+                </motion.div>
+            </div>
+        </div>
+    </section>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INSURANCE PROOF SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+const InsuranceSection = () => (
+    <section className="relative min-h-[70vh] flex items-end overflow-hidden">
+        <Image
+            src="/insuranceproof.jpeg"
+            alt="Preuve video d'assurance — Karangue221"
+            fill
+            className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/50 to-transparent" />
+
+        <div className="container mx-auto px-6 relative z-10 pb-20 lg:pb-32">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="max-w-3xl"
+            >
+                <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase block mb-4">Preuve irrefutable</span>
+                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9] mb-6">
+                    Chaque trajet,<br />
+                    <span className="text-teal">une preuve.</span>
+                </h2>
+                <p className="text-white/50 text-base leading-relaxed font-medium mb-8 max-w-xl">
+                    En cas d'accident, la video horodatee de Karangue221 devient ta defense legale. Exoneration du conducteur non-responsable. Reduction des primes d'assurance. Fin des litiges.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                    {[
+                        "Preuve video horodatee",
+                        "Cloud securise 90 jours",
+                        "Exportable en justice",
+                        "Reduction prime assurance",
+                    ].map((tag) => (
+                        <span key={tag} className="bg-white/10 backdrop-blur border border-white/15 text-white/80 text-xs font-bold px-4 py-2 rounded-full">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            </motion.div>
+        </div>
+    </section>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FINAL CTA
+// ─────────────────────────────────────────────────────────────────────────────
+const FinalCTA = () => (
+    <section className="py-40 bg-navy-dark text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="max-w-3xl mx-auto"
+            >
+                <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-6">
+                    La route ne previent pas.<br />
+                    <span className="text-teal">Toi, si.</span>
+                </h2>
+                <p className="text-white/35 text-lg font-medium mb-12 max-w-md mx-auto leading-relaxed">
+                    A partir de 9.900 F/mois. Installation en 15 minutes. Protection immediate.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link href="/contact">
+                        <button className="inline-flex items-center gap-3 bg-teal text-white font-black text-sm px-8 py-4 rounded-xl hover:bg-teal/90 transition-colors shadow-lg shadow-teal/20">
+                            Souscrire maintenant
+                            <ArrowRight className="w-4 h-4" />
+                        </button>
+                    </Link>
+                    <Link href="/offres">
+                        <button className="inline-flex items-center gap-3 border border-white/15 text-white/70 font-black text-sm px-8 py-4 rounded-xl hover:border-white/30 hover:text-white transition-all">
+                            Voir les offres
+                        </button>
+                    </Link>
+                </div>
+            </motion.div>
+        </div>
+    </section>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PAGE PRINCIPALE
+// ─────────────────────────────────────────────────────────────────────────────
 interface SolutionsClientProps {
     content: SiteContent;
 }
 
-export default function SolutionsClient({ content }: SolutionsClientProps) {
+export default function SolutionsClient({ content: _content }: SolutionsClientProps) {
     return (
-        <main className="min-h-screen bg-white selection:bg-teal selection:text-white overflow-hidden">
+        <main className="min-h-screen bg-navy-dark selection:bg-teal selection:text-white overflow-hidden">
 
-            {/* Hero - The Promise */}
-            <section className="relative min-h-screen flex items-center justify-center bg-navy-dark pt-20 overflow-hidden">
-                <div className="absolute inset-0 opacity-30">
-                    <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                        <source src="/hero.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/80 via-navy-dark/60 to-white" />
+            {/* ── HERO ── */}
+            <section className="relative min-h-screen flex items-end overflow-hidden pt-20">
+                <Image
+                    src="/persona.jpeg"
+                    alt="Conducteur protege par AI-Karangue"
+                    fill
+                    className="object-cover object-[center_30%]"
+                    priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/60 to-navy-dark/20" />
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
+                <div className="container mx-auto px-6 relative z-10 pb-24 lg:pb-32">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
-                        className="max-w-6xl mx-auto"
+                        className="max-w-4xl"
                     >
-                        <h1 className="text-6xl md:text-[10rem] font-black text-white tracking-tighter mb-12 leading-[0.85]">
-                            {content.solutions.hero.title}<br /><span className="text-teal">{content.solutions.hero.titleHighlight}</span>
+                        <span className="text-[10px] font-black text-teal/80 tracking-[0.4em] uppercase block mb-6">AI-Karangue — Technologies</span>
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.88] mb-8">
+                            L'intelligence<br />
+                            qui protege<br />
+                            <span className="text-teal">chaque trajet.</span>
                         </h1>
-
-
-                        <p className="text-2xl md:text-3xl text-white/70 max-w-4xl mx-auto font-medium mb-12 leading-relaxed">
-                            {content.solutions.hero.subtitle} <span className="text-white font-black">{content.solutions.hero.subtitleHighlight}</span>
+                        <p className="text-white/50 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-xl">
+                            DSC, ADAS, plateforme cloud et application mobile. Un ecosysteme complet pour que tu ne roules plus jamais sans protection.
                         </p>
 
-
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link href="/#roi-calculator">
-                                <Button size="lg" className="h-16 px-12 text-lg bg-teal hover:bg-teal-light shadow-2xl shadow-teal/20 flex items-center gap-3">
-                                    <span>{content.solutions.hero.ctaPrimary}</span>
-                                    <ArrowRight className="w-5 h-5" />
-                                </Button>
-                            </Link>
-                            <Link href="/contact">
-                                <Button variant="outline" size="lg" className="h-16 px-12 text-lg border-white/20 text-white hover:bg-white hover:text-navy-dark">
-                                    {content.solutions.hero.ctaSecondary}
-                                </Button>
-                            </Link>
+                        {/* Nav rapide */}
+                        <div className="flex flex-wrap gap-3">
+                            {[
+                                { label: "DSC", href: "#dsc" },
+                                { label: "ADAS", href: "#adas" },
+                                { label: "Plateforme", href: "#plateforme" },
+                                { label: "Application", href: "#app" },
+                            ].map(({ label, href }) => (
+                                <Link key={label} href={href}>
+                                    <span className="bg-white/10 backdrop-blur border border-white/15 text-white/80 text-xs font-black px-5 py-2.5 rounded-full hover:bg-white/15 hover:text-white transition-all cursor-pointer tracking-wide">
+                                        {label}
+                                    </span>
+                                </Link>
+                            ))}
                         </div>
                     </motion.div>
                 </div>
 
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-                    <ArrowRight className="rotate-90 text-white/30 w-8 h-8" />
+                {/* Scroll indicator */}
+                <div className="absolute bottom-8 right-8 z-10">
+                    <motion.div
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    >
+                        <ArrowRight className="w-5 h-5 text-white/20 rotate-90" />
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Value Demonstration - Why You Need This */}
-            <section className="py-32 bg-white">
+            {/* ── OVERVIEW — 2 modules ── */}
+            <section className="py-24 bg-navy-dark border-t border-white/[0.05]">
                 <div className="container mx-auto px-6">
-                    <div className="text-center max-w-4xl mx-auto mb-20">
-                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-6 block">{content.solutions.value.sectionLabel}</span>
-                        <h2 className="text-5xl md:text-7xl font-black text-navy-dark mb-8 tracking-tight leading-tight">
-                            {content.solutions.value.sectionTitle} <span className="text-teal">{content.solutions.value.sectionTitleHighlight}</span>
-                        </h2>
-                        <p className="text-xl text-navy/60 font-medium">
-                            {content.solutions.value.sectionDescription} <span className="text-navy-dark font-black">{content.solutions.value.sectionDescriptionHighlight}</span>
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
-                        {/* Save Lives */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-zinc-50 border border-navy/5 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:border-teal/20 transition-all duration-500 group"
-                        >
-                            <div className="relative h-64 w-full overflow-hidden">
-                                <Image
-                                    src="/save-lives.png"
-                                    alt="Driver Safety"
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-all duration-500" />
-                                <div className="absolute top-6 left-6 w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
-                                    <Heart className="w-8 h-8 text-teal" />
-                                </div>
-                            </div>
-
-                            <div className="p-10">
-                                <h3 className="text-3xl font-black text-navy-dark mb-4">{content.solutions.value.cards[0].title}</h3>
-                                <p className="text-navy/60 font-medium mb-8 leading-relaxed">
-                                    <span className="text-navy-dark font-bold">{content.solutions.value.cards[0].problem}</span> {content.solutions.value.cards[0].problemHighlight}
-                                </p>
-                                <div className="bg-white rounded-2xl p-6 mb-8 border border-navy/5 shadow-inner">
-                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">{content.solutions.value.cards[0].solutionLabel}</p>
-                                    <ul className="space-y-3">
-                                        {content.solutions.value.cards[0].benefits.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm font-bold text-navy-dark/80">
-                                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="flex items-center justify-between border-t border-navy/5 pt-6">
-                                    <div className="text-left">
-                                        <p className="text-4xl font-black text-navy-dark">{content.solutions.value.cards[0].statValue}</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">{content.solutions.value.cards[0].statLabel}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Save Time */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="bg-zinc-50 border border-navy/5 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:border-teal/20 transition-all duration-500 group"
-                        >
-                            <div className="relative h-64 w-full overflow-hidden">
-                                <Image
-                                    src="/save-time.png"
-                                    alt="Fleet Efficiency"
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-all duration-500" />
-                                <div className="absolute top-6 left-6 w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
-                                    <Clock className="w-8 h-8 text-teal" />
-                                </div>
-                            </div>
-
-                            <div className="p-10">
-                                <h3 className="text-3xl font-black text-navy-dark mb-4">{content.solutions.value.cards[1].title}</h3>
-                                <p className="text-navy/60 font-medium mb-8 leading-relaxed">
-                                    <span className="text-navy-dark font-bold">{content.solutions.value.cards[1].problem}</span> {content.solutions.value.cards[1].problemHighlight}
-                                </p>
-                                <div className="bg-white rounded-2xl p-6 mb-8 border border-navy/5 shadow-inner">
-                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">{content.solutions.value.cards[1].solutionLabel}</p>
-                                    <ul className="space-y-3">
-                                        {content.solutions.value.cards[1].benefits.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm font-bold text-navy-dark/80">
-                                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="flex items-center justify-between border-t border-navy/5 pt-6">
-                                    <div className="text-left">
-                                        <p className="text-4xl font-black text-navy-dark">{content.solutions.value.cards[1].statValue}</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">{content.solutions.value.cards[1].statLabel}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Save Money */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-zinc-50 border border-navy/5 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:border-teal/20 transition-all duration-500 group"
-                        >
-                            <div className="relative h-64 w-full overflow-hidden">
-                                <Image
-                                    src="/save-money.png"
-                                    alt="Cost Savings"
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-all duration-500" />
-                                <div className="absolute top-6 left-6 w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
-                                    <DollarSign className="w-8 h-8 text-teal" />
-                                </div>
-                            </div>
-
-                            <div className="p-10">
-                                <h3 className="text-3xl font-black text-navy-dark mb-4">{content.solutions.value.cards[2].title}</h3>
-                                <p className="text-navy/60 font-medium mb-8 leading-relaxed">
-                                    <span className="text-navy-dark font-bold">{content.solutions.value.cards[2].problem}</span> {content.solutions.value.cards[2].problemHighlight}
-                                </p>
-                                <div className="bg-white rounded-2xl p-6 mb-8 border border-navy/5 shadow-inner">
-                                    <p className="text-sm font-black text-teal mb-4 uppercase tracking-wider">{content.solutions.value.cards[2].solutionLabel}</p>
-                                    <ul className="space-y-3">
-                                        {content.solutions.value.cards[2].benefits.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm font-bold text-navy-dark/80">
-                                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="flex items-center justify-between border-t border-navy/5 pt-6">
-                                    <div className="text-left">
-                                        <p className="text-4xl font-black text-navy-dark">{content.solutions.value.cards[2].statValue}</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-wider text-navy/40">{content.solutions.value.cards[2].statLabel}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Platform Capabilities - How It Works */}
-            <section className="py-32 bg-zinc-50">
-                <div className="container mx-auto px-6">
-                    <div className="text-center max-w-4xl mx-auto mb-20">
-                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-6 block">{content.solutions.capabilities.sectionLabel}</span>
-                        <h2 className="text-5xl md:text-7xl font-black text-navy-dark mb-8 tracking-tight leading-tight">
-                            {content.solutions.capabilities.sectionTitle} <span className="text-teal">{content.solutions.capabilities.sectionTitleHighlight}</span>
-                        </h2>
-                        <p className="text-xl text-navy/60 font-medium">
-                            {content.solutions.capabilities.sectionDescription}
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                        {content.solutions.capabilities.modules.map((module, i) => {
-                            // Map icon names to components
-                            const iconMap: Record<string, any> = {
-                                'MapPin': MapPin,
-                                'Fuel': Fuel,
-                                'Wrench': Wrench,
-                                'Users': Users,
-                                'Video': Video,
-                                'Package': Package,
-                                'Thermometer': Thermometer,
-                                'Scale': Scale,
-                                'BarChart3': BarChart3
-                            };
-
-                            // Try to match icon from title or default to BarChart3
-                            const iconKey = Object.keys(iconMap).find(key =>
-                                module.title.toLowerCase().includes(key.toLowerCase())
-                            ) || 'BarChart3';
-                            const Icon = iconMap[iconKey];
-
-                            return (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        {[
+                            {
+                                icon: Eye,
+                                module: "Module 01",
+                                name: "DSC",
+                                tagline: "Driver Safety Camera",
+                                desc: "Surveille le conducteur. Detecte somnolence, distraction, telephone au volant.",
+                                stat: "5",
+                                statLabel: "alertes en temps reel",
+                                href: "#dsc",
+                            },
+                            {
+                                icon: AlertTriangle,
+                                module: "Module 02",
+                                name: "ADAS",
+                                tagline: "Advanced Driver Assist",
+                                desc: "Surveille la route. Detecte collision frontale, sortie de voie, distance dangereuse.",
+                                stat: "3",
+                                statLabel: "scenarios critiques",
+                                href: "#adas",
+                            },
+                        ].map(({ icon: Icon, module, name, tagline, desc, stat, statLabel, href }) => (
+                            <Link key={name} href={href}>
                                 <motion.div
-                                    key={i}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: i * 0.05 }}
-                                    className="bg-white rounded-3xl p-8 border border-navy/5 hover:border-teal/30 hover:shadow-xl transition-all duration-300 group"
+                                    className="group bg-white/[0.03] border border-white/[0.07] hover:border-teal/25 rounded-3xl p-8 transition-all duration-300 cursor-pointer"
                                 >
-                                    <div className="w-14 h-14 bg-navy-dark rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal transition-colors shadow-lg">
-                                        <Icon className="w-7 h-7 text-white" />
+                                    <div className="flex items-start justify-between mb-6">
+                                        <div className="w-10 h-10 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center">
+                                            <Icon className="w-4 h-4 text-teal" />
+                                        </div>
+                                        <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-teal group-hover:translate-x-1 transition-all duration-300" />
                                     </div>
-                                    <h3 className="text-xl font-black text-navy-dark mb-4">{module.title}</h3>
-                                    <ul className="space-y-2 mb-6">
-                                        {module.features.map((feature, j) => (
-                                            <li key={j} className="flex items-start gap-2 text-sm text-navy/70 font-medium">
-                                                <CheckCircle2 className="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div className="pt-4 border-t border-navy/5">
-                                        <p className="text-xs font-black text-teal uppercase tracking-wider">Impact Business</p>
-                                        <p className="text-sm font-bold text-navy-dark mt-1">{module.impact}</p>
+                                    <div className="text-[9px] font-black text-teal/50 tracking-[0.35em] uppercase mb-1">{module}</div>
+                                    <div className="text-2xl font-black text-white tracking-tight mb-1">{name}</div>
+                                    <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-4">{tagline}</div>
+                                    <p className="text-white/35 text-sm leading-relaxed font-medium mb-6">{desc}</p>
+                                    <div className="pt-5 border-t border-white/[0.06]">
+                                        <span className="text-3xl font-black text-teal">{stat}</span>
+                                        <span className="text-white/30 text-xs font-bold ml-2 tracking-wide">{statLabel}</span>
                                     </div>
                                 </motion.div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Hardware Enablers - In-Vehicle Experience */}
-            <section className="py-32 bg-navy-dark text-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center max-w-4xl mx-auto mb-24">
-                        <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-8 block">{content.solutions.hardware.sectionLabel}</span>
-                        <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight leading-none">
-                            {content.solutions.hardware.sectionTitle} <span className="text-teal">{content.solutions.hardware.sectionTitleHighlight}</span>
-                        </h2>
-                        <p className="text-xl text-white/60 font-medium max-w-3xl mx-auto leading-relaxed">
-                            {content.solutions.hardware.sectionDescription}
-                        </p>
-                    </div>
-
-                    <div className="space-y-32">
-                        {/* 1. DSM */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden group hover:border-teal/30 transition-all duration-500"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2">
-                                <div className="relative min-h-[500px] lg:h-full">
-                                    <Image src="/VUEDSM.png" alt="Vue DSM Conducteur" fill className="object-cover" />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 to-transparent lg:hidden" />
-                                </div>
-                                <div className="p-10 lg:p-20 flex flex-col justify-center">
-                                    <div className="flex items-center gap-5 mb-8">
-                                        <div className="bg-white p-3 rounded-2xl shadow-lg shadow-teal/10 border border-teal/10 relative w-20 h-20 flex items-center justify-center">
-                                            <Image src="/device-dsm.png" alt="DSM Device" width={64} height={64} className="object-contain" />
-                                        </div>
-                                        <div>
-                                            <span className="text-teal font-black text-xs tracking-[0.2em] uppercase block mb-2">Surveillance Conducteur</span>
-                                            <h3 className="text-4xl font-black tracking-tight text-white">DSM</h3>
-                                        </div>
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <p className="text-lg text-white/70 font-medium leading-relaxed">
-                                            Un système d'intelligence artificielle qui scanne le visage du conducteur en temps réel pour détecter les <span className="text-white font-bold">signes de fatigue</span> et les <span className="text-white font-bold">distractions</span>.
-                                        </p>
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <div className="bg-white/5 rounded-3xl p-6 border border-white/5">
-                                            <h5 className="text-teal font-bold mb-4 flex items-center gap-2 text-sm uppercase tracking-wider">
-                                                <CheckCircle2 className="w-4 h-4" /> Bénéfices Karangué221
-                                            </h5>
-                                            <ul className="space-y-3 text-sm text-white/80 font-medium grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Détection fatigue & somnolence</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Alerte distraction (téléphone)</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Vérification port de ceinture</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Preuve vidéo comportementale</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <Link href="/contact" className="w-full">
-                                        <Button className="w-full bg-teal hover:bg-teal-light text-white font-bold h-16 rounded-2xl shadow-xl shadow-teal/20 flex items-center justify-between px-8 group-hover:scale-[1.02] transition-transform duration-300">
-                                            <span className="text-lg">Voir le DSM en action</span>
-                                            <div className="bg-white/20 p-2 rounded-full">
-                                                <ArrowRight className="w-5 h-5 text-white" />
-                                            </div>
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* 2. ADAS */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden group hover:border-teal/30 transition-all duration-500"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2">
-                                <div className="p-10 lg:p-20 flex flex-col justify-center order-2 lg:order-1">
-                                    <div className="flex items-center gap-5 mb-8">
-                                        <div className="bg-white p-3 rounded-2xl shadow-lg shadow-teal/10 border border-teal/10 relative w-20 h-20 flex items-center justify-center">
-                                            <Image src="/device-adas.png" alt="ADAS Device" width={64} height={64} className="object-contain" />
-                                        </div>
-                                        <div>
-                                            <span className="text-teal font-black text-xs tracking-[0.2em] uppercase block mb-2">Assistance Route</span>
-                                            <h3 className="text-4xl font-black tracking-tight text-white">ADAS</h3>
-                                        </div>
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <p className="text-lg text-white/70 font-medium leading-relaxed">
-                                            Une caméra savante qui lit la route devant le véhicule. Elle anticipe les dangers et alerte le conducteur via le <span className="text-teal font-bold">Coach Conduite</span> avant l'impact.
-                                        </p>
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <div className="bg-white/5 rounded-3xl p-6 border border-white/5">
-                                            <h5 className="text-teal font-bold mb-4 flex items-center gap-2 text-sm uppercase tracking-wider">
-                                                <CheckCircle2 className="w-4 h-4" /> Bénéfices Karangué221
-                                            </h5>
-                                            <ul className="space-y-3 text-sm text-white/80 font-medium grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Alerte collision frontale (FCW)</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Alerte sortie de voie (LDW)</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Détection piétons & obstacles</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Lecture panneaux vitesse</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <Link href="/contact" className="w-full">
-                                        <Button className="w-full bg-teal hover:bg-teal-light text-white font-bold h-16 rounded-2xl shadow-xl shadow-teal/20 flex items-center justify-between px-8 group-hover:scale-[1.02] transition-transform duration-300">
-                                            <span className="text-lg">Découvrir l'ADAS</span>
-                                            <div className="bg-white/20 p-2 rounded-full">
-                                                <ArrowRight className="w-5 h-5 text-white" />
-                                            </div>
-                                        </Button>
-                                    </Link>
-                                </div>
-                                <div className="relative min-h-[500px] lg:h-full order-1 lg:order-2">
-                                    <Image src="/VUEADAS.png" alt="Vue ADAS Route" fill className="object-cover" />
-                                    <div className="absolute inset-0 bg-gradient-to-l from-navy-dark/90 to-transparent lg:hidden" />
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* 3. DualCam */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden group hover:border-teal/30 transition-all duration-500"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2">
-                                <div className="relative min-h-[500px] lg:h-full">
-                                    <Image src="/VUEDUALCAM.png" alt="Vue DualCam" fill className="object-cover" />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 to-transparent lg:hidden" />
-                                </div>
-                                <div className="p-10 lg:p-20 flex flex-col justify-center">
-                                    <div className="flex items-center gap-5 mb-8">
-                                        <div className="bg-white p-3 rounded-2xl shadow-lg shadow-teal/10 border border-teal/10 relative w-20 h-20 flex items-center justify-center">
-                                            <Image src="/device-dualcam.png" alt="DualCam Device" width={64} height={64} className="object-contain" />
-                                        </div>
-                                        <div>
-                                            <span className="text-teal font-black text-xs tracking-[0.2em] uppercase block mb-2">Preuve Vidéo</span>
-                                            <h3 className="text-4xl font-black tracking-tight text-white">DualCam</h3>
-                                        </div>
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <p className="text-lg text-white/70 font-medium leading-relaxed">
-                                            Un système double objectif connectés qui filme simultanément la route et l'habitacle. Les séquences d'incidents sont automatiquement envoyées sur le <span className="text-white font-bold">cloud Karangué221</span>.
-                                        </p>
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <div className="bg-white/5 rounded-3xl p-6 border border-white/5">
-                                            <h5 className="text-teal font-bold mb-4 flex items-center gap-2 text-sm uppercase tracking-wider">
-                                                <CheckCircle2 className="w-4 h-4" /> Bénéfices Karangué221
-                                            </h5>
-                                            <ul className="space-y-3 text-sm text-white/80 font-medium grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Preuve irréfutable (fraude/accident)</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Exonération conducteur (non-responsable)</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Formation par l'image</li>
-                                                <li className="flex items-start gap-2"><div className="w-1 h-1 bg-teal rounded-full mt-2"></div>Protection contre vol marchandise</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <Link href="/contact" className="w-full">
-                                        <Button className="w-full bg-teal hover:bg-teal-light text-white font-bold h-16 rounded-2xl shadow-xl shadow-teal/20 flex items-center justify-between px-8 group-hover:scale-[1.02] transition-transform duration-300">
-                                            <span className="text-lg">Voir les preuves DualCam</span>
-                                            <div className="bg-white/20 p-2 rounded-full">
-                                                <ArrowRight className="w-5 h-5 text-white" />
-                                            </div>
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    <div className="text-center mt-32 p-12 bg-white/5 rounded-[3rem] border border-white/10 max-w-5xl mx-auto backdrop-blur-xl">
-                        <h3 className="text-3xl font-black mb-12">Un Écosystème Connecté</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative">
-                            {/* Connecting Line (hidden on mobile) */}
-                            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-teal/30 to-transparent -translate-y-full"></div>
-
-                            <div className="relative z-10">
-                                <div className="w-16 h-16 bg-navy-dark border border-teal/30 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-teal/10">
-                                    <ShieldCheck className="w-8 h-8 text-teal" />
-                                </div>
-                                <h4 className="text-white font-bold text-lg mb-3">Sécurité Active</h4>
-                                <p className="text-white/50 text-sm leading-relaxed">Détection des risques avant l'accident (DSM + ADAS)</p>
-                            </div>
-                            <div className="relative z-10">
-                                <div className="w-16 h-16 bg-navy-dark border border-teal/30 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-teal/10">
-                                    <Video className="w-8 h-8 text-teal" />
-                                </div>
-                                <h4 className="text-white font-bold text-lg mb-3">Preuve Différée</h4>
-                                <p className="text-white/50 text-sm leading-relaxed">Documentation vidéo cloud des incidents (DualCam)</p>
-                            </div>
-                            <div className="relative z-10">
-                                <div className="w-16 h-16 bg-navy-dark border border-teal/30 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-teal/10">
-                                    <TrendingDown className="w-8 h-8 text-teal" />
-                                </div>
-                                <h4 className="text-white font-bold text-lg mb-3">Résultat Mesurable</h4>
-                                <p className="text-white/50 text-sm leading-relaxed">-50% d'accidents en année 1</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Platform Detail Section - "Le Cerveau" */}
-            <section className="py-40 bg-zinc-50 relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#003366 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center max-w-4xl mx-auto mb-32">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <span className="text-teal font-black tracking-[0.3em] uppercase text-xs mb-8 block">Le Cerveau des Opérations</span>
-                            <h2 className="text-5xl md:text-7xl font-black text-navy-dark mb-8 tracking-tighter leading-none">
-                                Pilotez tout depuis <br /><span className="text-teal">une interface unique.</span>
-                            </h2>
-                            <p className="text-2xl text-navy-dark/60 font-medium max-w-3xl mx-auto leading-relaxed">
-                                Finies les multiples plateformes. Retrouvez téléavertissement, vidéo et analyse de performance au même endroit.
-                            </p>
-                        </motion.div>
-                    </div>
-
-                    <div className="space-y-24">
-                        {/* Feature 1: Tracking (Large Card) */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white rounded-[3rem] p-4 border border-zinc-100 shadow-2xl shadow-navy-dark/5"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-8 lg:p-12">
-                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-dark/20 group">
-                                    <div className="aspect-[16/10] relative">
-                                        <Image src="/tracking.png" alt="Suivi Temps Réel" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                                    </div>
-                                    {/* Overlay UI Element */}
-                                    <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 flex items-center gap-4 animate-in slide-in-from-bottom-4 duration-1000">
-                                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                                        <div>
-                                            <div className="text-xs text-navy/40 font-bold uppercase tracking-wider">Statut Flotte</div>
-                                            <div className="text-navy-dark font-black">54 Véhicules Actifs</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="w-16 h-16 bg-navy-dark text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-navy-dark/20">
-                                        <MapPin className="w-8 h-8" />
-                                    </div>
-                                    <h3 className="text-4xl font-black text-navy-dark mb-6 tracking-tight">Visibilité Totale</h3>
-                                    <p className="text-xl text-navy-dark/60 leading-relaxed mb-10 font-medium">
-                                        Suivez vos véhicules en temps réel sur une carte interactive fluide. Historique de trajet, arrêts, et statuts moteur en un coup d'œil.
-                                    </p>
-                                    <div className="flex flex-wrap gap-3">
-                                        {['Position GPS Exacte', 'Replay Trajet', 'Alertes Sortie de Zone', 'Identification Chauffeur'].map((tag, i) => (
-                                            <span key={i} className="bg-zinc-100 text-navy-dark px-4 py-2 rounded-full text-sm font-bold hover:bg-teal hover:text-white transition-colors cursor-default">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Feature 2: Dashboard (Large Card Reversed) */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white rounded-[3rem] p-4 border border-zinc-100 shadow-2xl shadow-navy-dark/5"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-8 lg:p-12">
-                                <div className="order-2 lg:order-1">
-                                    <div className="w-16 h-16 bg-teal text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-teal/20">
-                                        <BarChart3 className="w-8 h-8" />
-                                    </div>
-                                    <h3 className="text-4xl font-black text-navy-dark mb-6 tracking-tight">Décisions Data-Driven</h3>
-                                    <p className="text-xl text-navy-dark/60 leading-relaxed mb-10 font-medium">
-                                        Transformez vos données brutes en actions concrètes. Rapports de consommation, scores d'éco-conduite, et maintenance prédictive.
-                                    </p>
-                                    <div className="space-y-4">
-                                        <div className="flex items-center justify-between p-4 bg-zinc-50 rounded-2xl border border-zinc-100">
-                                            <span className="font-bold text-navy-dark">Score Éco-Conduite</span>
-                                            <span className="font-black text-teal">94/100</span>
-                                        </div>
-                                        <div className="flex items-center justify-between p-4 bg-zinc-50 rounded-2xl border border-zinc-100">
-                                            <span className="font-bold text-navy-dark">Économie Carburant</span>
-                                            <span className="font-black text-teal">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="order-1 lg:order-2 relative rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-dark/20 group">
-                                    <div className="aspect-[16/10] relative">
-                                        <Image src="/dashboard.png" alt="Tableau de bord" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Feature 3: Video & Geofencing (Bento Grid) */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="bg-navy-dark rounded-[3rem] overflow-hidden relative group min-h-[500px] flex flex-col"
-                            >
-                                <div className="absolute inset-0 opacity-40 mix-blend-overlay">
-                                    <Image src="/video focus.png" alt="Vidéo" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
-                                </div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/50 to-transparent" />
-
-                                <div className="relative z-10 p-12 mt-auto">
-                                    <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/10">
-                                        <Video className="w-7 h-7 text-teal" />
-                                    </div>
-                                    <h3 className="text-3xl font-black text-white mb-4">Vidéo à la Demande</h3>
-                                    <p className="text-white/60 font-medium leading-relaxed mb-6">
-                                        Accédez aux caméras en direct ou revivez les incidents passés. Preuves HD téléchargeables instantanément.
-                                    </p>
-                                    <Link href="/contact">
-                                        <Button variant="ghost" className="text-white p-0 hover:bg-transparent hover:text-teal group-hover:translate-x-2 transition-all">
-                                            {content.solutions.platformDetail.features.video.ctaText} <ArrowRight className="ml-2 w-5 h-5" />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="bg-white rounded-[3rem] border border-zinc-200 overflow-hidden relative group min-h-[500px] flex flex-col"
-                            >
-                                <div className="absolute top-0 right-0 w-2/3 h-2/3 opacity-10 rounded-bl-full bg-teal translate-x-1/3 -translate-y-1/3 blur-3xl" />
-
-                                <div className="p-12 relative z-10">
-                                    <div className="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mb-6">
-                                        <ShieldCheck className="w-7 h-7 text-teal" />
-                                    </div>
-                                    <h3 className="text-3xl font-black text-navy-dark mb-4">Geofencing Intelligent</h3>
-                                    <p className="text-navy-dark/60 font-medium leading-relaxed mb-8">
-                                        Définissez des zones autorisées (dépôts, clients) ou interdites. Soyez alerté instantanément par email/SMS.
-                                    </p>
-                                    <div className="bg-zinc-50 rounded-3xl p-6 border border-zinc-100 relative overflow-hidden">
-                                        <div className="aspect-video relative rounded-xl overflow-hidden shadow-inner">
-                                            <Image src="/geofencing.png" alt="Geofencing Map" fill className="object-cover" />
-                                        </div>
-                                        <div className="flex items-center gap-3 mt-4 text-sm font-bold text-red-500 bg-red-50 px-4 py-2 rounded-lg w-fit">
-                                            <div className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
-                                            Alerte: Sortie de Zone
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* Final CTA High-Fashion Brand Closing */}
-            <section className="py-64 bg-navy-dark text-white text-center rounded-[5rem] mx-4 my-20 overflow-hidden relative">
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-teal/30 blur-[150px] rounded-full" />
-                    <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-navy/40 blur-[150px] rounded-full" />
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <h2 className="text-6xl md:text-[8vw] font-black text-white tracking-tighter leading-[0.85] mb-16">
-                            {content.solutions.finalCta.title} <br /> <span className="text-teal">{content.solutions.finalCta.titleHighlight}</span>
-                        </h2>
-                        <p className="text-xl md:text-2xl text-white/40 font-medium mb-16 max-w-xl mx-auto">
-                            {content.solutions.finalCta.description}
-                        </p>
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                            <Link href="/contact">
-                                <Button size="lg" className="h-20 px-12 text-xl bg-teal text-white hover:scale-105 transition-transform shadow-2xl shadow-teal/20">
-                                    {content.solutions.finalCta.ctaPrimary}
-                                    <ArrowRight className="inline-block ml-3" />
-                                </Button>
                             </Link>
-                            <Link href="/contact">
-                                <Button variant="outline" size="lg" className="h-20 px-12 text-xl border-white/10 text-white hover:bg-white hover:text-navy-dark transition-all">
-                                    {content.solutions.finalCta.ctaSecondary}
-                                </Button>
-                            </Link>
-                        </div>
-                    </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
+            {/* ── DSC ── */}
+            <DSCSection />
+
+            {/* ── ADAS ── */}
+            <ADASSection />
+
+            {/* ── PLATEFORME ── */}
+            <PlatformSection />
+
+            {/* ── APP ── */}
+            <AppSection />
+
+            {/* ── INSURANCE PROOF ── */}
+            <InsuranceSection />
+
+            {/* ── FINAL CTA ── */}
+            <FinalCTA />
 
         </main>
     );
