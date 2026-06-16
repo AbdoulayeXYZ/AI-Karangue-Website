@@ -360,15 +360,13 @@ const PlatformSection = () => (
                     viewport={{ once: true }}
                     className="relative"
                 >
-                    <div className="relative rounded-2xl overflow-hidden border border-white/[0.07] shadow-2xl shadow-black/50">
-                        <Image
-                            src="/AIKaranguePlateforme.png"
-                            alt="Plateforme Karangue221 — video + carte en direct"
-                            width={800}
-                            height={560}
-                            className="w-full h-auto"
-                        />
-                    </div>
+                    <Image
+                        src="/AIKaranguePlateforme.png"
+                        alt="Plateforme Karangue221 — video + carte en direct"
+                        width={800}
+                        height={560}
+                        className="w-full h-auto"
+                    />
                     {/* Glow */}
                     <div className="absolute -inset-8 bg-teal/10 blur-[80px] rounded-full -z-10" />
                 </motion.div>
