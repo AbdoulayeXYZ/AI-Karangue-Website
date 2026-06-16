@@ -1214,10 +1214,6 @@
             "href": "/#software"
           },
           {
-            "label": "Suivi Personnel",
-            "href": "/tracking"
-          },
-          {
             "label": "Analyse Vidéo",
             "href": "/#software"
           },
@@ -1231,16 +1227,16 @@
         "title": "Secteurs",
         "links": [
           {
-            "label": "Transport Public",
-            "href": "/industries#transport"
+            "label": "Taxi VTC",
+            "href": "/offres"
           },
           {
-            "label": "Logistique Pro",
-            "href": "/industries#logistics"
+            "label": "Transporteur",
+            "href": "/offres"
           },
           {
-            "label": "Assurance Connectée",
-            "href": "/industries#btp"
+            "label": "Livreur",
+            "href": "/offres"
           }
         ]
       },
@@ -1263,16 +1259,8 @@
         "href": "/solutions"
       },
       {
-        "name": "Industries",
-        "href": "/industries"
-      },
-      {
         "name": "Nos Offres",
         "href": "/offres"
-      },
-      {
-        "name": "Suivi Personnel",
-        "href": "/tracking"
       },
       {
         "name": "Blog",

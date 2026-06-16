@@ -1000,9 +1000,7 @@ export const defaultContent: SiteContent = {
     navbar: {
         links: [
             { name: "Solutions", href: "/solutions" },
-            { name: "Industries", href: "/industries" },
             { name: "Nos Offres", href: "/offres" },
-            { name: "Suivi Personnel", href: "/tracking" },
             { name: "Blog", href: "/blog" },
             { name: "FAQ", href: "/faq" }
         ],
