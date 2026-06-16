@@ -1,13 +1,149 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
     Eye, AlertTriangle, Shield, Smartphone, MapPin, Bell,
     BarChart3, Video, ArrowRight, CheckCircle2,
 } from "lucide-react";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DASHCAM 3D VIEWER — cinématique, spotlight, reflection, badges flottants
+// ─────────────────────────────────────────────────────────────────────────────
+const DashcamViewer = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [hovered, setHovered] = useState(false);
+
+    const rawX = useMotionValue(0);
+    const rawY = useMotionValue(0);
+
+    const spring = { stiffness: 100, damping: 16, mass: 0.9 };
+    const springX = useSpring(rawX, spring);
+    const springY = useSpring(rawY, spring);
+
+    const rotateY = useTransform(springX, [-0.5, 0.5], [-28, 28]);
+    const rotateX = useTransform(springY, [-0.5, 0.5], [18, -18]);
+    const shadowX = useTransform(springX, [-0.5, 0.5], [-30, 30]);
+    const shadowY = useTransform(springY, [-0.5, 0.5], [10, 50]);
+    const scaleVal = useSpring(hovered ? 1.06 : 1, { stiffness: 200, damping: 20 });
+
+    const dynamicGlow = useTransform(
+        [springX, springY],
+        ([x, y]: number[]) =>
+            `radial-gradient(ellipse at ${50 + (x as number) * 70}% ${40 + (y as number) * 50}%, rgba(0,128,128,0.45) 0%, rgba(3,54,96,0.2) 45%, transparent 70%)`
+    );
+
+    const dynamicShadow = useTransform(
+        [shadowX, shadowY],
+        ([x, y]: number[]) =>
+            `drop-shadow(${x}px ${y}px 80px rgba(0,0,0,0.8)) drop-shadow(0 0 50px rgba(0,128,128,0.4))`
+    );
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = containerRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        rawX.set((e.clientX - rect.left) / rect.width - 0.5);
+        rawY.set((e.clientY - rect.top) / rect.height - 0.5);
+    };
+
+    const handleMouseLeave = () => {
+        rawX.set(0);
+        rawY.set(0);
+        setHovered(false);
+    };
+
+    const badges = [
+        { label: "IA embarquée", angle: -45, radius: 52 },
+        { label: "4G Cloud", angle: 30, radius: 54 },
+        { label: "HD 1080p", angle: 140, radius: 50 },
+        { label: "0.05s", angle: 210, radius: 52 },
+    ];
+
+    return (
+        <div className="relative flex flex-col items-center">
+            {/* Spotlight beam from top */}
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-80 pointer-events-none"
+                style={{
+                    background: "conic-gradient(from 180deg at 50% 0%, transparent 70deg, rgba(0,128,128,0.12) 90deg, transparent 110deg)",
+                    filter: "blur(20px)",
+                }} />
+
+            {/* Main 3D container */}
+            <div
+                ref={containerRef}
+                onMouseMove={handleMouseMove}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={handleMouseLeave}
+                className="relative select-none cursor-crosshair w-full"
+                style={{ perspective: "1100px", paddingBottom: "10%" }}
+            >
+                <motion.div
+                    style={{
+                        rotateY,
+                        rotateX,
+                        scale: scaleVal,
+                        transformStyle: "preserve-3d",
+                    }}
+                    className="relative"
+                >
+                    {/* Ambient glow — suit l'inclinaison */}
+                    <motion.div
+                        className="absolute inset-[-30%] rounded-full blur-[100px] pointer-events-none"
+                        style={{ background: dynamicGlow }}
+                    />
+
+                    {/* Rings décoratifs */}
+                    <motion.div
+                        className="absolute inset-[-5%] rounded-full border border-teal/10 pointer-events-none"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        style={{ transformStyle: "preserve-3d" }}
+                    />
+                    <div className="absolute inset-[-15%] rounded-full border border-teal/[0.05] pointer-events-none" />
+
+                    {/* Badges flottants autour du produit */}
+                    {badges.map(({ label, angle, radius }, i) => {
+                        const rad = (angle * Math.PI) / 180;
+                        const x = Math.cos(rad) * radius;
+                        const y = Math.sin(rad) * radius;
+                        return (
+                            <motion.div
+                                key={label}
+                                className="absolute left-1/2 top-1/2 pointer-events-none"
+                                style={{ translateX: `calc(-50% + ${x}%)`, translateY: `calc(-50% + ${y}%)`, translateZ: "60px" }}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.6 + i * 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="bg-navy-dark/80 backdrop-blur border border-teal/20 text-teal text-[8px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full whitespace-nowrap shadow-lg shadow-black/40">
+                                    {label}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+
+                    {/* Produit */}
+                    <div className="relative aspect-square" style={{ transformStyle: "preserve-3d" }}>
+                        <motion.div className="absolute inset-0" style={{ translateZ: "60px" }}>
+                            <Image
+                                src="/dashcamia.png"
+                                alt="DASHCAM IA Streamax"
+                                fill
+                                className="object-contain scale-[1.2]"
+                                style={{ filter: dynamicShadow as unknown as string }}
+                                draggable={false}
+                            />
+                        </motion.div>
+                    </div>
+
+                </motion.div>
+            </div>
+        </div>
+    );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 1 : DASHCAM IA — PRODUCT SHOWCASE
@@ -46,97 +182,84 @@ const ProductShowcase = () => (
                 </motion.p>
             </div>
 
-            {/* 3-col: DSC | Product | ADAS */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px_1fr] gap-12 lg:gap-8 items-center mb-20 lg:mb-28">
+            {/* Produit centré en haut */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.88 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true }}
+                className="mx-auto w-full max-w-sm lg:max-w-md xl:max-w-lg mb-16 lg:mb-24"
+            >
+                <DashcamViewer />
+            </motion.div>
+
+            {/* DSC + ADAS en bas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-20 lg:mb-28">
 
                 {/* DSC */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, duration: 0.7 }}
                     viewport={{ once: true }}
-                    className="flex flex-col gap-6"
+                    className="bg-white/[0.03] border border-white/[0.07] rounded-3xl p-8 flex flex-col gap-5 hover:border-teal/20 transition-colors duration-300"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center shrink-0">
+                        <div className="w-11 h-11 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center shrink-0">
                             <Eye className="w-5 h-5 text-teal" />
                         </div>
                         <div>
-                            <div className="text-[9px] font-black text-teal/60 tracking-widest uppercase">Module 01</div>
-                            <div className="text-white font-black text-xl tracking-tight">DSC</div>
+                            <div className="text-[9px] font-black text-teal/50 tracking-widest uppercase">Module 01</div>
+                            <div className="text-white font-black text-lg tracking-tight">DSC</div>
                         </div>
                     </div>
-                    <p className="text-white/35 text-sm leading-relaxed pl-4 border-l border-teal/20">
+                    <p className="text-white/30 text-sm leading-relaxed border-l-2 border-teal/20 pl-4">
                         Comportement conducteur. L'IA surveille ta vigilance en temps reel pour te proteger avant le danger.
                     </p>
-                    <ul className="space-y-3.5">
+                    <ul className="space-y-3">
                         {[
                             "Detection somnolence et fatigue",
                             "Alerte telephone au volant",
                             "Verification port de ceinture",
                             "Identification conducteur IA",
                         ].map((feat, i) => (
-                            <li key={i} className="flex items-start gap-3 text-sm text-white/50 group">
-                                <CheckCircle2 className="w-4 h-4 text-teal/50 mt-0.5 shrink-0 group-hover:text-teal transition-colors" />
+                            <li key={i} className="flex items-center gap-3 text-sm text-white/45">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-teal/50 shrink-0" />
                                 {feat}
                             </li>
                         ))}
                     </ul>
                 </motion.div>
 
-                {/* Center product image */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    viewport={{ once: true }}
-                    className="relative mx-auto w-full max-w-xs lg:max-w-none"
-                >
-                    {/* Glow rings */}
-                    <div className="absolute inset-0 rounded-full border border-teal/10 scale-110 animate-pulse" style={{ animationDuration: "3s" }} />
-                    <div className="absolute inset-0 rounded-full border border-teal/[0.05] scale-[1.3]" />
-                    <div className="absolute inset-[15%] bg-teal/[0.08] rounded-full blur-3xl" />
-
-                    <div className="relative aspect-square">
-                        <Image
-                            src="/dashcamia.png"
-                            alt="DASHCAM IA Streamax"
-                            fill
-                            className="object-contain drop-shadow-[0_0_80px_rgba(0,128,128,0.3)] scale-[1.15]"
-                        />
-                    </div>
-
-                </motion.div>
-
                 {/* ADAS */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.7 }}
                     viewport={{ once: true }}
-                    className="flex flex-col gap-6"
+                    className="bg-white/[0.03] border border-white/[0.07] rounded-3xl p-8 flex flex-col gap-5 hover:border-teal/20 transition-colors duration-300"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center shrink-0">
+                        <div className="w-11 h-11 rounded-2xl bg-teal/10 border border-teal/20 flex items-center justify-center shrink-0">
                             <AlertTriangle className="w-5 h-5 text-teal" />
                         </div>
                         <div>
-                            <div className="text-[9px] font-black text-teal/60 tracking-widest uppercase">Module 02</div>
-                            <div className="text-white font-black text-xl tracking-tight">ADAS</div>
+                            <div className="text-[9px] font-black text-teal/50 tracking-widest uppercase">Module 02</div>
+                            <div className="text-white font-black text-lg tracking-tight">ADAS</div>
                         </div>
                     </div>
-                    <p className="text-white/35 text-sm leading-relaxed pl-4 border-l border-teal/20">
+                    <p className="text-white/30 text-sm leading-relaxed border-l-2 border-teal/20 pl-4">
                         Comportement de conduite. L'IA lit ta route et anticipe les collisions avant qu'elles arrivent.
                     </p>
-                    <ul className="space-y-3.5">
+                    <ul className="space-y-3">
                         {[
                             "Alerte collision frontale (FCW)",
                             "Detection sortie de voie (LDW)",
                             "Protection pietons et obstacles",
                             "Lecture panneaux de vitesse",
                         ].map((feat, i) => (
-                            <li key={i} className="flex items-start gap-3 text-sm text-white/50 group">
-                                <CheckCircle2 className="w-4 h-4 text-teal/50 mt-0.5 shrink-0 group-hover:text-teal transition-colors" />
+                            <li key={i} className="flex items-center gap-3 text-sm text-white/45">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-teal/50 shrink-0" />
                                 {feat}
                             </li>
                         ))}

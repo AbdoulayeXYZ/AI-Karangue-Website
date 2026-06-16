@@ -1201,44 +1201,6 @@
       "buttonText": "S'abonner"
     },
     "navigation": {
-      "technology": {
-        "title": "Technologie",
-        "links": [
-          {
-            "label": "Karangué221",
-            "href": "/#hardware"
-          },
-          {
-            "label": "Intelligence IA",
-            "href": "/#software"
-          },
-          {
-            "label": "Analyse Vidéo",
-            "href": "/#software"
-          },
-          {
-            "label": "Cloud Dashboard",
-            "href": "/#software"
-          }
-        ]
-      },
-      "sectors": {
-        "title": "Secteurs",
-        "links": [
-          {
-            "label": "Taxi VTC",
-            "href": "/offres"
-          },
-          {
-            "label": "Transporteur",
-            "href": "/offres"
-          },
-          {
-            "label": "Livreur",
-            "href": "/offres"
-          }
-        ]
-      },
       "company": {
         "title": "Art'Beau-Rescence"
       }
