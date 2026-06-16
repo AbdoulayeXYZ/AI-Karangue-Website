@@ -17,13 +17,6 @@ export const FinalCTA = () => (
                 viewport={{ once: true }}
                 className="max-w-3xl mx-auto"
             >
-                <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-5">
-                    La route ne previent pas.<br />
-                    <span className="text-teal">Toi, si.</span>
-                </h2>
-                <p className="text-white/35 text-base font-medium mb-12 max-w-md mx-auto leading-relaxed">
-                    A partir de 9.900 F/mois. Installation en 15 minutes. Protection immediate.
-                </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link href="/contact">
                         <button className="inline-flex items-center gap-3 bg-teal text-white font-black text-sm px-8 py-4 rounded-xl hover:bg-teal/90 transition-colors shadow-lg shadow-teal/20">
