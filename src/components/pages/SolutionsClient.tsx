@@ -459,42 +459,46 @@ const AppSection = () => (
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// INSURANCE PROOF SECTION
+// INSURANCE PROOF SECTION — split : image gauche | texte droite
 // ─────────────────────────────────────────────────────────────────────────────
 const InsuranceSection = () => (
-    <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-        <Image
-            src="/insuranceproof.jpeg"
-            alt="Preuve video d'assurance — Karangue221"
-            fill
-            className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/50 to-transparent" />
+    <section className="bg-navy-dark overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[640px]">
 
-        <div className="container mx-auto px-6 relative z-10 pb-20 lg:pb-32">
+            {/* Image — aucun texte dessus */}
+            <div className="relative min-h-[420px] lg:min-h-0">
+                <Image
+                    src="/insuranceproof.jpeg"
+                    alt="Preuve video d'assurance — Karangue221"
+                    fill
+                    className="object-cover object-top"
+                />
+            </div>
+
+            {/* Texte — separé de l'image */}
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="max-w-3xl"
+                className="flex flex-col justify-center px-10 py-16 lg:px-16 lg:py-20 border-l border-white/[0.06]"
             >
-                <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase block mb-4">Preuve irrefutable</span>
-                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9] mb-6">
+                <span className="text-[10px] font-black text-teal tracking-[0.4em] uppercase block mb-6">Preuve irrefutable</span>
+                <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-[0.9] mb-6">
                     Chaque trajet,<br />
                     <span className="text-teal">une preuve.</span>
                 </h2>
-                <p className="text-white/50 text-base leading-relaxed font-medium mb-8 max-w-xl">
-                    En cas d'accident, la video horodatee de Karangue221 devient ta defense legale. Exoneration du conducteur non-responsable. Reduction des primes d'assurance. Fin des litiges.
+                <p className="text-white/40 text-sm leading-relaxed font-medium mb-10 max-w-sm">
+                    En cas d'accident, la video horodatee devient ta defense legale. Exoneration du conducteur non-responsable. Reduction des primes d'assurance. Fin des litiges.
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5">
                     {[
                         "Preuve video horodatee",
                         "Cloud securise 90 jours",
                         "Exportable en justice",
                         "Reduction prime assurance",
                     ].map((tag) => (
-                        <span key={tag} className="bg-white/10 backdrop-blur border border-white/15 text-white/80 text-xs font-bold px-4 py-2 rounded-full">
+                        <span key={tag} className="bg-white/[0.05] border border-white/10 text-white/60 text-[10px] font-bold px-3.5 py-1.5 rounded-full">
                             {tag}
                         </span>
                     ))}
