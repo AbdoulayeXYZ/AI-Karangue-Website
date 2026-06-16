@@ -5,6 +5,7 @@ import { SoftwareShowcase } from "@/components/sections/SoftwareShowcase";
 import { TripleImpact } from "@/components/sections/TripleImpact";
 import { ROICalculator } from "@/components/sections/ROICalculator";
 import { Offres } from "@/components/sections/Offres";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -115,6 +116,7 @@ export default async function Home() {
       {/* 5. Logic & Conversion (ROI & Pricing) */}
       <ROICalculator content={content.home.roiCalculator} />
       <Offres content={content.home.offres} />
+      <HowItWorks content={content.home.howItWorks} />
 
       {/* 6. High-Fashion Final Brand Closing */}
       <section className="py-24 sm:py-40 lg:py-64 bg-navy-dark text-white text-center rounded-[3rem] sm:rounded-[5rem] mx-2 sm:mx-4 my-10 sm:my-20 overflow-hidden relative">

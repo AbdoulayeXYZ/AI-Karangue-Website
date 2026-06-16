@@ -8,27 +8,27 @@
       "presentationVideoPath": "https://youtu.be/SnTCsAuo9Kw?si=roT3YLRJi34iIUKO"
     },
     "manifesto": {
-      "title": "Nous transformons votre flotte en <span class=\"text-teal\">actif sécurisé et rentable</span>.",
-      "description": "Au-delà du simple suivi GPS, AI-Karangué combine IoT et intelligence artificielle pour protéger vos conducteurs, réduire vos coûts et sécuriser vos passagers — en temps réel."
+      "title": "Chaque trajet mérite une intelligence qui <span class=\"text-teal\">veille à ta place.</span>",
+      "description": "Plus qu'une caméra. AI-Karangué détecte, alerte et enregistre chaque instant critique pour te protéger, protéger tes proches et te donner la preuve quand tu en as besoin."
     },
     "hardware": {
-      "sectionLabel": "Hardware Gateway",
-      "sectionTitle": "Des outils de",
-      "sectionTitleHighlight": "prévision.",
-      "ctaButton": "Consulter la fiche complète du manager",
+      "sectionLabel": "DASHCAM IA — Streamax",
+      "sectionTitle": "La technologie qui",
+      "sectionTitleHighlight": "veille sur toi.",
+      "ctaButton": "Découvrir la DASHCAM IA",
       "products": [
         {
-          "id": "dsm",
-          "name": "L'Œil de l'Expert",
-          "role": "Vigilance & Protection Biométrique",
-          "target": "Pour le gestionnaire soucieux de sa responsabilité civile et de la santé de ses équipes.",
-          "description": "Reprenez le contrôle sur l'imprévisible. Ce module de détection visuelle avancée agit comme un second regard infatigable, identifiant les risques humains avant qu'ils ne deviennent des statistiques coûteuses.",
+          "id": "dsc",
+          "name": "L'Oeil Bienveillant",
+          "role": "Surveillance Conducteur & Vigilance",
+          "target": "Pour toi, au quotidien : somnolence, distraction, téléphone — rien n'échappe à l'IA.",
+          "description": "Une IA qui ne dort jamais. Elle scanne en temps réel ton état de vigilance et t'envoie une alerte sonore avant que tu aies le temps de réagir.",
           "features": [
-            "Alerte immédiate en cas de somnolence critique",
-            "Détection des distractions (Téléphone, Inattention)",
-            "Monitoring du respect des consignes (Ceinture, Tabac)",
-            "Identification précise du conducteur affecté",
-            "Réduction drastique des sinistres évitables"
+            "Détection fatigue & somnolence",
+            "Alerte distraction & téléphone au volant",
+            "Vérification port de ceinture",
+            "Surveillance tabagisme à bord",
+            "Identification du conducteur"
           ],
           "imagePath": "/dsm.png",
           "stats": [
@@ -38,50 +38,50 @@
         },
         {
           "id": "adas",
-          "name": "La Sentinelle Active",
-          "role": "Assistance au Pilotage & Anticipation",
-          "target": "Idéal pour sécuriser vos actifs les plus précieux et réduire vos primes d'assurance.",
-          "description": "Transformez vos véhicules en forteresses intelligentes. La Sentinelle anticipe les collisions et les sorties de voie, offrant à votre exploitation une marge de manœuvre inédite face aux aléas de la route.",
+          "name": "L'Anticipateur",
+          "role": "Assistance à la Conduite & Sécurité Route",
+          "target": "Ton copilote intelligent : il lit la route avant toi et te prévient à temps.",
+          "description": "Il voit ce que tu rates. L'ADAS analyse la route en continu et t'alerte sur les collisions imminentes, les sorties de voie et les distances dangereuses — avant l'impact.",
           "features": [
+            "Avertisseur de sortie de voie (LDW)",
+            "Alerte distance de sécurité (FPW)",
             "Avertisseur de collision frontale (FCW)",
-            "Alerte de sortie de voie sans clignotant (LDW)",
-            "Protection proactive des piétons (PCW)",
-            "Surveillance des distances de sécurité (FPW)",
-            "Lecture automatique des limitations de vitesse"
+            "Détection piétons & obstacles",
+            "Lecture automatique des panneaux vitesse"
           ],
           "imagePath": "/adas.png",
           "stats": [
             "4K Optics",
-            "360° Vision"
+            "Temps Réel"
           ]
         },
         {
-          "id": "dualcam",
-          "name": "Le Témoin Capital",
-          "role": "Preuve Visuelle & Transparence Totale",
-          "target": "L'outil ultime de protection juridique pour les gestionnaires en cas de litige.",
-          "description": "Ne laissez plus de place au doute. Documentez chaque seconde critique avec une précision chirurgicale. Une visibilité totale, de l'intérieur comme de l'extérieur, synchronisée directement avec votre cockpit de gestion.",
+          "id": "cloud",
+          "name": "Le Témoin Inaltérable",
+          "role": "Preuve Vidéo & Plateforme Cloud",
+          "target": "Ta protection juridique : chaque seconde enregistrée, accessible depuis ton téléphone.",
+          "description": "Ne laisse plus de place au doute. Chaque incident est filmé en HD, horodaté et stocké dans le cloud Karangué221. En cas de litige, tu as la preuve.",
           "features": [
             "Double flux HD simultané (Route & Cabine)",
-            "Enregistrement automatique sur choc ou freinage",
-            "Streaming Cloud sécurisé pour levée de doute",
-            "Archive inviolable pré/post évènement",
-            "Vision nocturne infrarouge haute fidélité"
+            "Enregistrement automatique sur choc",
+            "Streaming cloud sécurisé",
+            "Accès via app mobile & web",
+            "Vision nocturne infrarouge"
           ],
           "imagePath": "/dualcam.png",
           "stats": [
             "2K HDR",
-            "LTE Sync"
+            "Cloud Sync"
           ]
         }
       ]
     },
     "software": {
-      "sectionLabel": "The Silent Guardian",
-      "sectionTitle": "Dormez tranquille.",
-      "sectionTitleHighlight": "L'IA veille sur eux.",
-      "bottomHook": "Le système gère 100% des alertes. Vous ne gérez que les exceptions.",
-      "bottomLink": "Explorer le système complet",
+      "sectionLabel": "Karangué221 — Ta Plateforme",
+      "sectionTitle": "Roule tranquille.",
+      "sectionTitleHighlight": "L'IA veille sur toi.",
+      "bottomHook": "Le système gère 100% des alertes. Tu ne gères que l'essentiel.",
+      "bottomLink": "Explorer la plateforme",
       "features": [
         {
           "id": "tracking",
@@ -104,124 +104,148 @@
     "tripleImpact": {
       "sectionLabel": "NOTRE PHILOSOPHIE",
       "sectionTitle": "Le Triple Impact :",
-      "sectionTitleHighlight": "Une révolution tripartite",
-      "sectionDescription": "Parce qu'une flotte performante repose sur l'équilibre absolu entre sécurité, rentabilité et satisfaction client.",
+      "sectionTitleHighlight": "Une protection à 360°",
+      "sectionDescription": "Parce que conduire en sécurité, c'est protéger sa vie, rassurer ses proches et préserver son argent.",
       "pillars": [
         {
-          "title": "Pour vos Conducteurs",
-          "subtitle": "Sécurité & Accompagnement",
-          "description": "Ce ne sont pas des machines. Notre IA les protège comme un copilote bienveillant, réduisant le stress et les risques d'accident.",
+          "title": "Pour Toi",
+          "subtitle": "Sécurité & Sérénité",
+          "description": "L'IA veille sur chaque kilomètre. Elle détecte ta fatigue, anticipe les obstacles et t'alerte avant que le pire arrive.",
           "benefits": [
             "Anti-Somnolence",
             "Assistance Conduite",
-            "Protection Juridique"
+            "Alerte Temps Réel"
           ],
           "imagePath": "/driver-peace.png"
         },
         {
-          "title": "Pour vos Gestionnaires",
-          "subtitle": "Sérénité & Contrôle",
-          "description": "Pilotez votre activité sans angle mort. Transformez chaque kilomètre en donnée exploitable pour maximiser la rentabilité.",
+          "title": "Pour Ta Famille",
+          "subtitle": "Confiance & Tranquillité",
+          "description": "Ceux qui t'aiment méritent de savoir que tu es protégé. Chaque trajet, suivi et sécurisé.",
           "benefits": [
-            "Économie Carburant",
-            "Maintenance Préventive",
-            "Traçabilité Totale"
+            "Localisation Temps Réel",
+            "Notifications d'Arrivée",
+            "Protection Passagers"
           ],
           "imagePath": "/manager-serenity.png"
         },
         {
-          "title": "Pour vos Voyageurs",
-          "subtitle": "Confiance & Confort",
-          "description": "La garantie d'un voyage sûr. Une flotte sécurisée est votre meilleur atout pour fidéliser une clientèle exigeante.",
+          "title": "Pour Ton Portefeuille",
+          "subtitle": "Économies & Protection",
+          "description": "Eco-driving, preuves vidéo en cas de litige et maintenance prédictive : la DASHCAM IA te fait économiser bien plus que son coût.",
           "benefits": [
-            "Trajets Sécurisés",
-            "Ponctualité Améliorée",
-            "Service Premium"
+            "Économie Carburant",
+            "Preuve Juridique",
+            "Prime Assurance Réduite"
           ],
           "imagePath": "/traveler-trust.png"
         }
       ]
     },
     "roiCalculator": {
-      "sectionLabel": "Votre Potentiel de Croissance",
+      "sectionLabel": "Ton Potentiel de Gain",
       "sectionTitle": "Simulateur de",
-      "sectionTitleHighlight": "Rentabilité",
-      "sectionDescription": "Mesurez l'impact financier direct de la digitalisation de votre flotte. Des résultats basés sur des performances réelles.",
+      "sectionTitleHighlight": "Protection",
+      "sectionDescription": "Estime ce que tu risques chaque jour sans protection et ce que tu économises avec AI-Karangué.",
       "labels": {
-        "sector": "Secteur d'activité",
-        "fleetSize": "Taille de la Flotte",
+        "sector": "Profil conducteur",
+        "fleetSize": "Nombre de véhicules",
         "fuelCost": "Budget Carburant Mensuel (FCFA)",
-        "accidents": "Sinistres par An",
+        "accidents": "Incidents par An",
         "maintenanceCost": "Budget Maintenance Mensuel (FCFA)",
-        "calculateButton": "Calculer mon ROI",
-        "roiEstimated": "ROI Estimé",
-        "netProfit": "Profit Net Annuel",
+        "calculateButton": "Calculer ma protection",
+        "roiEstimated": "Économies Estimées",
+        "netProfit": "Gain Net Annuel",
         "annualSavings": "Économies annuelles",
         "solutionCost": "Coût annuel solution",
         "payback": "Amortissement (Payback)",
-        "emailPrompt": "Recevoir mon rapport officiel",
+        "emailPrompt": "Recevoir mon estimation personnalisée",
         "emailButton": "Envoyer",
         "emailDisclaimer": "En cliquant sur envoyer, vous acceptez de recevoir une étude personnalisée basée sur ces chiffres."
       },
       "sectors": [
-        "Transport Public",
-        "Logistique & Fret",
-        "BTP & Construction",
-        "Location de Véhicules",
-        "Services d'Urgence"
+        "Particulier",
+        "Taxi / VTC",
+        "Transporteur",
+        "Livreur",
+        "Autre"
       ]
     },
     "offres": {
-      "sectionLabel": "Tarification Transparente",
-      "sectionTitle": "Investir dans la",
-      "sectionTitleHighlight": "certitude.",
-      "sectionDescription": "Des options claires, sans coûts cachés. Choisissez le niveau de contrôle qui correspond à vos ambitions.",
-      "ctaButton": "Demander une démo",
-      "bottomText": "Une flotte de plus de 50 véhicules ?",
-      "bottomLink": "Discuter d'une solution sur-mesure",
+      "sectionLabel": "Tarification Simple",
+      "sectionTitle": "La question n'est pas",
+      "sectionTitleHighlight": "si tu en as besoin.",
+      "sectionDescription": "Mais lequel tu choisis. Sans frais cachés, sans engagement forcé.",
+      "ctaButton": "Souscrire maintenant",
+      "bottomText": "Tu as plusieurs véhicules ?",
+      "bottomLink": "Discuter d'une offre groupée",
       "packs": [
         {
-          "name": "Pack Basic",
-          "tagline": "L'essentiel pour démarrer",
+          "name": "Mensuel",
+          "price": "9.900 F CFA",
+          "pricePeriod": "/ mois / véhicule",
+          "tagline": "Idéal pour découvrir",
           "features": [
-            "Géolocalisation",
-            "Gestion de Carburant",
-            "Rapport"
+            "DASHCAM IA installée en 15 min",
+            "DSC : surveillance conducteur",
+            "ADAS : assistance à la conduite",
+            "Accès plateforme Karangué221",
+            "Vidéo cloud & historique trajets",
+            "Aucun engagement"
           ],
           "popular": false
         },
         {
-          "name": "Pack Tranquillité",
-          "tagline": "L'excellence opérationnelle",
+          "name": "Annuel",
+          "price": "100.000 F CFA",
+          "pricePeriod": "/ an / véhicule",
+          "tagline": "0 charge mentale toute l'année",
           "features": [
-            "Géolocalisation temps réel",
-            "Gestion de Carburant (FLS)",
-            "Gestion de la maintenance",
-            "Analyse comportementale avancée",
-            "Coaching éco-conduite en temps réel",
-            "Rapport"
+            "DASHCAM IA installée en 15 min",
+            "DSC : surveillance conducteur",
+            "ADAS : assistance à la conduite",
+            "Accès plateforme Karangué221",
+            "Vidéo cloud & historique trajets",
+            "18.800 FCFA d'économie vs mensuel",
+            "Support prioritaire inclus"
           ],
           "popular": true
+        }
+      ]
+    },
+    "howItWorks": {
+      "sectionLabel": "SIMPLE & RAPIDE",
+      "sectionTitle": "Comment ça",
+      "sectionTitleHighlight": "marche ?",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Souscription",
+          "description": "En ligne sur notre site ou par téléphone. En 5 minutes, tu es inscrit."
         },
         {
-          "name": "Pack Standard",
-          "tagline": "Le choix équilibré",
-          "features": [
-            "Géolocalisation",
-            "Gestion de Carburant",
-            "Gestion de la maintenance",
-            "Rapport"
-          ],
-          "popular": false
+          "number": "02",
+          "title": "Installation",
+          "description": "Nos techniciens installent la DASHCAM IA sur ton véhicule en seulement 15 min."
+        },
+        {
+          "number": "03",
+          "title": "Activation",
+          "description": "Ton compte Karangué221 est créé automatiquement. Accès immédiat depuis ton téléphone."
+        },
+        {
+          "number": "04",
+          "title": "Protection",
+          "description": "AI-Karangué veille sur toi à chaque trajet, 24h/24 — 7j/7."
         }
       ]
     },
     "finalCta": {
-      "title": "Transformez votre flotte <br /> <span class=\"text-teal\">dès aujourd'hui.</span>",
-      "titleHighlight": "dès aujourd'hui.",
-      "description": "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec AI-Karangué.",
-      "ctaPrimary": "Commencer maintenant",
-      "ctaSecondary": "Demander un devis"
+      "title": "Ton prochain trajet <br /> <span class=\"text-teal\">commence protégé.</span>",
+      "titleHighlight": "commence protégé.",
+      "description": "Rejoins les conducteurs qui ont choisi de ne plus rouler sans protection.",
+      "ctaPrimary": "Souscrire maintenant",
+      "ctaSecondary": "Voir les offres"
     }
   },
   "industries": {
@@ -680,146 +704,131 @@
   "offres": {
     "hero": {
       "label": "Tarification Transparente",
-      "title": "Investir dans la",
-      "highlight": "certitude.",
-      "description": "Des options claires, sans coûts cachés. Choisissez le niveau de contrôle qui correspond à vos ambitions."
+      "title": "La question n'est pas si",
+      "highlight": "tu en as besoin.",
+      "description": "Mais lequel tu choisis. Deux offres claires, sans frais cachés, pour commencer à te protéger dès aujourd'hui."
     },
     "packs": [
       {
-        "name": "Pack Basic",
-        "price": "Standard",
-        "tagline": "L'essentiel pour démarrer",
+        "name": "Mensuel",
+        "price": "9.900 F CFA",
+        "pricePeriod": "/ mois / véhicule",
+        "tagline": "Idéal pour découvrir — sans engagement",
         "features": [
-          "Géolocalisation",
-          "Gestion de Carburant",
-          "Rapport"
+          "DASHCAM IA installée en 15 min",
+          "DSC : surveillance conducteur (fatigue, distraction, téléphone)",
+          "ADAS : assistance à la conduite (collision, voie, distance)",
+          "Accès plateforme Karangué221",
+          "Vidéo cloud & historique des trajets",
+          "Rapports de conduite automatiques",
+          "Support client inclus"
         ],
         "popular": false
       },
       {
-        "name": "Pack Tranquillité",
-        "price": "Premium",
-        "tagline": "L'excellence opérationnelle",
+        "name": "Annuel",
+        "price": "100.000 F CFA",
+        "pricePeriod": "/ an / véhicule",
+        "tagline": "18.800 FCFA d'économie — 0 charge mentale",
         "features": [
-          "Géolocalisation temps réel",
-          "Gestion de Carburant (FLS)",
-          "Gestion de la maintenance",
-          "Analyse comportementale avancée",
-          "Coaching éco-conduite en temps réel",
-          "Rapport"
+          "DASHCAM IA installée en 15 min",
+          "DSC : surveillance conducteur (fatigue, distraction, téléphone)",
+          "ADAS : assistance à la conduite (collision, voie, distance)",
+          "Accès plateforme Karangué221",
+          "Vidéo cloud & historique des trajets",
+          "Rapports de conduite automatiques",
+          "Support prioritaire 24/7",
+          "18.800 FCFA d'économie vs mensuel"
         ],
         "popular": true
-      },
-      {
-        "name": "Pack Standard",
-        "price": "Avancé",
-        "tagline": "Le choix équilibré",
-        "features": [
-          "Géolocalisation",
-          "Gestion de Carburant",
-          "Gestion de la maintenance",
-          "Rapport"
-        ],
-        "popular": false
       }
     ],
     "comparison": {
       "title": "Comparaison",
       "highlight": "Détaillée",
-      "description": "Une vue d'ensemble pour faire le bon choix.",
+      "description": "Tout est inclus dans les deux offres. La seule différence, c'est l'engagement.",
       "headers": [
         "Caractéristique",
-        "Basic",
-        "Standard",
-        "Tranquillité"
+        "Mensuel",
+        "Annuel"
       ],
       "rows": [
         [
-          "Suivi GPS Temps Réel",
-          true,
-          true,
-          true
-        ],
-        [
-          "Historique des Trajets",
-          "3 Mois",
-          "12 Mois",
-          "Illimité"
-        ],
-        [
-          "Gestion Carburant (Sondes)",
-          true,
+          "DASHCAM IA Streamax",
           true,
           true
         ],
         [
-          "Alertes Maintenance",
-          false,
+          "DSC — Surveillance conducteur",
           true,
           true
         ],
         [
-          "Immobilisation à Distance",
-          false,
+          "ADAS — Assistance conduite",
           true,
           true
         ],
         [
-          "Score Éco-Conduite",
-          false,
+          "Localisation GPS Temps Réel",
           true,
           true
         ],
         [
-          "Caméras Embarquées (Dashcam)",
-          false,
-          false,
-          "Option"
+          "Vidéo cloud & historique trajets",
+          true,
+          true
         ],
         [
-          "DSM (Fatigue Detect)",
-          false,
+          "Rapports de conduite auto",
+          true,
+          true
+        ],
+        [
+          "Alertes & Notifications",
+          true,
+          true
+        ],
+        [
+          "Accès app mobile Karangué221",
+          true,
+          true
+        ],
+        [
+          "Support Prioritaire 24/7",
           false,
           true
         ],
         [
-          "ADAS (Assistance Route)",
-          false,
-          false,
-          true
-        ],
-        [
-          "Support Prioritaire",
-          false,
-          false,
-          true
+          "Économie vs mensuel",
+          "-",
+          "18.800 FCFA"
         ]
       ]
     },
     "services": {
       "support": {
-        "title": "Support Platinum Dédié 24/7.",
-        "description": "Pas de chatbots frustrants. Une équipe d'ingénieurs basée à Dakar, prête à intervenir sur site ou à distance en moins de 2h.",
+        "title": "Support Dédié 24/7.",
+        "description": "Pas de chatbots frustrants. Une équipe basée à Dakar, prête à t'aider sur site ou à distance en moins de 2h.",
         "label": "Équipe Locale"
       },
       "installation": {
         "title": "Installation Express",
-        "description": "Déploiement de 50+ véhicules en moins d'une semaine. Nos techniciens viennent à vous, partout au Sénégal."
+        "description": "Nos techniciens viennent chez toi et installent la DASHCAM IA en 15 min, partout au Sénégal."
       },
       "updates": {
         "title": "Mises à jour OTA",
-        "description": "Votre système s'améliore avec le temps. Mises à jour logicielles à distance incluses dans tous les packs."
+        "description": "Ton système s'améliore avec le temps. Mises à jour logicielles à distance incluses dans les deux offres."
       },
       "training": {
-        "title": "Formation Continue Incluse",
-        "description": "Nous formons vos gestionnaires et vos conducteurs à l'utilisation optimale de Karangué221 pour garantir un ROI immédiat."
+        "title": "Prise en Main Guidée",
+        "description": "On t'accompagne pas à pas pour maîtriser Karangué221 et tirer le maximum de ta protection dès le premier jour."
       }
     },
     "finalCta": {
       "title": "Un doute ?",
-      "highlight": "Testez-nous.",
-      "description": "Demandez une analyse gratuite de votre flotte et découvrez combien vous pouvez économiser dès le premier mois.",
-      "ctaPrimary": "Contacter un expert"
+      "highlight": "Teste-nous.",
+      "description": "Souscris au mensuel sans engagement et découvre ce que la DASHCAM IA change dans tes trajets dès le premier jour.",
+      "ctaPrimary": "Souscrire maintenant"
     }
   },
   "solutions": {
@@ -991,34 +1000,34 @@
       "sectionLabel": "Immersion Technologique",
       "sectionTitle": "La sécurité",
       "sectionTitleHighlight": "vue de l'intérieur.",
-      "sectionDescription": "Découvrez nos trois piliers technologiques Teltonika intégrés nativement à Karangué221 pour une sécurité absolue.",
+      "sectionDescription": "Découvrez les trois modules de la DASHCAM IA Streamax, intégrés nativement à Karangué221 pour une protection absolue.",
       "items": [
         {
-          "id": "dsm",
+          "id": "dsc",
           "label": "Surveillance Conducteur",
-          "title": "DSM",
-          "description": "Un système d'intelligence artificielle qui scanne le visage du conducteur en temps réel pour détecter les signes de fatigue et les distractions.",
-          "highlight1": "signes de fatigue",
-          "highlight2": "distractions",
-          "benefitsLabel": "Bénéfices Karangué221",
+          "title": "DSC",
+          "description": "Une IA qui scanne ton visage et ton comportement en temps réel pour détecter la fatigue, la somnolence et toute distraction avant l'incident.",
+          "highlight1": "fatigue et somnolence",
+          "highlight2": "distraction",
+          "benefitsLabel": "Ce que tu gagnes",
           "benefits": [
             "Détection fatigue & somnolence",
-            "Alerte distraction (téléphone)",
+            "Alerte distraction & téléphone",
             "Vérification port de ceinture",
-            "Preuve vidéo comportementale"
+            "Identification conducteur"
           ],
-          "ctaText": "Voir le DSM en action",
+          "ctaText": "Voir le DSC en action",
           "imagePath": "/VUEDSM.png",
           "deviceImagePath": "/device-dsm.png"
         },
         {
           "id": "adas",
-          "label": "Assistance Route",
+          "label": "Assistance à la Conduite",
           "title": "ADAS",
-          "description": "Une caméra savante qui lit la route devant le véhicule. Elle anticipe les dangers et alerte le conducteur via le Coach Conduite avant l'impact.",
-          "highlight1": "Coach Conduite",
+          "description": "Une caméra intelligente orientée route qui lit la chaussée devant toi. Elle anticipe les dangers et t'alerte via ton copilote IA avant l'impact.",
+          "highlight1": "copilote IA",
           "highlight2": "",
-          "benefitsLabel": "Bénéfices Karangué221",
+          "benefitsLabel": "Ce que tu gagnes",
           "benefits": [
             "Alerte collision frontale (FCW)",
             "Alerte de sortie de voie (LDW)",
@@ -1030,20 +1039,20 @@
           "deviceImagePath": "/device-adas.png"
         },
         {
-          "id": "dualcam",
-          "label": "Preuve Vidéo",
-          "title": "DualCam",
-          "description": "Un système double objectif connectés qui filme simultanément la route et l'habitacle. Les séquences d'incidents sont automatiquement envoyées sur le cloud Karangué221.",
+          "id": "cloud",
+          "label": "Preuve Vidéo Cloud",
+          "title": "Karangué221",
+          "description": "Tous les événements sont filmés en HD et envoyés automatiquement sur le cloud Karangué221. Accessible depuis ton téléphone à tout moment.",
           "highlight1": "cloud Karangué221",
           "highlight2": "",
-          "benefitsLabel": "Bénéfices Karangué221",
+          "benefitsLabel": "Ce que tu gagnes",
           "benefits": [
-            "Preuve irréfutable (fraude/accident)",
-            "Exonération conducteur (non-responsable)",
-            "Formation par l'image",
-            "Protection contre vol marchandise"
+            "Preuve irréfutable en cas d'accident",
+            "Exonération si tu n'es pas responsable",
+            "Streaming live & historique trajets",
+            "Rapport de conduite automatique"
           ],
-          "ctaText": "Voir les preuves DualCam",
+          "ctaText": "Explorer la plateforme",
           "imagePath": "/VUEDUALCAM.png",
           "deviceImagePath": "/device-dualcam.png"
         }
@@ -1054,7 +1063,7 @@
       "items": [
         {
           "title": "Sécurité Active",
-          "description": "Détection des risques avant l'accident (DSM + ADAS)"
+          "description": "Détection des risques avant l'accident (DSC + ADAS)"
         },
         {
           "title": "Preuve Différée",
@@ -1109,21 +1118,21 @@
       }
     },
     "finalCta": {
-      "title": "Prêt à transformer",
-      "titleHighlight": "votre flotte ?",
-      "description": "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec Karangué221.",
-      "ctaPrimary": "Calculer mon ROI",
-      "ctaSecondary": "Demander une démo"
+      "title": "Prêt à rouler",
+      "titleHighlight": "protégé ?",
+      "description": "Rejoins les conducteurs qui ont choisi AI-Karangué pour ne plus jamais rouler sans protection.",
+      "ctaPrimary": "Souscrire maintenant",
+      "ctaSecondary": "Voir les offres"
     }
   },
   "contact": {
     "hero": {
       "label": "CONTACTEZ-NOUS",
-      "title": "Transformons votre flotte ensemble.",
-      "description": "Nos experts sont prêts à analyser vos besoins et concevoir une solution sur-mesure pour votre entreprise.",
+      "title": "Commençons ta protection.",
+      "description": "Notre équipe est prête à répondre à tes questions et à t'installer la DASHCAM IA au plus vite.",
       "features": [
-        "Analyse gratuite de votre flotte",
-        "Démonstration personnalisée",
+        "Installation en 15 min sur ton véhicule",
+        "Souscription simple en ligne ou par téléphone",
         "Réponse sous 24h"
       ]
     },
@@ -1142,39 +1151,40 @@
       }
     },
     "form": {
-      "title": "Demander une démo",
-      "description": "Remplissez ce formulaire et notre équipe vous contactera sous 24h.",
+      "title": "Souscrire / Demander des infos",
+      "description": "Remplis ce formulaire et notre équipe te contacte sous 24h pour finaliser ta souscription.",
       "labels": {
         "firstName": "Prénom",
         "lastName": "Nom",
-        "email": "Email Professionnel",
-        "company": "Entreprise",
-        "fleetSize": "Taille de la Flotte",
+        "email": "Email",
+        "company": "Société / Organisation (optionnel)",
+        "fleetSize": "Type de véhicule",
         "fleetOptions": [
-          "1-5 véhicules",
-          "6-20 véhicules",
-          "21-50 véhicules",
-          "50+ véhicules"
+          "Véhicule personnel",
+          "Taxi / VTC",
+          "Transporteur",
+          "Livreur",
+          "Autre"
         ],
         "message": "Message (Optionnel)",
-        "submit": "Envoyer la Demande",
+        "submit": "Envoyer ma demande",
         "sending": "Envoi en cours...",
-        "success": "✓ Message envoyé !",
+        "success": "Message envoyé !",
         "error": "Erreur. Veuillez réessayer.",
-        "privacy": "Vos données sont protégées et ne seront utilisées que pour répondre à votre demande."
+        "privacy": "Tes données sont protégées et ne seront utilisées que pour répondre à ta demande."
       },
       "placeholders": {
-        "firstName": "Jean",
-        "lastName": "Dupont",
-        "email": "j.dupont@entreprise.com",
-        "company": "Votre Entreprise",
-        "message": "Parlez-nous de vos besoins..."
+        "firstName": "Moussa",
+        "lastName": "Diallo",
+        "email": "moussa@gmail.com",
+        "company": "Optionnel",
+        "message": "Dis-nous comment on peut t'aider..."
       }
     }
   },
   "footer": {
-    "mission": "Bâtir le futur de la <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">sécurité routière.</span>",
-    "description": "AI-Karangué est une solution haut de gamme éditée par <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, fusionnant vision par ordinateur et télématique de pointe.",
+    "mission": "Rendre la <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">sécurité routière intelligente.</span>",
+    "description": "AI-Karangué est une solution de protection individuelle éditée par <span class=\"text-white font-bold\">Art'Beau-Rescence S.A.S.</span>, fusionnant intelligence artificielle et caméra embarquée pour chaque conducteur.",
     "address": "Ouakam<br /> Dakar, Sénégal",
     "phone": "+221 78 786 48 48",
     "copyright": "ALL RIGHTS RESERVED. © 2025 ART'BEAU-RESCENCE S.A.S.",
@@ -1188,7 +1198,7 @@
       "tiktok": "https://www.tiktok.com/@aikarangue"
     },
     "newsletter": {
-      "placeholder": "votre.email@entreprise.com",
+      "placeholder": "ton.email@gmail.com",
       "buttonText": "S'abonner"
     },
     "navigation": {
@@ -1269,7 +1279,7 @@
         "href": "/blog"
       }
     ],
-    "cta": "Demander une démo"
+    "cta": "Souscrire maintenant"
   },
   "blog": {
     "hero": {

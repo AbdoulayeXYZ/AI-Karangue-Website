@@ -9,9 +9,9 @@ import { ShieldCheck, Video, Cpu, Eye, AlertTriangle, ArrowRight, CheckCircle2, 
 import { SiteContent } from "@/lib/content";
 
 const iconMap: Record<string, LucideIcon> = {
-    dsm: Eye,
+    dsc: Eye,
     adas: AlertTriangle,
-    dualcam: Video
+    cloud: Radio
 };
 
 export const HardwareShowcase = ({ content }: { content: SiteContent["home"]["hardware"] }) => {

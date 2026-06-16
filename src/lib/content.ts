@@ -96,6 +96,16 @@ export interface SiteContent {
                 popular: boolean;
             }>;
         };
+        howItWorks: {
+            sectionLabel: string;
+            sectionTitle: string;
+            sectionTitleHighlight: string;
+            steps: Array<{
+                number: string;
+                title: string;
+                description: string;
+            }>;
+        };
         finalCta: {
             title: string;
             description: string;
@@ -649,6 +659,17 @@ export const defaultContent: SiteContent = {
                     ],
                     popular: false
                 }
+            ]
+        },
+        howItWorks: {
+            sectionLabel: "SIMPLE & RAPIDE",
+            sectionTitle: "Comment ca",
+            sectionTitleHighlight: "marche ?",
+            steps: [
+                { number: "01", title: "Souscription", description: "En ligne sur notre site ou par telephone. En 5 minutes, tu es inscrit." },
+                { number: "02", title: "Installation", description: "Nos techniciens installent la DASHCAM IA sur ton vehicule en seulement 15 min." },
+                { number: "03", title: "Activation", description: "Ton compte Karangue221 est cree automatiquement. Acces immediat depuis ton telephone." },
+                { number: "04", title: "Protection", description: "AI-Karangue veille sur toi a chaque trajet, 24h/24 -- 7j/7." }
             ]
         },
         finalCta: {
