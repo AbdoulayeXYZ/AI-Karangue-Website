@@ -490,35 +490,27 @@ export default function SolutionsClient({ content: _content }: SolutionsClientPr
         <main className="min-h-screen bg-navy-dark selection:bg-teal selection:text-white overflow-hidden">
 
             {/* ── HERO ── */}
-            <section className="relative min-h-screen flex items-end overflow-hidden pt-20">
-                <Image
-                    src="/persona.jpeg"
-                    alt="Conducteur protege par AI-Karangue"
-                    fill
-                    className="object-cover object-[center_30%]"
-                    priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/60 to-navy-dark/20" />
+            <section className="grid grid-cols-1 lg:grid-cols-2 min-h-screen pt-20 lg:pt-0">
 
-                <div className="container mx-auto px-6 relative z-10 pb-24 lg:pb-32">
+                {/* Texte — fond dark, zero image derriere */}
+                <div className="flex flex-col justify-center px-8 py-20 lg:px-16 lg:py-0 bg-navy-dark">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1 }}
-                        className="max-w-4xl"
+                        transition={{ duration: 0.9 }}
                     >
-                        <span className="text-[10px] font-black text-teal/80 tracking-[0.4em] uppercase block mb-6">AI-Karangue — Technologies</span>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.88] mb-8">
+                        <span className="text-[10px] font-black text-teal/70 tracking-[0.4em] uppercase block mb-8">AI-Karangue — Technologies</span>
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.88] mb-7">
                             L'intelligence<br />
                             qui protege<br />
                             <span className="text-teal">chaque trajet.</span>
                         </h1>
-                        <p className="text-white/50 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-xl">
+                        <p className="text-white/40 text-base md:text-lg font-medium leading-relaxed mb-10 max-w-md">
                             DSC, ADAS, plateforme cloud et application mobile. Un ecosysteme complet pour que tu ne roules plus jamais sans protection.
                         </p>
 
                         {/* Nav rapide */}
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-2.5">
                             {[
                                 { label: "DSC", href: "#dsc" },
                                 { label: "ADAS", href: "#adas" },
@@ -526,7 +518,7 @@ export default function SolutionsClient({ content: _content }: SolutionsClientPr
                                 { label: "Application", href: "#app" },
                             ].map(({ label, href }) => (
                                 <Link key={label} href={href}>
-                                    <span className="bg-white/10 backdrop-blur border border-white/15 text-white/80 text-xs font-black px-5 py-2.5 rounded-full hover:bg-white/15 hover:text-white transition-all cursor-pointer tracking-wide">
+                                    <span className="bg-white/[0.06] border border-white/10 text-white/60 text-xs font-black px-5 py-2.5 rounded-full hover:border-teal/30 hover:text-white transition-all cursor-pointer tracking-wide">
                                         {label}
                                     </span>
                                 </Link>
@@ -535,14 +527,15 @@ export default function SolutionsClient({ content: _content }: SolutionsClientPr
                     </motion.div>
                 </div>
 
-                {/* Scroll indicator */}
-                <div className="absolute bottom-8 right-8 z-10">
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    >
-                        <ArrowRight className="w-5 h-5 text-white/20 rotate-90" />
-                    </motion.div>
+                {/* Image — cote droit, pleine hauteur, zero texte dessus */}
+                <div className="relative min-h-[50vh] lg:min-h-0">
+                    <Image
+                        src="/persona.jpeg"
+                        alt="Conducteur protege par AI-Karangue"
+                        fill
+                        className="object-cover object-[center_20%]"
+                        priority
+                    />
                 </div>
             </section>
 
