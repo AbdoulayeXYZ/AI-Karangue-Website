@@ -206,8 +206,7 @@
             "ADAS : assistance à la conduite",
             "Accès plateforme Karangué221",
             "Vidéo cloud & historique trajets",
-            "18.800 FCFA d'économie vs mensuel",
-            "Support prioritaire inclus"
+            "18.800 FCFA d'économie vs mensuel"
           ],
           "popular": true
         }
@@ -241,8 +240,8 @@
       ]
     },
     "finalCta": {
-      "title": "Ton prochain trajet <br /> <span class=\"text-teal\">commence protégé.</span>",
-      "titleHighlight": "commence protégé.",
+      "title": "La route ne previent pas.<br /><span class=\"text-teal\">Toi, si.</span>",
+      "titleHighlight": "Toi, si.",
       "description": "Rejoins les conducteurs qui ont choisi de ne plus rouler sans protection.",
       "ctaPrimary": "Souscrire maintenant",
       "ctaSecondary": "Voir les offres"

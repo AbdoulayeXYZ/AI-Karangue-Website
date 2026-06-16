@@ -26,7 +26,7 @@ export const Offres = ({ content }: { content: SiteContent["home"]["offres"] }) 
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
                     {content.packs.map((pack, i) => {
                         let Icon: LucideIcon = Star;
                         if (pack.popular) Icon = Crown;
@@ -64,9 +64,27 @@ export const Offres = ({ content }: { content: SiteContent["home"]["offres"] }) 
                                     <h3 className={cn("text-2xl font-black mb-2", pack.popular ? "text-white" : "text-navy-dark")}>
                                         {pack.name}
                                     </h3>
-                                    <p className={cn("text-xs font-bold uppercase tracking-wider mb-8 opacity-60", pack.popular ? "text-teal" : "text-navy/60")}>
+                                    <p className={cn("text-xs font-bold uppercase tracking-wider mb-6 opacity-60", pack.popular ? "text-teal" : "text-navy/60")}>
                                         {pack.tagline}
                                     </p>
+
+                                    {pack.price && (
+                                        <div className={cn(
+                                            "rounded-2xl p-5 mb-8 border",
+                                            pack.popular
+                                                ? "bg-white/5 border-white/10"
+                                                : "bg-zinc-50 border-navy/5"
+                                        )}>
+                                            <div className={cn("text-4xl font-black tracking-tighter leading-none mb-1", pack.popular ? "text-white" : "text-navy-dark")}>
+                                                {pack.price}
+                                            </div>
+                                            {pack.pricePeriod && (
+                                                <div className={cn("text-xs font-bold opacity-40", pack.popular ? "text-white" : "text-navy")}>
+                                                    {pack.pricePeriod}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
 
                                     <div className="space-y-4 mb-10">
                                         {pack.features.map((feature, j) => (

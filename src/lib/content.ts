@@ -94,6 +94,8 @@ export interface SiteContent {
                 tagline: string;
                 features: string[];
                 popular: boolean;
+                price?: string;
+                pricePeriod?: string;
             }>;
         };
         howItWorks: {

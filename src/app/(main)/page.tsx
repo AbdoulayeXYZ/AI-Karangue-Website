@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
-import { HardwareShowcase } from "@/components/sections/HardwareShowcase";
-import { SoftwareShowcase } from "@/components/sections/SoftwareShowcase";
-import { TripleImpact } from "@/components/sections/TripleImpact";
-import { ROICalculator } from "@/components/sections/ROICalculator";
+import { HomeB2CSections } from "@/components/sections/HomeB2CSections";
 import { Offres } from "@/components/sections/Offres";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Button } from "@/components/ui/Button";
@@ -13,20 +10,20 @@ import { getServerContent } from "@/lib/content-server";
 import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, buildOpenGraph, buildTwitter } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "AI-Karangué | Gestion de Flotte, GPS & Sécurité Routière au Sénégal",
+  title: "AI-Karangué | DASHCAM IA & Protection Conducteur au Sénégal",
   description:
-    "Protégez vos véhicules et conducteurs avec Karangué221. La seule plateforme au Sénégal intégrant suivi GPS, prévention d'accidents ADAS et surveillance DSM par IA.",
+    "Protège-toi sur la route avec la DASHCAM IA Streamax. Alertes somnolence, prévention collision, vidéo HD. Karangué221 — la plateforme de sécurité conducteur N°1 au Sénégal.",
   keywords: [
-    "gestion de flotte Sénégal",
-    "suivi GPS véhicule Dakar",
-    "télématique Sénégal",
-    "sécurité routière transport Afrique",
-    "prévention accidents ADAS",
-    "surveillance conducteur DSM",
-    "caméra embarquée DualCam",
+    "dashcam IA Sénégal",
+    "sécurité conducteur Dakar",
+    "caméra voiture intelligente Sénégal",
+    "ADAS Sénégal",
+    "alerte somnolence conducteur",
+    "protection route Sénégal",
     "Karangué221",
     "AI-Karangué",
-    "optimisation carburant Sénégal",
+    "suivi GPS personnel Sénégal",
+    "abonnement sécurité véhicule",
   ],
   alternates: {
     canonical: SITE_URL,
@@ -105,18 +102,14 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 2. Hardware & Cloud - Direct Product Value */}
-      <HardwareShowcase content={content.home.hardware} />
-      <SoftwareShowcase content={content.home.software} />
+      {/* 2. B2C Product Sections — DASHCAM IA, Platform, App, Persona */}
+      <HomeB2CSections />
 
-
-      {/* 4. Triple Impact - Detailed Solutions */}
-      <TripleImpact content={content.home.tripleImpact} />
-
-      {/* 5. Logic & Conversion (ROI & Pricing) */}
-      <ROICalculator content={content.home.roiCalculator} />
-      <Offres content={content.home.offres} />
+      {/* 3. How It Works */}
       <HowItWorks content={content.home.howItWorks} />
+
+      {/* 4. Pricing */}
+      <Offres content={content.home.offres} />
 
       {/* 6. High-Fashion Final Brand Closing */}
       <section className="py-24 sm:py-40 lg:py-64 bg-navy-dark text-white text-center rounded-[3rem] sm:rounded-[5rem] mx-2 sm:mx-4 my-10 sm:my-20 overflow-hidden relative">
