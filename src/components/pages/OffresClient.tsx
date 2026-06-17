@@ -7,7 +7,7 @@ import { Check, Star, Zap, ShieldCheck, CheckCircle2, Crown, ArrowRight, Heart, 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { SiteContent } from "@/lib/content";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
 
 const packIconMap: Record<string, any> = {
     "Zap": Zap,
@@ -277,7 +277,7 @@ export const OffresClient = ({ content }: { content: SiteContent }) => {
                 </div>
             </section>
 
-            <FinalCTA />
+
 
 
         </main>

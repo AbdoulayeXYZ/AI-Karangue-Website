@@ -23,7 +23,7 @@ export default function ContentPage() {
         tripleImpact: false,
         roiCalculator: false,
         offres: false,
-        finalCta: false,
+
         // Solutions
         solutions_hero: true,
         solutions_value: true,
@@ -36,13 +36,13 @@ export default function ContentPage() {
         industries_hero: true,
         industries_transport: true,
         industries_sectors: false,
-        industries_finalCta: false,
+
         // Offres
         offres_hero: true,
         offres_packs: true,
         offres_comparison: false,
         offres_services: false,
-        offres_finalCta: false,
+
     });
 
     useEffect(() => {
@@ -240,12 +240,7 @@ export default function ContentPage() {
                                         <InputField label="Description" value={content.home.roiCalculator.sectionDescription} onChange={(val: string) => updateContent(["home", "roiCalculator", "sectionDescription"], val)} multiline />
                                     </CollapsibleSection>
 
-                                    <CollapsibleSection title="Appel à l'Action Final" isExpanded={expandedSections.finalCta} onToggle={() => toggleSection("finalCta")}>
-                                        <InputField label="Titre" value={content.home.finalCta.title} onChange={(val: string) => updateContent(["home", "finalCta", "title"], val)} />
-                                        <InputField label="Description" value={content.home.finalCta.description} onChange={(val: string) => updateContent(["home", "finalCta", "description"], val)} />
-                                        <InputField label="Bouton Primaire" value={content.home.finalCta.ctaPrimary} onChange={(val: string) => updateContent(["home", "finalCta", "ctaPrimary"], val)} />
-                                        <InputField label="Bouton Secondaire" value={content.home.finalCta.ctaSecondary} onChange={(val: string) => updateContent(["home", "finalCta", "ctaSecondary"], val)} />
-                                    </CollapsibleSection>
+
                                 </>
                             )}
 

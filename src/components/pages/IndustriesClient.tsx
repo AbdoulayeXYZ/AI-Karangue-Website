@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { SiteContent } from "@/lib/content";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
 
 const categories = ["Tous", "Sécurité", "Carburant", "Productivité", "Conformité"];
 
@@ -170,7 +170,7 @@ export const IndustriesClient = ({ content }: { content: SiteContent }) => {
                 </AnimatePresence>
             </div>
 
-            <FinalCTA />
+
         </main>
     );
 };

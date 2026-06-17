@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Eye, AlertTriangle, Shield, Smartphone, Play } from "lucide-react";
 import { SiteContent } from "@/lib/content";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DSC FEATURES
@@ -501,8 +501,7 @@ export default function SolutionsClient({ content: _content }: SolutionsClientPr
             {/* ── INSURANCE PROOF ── */}
             <InsuranceSection />
 
-            {/* ── FINAL CTA ── */}
-            <FinalCTA />
+
 
         </main>
     );

@@ -108,12 +108,7 @@ export interface SiteContent {
                 description: string;
             }>;
         };
-        finalCta: {
-            title: string;
-            description: string;
-            ctaPrimary: string;
-            ctaSecondary: string;
-        };
+
     };
     solutions: {
         hero: {
@@ -217,13 +212,7 @@ export interface SiteContent {
                 };
             };
         };
-        finalCta: {
-            title: string;
-            titleHighlight: string;
-            description: string;
-            ctaPrimary: string;
-            ctaSecondary: string;
-        };
+
     };
     footer: {
         mission: string;
@@ -338,13 +327,6 @@ export interface SiteContent {
             description: string;
             iconId: string; // users, zap, shield
         }>;
-        finalCta: {
-            title: string;
-            titleHighlight: string;
-            description: string;
-            ctaPrimary: string;
-            ctaSecondary: string;
-        };
     };
     offres: {
         hero: {
@@ -386,12 +368,6 @@ export interface SiteContent {
                 title: string;
                 description: string;
             };
-        };
-        finalCta: {
-            title: string;
-            highlight: string;
-            description: string;
-            ctaPrimary: string;
         };
     };
     blog: {
@@ -447,13 +423,6 @@ export interface SiteContent {
                 description: string;
                 icon: string;
             }>;
-        };
-        finalCta: {
-            title: string;
-            highlight: string;
-            description: string;
-            ctaPrimary: string;
-            imagePath?: string;
         };
         detailedFeatures: Array<{
             id: string;
@@ -673,12 +642,6 @@ export const defaultContent: SiteContent = {
                 { number: "03", title: "Activation", description: "Ton compte Karangue221 est cree automatiquement. Acces immediat depuis ton telephone." },
                 { number: "04", title: "Protection", description: "AI-Karangue veille sur toi a chaque trajet, 24h/24 -- 7j/7." }
             ]
-        },
-        finalCta: {
-            title: "Transformez votre flotte <br /> <span class=\"text-teal\">dès aujourd'hui.</span>",
-            description: "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec AI-Karangué.",
-            ctaPrimary: "Commencer maintenant",
-            ctaSecondary: "Demander un devis"
         }
     },
     solutions: {
@@ -892,14 +855,7 @@ export const defaultContent: SiteContent = {
                     imagePath: "/geofencing.png"
                 }
             }
-        },
-        finalCta: {
-            title: "Prêt à transformer",
-            titleHighlight: "votre flotte ?",
-            description: "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec Karangué221.",
-            ctaPrimary: "Calculer mon ROI",
-            ctaSecondary: "Demander une démo"
-        },
+        }
     },
     footer: {
         mission: "Bâtir le futur de la <span class=\"text-teal underline underline-offset-[12px] decoration-white/20\">sécurité routière.</span>",
@@ -1234,13 +1190,7 @@ export const defaultContent: SiteContent = {
             }
         ],
         otherSectors: [],
-        finalCta: {
-            title: "Votre industrie a ses défis.",
-            titleHighlight: "Nous avons les réponses.",
-            description: "Ne laissez plus l'inconnu gérer vos opérations. Prenez le contrôle avec AI-Karangué.",
-            ctaPrimary: "Demander une démo",
-            ctaSecondary: "Voir les offres"
-        }
+
     },
     offres: {
         hero: {
@@ -1312,12 +1262,7 @@ export const defaultContent: SiteContent = {
                 description: "Nous formons vos gestionnaires et vos conducteurs à l'utilisation optimale de Karangué221 pour garantir un ROI immédiat."
             }
         },
-        finalCta: {
-            title: "Un doute ?",
-            highlight: "Testez-nous.",
-            description: "Demandez une analyse gratuite de votre flotte et découvrez combien vous pouvez économiser dès le premier mois.",
-            ctaPrimary: "Contacter un expert"
-        }
+
     },
     blog: {
         hero: {
@@ -1380,13 +1325,7 @@ export const defaultContent: SiteContent = {
                 { title: "Décision Data-Driven", description: "Accédez à des analyses détaillées pour identifier les tendances et améliorer vos processus.", icon: "PieChart" }
             ]
         },
-        finalCta: {
-            title: "Prêt à moderniser vos",
-            highlight: "opérations logistiques ?",
-            description: "Rejoignez les entreprises qui font confiance à AI-Karangué pour la gestion de leur personnel mobile.",
-            ctaPrimary: "Demander une démo",
-            imagePath: "/posters/1.png"
-        },
+
         detailedFeatures: []
     }
 };

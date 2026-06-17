@@ -215,13 +215,6 @@
           "popular": false
         }
       ]
-    },
-    "finalCta": {
-      "title": "Transformez votre flotte <br /> <span class=\"text-teal\">dès aujourd'hui.</span>",
-      "titleHighlight": "dès aujourd'hui.",
-      "description": "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec AI-Karangué.",
-      "ctaPrimary": "Commencer maintenant",
-      "ctaSecondary": "Demander un devis"
     }
   },
   "industries": {
@@ -667,15 +660,7 @@
         "type": "detailed",
         "description": ""
       }
-    ],
-    "otherSectors": [],
-    "finalCta": {
-      "title": "Votre industrie a ses défis.",
-      "titleHighlight": "Nous avons les réponses.",
-      "description": "Ne laissez plus l'inconnu gérer vos opérations. Prenez le contrôle avec AI-Karangué.",
-      "ctaPrimary": "Demander une démo",
-      "ctaSecondary": "Voir les offres"
-    }
+    ]
   },
   "offres": {
     "hero": {
@@ -814,13 +799,6 @@
         "title": "Formation Continue Incluse",
         "description": "Nous formons vos gestionnaires et vos conducteurs à l'utilisation optimale de Karangué221 pour garantir un ROI immédiat."
       }
-    },
-    "finalCta": {
-      "title": "Un doute ?",
-      "highlight": "Testez-nous.",
-      "description": "Demandez une analyse gratuite de votre flotte et découvrez combien vous pouvez économiser dès le premier mois.",
-      "ctaPrimary": "Contacter un expert"
-    }
   },
   "solutions": {
     "hero": {
@@ -1107,13 +1085,6 @@
           "imagePath": "/geofencing.png"
         }
       }
-    },
-    "finalCta": {
-      "title": "Prêt à transformer",
-      "titleHighlight": "votre flotte ?",
-      "description": "Rejoignez les gestionnaires qui ont choisi la sérénité opérationnelle avec Karangué221.",
-      "ctaPrimary": "Calculer mon ROI",
-      "ctaSecondary": "Demander une démo"
     }
   },
   "footer": {

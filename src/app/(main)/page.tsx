@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getServerContent } from "@/lib/content-server";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
 import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, buildOpenGraph, buildTwitter } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -112,8 +112,7 @@ export default async function Home() {
       {/* 4. Pricing */}
       <Offres content={content.home.offres} />
 
-      {/* 6. High-Fashion Final Brand Closing */}
-      <FinalCTA />
+
     </main>
   );
 }

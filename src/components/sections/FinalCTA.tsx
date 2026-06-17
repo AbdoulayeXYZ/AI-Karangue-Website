@@ -1,1 +1,1 @@
-export const FinalCTA = () => null;
+// Removed — FinalCTA section no longer exists.

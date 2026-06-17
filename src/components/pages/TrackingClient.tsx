@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
 
 interface TrackingClientProps {
     content: SiteContent;
@@ -256,8 +256,7 @@ export default function TrackingClient({ content }: TrackingClientProps) {
                 </div>
             </section>
 
-            {/* 5. FINAL CTA - PRECISION CONTACT */}
-            <FinalCTA />
+
 
         </main>
     );

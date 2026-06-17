@@ -238,13 +238,6 @@
           "description": "AI-Karangué veille sur toi à chaque trajet, 24h/24 — 7j/7."
         }
       ]
-    },
-    "finalCta": {
-      "title": "La route ne previent pas.<br /><span class=\"text-teal\">Toi, si.</span>",
-      "titleHighlight": "Toi, si.",
-      "description": "Rejoins les conducteurs qui ont choisi de ne plus rouler sans protection.",
-      "ctaPrimary": "Souscrire maintenant",
-      "ctaSecondary": "Voir les offres"
     }
   },
   "industries": {
@@ -690,15 +683,7 @@
         "type": "detailed",
         "description": ""
       }
-    ],
-    "otherSectors": [],
-    "finalCta": {
-      "title": "Votre industrie a ses défis.",
-      "titleHighlight": "Nous avons les réponses.",
-      "description": "Ne laissez plus l'inconnu gérer vos opérations. Prenez le contrôle avec AI-Karangué.",
-      "ctaPrimary": "Demander une démo",
-      "ctaSecondary": "Voir les offres"
-    }
+    ]
   },
   "offres": {
     "hero": {
@@ -822,13 +807,6 @@
         "title": "Prise en Main Guidée",
         "description": "On t'accompagne pas à pas pour maîtriser Karangué221 et tirer le maximum de ta protection dès le premier jour."
       }
-    },
-    "finalCta": {
-      "title": "Un doute ?",
-      "highlight": "Teste-nous.",
-      "description": "Souscris au mensuel sans engagement et découvre ce que la DASHCAM IA change dans tes trajets dès le premier jour.",
-      "ctaPrimary": "Souscrire maintenant"
-    }
   },
   "solutions": {
     "hero": {
@@ -1115,13 +1093,6 @@
           "imagePath": "/geofencing.png"
         }
       }
-    },
-    "finalCta": {
-      "title": "Prêt à rouler",
-      "titleHighlight": "protégé ?",
-      "description": "Rejoins les conducteurs qui ont choisi AI-Karangué pour ne plus jamais rouler sans protection.",
-      "ctaPrimary": "Souscrire maintenant",
-      "ctaSecondary": "Voir les offres"
     }
   },
   "contact": {
@@ -1358,13 +1329,6 @@
           "icon": "PieChart"
         }
       ]
-    },
-    "finalCta": {
-      "title": "Prêt à moderniser vos",
-      "highlight": "opérations logistiques ?",
-      "description": "Rejoignez les entreprises qui font confiance à AI-Karangué pour la gestion de leur personnel mobile.",
-      "ctaPrimary": "Demander une démo",
-      "imagePath": "/1.png"
     },
     "detailedFeatures": [
       {
